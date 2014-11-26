@@ -1,0 +1,30 @@
+- Classes and Structs, 类和结构体
+- Generics, 泛型
+- Functions and Closures, 函数和闭包
+- Enums and Switch Statements, 枚举和Switch语句
+- Functional Programming, 函数式编程
+- Quick Reference, 快速指南
+- Variables, constants and strings, 变量，常量和字符串
+- Semicolons, 分号
+- Numeric types and conversion, 数值类型及转换
+- Booleans, 布尔类型
+- Tuples, 元组
+- String interpolation, 字符串插值
+- Control flow, 控制流
+- Optionals, 可选值
+- Collections, 集合
+- Polymorphism, 多态性
+- Equality and operator overload, 等价性和运算符重载
+- Access Control, 访问控制
+- Where to go from here, 本章小结
+- Generics, 泛型
+- Generics in action, 泛型实战
+- Assertions & preconditions, 断言和先决条件
+- Protocols and delegates, 协议和代理
+- Selectors, 选择器
+- unwrapped, 解包
+- equality checks,等价性检查
+- dynamic dispatch, 动态分发
+- the set, 集合
+- key, 键
+- value, 值
