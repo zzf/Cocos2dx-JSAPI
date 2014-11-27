@@ -1,6 +1,6 @@
 进度安排：
 
-1. 请大家尽量在3周内完成翻译任务（截至2014-12-14），而后一周我们会安排志愿者review（截至2014-12-21）。
+1. 请大家尽量在2周内完成翻译任务（截至2014-12-11），而后一周我们会安排志愿者review（截至2014-12-18）。
 2. 如觉得不能完成，请提前向我们反馈，我们会安排其他志愿者分担您的任务。
 
 翻译要求：
@@ -12,6 +12,8 @@
 
 ## A
 
+- actionInterval interval-间歇 -持续动作
+- actionInstant instant-瞬时的-立即动作
 - access	访问,存取	
 - access control	访问控制	存取控制
 - accessibility	可用性	可及性
@@ -34,6 +36,9 @@
 - Classes and Structs, 类和结构体
 - Control flow, 控制流
 - Collections, 集合
+- CCFiniteTimeAction  finite-有限的 有限时间的动作
+
+
 ## D
 
 - datatype	数据类型
@@ -62,6 +67,7 @@
 - Functions and Closures, 函数和闭包
 
 ## G
+
 - Generics, 泛型
 - Generics in action, 泛型实战
 
@@ -120,7 +126,8 @@
 - String interpolation, 字符串插值
 - Selectors, 选择器
 - Semicolons, 分号
-
+- sequenceable 可顺序化的
+- Serialization  序列化 - 字节流传输
 ## T
 
 - tag	标签
