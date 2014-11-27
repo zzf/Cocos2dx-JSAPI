@@ -1,30 +1,156 @@
-- Classes and Structs, 类和结构体
-- Generics, 泛型
-- Functions and Closures, 函数和闭包
-- Enums and Switch Statements, 枚举和Switch语句
-- Functional Programming, 函数式编程
-- Quick Reference, 快速指南
-- Variables, constants and strings, 变量，常量和字符串
-- Semicolons, 分号
-- Numeric types and conversion, 数值类型及转换
+进度安排：
+
+1. 请大家尽量在3周内完成翻译任务（截至2014-12-14），而后一周我们会安排志愿者review（截至2014-12-21）。
+2. 如觉得不能完成，请提前向我们反馈，我们会安排其他志愿者分担您的任务。
+
+翻译要求：
+
+1. 翻译时请保留原英文注释；
+2. @后的参数不用翻译；
+
+术语：（此部分请大家把不知道怎样翻译的词汇加入以下列表，我们大家一起翻译维护。这样不知道的专业术语就可以在下面查找了。）
+
+## A
+
+- access	访问,存取	
+- access control	访问控制	存取控制
+- accessibility	可用性	可及性
+- Activity	行动组
+- AI(Artificial Intelligence)	人工智能
+- application	应用程序
+- attribute	属性(在与property同时出现时注明英文)
+- Assertions & preconditions, 断言和先决条件
+
+## B
+
+- base URI	基准URI	基準 URI
 - Booleans, 布尔类型
-- Tuples, 元组
-- String interpolation, 字符串插值
+
+## C
+
+- cardinality(=cardinal number)	基数
+- cascading style sheet(CSS)	级联样式表	
+- choreography	编排
+- Classes and Structs, 类和结构体
 - Control flow, 控制流
-- Optionals, 可选值
 - Collections, 集合
-- Polymorphism, 多态性
+## D
+
+- datatype	数据类型
+- datatype property	数据类型属性
+- data-valued property	数据值属性
+- decidable	可判定的
+- declaration	声明, 宣告
+- dereference	解引用	
+- definition	定义
+- description	描述
+- DTD(Document Type Definition)	文档类型定义
+- dynamic dispatch, 动态分发
+
+## E
+
+- element	元素
+- Enums and Switch Statements, 枚举和Switch语句
 - Equality and operator overload, 等价性和运算符重载
-- Access Control, 访问控制
-- Where to go from here, 本章小结
+- equality checks,等价性检查
+
+## F
+
+- fixpoint semantic	不动点语义，固定点语义
+- formal	形式化的，正式的
+- Functional Programming, 函数式编程
+- Functions and Closures, 函数和闭包
+
+## G
 - Generics, 泛型
 - Generics in action, 泛型实战
-- Assertions & preconditions, 断言和先决条件
-- Protocols and delegates, 协议和代理
-- Selectors, 选择器
-- unwrapped, 解包
-- equality checks,等价性检查
-- dynamic dispatch, 动态分发
-- the set, 集合
+
+## H
+
+## I
+
+- import	导入
+- informative reference	参考性文献
+- instance	实例
+
+## J
+
+## K
+
 - key, 键
+
+## L
+
+
+## M
+
+- markup	标记
+
+## N
+
+- namespace	命名空间，名称空间(建议不翻)
+- namespace name	命名空间名称(建议不翻)
+- namespace prefix	命名空间前缀(建议不翻)
+- node	结点
+- normative	规范性的	
+- normative reference	规范性文献	
+- Numeric types and conversion, 数值类型及转换
+
+## O
+
+- object	对象;
+- Optionals, 可选值
+
+
+## P
+- Polymorphism, 多态性
+- Protocols and delegates, 协议和代理
+
+## Q
+
+- Quick Reference, 快速指南
+
+## R
+
+- reference	参考文献	參考資料
+
+## S
+
+- schema	模式
+- String interpolation, 字符串插值
+- Selectors, 选择器
+- Semicolons, 分号
+
+## T
+
+- tag	标签
+- template	模板
+- triple	三元组	
+- Tuples, 元组
+- the set, 集合
+
+## U
+
+- unparsed entity	非解析实体	非解析實體
+- unwrapped, 解包
+
+## V
 - value, 值
+- Variables, constants and strings, 变量，常量和字符串
+
+## W
+
+
+## X
+
+- XML(Extensible Markup Language)	可扩展标记语言，可扩展置标语言
+- XML Schema	XML Schema(建议不翻), XML模式，XML构架
+- XSL(Extensible Stylesheet Language)	可扩展样式表语言
+- XHTML(Extensible Hypertext Markup Language) 可扩展超文本标记语言
+
+## Y
+
+
+## Z
+
+
