@@ -64,7 +64,7 @@ cc._tmp.WebGLCCNode = function () {
     _p.visit = function () {
         var _t = this;
         // quick return if not visible
-        //如果不可见则立即返回
+        // 如果不可见则立即返回
         if (!_t._visible)
             return;
 
