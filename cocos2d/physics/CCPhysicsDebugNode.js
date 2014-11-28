@@ -34,8 +34,20 @@
  as the private API may change with little or no warning.
  */
 
+/*
+重要 - READ ME！
+这个文件提供了一些引用Chipmunk空间的私有API，这些API可以提供高效的调试渲染。
+在你自己的游戏中不建议编写类似的渲染代码，这些私有API可能在没有警告的情况下发生修改。
+*/
+
 /**
  *  Converts an array of numbers into an array of vectors(x,y)
+ *  @function
+ *  @param {Array} verts
+ *  @return {Array}
+ */
+ /**
+ *  将一个数字数组转换为向量（x,y）数组
  *  @function
  *  @param {Array} verts
  *  @return {Array}
@@ -54,6 +66,12 @@ cc.__convertVerts = function (verts) {
  * @param {cp.Body} body
  * @return {cc.color}
  */
+/**
+ * 刚体（body）的颜色
+ * @function
+ * @param {cp.Body} body
+ * @return {cc.color}
+ */
 cc.ColorForBody = function (body) {
     if (body.isRogue() || body.isSleeping()) {
         return cc.color(128, 128, 128, 128);
@@ -66,6 +84,11 @@ cc.ColorForBody = function (body) {
 
 /**
  * draw shape
+ * @param {cp.Shape} shape
+ * @param renderer
+ */
+/**
+ * 绘制外形（Shape）
  * @param {cp.Shape} shape
  * @param renderer
  */
@@ -92,6 +115,11 @@ cc.DrawShape = function (shape, renderer) {
 
 /**
  * draw constraint
+ * @param {cp.Constraint} constraint
+ * @param renderer
+ */
+/**
+ * 绘制约束
  * @param {cp.Constraint} constraint
  * @param renderer
  */
@@ -150,12 +178,27 @@ cc.CONSTRAINT_COLOR = cc.color(0, 255, 0, 128);
  *
  * @property {cp.Space} space     Physic world space
  */
+ /**
+ * <p>绘制物理引擎组件的节点.<br/>
+ * 支持的物理引擎:<br/>
+ * - Chipmunk<br/>
+ * - Objective-Chipmunk</p>
+ *
+ * @class
+ * @extends cc.DrawNode
+ *
+ * @property {cp.Space} space     物理空间
+ */
 cc.PhysicsDebugNode = cc.DrawNode.extend({
     _space:null,
     _className:"PhysicsDebugNode",
 
     /**
      * constructor of cc.PhysicsDebugNode
+     * @param {cp.Space} space
+     */
+     /**
+     * cc.PhysicsDebugNode的构造函数
      * @param {cp.Space} space
      */
     ctor: function (space) {
@@ -173,6 +216,10 @@ cc.PhysicsDebugNode = cc.DrawNode.extend({
      * get space
      * @returns {cp.Space}
      */
+     /**
+     * 获取物理空间
+     * @returns {cp.Space}
+     */
     getSpace:function () {
         return this._space;
     },
@@ -181,12 +228,20 @@ cc.PhysicsDebugNode = cc.DrawNode.extend({
      * set space
      * @param {cp.Space} space
      */
+     /**
+     * 设置物理空间
+     * @param {cp.Space} space
+     */
     setSpace:function (space) {
         this._space = space;
     },
 
     /**
      * draw
+     * @param {object} context
+     */
+     /**
+     * 绘制
      * @param {object} context
      */
     draw:function (context) {
@@ -204,6 +259,12 @@ cc.PhysicsDebugNode = cc.DrawNode.extend({
  * Create a debug node for a regular Chipmunk space.
  * @deprecated since v3.0, please use new cc.PhysicsDebugNode(space)
  * @param {cp.Space} space
+ * @return {cc.PhysicsDebugNode}
+ */
+ /**
+ * 为一个普通的Chipmunk空间创建debug节点.
+ * @deprecated since v3.0, please use new cc.PhysicsDebugNode(space)
+ * @param {cp.Space} 物理空间
  * @return {cc.PhysicsDebugNode}
  */
 cc.PhysicsDebugNode.create = function (space) {
