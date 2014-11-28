@@ -35,6 +35,18 @@
  - If you update the rotation or position manually, the physics body will be updated
  - You can't eble both Chipmunk support and Box2d support at the same time. Only one can be enabled at compile time
  */
+ /** 继承自CCSprite，绑定到一个物理body
+ 支持以下几个物理引擎：
+ - Chipmunk： 需要定义预处理器宏 CC_ENABLE_CHIPMUNK_INTEGRATION
+ - ObjectiveChipmunk：需要定义预处理器宏 CC_ENABLE_CHIPMUNK_INTEGRATION
+ - Box2d：需要定义预处理器宏 CC_ENABLE_BOX2D_INTEGRATION
+ 
+ 特性和限制：
+ - 缩放（Scale）和偏移（Skew）属性被忽略
+ - 位置（Position）和旋转（Rotation）将从物理刚体更新
+ - 如果你手动更新了位置和旋转，物理刚体会被更新
+ - 你不能同时启用Chipmunk和Box2d两个引擎的支持，在编译时只能启用一种
+ */
 (function () {
     var box2dAPI = {
         _ignoreBodyRotation:false,
@@ -61,6 +73,31 @@
          *
          * 4.Creates a sprite with an exsiting texture contained in a CCTexture2D object
          *      After creation, the rect will be the size of the texture, and the offset will be (0,0).
+         * var texture = cc.textureCache.addImage("HelloHTML5World.png");
+         * var physicsSprite1 = new cc.PhysicsSprite(texture);
+         * var physicsSprite2 = new cc.PhysicsSprite(texture, cc.rect(0,0,480,320));
+         *
+         */
+         /**
+         * 通过文件名和矩形创建物理精灵
+         * 针对Box2d的cc.PhysicsSprite构造函数
+         * @param {String|cc.Texture2D|cc.SpriteFrame} fileName
+         * @param {cc.Rect} rect
+         * @example
+         *
+         * 1.通过图片路径和矩形创建精灵
+         * var physicsSprite1 = new cc.PhysicsSprite("res/HelloHTML5World.png");
+         * var physicsSprite2 = new cc.PhysicsSprite("res/HelloHTML5World.png",cc.rect(0,0,480,320));
+         *
+         * 2.通过精灵帧（sprite frame）名创建精灵。在帧名之前需要添加“#”
+         * var physicsSprite = new cc.PhysicsSprite('#grossini_dance_01.png');
+         *
+         * 3.通过精灵帧创建精灵
+         * var spriteFrame = cc.spriteFrameCache.getSpriteFrame("grossini_dance_01.png");
+         * var physicsSprite = new cc.PhysicsSprite(spriteFrame);
+         *
+         * 4.通过一个已经存在的CCTexture2D对象中包含的纹理（textture）创建精灵
+         *      创建之后，矩形的大小将使用纹理的大小，偏移是（0,0）
          * var texture = cc.textureCache.addImage("HelloHTML5World.png");
          * var physicsSprite1 = new cc.PhysicsSprite(texture);
          * var physicsSprite2 = new cc.PhysicsSprite(texture, cc.rect(0,0,480,320));
@@ -103,12 +140,20 @@
          * set body
          * @param {Box2D.Dynamics.b2Body} body
          */
+        /**
+         * 设置物理body
+         * @param {Box2D.Dynamics.b2Body} body
+         */
         setBody:function (body) {
             this._body = body;
         },
 
         /**
          * get body
+         * @return {Box2D.Dynamics.b2Body}
+         */
+        /**
+         * 获取物理body
          * @return {Box2D.Dynamics.b2Body}
          */
         getBody:function () {
@@ -119,12 +164,20 @@
          * set PTM ratio
          * @param {Number} r
          */
+        /**
+         * 设置 PTM ratio
+         * @param {Number} r
+         */
         setPTMRatio:function (r) {
             this._PTMRatio = r;
         },
 
         /**
          * get PTM ration
+         * @return {Number}
+         */
+        /**
+         * 获取 PTM ration
          * @return {Number}
          */
         getPTMRatio:function () {
@@ -135,6 +188,10 @@
          * get position
          * @return {cc.Point}
          */
+        /**
+         * 获取位置
+         * @return {cc.Point}
+         */
         getPosition:function () {
             var pos = this._body.GetPosition();
             var locPTMRatio =this._PTMRatio;
@@ -143,6 +200,10 @@
 
         /**
          * set position
+         * @param {cc.Point} p
+         */
+         /**
+         * 设置位置
          * @param {cc.Point} p
          */
         setPosition:function (p) {
@@ -156,12 +217,20 @@
          * get rotation
          * @return {Number}
          */
+         /**
+         * 获取旋转
+         * @return {Number}
+         */
         getRotation:function () {
             return (this._ignoreBodyRotation ? cc.radiansToDegrees(this._rotationRadians) : cc.radiansToDegrees(this._body.GetAngle()));
         },
 
         /**
          * set rotation
+         * @param {Number} r
+         */
+         /**
+         * 设置旋转
          * @param {Number} r
          */
         setRotation:function (r) {
@@ -202,6 +271,10 @@
          * set whether to ingore body's rotation
          * @param {Boolean} b
          */
+         /**
+         * 设置是否忽略body的旋转
+         * @param {Boolean} b
+         */
         setIgnoreBodyRotation: function(b) {
             this._ignoreBodyRotation = b;
         }
@@ -232,6 +305,31 @@
          *
          * 4.Creates a sprite with an exsiting texture contained in a CCTexture2D object
          *      After creation, the rect will be the size of the texture, and the offset will be (0,0).
+         * var texture = cc.textureCache.addImage("HelloHTML5World.png");
+         * var physicsSprite1 = new cc.PhysicsSprite(texture);
+         * var physicsSprite2 = new cc.PhysicsSprite(texture, cc.rect(0,0,480,320));
+         *
+         */
+         /**
+         * 通过文件名和矩形创建物理精灵
+         * 针对Chipmunk的cc.PhysicsSprite构造函数
+         * @param {String|cc.Texture2D|cc.SpriteFrame} fileName
+         * @param {cc.Rect} rect
+         * @example
+         *
+         * 1.通过图片路径和矩形创建精灵
+         * var physicsSprite1 = new cc.PhysicsSprite("res/HelloHTML5World.png");
+         * var physicsSprite2 = new cc.PhysicsSprite("res/HelloHTML5World.png",cc.rect(0,0,480,320));
+         *
+         * 2.通过精灵帧（sprite frame）名创建精灵。在帧名之前需增加“#”。
+         * var physicsSprite = new cc.PhysicsSprite('#grossini_dance_01.png');
+         *
+         * 3.通过精灵帧创建精灵
+         * var spriteFrame = cc.spriteFrameCache.getSpriteFrame("grossini_dance_01.png");
+         * var physicsSprite = new cc.PhysicsSprite(spriteFrame);
+         *
+         * 4.通过一个已经存在的CCTexture2D对象中包含的纹理（textture）创建精灵
+         *      创建之后，矩形的大小将使用纹理的大小，偏移是（0,0）
          * var texture = cc.textureCache.addImage("HelloHTML5World.png");
          * var physicsSprite1 = new cc.PhysicsSprite(texture);
          * var physicsSprite2 = new cc.PhysicsSprite(texture, cc.rect(0,0,480,320));
@@ -286,6 +384,10 @@
          * set body
          * @param {cp.Body} body
          */
+        /**
+         * 设置 body
+         * @param {cp.Body} body
+         */
         setBody:function (body) {
             this._body = body;
         },
@@ -294,12 +396,20 @@
          * get body
          * @returns {cp.Body}
          */
+        /**
+         * 获取 body
+         * @returns {cp.Body}
+         */
         getBody:function () {
             return this._body;
         },
 
         /**
          * get position
+         * @return {cc.Point}
+         */
+        /**
+         * 获取位置
          * @return {cc.Point}
          */
         getPosition:function () {
@@ -311,6 +421,10 @@
          * get position x
          * @return {Number}
          */
+        /**
+         * 获取位置的x坐标
+         * @return {Number}
+         */
         getPositionX:function () {
             return this._body.p.x;
         },
@@ -319,12 +433,21 @@
          * get position y
          * @return {Number}
          */
+        /**
+         * 获取位置的y坐标
+         * @return {Number}
+         */
         getPositionY:function () {
             return this._body.p.y;
         },
 
         /**
          * set position
+         * @param {cc.Point|Number}newPosOrxValue
+         * @param {Number}yValue
+         */
+        /**
+         * 设置位置
          * @param {cc.Point|Number}newPosOrxValue
          * @param {Number}yValue
          */
@@ -343,6 +466,10 @@
          * set position x
          * @param {Number} xValue
          */
+        /**
+         * 设置位置的x坐标
+         * @param {Number} xValue
+         */
         setPositionX:function (xValue) {
             this._body.p.x = xValue;
             //this._syncPosition();
@@ -350,6 +477,10 @@
 
         /**
          * set position y
+         * @param {Number} yValue
+         */
+        /**
+         * 设置位置的y坐标
          * @param {Number} yValue
          */
         setPositionY:function (yValue) {
@@ -368,12 +499,20 @@
          * get rotation
          * @return {Number}
          */
+        /**
+         * 获取旋转
+         * @return {Number}
+         */
         getRotation:function () {
             return this._ignoreBodyRotation ? cc.radiansToDegrees(this._rotationRadiansX) : -cc.radiansToDegrees(this._body.a);
         },
 
         /**
          * set rotation
+         * @param {Number} r
+         */
+        /**
+         * 设置旋转
          * @param {Number} r
          */
         setRotation:function (r) {
@@ -392,12 +531,19 @@
         /**
          * @deprecated since v3.0, please use getNodeToParentTransform instead
          */
+        /**
+         * @自v3.0弃用,使用 getNodeToParentTransform 代替
+         */
         nodeToParentTransform: function(){
             return this.getNodeToParentTransform();
         },
 
         /**
          * get the affine transform matrix of node to parent coordinate frame
+         * @return {cc.AffineTransform}
+         */
+        /**
+         * 获取将节点坐标变换到父节点坐标系的仿射变换矩阵
          * @return {cc.AffineTransform}
          */
         getNodeToParentTransform:function () {
@@ -489,6 +635,10 @@
          * whether dirty
          * @return {Boolean}
          */
+        /**
+         * 判断精灵在Atlas中是否需要更新
+         * @return {Boolean}
+         */
         isDirty:function(){
            return !this._body.isSleeping();
         },
@@ -496,6 +646,10 @@
 
         /**
          * set whether to ignore rotation of body
+         * @param {Boolean} b
+         */
+        /**
+         * 设置是否忽略body的旋转
          * @param {Boolean} b
          */
         setIgnoreBodyRotation: function(b) {
@@ -521,6 +675,13 @@
      * @param {cc.Rect} rect
      * @return {cc.PhysicsSprite}
      */
+    /**
+     * 通过文件名和矩形创建一个PhysicsSprite
+     * @自v3.0弃用, 使用新的 cc.PhysicsSprite(fileName, rect) 代替
+     * @param {String|cc.Texture2D|cc.SpriteFrame} fileName
+     * @param {cc.Rect} rect
+     * @return {cc.PhysicsSprite}
+     */
     cc.PhysicsSprite.create = function (fileName, rect) {
         return new cc.PhysicsSprite(fileName, rect);
     };
@@ -529,10 +690,18 @@
      * @deprecated since v3.0, please use new cc.PhysicsSprite(spriteFrameName) instead
      * @type {Function}
      */
+    /**
+     * @自v3.0弃用, 使用新的 cc.PhysicsSprite(spriteFrameName) 代替
+     * @type {Function}
+     */
     cc.PhysicsSprite.createWithSpriteFrameName = cc.PhysicsSprite.create;
 
     /**
      * @deprecated since v3.0, please use new cc.PhysicsSprite(spriteFrame) instead
+     * @type {Function}
+     */
+    /**
+     * @自v3.0弃用, 使用新的 cc.PhysicsSprite(spriteFrame) 代替
      * @type {Function}
      */
     cc.PhysicsSprite.createWithSpriteFrame = cc.PhysicsSprite.create;
