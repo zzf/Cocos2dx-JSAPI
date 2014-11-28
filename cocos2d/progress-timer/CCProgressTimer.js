@@ -1004,7 +1004,7 @@ cc.defineGetterSetter(_p, "reverseDir", _p.isReverseDirection, _p.setReverseDire
  */
 /**
  * 通过根据百分比渲染内部精灵的图片文件创建一个进度条对象
- * @自v3.0弃用，使用cc.ProgressTimer(sprite) 代替.
+ * @deprecated 自v3.0弃用，使用cc.ProgressTimer(sprite) 代替.
  * @param {cc.Sprite} sprite
  * @return {cc.ProgressTimer}
  */
