@@ -33,7 +33,7 @@ cc.stencilBits = -1;
 
 /**
  * <p>
- *     cc.ClippingNode is a subclass of cc.Node.                                                            <br/>
+ *     cc.ClippingNode is a subclass of cc.Node.      cc.ClippingNode是cc.Node的一个子类                                                       <br/>
  *     It draws its content (children) clipped using a stencil.                                               <br/>
  *     The stencil is an other cc.Node that will not be drawn.                                               <br/>
  *     The clipping is done using the alpha part of the stencil (adjusted with an alphaThreshold).
