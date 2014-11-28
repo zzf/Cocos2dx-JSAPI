@@ -26,12 +26,16 @@
 
 /**
  * <p>cc.AtlasNode is a subclass of cc.Node, it knows how to render a TextureAtlas object. </p>
+ * <p>cc.AtlasNode是cc.Node的子类,cc.AtlasNode可以用来渲染一个TextureAtlas对象</p>
  *
  * <p>If you are going to render a TextureAtlas consider subclassing cc.AtlasNode (or a subclass of cc.AtlasNode)</p>
+ * <p>如果你想要渲染一个TextureAtlas 可以考虑继承cc.AtlasNode(或者cc.AtlasNode的子类)</p>
  *
  * <p>All features from cc.Node are valid</p>
+ * <p>所有继承自cc.Node的功能都是可用的</p>
  *
  * <p>You can create a cc.AtlasNode with an Atlas file, the width, the height of each item and the quantity of items to render</p>
+ * <p>你可以使用一个Atlas文件,item的宽、高跟items数量来进行绘制</p>
  *
  * @class
  * @extends cc.Node
@@ -52,26 +56,33 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
     quadsToDraw: 0,
 
     //! chars per row
+    //! 每行字数
     _itemsPerRow: 0,
     //! chars per column
+    //! 每列字数
     _itemsPerColumn: 0,
     //! width of each char
+    //! 每个字符的宽
     _itemWidth: 0,
     //! height of each char
+    //! 每个字符的高
     _itemHeight: 0,
 
     _colorUnmodified: null,
 
     // protocol variables
+    // 协议是否可用
     _opacityModifyRGB: false,
     _blendFunc: null,
 
     // This variable is only used for CCLabelAtlas FPS display. So plz don't modify its value.
+    // 该值只用于CCLabelAtlas FPS的显示.所以plz不用修改该值
     _ignoreContentScaleFactor: false,
     _className: "AtlasNode",
 
     /**
      * <p>Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function.</p>
+     * <p>构造函数,重写它进行继承父类中的构造动作,在"ctor"函数中记得调用"this._super()"进行继承</p>
      * @param {String} tile
      * @param {Number} tileWidth
      * @param {Number} tileHeight
@@ -93,7 +104,9 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Updates the Atlas (indexed vertex array).
+     * 更新Atlas(顶点索引数组)
      * Empty implementation, shall be overridden in subclasses
+     * 清空实现方法,需要被子类重写
      * @function
      */
     updateAtlasValues: function () {
@@ -102,6 +115,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Get color value of the atlas node
+     * 获取atlas节点的颜色值
      * @function
      * @return {cc.Color}
      */
@@ -113,7 +127,9 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Set whether color should be changed with the opacity value,
+     * 设置颜色值是否要跟着透明度进行改变
      * if true, node color will change while opacity changes.
+     * 如果为true,节点的颜色需要因透明度值的改变而改变
      * @function
      * @param {Boolean} value
      */
@@ -125,6 +141,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Get whether color should be changed with the opacity value
+     * 获取颜色值是否有因透明度值的改变而改变
      * @function
      * @return {Boolean}
      */
@@ -134,6 +151,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Get node's blend function
+     * 获取节点的混合函数
      * @function
      * @return {cc.BlendFunc}
      */
@@ -143,7 +161,9 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Set node's blend function
+     * 设置节点的混合函数
      * This function accept either cc.BlendFunc object or source value and destination value
+     * 该函数接受一个混合函数对象或者一个源跟目标值
      * @function
      * @param {Number | cc.BlendFunc} src
      * @param {Number} dst
@@ -157,6 +177,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Set the atlas texture
+     * 设置atlas纹理
      * @function
      * @param {cc.TextureAtlas} value The texture
      */
@@ -166,6 +187,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Get the atlas texture
+     * 获取atlas纹理
      * @function
      * @return {cc.TextureAtlas}
      */
@@ -175,6 +197,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Get the number of quads to be rendered
+     * 获取渲染过的四边形的数量
      * @function
      * @return {Number}
      */
@@ -184,6 +207,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Set the number of quads to be rendered
+     * 设置要进行渲染的四边形的数量
      * @function
      * @param {Number} quadsToDraw
      */
@@ -199,6 +223,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Initializes an cc.AtlasNode object with an atlas texture file name, the width, the height of each tile and the quantity of tiles to render
+     * 用Atlas文件初始化AtlasNode,并设置宽、高、itme数量 
      * @function
      * @param {String} tile             The atlas texture file name
      * @param {Number} tileWidth        The width of each tile
@@ -215,6 +240,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Initializes an CCAtlasNode with an atlas texture, the width, the height of each tile and the quantity of tiles to render
+     * 用atlas纹理初始化AtlasNode,并设置宽、高、itme数量 
      * @function
      * @param {cc.Texture2D} texture    The atlas texture
      * @param {Number} tileWidth        The width of each tile
@@ -273,6 +299,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Render function using the canvas 2d context or WebGL context, internal usage only, please do not call this function
+     * 使用canvas 2d上下文或者WebGL上下文渲染函数,仅供内部使用,请别调用该函数
      * @function
      * @param {CanvasRenderingContext2D | WebGLRenderingContext} ctx The render context
      */
@@ -290,6 +317,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Set node's color
+     * 设置节点的颜色
      * @function
      * @param {cc.Color} color Color object created with cc.color(r, g, b).
      */
@@ -349,6 +377,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Set node's opacity
+     * 设置节点的透明度
      * @function
      * @param {Number} opacity The opacity value
      */
@@ -377,6 +406,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Get the current texture
+     * 获取当前纹理
      * @function
      * @return {cc.Texture2D}
      */
@@ -392,6 +422,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Replace the current texture with a new one
+     * 使用新纹理替换当前纹理
      * @function
      * @param {cc.Texture2D} texture    The new texture
      */
@@ -486,10 +517,12 @@ if (cc._renderType === cc._RENDER_TYPE_WEBGL) {
 }
 
 // Override properties
+// 重写属性
 cc.defineGetterSetter(_p, "opacity", _p.getOpacity, _p.setOpacity);
 cc.defineGetterSetter(_p, "color", _p.getColor, _p.setColor);
 
 // Extended properties
+// 扩展属性
 /** @expose */
 _p.texture;
 cc.defineGetterSetter(_p, "texture", _p.getTexture, _p.setTexture);
@@ -501,6 +534,7 @@ _p.quadsToDraw;
 
 /**
  * Creates a cc.AtlasNode with an Atlas file the width and height of each item and the quantity of items to render
+ * 从Atlas文件创建一个AtlasNode,并设置它的宽、高以及itme数量
  * @deprecated since v3.0, please use new construction instead
  * @function
  * @static
