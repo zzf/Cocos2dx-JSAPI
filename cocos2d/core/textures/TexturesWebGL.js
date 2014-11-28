@@ -763,7 +763,7 @@ cc._tmp.WebGLTexture2D = function () {
         /**
          * remove listener from listeners by target  - 移除特定目标的监听
          * @param {cc.Node} target
-         * @deprecated since 3.1, please use addEventListener instead
+         * @deprecated since 3.1, please use removeEventListener instead － 从3.1版弃用，请使用 removeEventListener
          */
         removeLoadedEventListener: function (target) {
             this.removeEventListener("load", target);
