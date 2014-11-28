@@ -173,7 +173,7 @@ cc.progressTo = function (duration, percent) {
  * 请使用 cc.progressTo 代替
  * 通过持续时间和百分比创建并初始化
  * @static
- * @自v3.0弃用，使用cc.progressTo代替
+ * @deprecated 自v3.0弃用，使用cc.progressTo代替
  * @param {Number} duration duration in seconds
  * @param {Number} percent
  * @return {cc.ProgressTo}
@@ -326,7 +326,7 @@ cc.progressFromTo = function (duration, fromPercentage, toPercentage) {
 /**
  * 通过持续时间，起始百分比和结束百分比创建并初始化一个action
  * @static
- * @自v3.0弃用，使用cc.ProgressFromTo(duration, fromPercentage, toPercentage) 代替。
+ * @deprecated 自v3.0弃用，使用cc.ProgressFromTo(duration, fromPercentage, toPercentage) 代替。
  * @param {Number} duration duration in seconds
  * @param {Number} fromPercentage
  * @param {Number} toPercentage
