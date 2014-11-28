@@ -135,10 +135,10 @@ cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode#  cc.ClippingNode入
 
     /**
      * <p>
-     *     Event callback that is invoked every time when node enters the 'stage'.                                   <br/>
-     *     If the CCNode enters the 'stage' with a transition, this event is called when the transition starts.        <br/>
-     *     During onEnter you can't access a "sister/brother" node.                                                    <br/>
-     *     If you override onEnter, you must call its parent's onEnter function with this._super().
+     *     Event callback that is invoked every time when node enters the 'stage'.  当节点加入'stage'都会调用回调函数                                 <br/>
+     *     If the CCNode enters the 'stage' with a transition, this event is called when the transition starts. 如果CCNode转换后加入'stage',这个事件会在转换开始是被调用        <br/>
+     *     During onEnter you can't access a "sister/brother" node. 当onEnter时不允许使用兄弟节点                                                 <br/>
+     *     If you override onEnter, you must call its parent's onEnter function with this._super(). 如果你重写onEnter，必须用this.super()调用它的父onEnter函数
      * </p>
      * @function
      */
@@ -149,9 +149,9 @@ cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode#  cc.ClippingNode入
 
     /**
      * <p>
-     *     Event callback that is invoked when the node enters in the 'stage'.                                                        <br/>
-     *     If the node enters the 'stage' with a transition, this event is called when the transition finishes.                       <br/>
-     *     If you override onEnterTransitionDidFinish, you shall call its parent's onEnterTransitionDidFinish with this._super()
+     *     Event callback that is invoked when the node enters in the 'stage'. 当节点加入'stage'都会调用回调函数                                                       <br/>
+     *     If the node enters the 'stage' with a transition, this event is called when the transition finishes.   如果节点转换后加入'stage',这个事件会在转换结束时被调用                     <br/>
+     *     If you override onEnterTransitionDidFinish, you shall call its parent's onEnterTransitionDidFinish with this._super() 如果你重写onEnterTransitionDidFinish，应该用this.super()调用它的父onEnterTransitionDidFinish函数
      * </p>
      * @function
      */
@@ -162,9 +162,9 @@ cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode#  cc.ClippingNode入
 
     /**
      * <p>
-     *     callback that is called every time the node leaves the 'stage'.  <br/>
-     *     If the node leaves the 'stage' with a transition, this callback is called when the transition starts. <br/>
-     *     If you override onExitTransitionDidStart, you shall call its parent's onExitTransitionDidStart with this._super()
+     *     callback that is called every time the node leaves the 'stage'.  当节点离开'stage'都会调用回调函数  <br/>                                                     
+     *     If the node leaves the 'stage' with a transition, this callback is called when the transition starts. 如果节点转换后离开'stage',这个事件会在转换开始时被调用 <br/>
+     *     If you override onExitTransitionDidStart, you shall call its parent's onExitTransitionDidStart with this._super()如果你重写onExitTransitionDidStart，应该用this.super()调用它的父onExitTransitionDidStart函数
      * </p>
      * @function
      */
@@ -175,10 +175,10 @@ cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode#  cc.ClippingNode入
 
     /**
      * <p>
-     * callback that is called every time the node leaves the 'stage'. <br/>
-     * If the node leaves the 'stage' with a transition, this callback is called when the transition finishes. <br/>
-     * During onExit you can't access a sibling node.                                                             <br/>
-     * If you override onExit, you shall call its parent's onExit with this._super().
+     * callback that is called every time the node leaves the 'stage'. 当节点离开'stage'都会调用回调函数<br/>
+     * If the node leaves the 'stage' with a transition, this callback is called when the transition finishes.如果节点转换后离开'stage',这个事件会在转换结束时被调用 <br/>
+     * During onExit you can't access a sibling node.当onExit时不允许使用兄弟节点                                                              <br/>
+     * If you override onExit, you shall call its parent's onExit with this._super().如果你重写onExit，应该用this.super()调用它的父onExit函数
      * </p>
      * @function
      */
