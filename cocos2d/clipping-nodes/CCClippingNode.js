@@ -34,19 +34,19 @@ cc.stencilBits = -1;
 /**
  * <p>
  *     cc.ClippingNode is a subclass of cc.Node.      cc.ClippingNode是cc.Node的一个子类                                                       <br/>
- *     It draws its content (children) clipped using a stencil.                                               <br/>
- *     The stencil is an other cc.Node that will not be drawn.                                               <br/>
- *     The clipping is done using the alpha part of the stencil (adjusted with an alphaThreshold).
+ *     It draws its content (children) clipped using a stencil.    用于通过模板绘制可裁剪的内容                                           <br/>
+ *     The stencil is an other cc.Node that will not be drawn.   模板是cc.Node类，且不会被绘制                                            <br/>
+ *     The clipping is done using the alpha part of the stencil (adjusted with an alphaThreshold). 绘制通过使用模板的开始部分, 使用一个alphaThreshold调整
  * </p>
  * @class
  * @extends cc.Node
  * @param {cc.Node} [stencil=null]
  *
- * @property {Number}   alphaThreshold  - Threshold for alpha value.
- * @property {Boolean}  inverted        - Indicate whether in inverted mode.
+ * @property {Number}   alphaThreshold  - Threshold for alpha value. Threshold赋初值
+ * @property {Boolean}  inverted        - Indicate whether in inverted mode. 无论正反模式都要声明
  */
-//@property {cc.Node}  stencil         - he cc.Node to use as a stencil to do the clipping.
-cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode# */{
+//@property {cc.Node}  stencil         - he cc.Node to use as a stencil to do the clipping.裁剪用的cc.Node模板
+cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode#  cc.ClippingNode入口*/{
     alphaThreshold: 0,
     inverted: false,
 
@@ -76,6 +76,7 @@ cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode# */{
 
     /**
      * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function.
+     *构造函数，重写继承构造函数，在继承的"ctor"函数中是使用"this._super()"
      * @param {cc.Node} [stencil=null]
      */
     ctor: function (stencil) {
@@ -101,6 +102,7 @@ cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode# */{
 
     /**
      * Initialization of the node, please do not call this function by yourself, you should pass the parameters to constructor to initialize it .
+     *node初始化，不要自己调用这个函数，通过构造函数初始化
      * @function
      * @param {cc.Node} [stencil=null]
      */
@@ -113,7 +115,7 @@ cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode# */{
 
         this.alphaThreshold = 1;
         this.inverted = false;
-        // get (only once) the number of bits of the stencil buffer
+        // get (only once) the number of bits of the stencil buffer  获得模板缓冲区的bits数值（只有一次）
         cc.ClippingNode._init_once = true;
         if (cc.ClippingNode._init_once) {
             cc.stencilBits = cc._renderContext.getParameter(cc._renderContext.STENCIL_BITS);
