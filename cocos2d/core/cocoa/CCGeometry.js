@@ -26,6 +26,7 @@
 
 /**
  * cc.Point is the class for point object, please do not use its constructor to create points, use cc.p() alias function instead.
+ * cc.Point是点对象的类,请别使用其构造器去创建点,使用cc.p()函数来代替.
  * @class cc.Point
  * @param {Number} x
  * @param {Number} y
@@ -38,6 +39,7 @@ cc.Point = function (x, y) {
 
 /**
  * Helper function that creates a cc.Point.
+ * 创建cc.Point的帮助函数
  * @function
  * @param {Number|cc.Point} x a Number or a size object
  * @param {Number} y
@@ -51,10 +53,13 @@ cc.Point = function (x, y) {
 cc.p = function (x, y) {
     // This can actually make use of "hidden classes" in JITs and thus decrease
     // memory usage and overall performance drastically
+    // 在JITs中,这里实际上可以使用"匿名类",来降低内存使用率跟提高性能
     // return cc.p(x, y);
     // but this one will instead flood the heap with newly allocated hash maps
     // giving little room for optimization by the JIT,
+    // 但这里可以对哈希映射进行重新分配,留下小幅度的优化空间给JIT,
     // note: we have tested this item on Chrome and firefox, it is faster than cc.p(x, y)
+    // 注意: 我们已经在Chrome跟firefox中进行测试过,它比cc.p(x,y)更快
     if (x == undefined)
         return {x: 0, y: 0};
     if (y == undefined)
@@ -64,6 +69,7 @@ cc.p = function (x, y) {
 
 /**
  * Check whether a point's value equals to another
+ * 判断两个点是否相等
  * @function
  * @param {cc.Point} point1
  * @param {cc.Point} point2
@@ -76,6 +82,7 @@ cc.pointEqualToPoint = function (point1, point2) {
 
 /**
  * cc.Size is the class for size object, please do not use its constructor to create sizes, use cc.size() alias function instead.
+ * cc.Size是尺寸对象的类,请别使用其构造器去创建尺寸,使用cc.size()函数来替代.
  * @class cc.Size
  * @param {Number} width
  * @param {Number} height
@@ -88,6 +95,7 @@ cc.Size = function (width, height) {
 
 /**
  * Helper function that creates a cc.Size.
+ * 创建cc.Size对象的帮助函数
  * @function
  * @param {Number|cc.Size} w width or a size object
  * @param {Number} h height
@@ -101,10 +109,13 @@ cc.Size = function (width, height) {
 cc.size = function (w, h) {
     // This can actually make use of "hidden classes" in JITs and thus decrease
     // memory usage and overall performance drastically
+    // 在JITs中,这里实际上可以使用"匿名类",来降低内存使用率跟提高性能
     //return cc.size(w, h);
     // but this one will instead flood the heap with newly allocated hash maps
     // giving little room for optimization by the JIT
+    // 但这里可以对哈希映射进行重新分配,留下小幅度的优化空间给JIT,
     // note: we have tested this item on Chrome and firefox, it is faster than cc.size(w, h)
+    // 注意: 我们已经在Chrome跟firefox中进行测试过,它比cc.size(w, h)更快
     if (w === undefined)
         return {width: 0, height: 0};
     if (h === undefined)
@@ -114,6 +125,7 @@ cc.size = function (w, h) {
 
 /**
  * Check whether a point's value equals to another
+ * 判断一个点的值是否等于另外一个
  * @function
  * @param {cc.Size} size1
  * @param {cc.Size} size2
@@ -126,6 +138,7 @@ cc.sizeEqualToSize = function (size1, size2) {
 
 /**
  * cc.Rect is the class for rect object, please do not use its constructor to create rects, use cc.rect() alias function instead.
+ * cc.Rect是矩形对象的类,请别使用其构造器去创建尺寸,使用cc.rect()函数来替代.
  * @class cc.Rect
  * @param {Number} width
  * @param {Number} height
@@ -140,6 +153,7 @@ cc.Rect = function (x, y, width, height) {
 
 /**
  * Helper function that creates a cc.Rect.
+ * 创建一个cc.Rect对象的帮助函数
  * @function
  * @param {Number|cc.Rect} x a number or a rect object
  * @param {Number} y
@@ -162,6 +176,7 @@ cc.rect = function (x, y, w, h) {
 
 /**
  * Check whether a rect's value equals to another
+ * 判断一个矩形的值是否等于另外一个矩形
  * @function
  * @param {cc.Rect} rect1
  * @param {cc.Rect} rect2
@@ -177,6 +192,7 @@ cc._rectEqualToZero = function(rect){
 
 /**
  * Check whether the rect1 contains rect2
+ * 判断rect1是否包含rect2
  * @function
  * @param {cc.Rect} rect1
  * @param {cc.Rect} rect2
@@ -192,6 +208,7 @@ cc.rectContainsRect = function (rect1, rect2) {
 
 /**
  * Returns the rightmost x-value of a rect
+ * 返回矩形X轴最右边的值
  * @function
  * @param {cc.Rect} rect
  * @return {Number} The rightmost x value
@@ -202,6 +219,7 @@ cc.rectGetMaxX = function (rect) {
 
 /**
  * Return the midpoint x-value of a rect
+ * 返回矩形X轴的中点
  * @function
  * @param {cc.Rect} rect
  * @return {Number} The midpoint x value
@@ -211,6 +229,7 @@ cc.rectGetMidX = function (rect) {
 };
 /**
  * Returns the leftmost x-value of a rect
+ * 返回矩形X轴最左边的值
  * @function
  * @param {cc.Rect} rect
  * @return {Number} The leftmost x value
@@ -221,6 +240,7 @@ cc.rectGetMinX = function (rect) {
 
 /**
  * Return the topmost y-value of a rect
+ * 返回矩形Y轴最上面的值
  * @function
  * @param {cc.Rect} rect
  * @return {Number} The topmost y value
@@ -230,7 +250,8 @@ cc.rectGetMaxY = function (rect) {
 };
 
 /**
- * Return the midpoint y-value of `rect'
+ * Return the midpoint y-value of a rect
+ * 返回矩形Y轴中点
  * @function
  * @param {cc.Rect} rect
  * @return {Number} The midpoint y value
@@ -241,6 +262,7 @@ cc.rectGetMidY = function (rect) {
 
 /**
  * Return the bottommost y-value of a rect
+ * 返回矩形Y轴底边最大值
  * @function
  * @param {cc.Rect} rect
  * @return {Number} The bottommost y value
@@ -251,6 +273,7 @@ cc.rectGetMinY = function (rect) {
 
 /**
  * Check whether a rect contains a point
+ * 判断矩形是否包含某个点
  * @function
  * @param {cc.Rect} rect
  * @param {cc.Point} point
@@ -263,6 +286,7 @@ cc.rectContainsPoint = function (rect, point) {
 
 /**
  * Check whether a rect intersect with another
+ * 判断一个矩形是否在另外一个矩形内
  * @function
  * @param {cc.Rect} rectA
  * @param {cc.Rect} rectB
@@ -278,6 +302,7 @@ cc.rectIntersectsRect = function (ra, rb) {
 
 /**
  * Check whether a rect overlaps another
+ * 判断两个矩形是否有交集
  * @function
  * @param {cc.Rect} rectA
  * @param {cc.Rect} rectB
@@ -292,6 +317,7 @@ cc.rectOverlapsRect = function (rectA, rectB) {
 
 /**
  * Returns the smallest rectangle that contains the two source rectangles.
+ * 返回能包含两个矩形的最小矩形
  * @function
  * @param {cc.Rect} rectA
  * @param {cc.Rect} rectB
@@ -308,6 +334,7 @@ cc.rectUnion = function (rectA, rectB) {
 
 /**
  * Returns the overlapping portion of 2 rectangles
+ * 返回两个矩形的重叠部分
  * @function
  * @param {cc.Rect} rectA
  * @param {cc.Rect} rectB

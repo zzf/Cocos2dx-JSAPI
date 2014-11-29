@@ -26,6 +26,7 @@
 
 /**
  * Default Node tag
+ * 默认节点标签
  * @constant
  * @type Number
  */
@@ -33,60 +34,103 @@ cc.NODE_TAG_INVALID = -1;
 
 /**
  * XXX: Yes, nodes might have a sort problem once every 15 days if the game runs at 60 FPS and each frame sprites are reordered.
+ * XXX: 是的,节点或许会有一个排序问题,如果游戏运行在60FPS且每一个游戏帧都重新排序,15天一次.
  */
 cc.s_globalOrderOfArrival = 1;
 
 /**
  * <p>cc.Node is the root class of all node. Anything that gets drawn or contains things that get drawn is a cc.Node.<br/>
+ * <p>cc.Node是所有节点的根类,所有的绘制或者包含的东西都是一个cc.Node.
  * The most popular cc.Nodes are: cc.Scene, cc.Layer, cc.Sprite, cc.Menu.</p>
+ * 最典型的cc.Nodes有:cc.Scene,cc.Layer,cc.Sprite,cc.Menu.</p>
  *
  * <p>The main features of a cc.Node are: <br/>
+ * <p>一个cc.Node包含的主要功能有:
  * - They can contain other cc.Node nodes (addChild, getChildByTag, removeChild, etc) <br/>
+ * - 可以包含其他的cc.Node节点(addChild, getChildByTag, removeChild,等等)<br/>
  * - They can schedule periodic callback (schedule, unschedule, etc) <br/>
+ * - 可以进行计划式的定时回调(schedule, unschedule,等等)<br/>
  * - They can execute actions (runAction, stopAction, etc) <br/></p>
+ * - 可以执行动作(runAction, stopAction,等等)<br/></p>
  *
  * <p>Some cc.Node nodes provide extra functionality for them or their children.</p>
+ * <p>有些cc.Node节点提供额外的函数给其自己获取其子类.</p>
  *
  * <p>Subclassing a cc.Node usually means (one/all) of: <br/>
+ * <p>成为cc.Node的子类,一般意味着(以下一种或全部):<br/>
  * - overriding constructor function "ctor" to initialize resources and schedule callbacks<br/>
+ * - 重写构造函数"ctor"去初始化资源跟定期调用回调函数<br/>
  * - create callbacks to handle the advancement of time<br/></p>
+ * - 创建一个回调去处理时间上的及时性<br/></p>
  *
  * <p>Features of cc.Node: <br/>
+ * <p>cc.Node功能:<br/>
  * - position  <br/>
+ * - 位置<br/>
  * - scale (x, y) <br/>
+ * - x,y轴缩放
  * - rotation (in degrees, clockwise)<br/>
+ * - 角度的旋转<br/>
  * - anchor point<br/>
+ * - 锚点<br/>
  * - size <br/>
+ * - 尺寸 <br/>
  * - color <br/>
+ * - 颜色 <br/>
  * - opacity <br/>
+ * - 透明度 <br/>
  * - visible<br/>
+ * - 可见性<br/>
  * - z-order<br/>
+ * - Z轴排序<br/>
  * - WebGL z position<br/></P>
+ * - WebGL的Z轴位置<br/></p>
  *
  * <p> Default values: <br/>
+ * <p> 默认值: <br/>
  * - rotation: 0 <br/>
+ * - 旋转:0 <br/>
  * - position: (x=0,y=0) <br/>
+ * - 位置: (x=0,y=0) <br/>
  * - scale: (x=1,y=1) <br/>
+ * - 缩放比例: (x=1,y=1) <br/>
  * - contentSize: (x=0,y=0)<br/>
+ * - 文本尺寸: (x=0,y=0)<br/>
  * - anchorPoint: (x=0,y=0)<br/>
+ * - 锚点: (x=0,y=0)<br/>
  * - color: (r=255,g=255,b=255)<br/>
+ * - 颜色: (r=255,g=255,b=255)<br/>
  * - opacity: 255</p>
+ * - 透明度: 255</p>
  *
  * <p> Limitations:<br/>
+ * <p> 局限性:<br/>
  * - A cc.Node is a "void" object. It doesn't have a texture <br/></P>
+ * - 一个cc.Node是一个"void"对象.它没有纹理<br/></p>
  *
  * <p>Order in transformations with grid disabled <br/>
+ * <p>启用网格变换排序<br/>
  * -# The node will be translated (position)  <br/>
+ * -# 节点的位置会被变换  <br/>
  * -# The node will be rotated (rotation)<br/>
+ * -# 节点会被旋转<br/>
  * -# The node will be scaled (scale)  <br/>
+ * -# 节点会被缩放<br/>
  *
  * <p>Order in transformations with grid enabled<br/>
+ * <p>不启用网格变换排序<br/>
  * -# The node will be translated (position)<br/>
+ * -# 节点的位置会被变换  <br/>
  * -# The node will be rotated (rotation) <br/>
+ * -# 节点会被旋转<br/>
  * -# The node will be scaled (scale) <br/>
+ * -# 节点会被缩放<br/>
  * -# The grid will capture the screen <br/>
+ * -# 网格将会捕捉屏幕<br/>
  * -# The node will be moved according to the camera values (camera) <br/>
+ * -# 节点将会根据摄像机的值进行移动 <br/>
  * -# The grid will render the captured screen <br/></P>
+ * -# 网格将会渲染被捕捉的屏幕 <br/></P>
  *
  * @class
  * @extends cc.Class
@@ -129,8 +173,8 @@ cc.s_globalOrderOfArrival = 1;
  * @property {Number}               glServerState       - The state of OpenGL server side
  */
 cc.Node = cc.Class.extend(/** @lends cc.Node# */{
-    _localZOrder: 0,                                     ///< Local order (relative to its siblings) used to sort the node
-    _globalZOrder: 0,                                    ///< Global order used to sort the node
+    _localZOrder: 0,                                     ///< Local order (relative to its siblings) used to sort the node //< 本地排序(相对于其同级类)用来排序节点
+    _globalZOrder: 0,                                    ///< Global order used to sort the node //<用来全局排序节点
     _vertexZ: 0.0,
 
     _rotationX: 0,
@@ -146,6 +190,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     _skewX: 0.0,
     _skewY: 0.0,
     // children (lazy allocs),
+    // 子类(延迟内存分配),
     _children: null,
     // lazy alloc,
     _visible: true,
@@ -155,19 +200,22 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     _running: false,
     _parent: null,
     // "whole screen" objects. like Scenes and Layers, should set _ignoreAnchorPointForPosition to true
+    // "全屏"对象.就像Scenes and Layers,需要设置_ignoreAnchorPointForPosition为true
     _ignoreAnchorPointForPosition: false,
     tag: cc.NODE_TAG_INVALID,
     // userData is always initialized as nil
+    // userData一般被初始化成nil
     userData: null,
     userObject: null,
     _transformDirty: true,
     _inverseDirty: true,
     _cacheDirty: false,
     // Cached parent serves to construct the cached parent chain
+    // 服务于父类的缓存,用于构建父类的缓存链
     _cachedParent: null,
     _transformGLDirty: null,
-    _transform: null,                            //local transform
-    _transformWorld: null,                       //world transform
+    _transform: null,                            //local transform //本地变换
+    _transformWorld: null,                       //world transform //世界坐标变换
     _inverse: null,
 
     //since 2.0 api
@@ -189,7 +237,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     _rotationRadiansY: 0,
     _className: "Node",
     _showNode: false,
-    _name: "",                     ///<a string label, an user defined string to identify this node
+    _name: "",                     ///<a string label, an user defined string to identify this node ///<一个字符串标签,用户定义一个字符串标签给节点
 
     _displayedOpacity: 255,
     _realOpacity: 255,
@@ -199,7 +247,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     _cascadeOpacityEnabled: false,
     _hashOfName: 0,
 
-    _curLevel: -1,                           //for new renderer
+    _curLevel: -1,                           //for new renderer //为了新的渲染器
     _rendererCmd:null,
     _renderCmdDirty: false,
 
@@ -233,6 +281,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Initializes the instance of cc.Node
+     * 初始化cc.Node实例
      * @function
      * @returns {boolean} Whether the initialization was successful.
      */
@@ -306,15 +355,20 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Sets node's dirty flag to true so that it can be updated in visit function of the next frame
+     * 设置节点的标志为true,以便于下一帧访问函数时进行更新
      * @function
      */
     setNodeDirty: null,
 
     /**
      * <p>Properties configuration function </br>
+     * <p>属性配置函数</br>
      * All properties in attrs will be set to the node, </br>
+     * 所有在attrs中的属性将会被设置到节点中,</br>
      * when the setter of the node is available, </br>
+     * 当节点的setter方法可用时,</br>
      * the property will be set via setter function.</br>
+     * 属性将通过setter函数进行设置.</br>
      * </p>
      * @function
      * @param {Object} attrs Properties to be set to node
@@ -327,10 +381,15 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>Returns the skew degrees in X </br>
+     * <p>获取X轴的倾斜角度</br>
      * The X skew angle of the node in degrees.  <br/>
+     * X轴的倾斜角度
      * This angle describes the shear distortion in the X direction.<br/>
+     * 该角度表示的是X轴方向上的倾斜程度<br/>
      * Thus, it is the angle between the Y axis and the left edge of the shape </br>
+     * 该角度是Y轴与其左边缘之间的夹角</br>
      * The default skewX angle is 0. Positive values distort the node in a CW direction.</br>
+     * 默认的X轴倾斜角为0.确切的值表示的是节点在CW方向上的倾斜度.</br>
      * </p>
      * @function
      * @return {Number} The X skew angle of the node in degrees.
@@ -342,6 +401,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /**
      * <p>
      * Changes the X skew angle of the node in degrees.                                                    <br/>
+     * 改变节点X轴方向上的倾斜角度                                                    <br/>
      * <br/>
      * This angle describes the shear distortion in the X direction.                                       <br/>
      * Thus, it is the angle between the Y axis and the left edge of the shape                             <br/>
@@ -2056,6 +2116,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns a component identified by the name given.
+     * 根据组件名称获取组件
      * @function
      * @param {String} name The name to search for
      * @return {cc.Component} The component found
@@ -2068,6 +2129,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Adds a component to the node's component container.
+     * 添加一个组价到节点的组件容器中.
      * @function
      * @param {cc.Component} component
      */
@@ -2078,6 +2140,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Removes a component identified by the given name or removes the component object given
+     * 根据定义的组件名称或者组件对象删除组件
      * @function
      * @param {String|cc.Component} component
      */
@@ -2089,6 +2152,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Removes all components of cc.Node, it called when cc.Node is exiting from stage.
+     * 删除节点的所有组件,当节点退出的时候会进行调用
      * @function
      */
     removeAllComponents: function () {
@@ -2100,12 +2164,14 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function.
+     * 构造函数,为了继承父类构造器中的行为进行重写,记得在要继承的函数中调用"this._super()".
      * @function
      */
     ctor: null,
 
     /**
      * Recursive method that visit its children and draw them
+     * 递归访问子类并绘制出子类
      * @function
      * @param {CanvasRenderingContext2D|WebGLRenderingContext} ctx
      */
@@ -2113,6 +2179,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Performs view-matrix transformation based on position, scale, rotation and other attributes.
+     * 执行基于位置,缩放,旋转及其他属性的视图矩阵变换
      * @function
      * @param {CanvasRenderingContext2D|WebGLRenderingContext} ctx Render context
      */
@@ -2120,6 +2187,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>Returns the matrix that transform the node's (local) space coordinates into the parent's space coordinates.<br/>
+     * <p>获取节点从本地空间坐标到父类中的空间坐标的转换矩阵<br/>
      * The matrix is in Pixels.</p>
      * @function
      * @return {cc.AffineTransform}
@@ -2131,6 +2199,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns the matrix that transform the node's (local) space coordinates into the parent's space coordinates.<br/>
+     * 获取节点从本地空间坐标到父类中的空间坐标的转换矩阵<br/>
      * The matrix is in Pixels.
      * @function
      * @return {cc.AffineTransform} The affine transform object
@@ -2159,6 +2228,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns a camera object that lets you move the node using a gluLookAt
+     * 获取一个摄像机对象,使你可以使用一个gluLookAt对节点进行移动
      * @function
      * @return {cc.Camera} A CCCamera object that lets you move the node using a gluLookAt
      * @deprecated since v3.0, no alternative function
@@ -2176,7 +2246,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>Returns a grid object that is used when applying effects.<br/>
+     * <p>当使用效果的时候,获取一个被使用的网格对象<br/>
      * This function have been deprecated, please use cc.NodeGrid to run grid actions</p>
+     * 该函数已被废弃,请使用cc.NodeGrid进行创建网格动作</p>
      * @function
      * @return {cc.GridBase} A CCGrid object that is used when applying effects
      * @deprecated since v3.0, no alternative function
@@ -2187,7 +2259,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>Changes a grid object that is used when applying effects<br/>
+     * <p>当使用效果的时候,改变一个被使用的网格对象<br/>
      * This function have been deprecated, please use cc.NodeGrid to run grid actions</p>
+     * 该函数已被废弃,请使用cc.NodeGrid进行创建网格动作</p>
      * @function
      * @param {cc.GridBase} grid A CCGrid object that is used when applying effects
      * @deprecated since v3.0, no alternative function
@@ -2198,6 +2272,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Return the shader program currently used for this node
+     * 获取节点当前所使用的着色过程
      * @function
      * @return {cc.GLProgram} The shader program currently used for this node
      */
@@ -2212,6 +2287,12 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      *     Since v2.0, each rendering node must set its shader program.
      *     It should be set in initialize phase.
      * </p>
+     * <p>
+     *		设置节点着色过程
+     *
+     *		v2.0版本以后,每个要渲染的节点都要设置它的着色过程
+     *		它必须在初始化阶段进行
+     * </p>
      * @function
      * @param {cc.GLProgram} newShaderProgram The shader program which fetches from CCShaderCache.
      * @example
@@ -2223,6 +2304,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns the state of OpenGL server side.
+     * 获取OpenGL服务端的状态
      * @function
      * @return {Number} The state of OpenGL server side.
      * @deprecated since v3.0, no need anymore
@@ -2233,6 +2315,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Sets the state of OpenGL server side.
+     * 设置OpenGL服务端的状态
      * @function
      * @param {Number} state The state of OpenGL server side.
      * @deprecated since v3.0, no need anymore
@@ -2243,6 +2326,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns a "world" axis aligned bounding box of the node.
+     * 获取节点的世界坐标系的边框
      * @function
      * @return {cc.Rect}
      */
@@ -2252,6 +2336,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
         rect = cc.rectApplyAffineTransform(rect, this.getNodeToWorldTransform());
 
         //query child's BoundingBox
+        //查询子类的BoundingBox
         if (!this._children)
             return rect;
 
@@ -2273,6 +2358,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
         rect = cc.rectApplyAffineTransform(rect, trans);
 
         //query child's BoundingBox
+        //查询子类的BoundingBox
         if (!this._children)
             return rect;
 
@@ -2298,6 +2384,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
         }
         if (_t._transformDirty) {
             // Translate values
+            // 变换值
             var x = _t._position.x;
             var y = _t._position.y;
             var apx = _t._anchorPointInPoints.x, napx = -apx;
@@ -2310,8 +2397,11 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
             }
 
             // Rotation values
+            // 旋转值
             // Change rotation code to handle X and Y
+            // 改变旋转代码来处理处理X轴跟Y轴
             // If we skew with the exact same value for both x and y then we're simply just rotating
+            // 如果我们只用相同的值来对X轴跟Y轴进行倾斜,那么我们仅仅只是进行了旋转
             var cx = 1, sx = 0, cy = 1, sy = 0;
             if (_t._rotationX !== 0 || _t._rotationY !== 0) {
                 cx = Math.cos(-_t._rotationRadiansX);
@@ -2322,15 +2412,20 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
             var needsSkewMatrix = ( _t._skewX || _t._skewY );
 
             // optimization:
+            // 优化:
             // inline anchor point calculation if skew is not needed
+            // 如果不需要倾斜 则进行内联锚点的计算
             // Adjusted transform calculation for rotational skew
+            // 对旋转倾斜进行变换计算
             if (!needsSkewMatrix && (apx !== 0 || apy !== 0)) {
                 x += cy * napx * scx + -sx * napy * scy;
                 y += sy * napx * scx + cx * napy * scy;
             }
 
             // Build Transform Matrix
+            // 生成转换矩阵
             // Adjusted transform calculation for rotational skew
+            // 对旋转倾斜进行变换计算
             var t = _t._transform;
             t.a = cy * scx;
             t.b = sy * scx;
@@ -2340,7 +2435,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
             t.ty = y;
 
             // XXX: Try to inline skew
+            // XXX: 尝试内联倾斜
             // If skew is needed, apply skew and then anchor point
+            // 如果需要倾斜,使用倾斜然后再锚点
             if (needsSkewMatrix) {
                 t = cc.affineTransformConcat({a: 1.0, b: Math.tan(cc.degreesToRadians(_t._skewY)),
                     c: Math.tan(cc.degreesToRadians(_t._skewX)), d: 1.0, tx: 0.0, ty: 0.0}, t);
@@ -2366,6 +2463,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns the opacity of Node
+     * 获取节点的透明度
      * @function
      * @returns {number} opacity
      */
@@ -2375,7 +2473,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns the displayed opacity of Node,
+     * 返回节点的显示的透明度值,
      * the difference between displayed opacity and opacity is that displayed opacity is calculated based on opacity and parent node's opacity when cascade opacity enabled.
+     * 显示透明度跟透明度的区别在于:当启用级联透明度的时候,显示透明度是基于自身的透明度跟父类的透明度计算出来的.
      * @function
      * @returns {number} displayed opacity
      */
@@ -2385,6 +2485,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Sets the opacity of Node
+     * 设置节点的透明度值
      * @function
      * @param {Number} opacity
      */
@@ -2401,6 +2502,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Update displayed opacity
+     * 更新显示的透明度值
      * @function
      * @param {Number} parentOpacity
      */
@@ -2420,6 +2522,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns whether node's opacity value affect its child nodes.
+     * 返回节点的透明度值是否会影响到其子节点.
      * @function
      * @returns {boolean}
      */
@@ -2429,6 +2532,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Enable or disable cascade opacity, if cascade enabled, child nodes' opacity will be the multiplication of parent opacity and its own opacity.
+     * 启用或不启用级联透明度,如果启用,子节点的透明度值是父类的透明度值跟其本身透明度值的乘积
      * @function
      * @param {boolean} cascadeOpacityEnabled
      */
@@ -2463,6 +2567,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns the color of Node
+     * 返回节点的颜色
      * @function
      * @returns {cc.Color}
      */
@@ -2473,7 +2578,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns the displayed color of Node,
+     * 返回节点显示的颜色
      * the difference between displayed color and color is that displayed color is calculated based on color and parent node's color when cascade color enabled.
+     * 显示颜色跟颜色的区别在于:当启用级联颜色的时候,显示颜色是基于自身的颜色跟父类的颜色计算出来的.
      * @function
      * @returns {cc.Color}
      */
@@ -2484,8 +2591,11 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>Sets the color of Node.<br/>
+     * <p>设置节点的颜色<br/>
      * When color doesn't include opacity value like cc.color(128,128,128), this function only change the color. <br/>
+     * 当颜色未包含透明度的值 例如:cc.color(128,128,128),该函数仅仅是改变颜色<br/>
      * When color include opacity like cc.color(128,128,128,100), then this function will change the color and the opacity.</p>
+     * 但颜色包含透明度值 例如:cc.color(128,128,128,100),该函数将改变颜色跟透明度.</p>
      * @function
      * @param {cc.Color} color The new color given
      */
@@ -2505,6 +2615,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Update the displayed color of Node
+     * 更新节点显示的颜色
      * @function
      * @param {cc.Color} parentColor
      */
@@ -2526,6 +2637,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns whether node's color value affect its child nodes.
+     * 返回该节点的颜色值是否会影响到其子节点
      * @function
      * @returns {boolean}
      */
@@ -2535,6 +2647,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Enable or disable cascade color, if cascade enabled, child nodes' opacity will be the cascade value of parent color and its own color.
+     * 启用或者不启用级联颜色,如果启用,则子节点的透明度将级联父类的颜色值跟其本身的颜色值
      * @param {boolean} cascadeColorEnabled
      */
     setCascadeColorEnabled: function (cascadeColorEnabled) {
@@ -2572,7 +2685,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Set whether color should be changed with the opacity value,
+     * 设置颜色值是否要跟着透明度进行改变
      * useless in cc.Node, but this function is override in some class to have such behavior.
+     * 该函数在cc.Node中无效,但该函数在某些类中被重写了 以便使用该功能
      * @function
      * @param {Boolean} opacityValue
      */
@@ -2581,6 +2696,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Get whether color should be changed with the opacity value
+     * 获取颜色值是否有因透明度值的改变而改变
      * @function
      * @return {Boolean}
      */
@@ -2596,6 +2712,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
 /**
  * Allocates and initializes a node.
+ * 分配并初始化一个节点
  * @deprecated since v3.0, please use new construction instead.
  * @see cc.Node
  * @return {cc.Node}
@@ -2608,6 +2725,7 @@ cc.Node._stateCallbackType = {onEnter: 1, onExit: 2, cleanup: 3, onEnterTransiti
 
 if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
     //redefine cc.Node
+    //重定义 cc.Node
     var _p = cc.Node.prototype;
     _p.ctor = function () {
         this._initNode();
@@ -2626,6 +2744,7 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
     _p.visit = function (ctx) {
         var _t = this;
         // quick return if not visible
+        // 如果不可见则立即返回
         if (!_t._visible)
             return;
 
@@ -2633,6 +2752,7 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
             _t._curLevel = _t._parent._curLevel + 1;
 
         //visit for canvas
+        //访问canvas(画布)
         var i, children = _t._children, child;
         _t.transform();
         var len = children.length;
@@ -2692,12 +2812,14 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
 
     _p.transform = function (ctx) {
         // transform for canvas
+        // 对canvas(画布)进行坐标变换
         var t = this.getNodeToParentTransform(),
-            worldT = this._transformWorld;         //get the world transform
+            worldT = this._transformWorld;         //get the world transform //获取世界坐标变换
 
         if(this._parent){
             var pt = this._parent._transformWorld;
             // cc.AffineTransformConcat is incorrect at get world transform
+            // cc.AffineTransformConcat无法获得世界坐标变换
             worldT.a = t.a * pt.a + t.b * pt.c;                               //a
             worldT.b = t.a * pt.b + t.b * pt.d;                               //b
             worldT.c = t.c * pt.a + t.d * pt.c;                               //c
@@ -2720,20 +2842,21 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
 
     _p.getNodeToParentTransform = function () {
         var _t = this;
-        if(_t._usingNormalizedPosition && _t._parent){        //TODO need refactor
+        if(_t._usingNormalizedPosition && _t._parent){        //TODO need refactor //TODO 需要重构
             var conSize = _t._parent._contentSize;
             _t._position.x = _t._normalizedPosition.x * conSize.width;
             _t._position.y = _t._normalizedPosition.y * conSize.height;
             _t._normalizedPositionDirty = false;
         }
         if (_t._transformDirty) {
-            var t = _t._transform;// quick reference
+            var t = _t._transform;// quick reference //快速引用
 
             // base position
             t.tx = _t._position.x;
             t.ty = _t._position.y;
 
             // rotation Cos and Sin
+            // Cos和Sin旋转
             var Cos = 1, Sin = 0;
             if (_t._rotationX) {
                 Cos = Math.cos(_t._rotationRadiansX);
@@ -2741,6 +2864,7 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
             }
 
             // base abcd
+            // 基准abcd
             t.a = t.d = Cos;
             t.b = -Sin;
             t.c = Sin;
@@ -2750,12 +2874,14 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
 
             // Firefox on Vista and XP crashes
             // GPU thread in case of scale(0.0, 0.0)
+            // 如果在GPU线程中进行缩放
             var sx = (lScaleX < 0.000001 && lScaleX > -0.000001) ? 0.000001 : lScaleX,
                 sy = (lScaleY < 0.000001 && lScaleY > -0.000001) ? 0.000001 : lScaleY;
 
             // skew
             if (_t._skewX || _t._skewY) {
                 // offset the anchorpoint
+                // 锚点偏移
                 var skx = Math.tan(-_t._skewX * Math.PI / 180);
                 var sky = Math.tan(-_t._skewY * Math.PI / 180);
                 if(skx === Infinity){
@@ -2783,10 +2909,12 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
             }
 
             // adjust anchorPoint
+            // 调整锚点
             t.tx += Cos * -appX * sx + -Sin * appY * sy;
             t.ty -= Sin * -appX * sx + Cos * appY * sy;
 
             // if ignore anchorPoint
+            // 如果忽略锚点
             if (_t._ignoreAnchorPointForPosition) {
                 t.tx += appX;
                 t.ty += appY;
