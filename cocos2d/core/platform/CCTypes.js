@@ -25,7 +25,8 @@
  ****************************************************************************/
 
 /**
- * Color class, please use cc.color() to construct a color
+ * Color class, please use cc.color() to construct a color 	
+ * 颜色类，请使用cc.color()来构造颜色
  * @class cc.Color
  * @param {Number} r
  * @param {Number} g
@@ -42,18 +43,23 @@ cc.Color = function (r, g, b, a) {
 
 /**
  * Generate a color object based on multiple forms of parameters
+ * 用多种参数形式来生成颜色对象
  * @example
  *
  * // 1. All channels seperately as parameters
+ * // 1. 每个通道分别用一个参数表示
  * var color1 = cc.color(255, 255, 255, 255);
  *
  * // 2. Convert a hex string to a color
+ * // 2. 用16进制字符串表示颜色
  * var color2 = cc.color("#000000");
  *
  * // 3. An color object as parameter
+ * // 3. 用颜色对象作为参数(拷贝构造)
  * var color3 = cc.color({r: 255, g: 255, b: 255, a: 255});
  *
  * Alpha channel is optional. Default value is 255
+ * Alpha通道是可选参数，默认255
  *
  * @param {Number|String|cc.Color} r
  * @param {Number} g
@@ -73,10 +79,11 @@ cc.color = function (r, g, b, a) {
 
 /**
  * returns true if both ccColor3B are equal. Otherwise it returns false.
+ * 如果两个ccColor3B对象相等则返回true，否则返回false
  * @function
  * @param {cc.Color} color1
  * @param {cc.Color} color2
- * @return {Boolean}  true if both ccColor3B are equal. Otherwise it returns false.
+ * @return {Boolean}  true if both ccColor3B are equal. Otherwise it returns false. 	如果两个ccColor3B对象相等则返回true，否则返回false
  */
 cc.colorEqual = function (color1, color2) {
     return color1.r === color2.r && color1.g === color2.g && color1.b === color2.b;
@@ -84,6 +91,7 @@ cc.colorEqual = function (color1, color2) {
 
 /**
  * the device accelerometer reports values for each axis in units of g-force
+ * 设备加速度计可以提供各个轴的单位G力值
  * @class cc.Acceleration
  * @constructor
  * @param {Number} x
@@ -111,6 +119,7 @@ cc.Vertex2F = function (x1, y1) {
 
 /**
  * Helper macro that creates an Vertex2F type composed of 2 floats: x, y
+ * 用两个浮点型值x,y生成一个Vertex2F类型对象的辅助宏
  * @function
  * @param {Number} x
  * @param {Number} y
@@ -135,6 +144,7 @@ cc.Vertex3F = function (x1, y1, z1) {
 
 /**
  * Helper macro that creates an Vertex3F type composed of 3 floats: x, y, z
+ * 用三个浮点型值x,y,z生成一个Vertex3F类型对象的辅助宏
  * @function
  * @param {Number} x
  * @param {Number} y
@@ -157,7 +167,8 @@ cc.Tex2F = function (u1, v1) {
 };
 
 /**
- * Helper macro that creates an Tex2F type: A texcoord composed of 2 floats: u, y
+ * Helper macro that creates an Tex2F type: A texcoord composed of 2 floats: u, v
+ * 用两个浮点型值u,v生成一个Tex2F(纹理坐标)类型对象的辅助宏
  * @function
  * @param {Number} u
  * @param {Number} v
@@ -169,6 +180,7 @@ cc.tex2 = function (u, v) {
 
 /**
  * Blend Function used for textures
+ * 纹理的混合函数
  * @Class cc.BlendFunc
  * @Constructor
  * @param {Number} src1 source blend function
@@ -189,7 +201,9 @@ cc.blendFuncDisable = function () {
 
 /**
  * convert a string of color for style to Color.
+ * 将16进制颜色字符串转换为颜色对象
  * e.g. "#ff06ff"  to : cc.color(255,6,255)
+ * 例如: "#ff06ff" 转换为 cc.color(255,6,255)
  * @function
  * @param {String} hex
  * @return {cc.Color}
@@ -205,7 +219,9 @@ cc.hexToColor = function (hex) {
 
 /**
  * convert Color to a string of color for style.
- * e.g.  cc.color(255,6,255)  to : "#ff06ff"
+ * 将颜色对象转换为16进制颜色字符串
+ * e.g. cc.color(255,6,255)  to : "#ff06ff"
+ * 例如: cc.color(255,6,255) 转换为 "#ff06ff"
  * @function
  * @param {cc.Color} color
  * @return {String}
@@ -217,6 +233,7 @@ cc.colorToHex = function (color) {
 
 /**
  * text alignment : left
+ * 文本对齐 : 靠左
  * @constant
  * @type Number
  */
@@ -224,6 +241,7 @@ cc.TEXT_ALIGNMENT_LEFT = 0;
 
 /**
  * text alignment : center
+ * 文本对齐 : 居中
  * @constant
  * @type Number
  */
@@ -231,6 +249,7 @@ cc.TEXT_ALIGNMENT_CENTER = 1;
 
 /**
  * text alignment : right
+ * 文本对齐 : 靠右
  * @constant
  * @type Number
  */
@@ -238,6 +257,7 @@ cc.TEXT_ALIGNMENT_RIGHT = 2;
 
 /**
  * text alignment : top
+ * 文本对齐 : 顶端对齐
  * @constant
  * @type Number
  */
@@ -245,6 +265,7 @@ cc.VERTICAL_TEXT_ALIGNMENT_TOP = 0;
 
 /**
  * text alignment : center
+ * 文本对齐 : 垂直居中
  * @constant
  * @type Number
  */
@@ -252,6 +273,7 @@ cc.VERTICAL_TEXT_ALIGNMENT_CENTER = 1;
 
 /**
  * text alignment : bottom
+ * 文本对齐 : 底部对齐
  * @constant
  * @type Number
  */
