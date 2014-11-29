@@ -43,7 +43,7 @@ cc.stencilBits = -1;
  * @param {cc.Node} [stencil=null]
  *
  * @property {Number}   alphaThreshold  - Threshold for alpha value. Threshold赋初值
- * @property {Boolean}  inverted        - Indicate whether in inverted mode. 无论正反模式都要声明
+ * @property {Boolean}  inverted        - Indicate whether in inverted mode. 无论是否倒置模式都要声明
  */
 //@property {cc.Node}  stencil         - he cc.Node to use as a stencil to do the clipping.裁剪用的cc.Node模板
 cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode#  cc.ClippingNode入口*/{
@@ -199,7 +199,7 @@ cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode#  cc.ClippingNode入
 
         // if stencil buffer disabled 如果模板缓存不可用
         if (cc.stencilBits < 1) {
-            // draw everything, as if there where no stencil 好像没有模板似的绘制
+            // draw everything, as if there where no stencil 在没有模板情况下，进行绘制
             cc.Node.prototype.visit.call(this, ctx);
             return;
         }
@@ -216,7 +216,7 @@ cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode#  cc.ClippingNode入
                 cc.log("Nesting more than " + cc.stencilBits + "stencils is not supported. Everything will be drawn without stencil for this node and its children.");
                 cc.ClippingNode._visit_once = false;
             }
-            // draw everything, as if there where no stencil 好像没有模板似的绘制
+            // draw everything, as if there where no stencil 在没有模板情况下，进行绘制
             cc.Node.prototype.visit.call(this, ctx);
             return;
         }
@@ -276,9 +276,9 @@ cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode#  cc.ClippingNode入
 
         // mask of the current layer (ie: for layer 3: 00000100) 当前图层遮罩
         var mask_layer = 0x1 << cc.ClippingNode._layer;
-        // mask of all layers less than the current (ie: for layer 3: 00000011) 所有小于当前图层遮罩
+        // mask of all layers less than the current (ie: for layer 3: 00000011) 所有小于当前图层的遮罩
         var mask_layer_l = mask_layer - 1;
-        // mask of all layers less than or equal to the current (ie: for layer 3: 00000111) 所有不大于当前图层遮罩
+        // mask of all layers less than or equal to the current (ie: for layer 3: 00000111) 所有不大于当前图层的遮罩
         //var mask_layer_le = mask_layer | mask_layer_l;
         this._mask_layer_le = mask_layer | mask_layer_l;
         // manually save the stencil state 手动保存模板状态
@@ -305,11 +305,11 @@ cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode#  cc.ClippingNode入
         //currentDepthTestEnabled = glIsEnabled(GL_DEPTH_TEST);
         //var currentDepthWriteMask = gl.getParameter(gl.DEPTH_WRITEMASK);
         this._currentDepthWriteMask = gl.getParameter(gl.DEPTH_WRITEMASK);
-        // disable depth test while drawing the stencil 绘制模板是禁用深度测试
+        // disable depth test while drawing the stencil 绘制模板时禁用深度测试
         //glDisable(GL_DEPTH_TEST);
-        // disable update to the depth buffer while drawing the stencil, 绘制模板是禁止深度缓存更新
-        // as the stencil is not meant to be rendered in the real scene, 模板不绘制真实图像
-        // it should never prevent something else to be drawn, 它不应阻止其他的绘制
+        // disable update to the depth buffer while drawing the stencil, 绘制模板时禁止深度缓存更新
+        // as the stencil is not meant to be rendered in the real scene, 模板不会绘制真实图像
+        // it should never prevent something else to be drawn, 它不阻止其他的绘制
         // only disabling depth buffer update should do 仅当深度缓存不可更新时可如此操作
         gl.depthMask(false);
 
