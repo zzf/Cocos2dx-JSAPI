@@ -188,7 +188,7 @@ cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode#  cc.ClippingNode入
     },
 
     /**
-     * Recursive method that visit its children and draw them
+     * Recursive method that visit its children and draw them   递归访问子方法以及进行绘制
      * @function
      * @param {CanvasRenderingContext2D|WebGLRenderingContext} ctx
      */
@@ -197,16 +197,16 @@ cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode#  cc.ClippingNode入
     _visitForWebGL: function (ctx) {
         var gl = ctx || cc._renderContext;
 
-        // if stencil buffer disabled
+        // if stencil buffer disabled 如果模板缓存不可用
         if (cc.stencilBits < 1) {
-            // draw everything, as if there where no stencil
+            // draw everything, as if there where no stencil 好像没有模板似的绘制
             cc.Node.prototype.visit.call(this, ctx);
             return;
         }
 
         if (!this._stencil || !this._stencil.visible) {
             if (this.inverted)
-                cc.Node.prototype.visit.call(this, ctx);   // draw everything
+                cc.Node.prototype.visit.call(this, ctx);   // draw everything 绘制
             return;
         }
 
@@ -216,14 +216,14 @@ cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode#  cc.ClippingNode入
                 cc.log("Nesting more than " + cc.stencilBits + "stencils is not supported. Everything will be drawn without stencil for this node and its children.");
                 cc.ClippingNode._visit_once = false;
             }
-            // draw everything, as if there where no stencil
+            // draw everything, as if there where no stencil 好像没有模板似的绘制
             cc.Node.prototype.visit.call(this, ctx);
             return;
         }
 
         cc.renderer.pushRenderCommand(this._beforeVisitCmd);
 
-        //optimize performance for javascript
+        //optimize performance for javascript 优化js功能
         var currentStack = cc.current_stack;
         currentStack.stack.push(currentStack.top);
         cc.kmMat4Assign(this._stackMatrix, currentStack.top);
@@ -235,12 +235,12 @@ cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode#  cc.ClippingNode入
 
         cc.renderer.pushRenderCommand(this._afterDrawStencilCmd);
 
-        // draw (according to the stencil test func) this node and its children
+        // draw (according to the stencil test func) this node and its children 绘制节点和它的子节点(根据模板的测试函数)
         var locChildren = this._children;
         if (locChildren && locChildren.length > 0) {
             var childLen = locChildren.length;
             this.sortAllChildren();
-            // draw children zOrder < 0
+            // draw children zOrder < 0 zOrder<0 绘制子节点
             for (var i = 0; i < childLen; i++) {
                 if (locChildren[i] && locChildren[i]._localZOrder < 0)
                     locChildren[i].visit();
@@ -249,7 +249,7 @@ cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode#  cc.ClippingNode入
             }
             if(this._rendererCmd)
                 cc.renderer.pushRenderCommand(this._rendererCmd);
-            // draw children zOrder >= 0
+            // draw children zOrder >= 0 zOrder>=0 绘制子节点
             for (; i < childLen; i++) {
                 if (locChildren[i]) {
                     locChildren[i].visit();
@@ -262,7 +262,7 @@ cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode#  cc.ClippingNode入
 
         cc.renderer.pushRenderCommand(this._afterVisitCmd);
 
-        //optimize performance for javascript
+        //optimize performance for javascript 优化js功能
         currentStack.top = currentStack.stack.pop();
     },
 
@@ -271,17 +271,17 @@ cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode#  cc.ClippingNode入
         ///////////////////////////////////
         // INIT
 
-        // increment the current layer
+        // increment the current layer 增加当前图层
         cc.ClippingNode._layer++;
 
-        // mask of the current layer (ie: for layer 3: 00000100)
+        // mask of the current layer (ie: for layer 3: 00000100) 当前图层遮罩
         var mask_layer = 0x1 << cc.ClippingNode._layer;
-        // mask of all layers less than the current (ie: for layer 3: 00000011)
+        // mask of all layers less than the current (ie: for layer 3: 00000011) 所有小于当前图层遮罩
         var mask_layer_l = mask_layer - 1;
-        // mask of all layers less than or equal to the current (ie: for layer 3: 00000111)
+        // mask of all layers less than or equal to the current (ie: for layer 3: 00000111) 所有不大于当前图层遮罩
         //var mask_layer_le = mask_layer | mask_layer_l;
         this._mask_layer_le = mask_layer | mask_layer_l;
-        // manually save the stencil state
+        // manually save the stencil state 手动保存模板状态
         this._currentStencilEnabled = gl.isEnabled(gl.STENCIL_TEST);
         this._currentStencilWriteMask = gl.getParameter(gl.STENCIL_WRITEMASK);
         this._currentStencilFunc = gl.getParameter(gl.STENCIL_FUNC);
@@ -291,67 +291,67 @@ cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode#  cc.ClippingNode入
         this._currentStencilPassDepthFail = gl.getParameter(gl.STENCIL_PASS_DEPTH_FAIL);
         this._currentStencilPassDepthPass = gl.getParameter(gl.STENCIL_PASS_DEPTH_PASS);
 
-        // enable stencil use
+        // enable stencil use 启用模板
         gl.enable(gl.STENCIL_TEST);
-        // check for OpenGL error while enabling stencil test
+        // check for OpenGL error while enabling stencil test 启用模板测试时检查OpenGL错误
         //cc.checkGLErrorDebug();
 
-        // all bits on the stencil buffer are readonly, except the current layer bit,
-        // this means that operation like glClear or glStencilOp will be masked with this value
+        // all bits on the stencil buffer are readonly, except the current layer bit, 除了当前图层的缓存，所有模板缓存仅可读，缓存以bit存储
+        // this means that operation like glClear or glStencilOp will be masked with this value 这意味着像是glClear或glStencliOp这类操作将会以这种属性被隐藏
         gl.stencilMask(mask_layer);
 
-        // manually save the depth test state
+        // manually save the depth test state 手动保存深度测试状态
         //GLboolean currentDepthTestEnabled = GL_TRUE;
         //currentDepthTestEnabled = glIsEnabled(GL_DEPTH_TEST);
         //var currentDepthWriteMask = gl.getParameter(gl.DEPTH_WRITEMASK);
         this._currentDepthWriteMask = gl.getParameter(gl.DEPTH_WRITEMASK);
-        // disable depth test while drawing the stencil
+        // disable depth test while drawing the stencil 绘制模板是禁用深度测试
         //glDisable(GL_DEPTH_TEST);
-        // disable update to the depth buffer while drawing the stencil,
-        // as the stencil is not meant to be rendered in the real scene,
-        // it should never prevent something else to be drawn,
-        // only disabling depth buffer update should do
+        // disable update to the depth buffer while drawing the stencil, 绘制模板是禁止深度缓存更新
+        // as the stencil is not meant to be rendered in the real scene, 模板不绘制真实图像
+        // it should never prevent something else to be drawn, 它不应阻止其他的绘制
+        // only disabling depth buffer update should do 仅当深度缓存不可更新时可如此操作
         gl.depthMask(false);
 
         ///////////////////////////////////
         // CLEAR STENCIL BUFFER
 
-        // manually clear the stencil buffer by drawing a fullscreen rectangle on it
-        // setup the stencil test func like this:
-        // for each pixel in the fullscreen rectangle
-        //     never draw it into the frame buffer
-        //     if not in inverted mode: set the current layer value to 0 in the stencil buffer
-        //     if in inverted mode: set the current layer value to 1 in the stencil buffer
+        // manually clear the stencil buffer by drawing a fullscreen rectangle on it 通过在它上面绘制一个全屏大小的矩形手动清除模板缓存
+        // setup the stencil test func like this: 以下是创建模板测试函数的方法
+        // for each pixel in the fullscreen rectangle 对于全屏矩形中的每一个像素
+        //     never draw it into the frame buffer 禁止把它绘制到画面缓存中
+        //     if not in inverted mode: set the current layer value to 0 in the stencil buffer 如果不是倒置模式：在模板缓存中将当前图层状态置0
+        //     if in inverted mode: set the current layer value to 1 in the stencil buffer 如果是倒置模式：在模板缓存中将当前图层状态置1
         gl.stencilFunc(gl.NEVER, mask_layer, mask_layer);
         gl.stencilOp(!this.inverted ? gl.ZERO : gl.REPLACE, gl.KEEP, gl.KEEP);
 
         this._drawFullScreenQuadClearStencil();
 
-        // DRAW CLIPPING STENCIL
-        // setup the stencil test func like this:
-        // for each pixel in the stencil node
-        //     never draw it into the frame buffer
-        //     if not in inverted mode: set the current layer value to 1 in the stencil buffer
-        //     if in inverted mode: set the current layer value to 0 in the stencil buffer
+        // DRAW CLIPPING STENCIL 绘制裁剪模板
+        // setup the stencil test func like this: 以下是创建模板测试函数的方法
+        // for each pixel in the stencil node 对于模板节点中的每个像素
+        //     never draw it into the frame buffer 禁止把它绘制到画面缓存中
+        //     if not in inverted mode: set the current layer value to 1 in the stencil buffer 如果不是倒置模式：在模板缓存中将当前图层状态置1
+        //     if in inverted mode: set the current layer value to 0 in the stencil buffer 如果是倒置模式：在模板缓存中将当前图层状态置0
         gl.stencilFunc(gl.NEVER, mask_layer, mask_layer);
         gl.stencilOp(!this.inverted ? gl.REPLACE : gl.ZERO, gl.KEEP, gl.KEEP);
 
         if (this.alphaThreshold < 1) {            //TODO desktop
-            // since glAlphaTest do not exists in OES, use a shader that writes
-            // pixel only if greater than an alpha threshold
+            // since glAlphaTest do not exists in OES, use a shader that writes 一旦glAlphaTest在OES中不存在，使用shader写入
+            // pixel only if greater than an alpha threshold 比一个alpha threshold更大的像素
             var program = cc.shaderCache.programForKey(cc.SHADER_POSITION_TEXTURECOLORALPHATEST);
             var alphaValueLocation = gl.getUniformLocation(program.getProgram(), cc.UNIFORM_ALPHA_TEST_VALUE_S);
-            // set our alphaThreshold
+            // set our alphaThreshold 设置alphaThreshold
             cc.glUseProgram(program.getProgram());
             program.setUniformLocationWith1f(alphaValueLocation, this.alphaThreshold);
-            // we need to recursively apply this shader to all the nodes in the stencil node
-            // XXX: we should have a way to apply shader to all nodes without having to do this
+            // we need to recursively apply this shader to all the nodes in the stencil node 在模板节点中应递归调用这个shader
+            // XXX: we should have a way to apply shader to all nodes without having to do this xxx:我们应该有一种方法适用于所有节点而不是在模板节点中递归调用
             cc.setProgram(this._stencil, program);
         }
     },
 
     _drawFullScreenQuadClearStencil: function () {
-        // draw a fullscreen solid rectangle to clear the stencil buffer
+        // draw a fullscreen solid rectangle to clear the stencil buffer 绘制一个立体的矩形以清除模板缓存
         cc.kmGLMatrixMode(cc.KM_GL_PROJECTION);
         cc.kmGLPushMatrix();
         cc.kmGLLoadIdentity();
@@ -367,23 +367,24 @@ cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode#  cc.ClippingNode入
 
     _onAfterDrawStencil: function(ctx){
         var gl = ctx || cc._renderContext;
-        // restore alpha test state
+        // restore alpha test state 恢复最初测试状态
         //if (this.alphaThreshold < 1) {
         // XXX: we need to find a way to restore the shaders of the stencil node and its children
+        //xxx:我们需要找到一种恢复模板和它子节点shader的方法
         //}
 
-        // restore the depth test state
+        // restore the depth test state 恢复深度测试状态
         gl.depthMask(this._currentDepthWriteMask);
 
         ///////////////////////////////////
-        // DRAW CONTENT
+        // DRAW CONTENT 绘制内容
 
-        // setup the stencil test func like this:
-        // for each pixel of this node and its childs
-        //     if all layers less than or equals to the current are set to 1 in the stencil buffer
-        //         draw the pixel and keep the current layer in the stencil buffer
-        //     else
-        //         do not draw the pixel but keep the current layer in the stencil buffer
+        // setup the stencil test func like this: 以下是创建模板测试函数的方法
+        // for each pixel of this node and its childs  对于节点的每个像素和它的节点
+        //     if all layers less than or equals to the current are set to 1 in the stencil buffer 如果所有图层不大于当前将模板缓存置1
+        //         draw the pixel and keep the current layer in the stencil buffer 绘制像素且保持当前图层在模板缓存中
+        //     else 
+        //         do not draw the pixel but keep the current layer in the stencil buffer 不绘制且保持当前图层在模板缓存中
         gl.stencilFunc(gl.EQUAL, this._mask_layer_le, this._mask_layer_le);
         gl.stencilOp(gl.KEEP, gl.KEEP, gl.KEEP);
     },
@@ -393,19 +394,19 @@ cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode#  cc.ClippingNode入
         ///////////////////////////////////
         // CLEANUP
 
-        // manually restore the stencil state
+        // manually restore the stencil state 手动恢复模板状态
         gl.stencilFunc(this._currentStencilFunc, this._currentStencilRef, this._currentStencilValueMask);
         gl.stencilOp(this._currentStencilFail, this._currentStencilPassDepthFail, this._currentStencilPassDepthPass);
         gl.stencilMask(this._currentStencilWriteMask);
         if (!this._currentStencilEnabled)
             gl.disable(gl.STENCIL_TEST);
 
-        // we are done using this layer, decrement
+        // we are done using this layer, decrement 这个图层使用完毕 渐减
         cc.ClippingNode._layer--;
     },
 
     _visitForCanvas: function (ctx) {
-        // Composition mode, costy but support texture stencil
+        // Composition mode, costy but support texture stencil 合成模式，消耗高但是支持结构模板
         this._clipElemType = (this._cangodhelpme() || this._stencil instanceof cc.Sprite);
 
         var context = ctx || cc._renderContext;
@@ -422,7 +423,7 @@ cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode#  cc.ClippingNode入
 
         if(this._clipElemType){
 
-            // Draw everything first using node visit function
+            // Draw everything first using node visit function 首次使用节点访问函数绘制
             cc.Node.prototype.visit.call(this, context);
         }else{
             this._stencil.visit(context);
