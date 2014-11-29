@@ -29,10 +29,13 @@ cc._tmp.WebGLTexture2D = function () {
     /**
      * <p>
      * This class allows to easily create OpenGL or Canvas 2D textures from images, text or raw data.                                    <br/>
+	    * 这个类可以通过图片，文本或者原始数据容易的创建OpenGL 或者 Canvas 2D贴图。
      * The created cc.Texture2D object will always have power-of-two dimensions.                                                <br/>
+	    * 创建的 cc.Texture2D 对象为2倍大小。
      * Depending on how you create the cc.Texture2D object, the actual image area of the texture might be smaller than the texture dimensions <br/>
+     * 贴图实际的图片区域可能会比贴图尺寸小，这取决于你怎么创建 cc.Texture2D 对象
      *  i.e. "contentSize" != (pixelsWide, pixelsHigh) and (maxS, maxT) != (1.0, 1.0).                                           <br/>
-     * Be aware that the content of the generated textures will be upside-down! </p>
+     * Be aware that the content of the generated textures will be upside-down! </p> - 注意生成的贴图内容是上下颠倒的!
      * @name cc.Texture2D
      * @class
      * @extends cc.Class
@@ -51,6 +54,7 @@ cc._tmp.WebGLTexture2D = function () {
         //Original : Texture2DWebGL
     cc.Texture2D = cc.Class.extend(/** @lends cc.Texture2D# */{
         // By default PVR images are treated as if they don't have the alpha channel premultiplied
+        // 默认PVR 图片按照没有预乘alpha通道处理的
         _pVRHaveAlphaPremultiplied: true,
         _pixelFormat: null,
         _pixelsWide: 0,
@@ -71,7 +75,7 @@ cc._tmp.WebGLTexture2D = function () {
         url: null,
 
         /**
-         * constructor of cc.Texture2D
+         * constructor of cc.Texture2D － cc.Texture2D 的构造函数
          */
         ctor: function () {
             this._contentSize = cc.size(0, 0);
@@ -79,7 +83,7 @@ cc._tmp.WebGLTexture2D = function () {
         },
 
         /**
-         * release texture
+         * release texture －释放贴图
          */
         releaseTexture: function () {
             if (this._webTextureObj)
@@ -88,7 +92,7 @@ cc._tmp.WebGLTexture2D = function () {
         },
 
         /**
-         * pixel format of the texture
+         * pixel format of the texture －贴图的像素格式
          * @return {Number}
          */
         getPixelFormat: function () {
@@ -96,7 +100,7 @@ cc._tmp.WebGLTexture2D = function () {
         },
 
         /**
-         * width in pixels
+         * width in pixels － 像素宽
          * @return {Number}
          */
         getPixelsWide: function () {
@@ -104,7 +108,7 @@ cc._tmp.WebGLTexture2D = function () {
         },
 
         /**
-         * height in pixels
+         * height in pixels － 像素高
          * @return {Number}
          */
         getPixelsHigh: function () {
@@ -112,7 +116,7 @@ cc._tmp.WebGLTexture2D = function () {
         },
 
         /**
-         * get WebGLTexture Object
+         * get WebGLTexture Object － 获取WebGL贴图对象
          * @return {WebGLTexture}
          */
         getName: function () {
@@ -120,7 +124,7 @@ cc._tmp.WebGLTexture2D = function () {
         },
 
         /**
-         * content size
+         * content size  － 内容大小
          * @return {cc.Size}
          */
         getContentSize: function () {
@@ -135,7 +139,7 @@ cc._tmp.WebGLTexture2D = function () {
         },
 
         /**
-         * get content size in pixels
+         * get content size in pixels － 内容大小像素值
          * @return {cc.Size}
          */
         getContentSizeInPixels: function () {
@@ -175,7 +179,7 @@ cc._tmp.WebGLTexture2D = function () {
         },
 
         /**
-         * return shader program used by drawAtPoint and drawInRect
+         * return shader program used by drawAtPoint and drawInRect － 返回drawAtPoint 和 drawInRect两个函数使用的着色器程序
          * @return {cc.GLProgram}
          */
         getShaderProgram: function () {
@@ -183,7 +187,7 @@ cc._tmp.WebGLTexture2D = function () {
         },
 
         /**
-         * set shader program used by drawAtPoint and drawInRect
+         * set shader program used by drawAtPoint and drawInRect － 设置drawAtPoint 和 drawInRect两个函数使用的着色器程序
          * @param {cc.GLProgram} shaderProgram
          */
         setShaderProgram: function (shaderProgram) {
@@ -191,7 +195,7 @@ cc._tmp.WebGLTexture2D = function () {
         },
 
         /**
-         * whether or not the texture has their Alpha premultiplied
+         * whether or not the texture has their Alpha premultiplied － 贴图是否预乘了alpha通道
          * @return {Boolean}
          */
         hasPremultipliedAlpha: function () {
@@ -199,7 +203,7 @@ cc._tmp.WebGLTexture2D = function () {
         },
 
         /**
-         * whether or not use mipmap
+         * whether or not use mipmap - 是否使用了纹理映射
          * @return {Boolean}
          */
         hasMipmaps: function () {
@@ -217,7 +221,7 @@ cc._tmp.WebGLTexture2D = function () {
         },
 
         /**
-         * These functions are needed to create mutable textures
+         * These functions are needed to create mutable textures - 创建可变贴图对象需要使用这些函数
          * @param {Array} data
          */
         releaseData: function (data) {
@@ -225,12 +229,12 @@ cc._tmp.WebGLTexture2D = function () {
         },
 
         keepData: function (data, length) {
-            //The texture data mustn't be saved becuase it isn't a mutable texture.
+            //The texture data mustn't be saved becuase it isn't a mutable texture. － 不能保存贴图数据，因为它不是可变贴图对象。
             return data;
         },
 
         /**
-         * Intializes with a texture2d with data
+         * Intializes with a texture2d with data － 使用texture2d数据初始化
          * @param {Array} data
          * @param {Number} pixelFormat
          * @param {Number} pixelsWide
@@ -264,7 +268,7 @@ cc._tmp.WebGLTexture2D = function () {
             gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
             gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
 
-            // Specify OpenGL texture image
+            // Specify OpenGL texture image － 指定OpenGL贴图格式
             switch (pixelFormat) {
                 case tex2d.PIXEL_FORMAT_RGBA8888:
                     format = gl.RGBA;
@@ -314,12 +318,12 @@ cc._tmp.WebGLTexture2D = function () {
         },
 
         /**
-         Drawing extensions to make it easy to draw basic quads using a CCTexture2D object.
-         These functions require gl.TEXTURE_2D and both gl.VERTEX_ARRAY and gl.TEXTURE_COORD_ARRAY client states to be enabled.
+         Drawing extensions to make it easy to draw basic quads using a CCTexture2D object. － 这些绘制扩展函数使CCTexture2D对象绘制基本的quads变得简单。
+         These functions require gl.TEXTURE_2D and both gl.VERTEX_ARRAY and gl.TEXTURE_COORD_ARRAY client states to be enabled. － 这些函数需要启用 gl.TEXTURE_2D， gl.VERTEX_ARRAY 以及 gl.TEXTURE_COORD_ARRAY
          */
 
         /**
-         * draws a texture at a given point
+         * draws a texture at a given point － 在给定点绘制贴图
          * @param {cc.Point} point
          */
         drawAtPoint: function (point) {
@@ -353,7 +357,7 @@ cc._tmp.WebGLTexture2D = function () {
         },
 
         /**
-         * draws a texture inside a rect
+         * draws a texture inside a rect － 在一个矩形内绘制贴图
          * @param {cc.Rect} rect
          */
         drawInRect: function (rect) {
@@ -383,12 +387,12 @@ cc._tmp.WebGLTexture2D = function () {
         },
 
         /**
-         Extensions to make it easy to create a CCTexture2D object from an image file.
-         Note that RGBA type textures will have their alpha premultiplied - use the blending mode (gl.ONE, gl.ONE_MINUS_SRC_ALPHA).
+         Extensions to make it easy to create a CCTexture2D object from an image file. － 此扩展函数实现了简单的从一个图片文件创建一个 CCTexture2D对象。
+         Note that RGBA type textures will have their alpha premultiplied - use the blending mode (gl.ONE, gl.ONE_MINUS_SRC_ALPHA). － 注意RGBA类型的贴图预乘了他们的alpha通道－使用混合模式(gl.ONE, gl.ONE_MINUS_SRC_ALPHA).
          */
 
         /**
-         * Initializes a texture from a UIImage object
+         * Initializes a texture from a UIImage object － 通过UIImage对象初始化贴图
          * @param uiImage
          * @return {Boolean}
          */
@@ -408,12 +412,12 @@ cc._tmp.WebGLTexture2D = function () {
             }
             this._isLoaded = true;
 
-            // always load premultiplied images
+            // always load premultiplied images － 总是加载预乘的图片
             return this._initPremultipliedATextureWithImage(uiImage, imageWidth, imageHeight);
         },
 
         /**
-         * init with HTML element
+         * init with HTML element － 通过HTML元素初始化
          * @param {HTMLImageElement|HTMLCanvasElement} element
          */
         initWithElement: function (element) {
@@ -424,7 +428,7 @@ cc._tmp.WebGLTexture2D = function () {
         },
 
         /**
-         * HTMLElement Object getter
+         * HTMLElement Object getter - 获取HTMLElement对象
          * @return {HTMLElement}
          */
         getHtmlElementObj: function () {
@@ -432,7 +436,7 @@ cc._tmp.WebGLTexture2D = function () {
         },
 
         /**
-         * whether texture is loaded
+         * whether texture is loaded － 返回贴图是否加载完成
          * @return {Boolean}
          */
         isLoaded: function () {
@@ -440,11 +444,11 @@ cc._tmp.WebGLTexture2D = function () {
         },
 
         /**
-         * handler of texture loaded event
+         * handler of texture loaded event － 贴图加载完成之后的处理函数
          */
         handleLoadedTexture: function () {
             var self = this;
-            // Not sure about this ! Some texture need to be updated even after loaded
+            // Not sure about this ! Some texture need to be updated even after loaded － 不确定！？？ 加载完成之后有些贴图需要更新
             if (!cc._rendererInitialized)
                 return;
             if (!self._htmlElementObj) {
@@ -455,14 +459,14 @@ cc._tmp.WebGLTexture2D = function () {
             if (!self._htmlElementObj.width || !self._htmlElementObj.height)
                 return;
             self._isLoaded = true;
-            //upload image to buffer
+            //upload image to buffer - 上传图片到缓冲区
             var gl = cc._renderContext;
 
             cc.glBindTexture2D(self);
 
             gl.pixelStorei(gl.UNPACK_ALIGNMENT, 4);
 
-            // Specify OpenGL texture image
+            // Specify OpenGL texture image － 指定OpenGL 贴图图片
             gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, self._htmlElementObj);
 
             gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
@@ -485,16 +489,16 @@ cc._tmp.WebGLTexture2D = function () {
             self._hasPremultipliedAlpha = false;
             self._hasMipmaps = false;
 
-            //dispatch load event to listener.
+            //dispatch load event to listener. － 向监听者分发加载事件。
             self.dispatchEvent("load");
         },
 
         /**
-         Extensions to make it easy to create a cc.Texture2D object from a string of text.
-         Note that the generated textures are of type A8 - use the blending mode (gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA).
+         Extensions to make it easy to create a cc.Texture2D object from a string of text. － 此扩展函数实现了简单的使用文本字符串创建一个cc.Texture2D对象
+         Note that the generated textures are of type A8 - use the blending mode (gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA). － 注意生成的贴图是使用混合模式的A8类型(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA).
          */
         /**
-         * Initializes a texture from a string with dimensions, alignment, font name and font size (note: initWithString does not support on HTML5)
+         * Initializes a texture from a string with dimensions, alignment, font name and font size (note: initWithString does not support on HTML5) － 从一个包含尺寸，对齐方式，字体名称，字体大小的字符串初始化一个贴图对象(注意: initWithString 不支持HTML5)
          * @param {String} text
          * @param {String | cc.FontDefinition} fontName or fontDefinition
          * @param {Number} fontSize
@@ -509,7 +513,7 @@ cc._tmp.WebGLTexture2D = function () {
         },
 
         /**
-         * Initializes a texture from a ETC file  (note: initWithETCFile does not support on HTML5)
+         * Initializes a texture from a ETC file  (note: initWithETCFile does not support on HTML5) - 通过ETC文件初始化贴图（注意：initWithETCFile 不支持HTML5)
          * @note Compatible to Cocos2d-x
          * @param {String} file
          * @return {Boolean}
@@ -520,7 +524,7 @@ cc._tmp.WebGLTexture2D = function () {
         },
 
         /**
-         * Initializes a texture from a PVR file
+         * Initializes a texture from a PVR file - 从 PVR文件初始化贴图
          * @param {String} file
          * @return {Boolean}
          */
@@ -530,12 +534,12 @@ cc._tmp.WebGLTexture2D = function () {
         },
 
         /**
-         Extensions to make it easy to create a cc.Texture2D object from a PVRTC file
-         Note that the generated textures don't have their alpha premultiplied - use the blending mode (gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA).
+         Extensions to make it easy to create a cc.Texture2D object from a PVRTC file － 此扩展函数实现了简单的从 PVRTC 文件创建 cc.Texture2D 对象
+         Note that the generated textures don't have their alpha premultiplied - use the blending mode (gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA). － 注意生成的贴图没有预乘它们的alpha通道 － 使用混合模式 (gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA).
          */
         /**
-         * Initializes a texture from a PVRTC buffer
-         * @note compatible to cocos2d-iphone interface.
+         * Initializes a texture from a PVRTC buffer － 通过PVRTC缓冲数据初始化贴图
+         * @note compatible to cocos2d-iphone interface. － 注意适配 cocos2d-iphone 接口
          * @param {Array} data
          * @param {Number} level
          * @param {Number} bpp
@@ -551,7 +555,9 @@ cc._tmp.WebGLTexture2D = function () {
 
         /**
          * sets the min filter, mag filter, wrap s and wrap t texture parameters. <br/>
+		 * 设置贴图参数 min filter, mag filter, wrap s 和 wrap t
          * If the texture size is NPOT (non power of 2), then in can only use gl.CLAMP_TO_EDGE in gl.TEXTURE_WRAP_{S,T}.
+ 		 * 如果贴图不是2倍大小，只能使用 gl.CLAMP_TO_EDGE in gl.TEXTURE_WRAP_{S,T}.
          * @param {Object|Number} texParams texParams object or minFilter
          * @param {Number} [magFilter]
          * @param {Number} [wrapS]
@@ -576,7 +582,7 @@ cc._tmp.WebGLTexture2D = function () {
         },
 
         /**
-         * sets antialias texture parameters:              <br/>
+         * sets antialias texture parameters:              <br/> - 设置抗锯齿贴图参数
          *  - GL_TEXTURE_MIN_FILTER = GL_NEAREST           <br/>
          *  - GL_TEXTURE_MAG_FILTER = GL_NEAREST
          */
@@ -592,7 +598,7 @@ cc._tmp.WebGLTexture2D = function () {
         },
 
         /**
-         *  sets alias texture parameters:
+         *  sets alias texture parameters: - 设置锯齿贴图参数
          *   GL_TEXTURE_MIN_FILTER = GL_NEAREST
          *   GL_TEXTURE_MAG_FILTER = GL_NEAREST
          */
@@ -608,8 +614,8 @@ cc._tmp.WebGLTexture2D = function () {
         },
 
         /**
-         *  Generates mipmap images for the texture.<br/>
-         *  It only works if the texture size is POT (power of 2).
+         *  Generates mipmap images for the texture.<br/>  － 生成贴图的纹理映射图
+         *  It only works if the texture size is POT (power of 2). － 只对二倍大小的贴图有效。
          */
         generateMipmap: function () {
             var _t = this;
@@ -621,7 +627,7 @@ cc._tmp.WebGLTexture2D = function () {
         },
 
         /**
-         * returns the pixel format.
+         * returns the pixel format. － 返回像素格式。
          * @return {String}
          */
         stringForFormat: function () {
@@ -629,7 +635,7 @@ cc._tmp.WebGLTexture2D = function () {
         },
 
         /**
-         * returns the bits-per-pixel of the in-memory OpenGL texture
+         * returns the bits-per-pixel of the in-memory OpenGL texture － 返回 OpenGL 贴图在内存中每像素占用的比特位
          * @return {Number}
          */
         bitsPerPixelForFormat: function (format) {//TODO I want to delete the format argument, use this._pixelFormat
@@ -652,7 +658,7 @@ cc._tmp.WebGLTexture2D = function () {
             var bpp = uiImage.getBitsPerComponent();
             var i;
 
-            // compute pixel format
+            // compute pixel format － 计算像素格式
             if (!hasAlpha) {
                 if (bpp >= 8) {
                     pixelFormat = tex2d.PIXEL_FORMAT_RGB888;
@@ -662,7 +668,7 @@ cc._tmp.WebGLTexture2D = function () {
                 }
             }
 
-            // Repack the pixel data into the right format
+            // Repack the pixel data into the right format － 将像素数据包装成正确的格式
             var length = width * height;
 
             if (pixelFormat == tex2d.PIXEL_FORMAT_RGB565) {
@@ -745,19 +751,19 @@ cc._tmp.WebGLTexture2D = function () {
         },
 
         /**
-         * add listener for loaded event
+         * add listener for loaded event － 加载事件增加监听
          * @param {Function} callback
          * @param {cc.Node} target
-         * @deprecated since 3.1, please use addEventListener instead
+         * @deprecated since 3.1, please use addEventListener instead － 从3.1版弃用，请使用 addEventListener
          */
         addLoadedEventListener: function (callback, target) {
             this.addEventListener("load", callback, target);
         },
 
         /**
-         * remove listener from listeners by target
+         * remove listener from listeners by target  - 移除特定目标的监听
          * @param {cc.Node} target
-         * @deprecated since 3.1, please use addEventListener instead
+         * @deprecated since 3.1, please use removeEventListener instead － 从3.1版弃用，请使用 removeEventListener
          */
         removeLoadedEventListener: function (target) {
             this.removeEventListener("load", target);
@@ -792,7 +798,7 @@ cc._tmp.WebGLTextureAtlas = function () {
     };
 
     /**
-     * <p>Draws n quads from an index (offset). <br />
+     * <p>Draws n quads from an index (offset). <br /> － 从某个index开始绘制n个quads
      * n + start can't be greater than the capacity of the atlas</p>
      * @param {Number} n
      * @param {Number} start
@@ -855,11 +861,13 @@ cc._tmp.WebGLTextureCache = function () {
     };
 
     /**
-     * <p>Returns a Texture2D object given an file image <br />
+     * <p>Returns a Texture2D object given an file image <br />  － 通过文件路径的图片返回 Texture2D 对象
      * If the file image was not previously loaded, it will create a new Texture2D <br />
      *  object and it will return it. It will use the filename as a key.<br />
      * Otherwise it will return a reference of a previously loaded image. <br />
+	    * 如果图片之前未被加载，会创建一个新的 Texture2D 对象返回，并用文件名作为key. 否则会返回之前已经加载好的图片的引用。
      * Supported image extensions: .png, .jpg, .gif</p>
+   	 * 支持的图片扩展名: .png, .jpg, .gif
      * @param {String} url
      * @param {Function} cb
      * @param {Object} target

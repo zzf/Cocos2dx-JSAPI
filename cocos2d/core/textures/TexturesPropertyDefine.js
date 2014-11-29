@@ -36,6 +36,7 @@ cc._tmp.PrototypeTexture2D = function () {
      *                                                                                                                  <br/>
      *    By default it is disabled.                                                                                    <br/>
      * </p>
+     * 处理PVR文件时是否预乘alpha通道。如果PVR图片已经预乘了alpha通道，运行时可以知道，这样加载时可以按照是否预乘了alpha通道处理。默认禁用。
      * @param haveAlphaPremultiplied
      */
     _c.PVRImagesHavePremultipliedAlpha = function (haveAlphaPremultiplied) {

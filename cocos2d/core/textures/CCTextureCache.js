@@ -25,7 +25,8 @@
  ****************************************************************************/
 
 /**
- * cc.textureCache is a singleton object, it's the global cache for cc.Texture2D
+ * cc.textureCache is a singleton object, it's the global cache for cc.Texture2D 
+ * cc.textureCache 是一个单例对象，它是 cc.Texture2D 的全局缓存
  * @class
  * @name cc.textureCache
  */
@@ -36,7 +37,7 @@ cc.textureCache = /** @lends cc.textureCache# */{
 
     _loadedTexturesBefore: {},
 
-    //handleLoadedTexture move to Canvas/WebGL
+    //handleLoadedTexture move to Canvas/WebGL 
 
     _initializingRenderer: function () {
         var selPath;
@@ -53,11 +54,13 @@ cc.textureCache = /** @lends cc.textureCache# */{
     /**
      * <p>
      *     Returns a Texture2D object given an PVR filename                                                              <br/>
+     *	    给定一个PVR文件名，返回一个 Texture2D 对象
      *     If the file image was not previously loaded, it will create a new CCTexture2D                                 <br/>
      *     object and it will return it. Otherwise it will return a reference of a previously loaded image              <br/>
-     *     note: AddPVRTCImage does not support on HTML5
+	    *	    如果文件中的图片之前未被加载，会创建一个新的 CCTexture2D对象返回，否则会返回一个之前已经加载过的图片对象的引用
+     *     note: AddPVRTCImage does not support on HTML5  - 注意：AddPVRTCImage 不支持 HTML5
      * </p>
-     * @param {String} filename
+     * @param {String} filename - 文件名
      * @return {cc.Texture2D}
      */
     addPVRTCImage: function (filename) {
@@ -67,9 +70,11 @@ cc.textureCache = /** @lends cc.textureCache# */{
     /**
      * <p>
      *     Returns a Texture2D object given an ETC filename                                                               <br/>
+	    *     传入一个ETC文件名，返回一个Texture2D 对象
      *     If the file image was not previously loaded, it will create a new CCTexture2D                                  <br/>
      *     object and it will return it. Otherwise it will return a reference of a previously loaded image                <br/>
-     *    note:addETCImage does not support on HTML5
+	    *	   如果文件中的图片之前未被加载，会创建一个新的 CCTexture2D对象返回，否则会返回一个之前已经加载过的图片对象的引用
+     *    note:addETCImage does not support on HTML5  - 注意：addETCImage 不支持 HTML5
      * </p>
      * @param {String} filename
      * @return {cc.Texture2D}
@@ -87,7 +92,7 @@ cc.textureCache = /** @lends cc.textureCache# */{
     },
 
     /**
-     * Returns an already created texture. Returns null if the texture doesn't exist.
+     * Returns an already created texture. Returns null if the texture doesn't exist. - 返回创建好的贴图。如果贴图不存在，返回空。
      * @param {String} textureKeyName
      * @return {cc.Texture2D|Null}
      * @deprecated
@@ -101,7 +106,7 @@ cc.textureCache = /** @lends cc.textureCache# */{
     },
 
     /**
-     * Returns an already created texture. Returns null if the texture doesn't exist.
+     * Returns an already created texture. Returns null if the texture doesn't exist. - 返回创建好的贴图。如果贴图不存在，返回空。
      * @param {String} textureKeyName
      * @return {cc.Texture2D|Null}
      * @example
@@ -156,8 +161,10 @@ cc.textureCache = /** @lends cc.textureCache# */{
 
     /**
      * <p>Returns a Texture2D object given an PVR filename<br />
+     *	传入一个PVR文件名返回一个 Texture2D 对象
      * If the file image was not previously loaded, it will create a new Texture2D<br />
      *  object and it will return it. Otherwise it will return a reference of a previously loaded image </p>
+	    *	如果文件中的图片之前未被加载，会创建一个新的 CCTexture2D对象返回，否则会返回一个之前已经加载过的图片对象的引用
      * @param {String} path
      * @return {cc.Texture2D}
      */
@@ -166,11 +173,11 @@ cc.textureCache = /** @lends cc.textureCache# */{
     },
 
     /**
-     * <p>Purges the dictionary of loaded textures. <br />
-     * Call this method if you receive the "Memory Warning"  <br />
-     * In the short term: it will free some resources preventing your app from being killed  <br />
-     * In the medium term: it will allocate more resources <br />
-     * In the long term: it will be the same</p>
+     * <p>Purges the dictionary of loaded textures. <br />  - 清空加载贴图的字典
+     * Call this method if you receive the "Memory Warning"  <br />  - 收到内存警告时调用此方法
+     * In the short term: it will free some resources preventing your app from being killed  <br /> - 短期:释放某些资源，防止app被系统杀掉
+     * In the medium term: it will allocate more resources <br /> － 中期:初始化更多的资源
+     * In the long term: it will be the same</p> - 长期:和之前保持一致
      * @example
      * //example
      * cc.textureCache.removeAllTextures();
@@ -185,7 +192,7 @@ cc.textureCache = /** @lends cc.textureCache# */{
     },
 
     /**
-     * Deletes a texture from the cache given a texture
+     * Deletes a texture from the cache given a texture - 从缓存中删除指定的贴图
      * @param {Image} texture
      * @example
      * //example
@@ -205,7 +212,7 @@ cc.textureCache = /** @lends cc.textureCache# */{
     },
 
     /**
-     * Deletes a texture from the cache given a its key name
+     * Deletes a texture from the cache given a its key name - 从缓存中根据给定的key删除贴图
      * @param {String} textureKeyName
      * @example
      * //example
@@ -221,7 +228,7 @@ cc.textureCache = /** @lends cc.textureCache# */{
     //addImage move to Canvas/WebGL
 
     /**
-     *  Cache the image data
+     *  Cache the image data - 缓存图片数据
      * @param {String} path
      * @param {Image|HTMLImageElement|HTMLCanvasElement} texture
      */
@@ -237,11 +244,12 @@ cc.textureCache = /** @lends cc.textureCache# */{
     },
 
     /**
-     * <p>Returns a Texture2D object given an UIImage image<br />
+     * <p>Returns a Texture2D object given an UIImage image<br /> － 通过给定的UIImage对象返回一个 Texture2D对象
      * If the image was not previously loaded, it will create a new Texture2D object and it will return it.<br />
      * Otherwise it will return a reference of a previously loaded image<br />
-     * The "key" parameter will be used as the "key" for the cache.<br />
-     * If "key" is null, then a new texture will be created each time.</p>
+     * 如果图片之前未被加载，会创建一个新的 Texture2D对象返回，否则会返回一个之前已经加载过的图片对象的引用
+     * The "key" parameter will be used as the "key" for the cache.<br /> - "key"参数将被用作缓存的"key"
+     * If "key" is null, then a new texture will be created each time.</p> - 如果"key"为空，那么每次都会创建一个新的贴图
      * @param {HTMLImageElement|HTMLCanvasElement} image
      * @param {String} key
      * @return {cc.Texture2D}
@@ -267,7 +275,9 @@ cc.textureCache = /** @lends cc.textureCache# */{
 
     /**
      * <p>Output to cc.log the current contents of this TextureCache <br />
+	    * 把当前TextureCache的内容输出到cc.log
      * This will attempt to calculate the size of each texture, and the total texture memory in use. </p>
+     * 它会计算每个贴图的大小和贴图总共占用的内存
      */
     dumpCachedTextureInfo: function () {
         var count = 0;
@@ -322,11 +332,12 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
     };
 
     /**
-     * <p>Returns a Texture2D object given an file image <br />
+     * <p>Returns a Texture2D object given an file image <br /> － 通过给定的文件图片返回一个Texture2D对象
      * If the file image was not previously loaded, it will create a new Texture2D <br />
      *  object and it will return it. It will use the filename as a key.<br />
      * Otherwise it will return a reference of a previously loaded image. <br />
-     * Supported image extensions: .png, .jpg, .gif</p>
+	    * 如果文件图片之前未被加载，会创建一个新的Texture2D 对象返回，并且使用文件名称作为"key",否则会返回一个之前加载过的图片对象的引用。
+     * Supported image extensions: .png, .jpg, .gif</p> - 支持的图片扩展名: .png, .jpg, .gif
      * @param {String} url
      * @param {Function} cb
      * @param {Object} target
