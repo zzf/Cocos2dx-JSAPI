@@ -437,8 +437,8 @@ cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode#  cc.ClippingNode入
         if(this._clipElemType){
             this._stencil.visit();
         }else{
-            // Clip mode doesn't support recusive stencil, so once we used a clip stencil,
-            // so if it has ClippingNode as a child, the child must uses composition stencil.
+            // Clip mode doesn't support recusive stencil, so once we used a clip stencil,裁剪模式不支持递归模板，所以一旦使用裁剪模板
+            // so if it has ClippingNode as a child, the child must uses composition stencil.如果存在ClippingNode作为子节点，这个子节点必须使用合成模板
             this._cangodhelpme(true);
             var len = children.length;
             if (len > 0) {
@@ -468,8 +468,8 @@ cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode#  cc.ClippingNode入
     },
 
     /**
-     * The cc.Node to use as a stencil to do the clipping.                                   <br/>
-     * The stencil node will be retained. This default to nil.
+     * The cc.Node to use as a stencil to do the clipping.   使用cc.Node作为模板进行裁剪                                <br/>
+     * The stencil node will be retained. This default to nil. 模板节点将会被保留，此项默认为0
      * @return {cc.Node}
      */
     getStencil: function () {
@@ -477,7 +477,7 @@ cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode#  cc.ClippingNode入
     },
 
     /**
-     * Set stencil.
+     * Set stencil.设置模板
      * @function
      * @param {cc.Node} stencil
      */
@@ -502,11 +502,12 @@ cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode#  cc.ClippingNode入
             }
         }
         var locContext = cc._renderContext;
-        // For texture stencil, use the sprite itself
+        // For texture stencil, use the sprite itself 对于结构模板，使用本身子画面
         //if (stencil instanceof cc.Sprite) {
         //    return;
         //}
         // For shape stencil, rewrite the draw of stencil ,only init the clip path and draw nothing.
+        //对于尖锐模板，重写模板的draw，只需初始化裁剪路径，不必重新绘制
         //else
         if (stencil instanceof cc.DrawNode) {
             stencil._rendererCmd.rendering = function (ctx, scaleX, scaleY) {
@@ -521,7 +522,7 @@ cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode#  cc.ClippingNode入
                 for (var i = 0; i < stencil._buffer.length; i++) {
                     var vertices = stencil._buffer[i].verts;
                     //cc.assert(cc.vertexListIsClockwise(vertices),
-                    //    "Only clockwise polygons should be used as stencil");
+                    //    "Only clockwise polygons should be used as stencil"); 只有顺时针多边形能被用作模板
 
                     var firstPoint = vertices[0];
                     context.moveTo(firstPoint.x * scaleX, -firstPoint.y * scaleY);
@@ -536,9 +537,11 @@ cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode#  cc.ClippingNode入
     /**
      * <p>
      * The alpha threshold.                                                                                   <br/>
-     * The content is drawn only where the stencil have pixel with alpha greater than the alphaThreshold.     <br/>
-     * Should be a float between 0 and 1.                                                                     <br/>
-     * This default to 1 (so alpha test is disabled).
+     * The content is drawn only where the stencil have pixel with alpha greater than the alphaThreshold.  
+     *  只有模板存在比alphaThreshold大的像素的时候才会绘制<br/>
+     * Should be a float between 0 and 1.  
+     * 是0-1之间的浮点数<br/>
+     * This default to 1 (so alpha test is disabled). 默认为1，(所以aplha test不可用)
      * </P>
      * @return {Number}
      */
@@ -547,7 +550,7 @@ cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode#  cc.ClippingNode入
     },
 
     /**
-     * set alpha threshold.
+     * set alpha threshold.设置alpha threshold
      * @param {Number} alphaThreshold
      */
     setAlphaThreshold: function (alphaThreshold) {
@@ -556,9 +559,10 @@ cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode#  cc.ClippingNode入
 
     /**
      * <p>
-     *     Inverted. If this is set to YES,                                                                 <br/>
+     *     Inverted. If this is set to YES,  如果是倒置                                                               <br/>
      *     the stencil is inverted, so the content is drawn where the stencil is NOT drawn.                 <br/>
-     *     This default to NO.
+     *     模板是倒置的，所以当模板不在绘制时才会绘制内容
+     *     This default to NO. 默认为NO
      * </p>
      * @return {Boolean}
      */
@@ -567,7 +571,7 @@ cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode#  cc.ClippingNode入
     },
 
     /**
-     * set whether or not invert of stencil
+     * set whether or not invert of stencil 设置模板是否倒置
      * @param {Boolean} inverted
      */
     setInverted: function (inverted) {
@@ -617,8 +621,10 @@ cc.ClippingNode._getSharedCache = function () {
 
 /**
  * Creates and initializes a clipping node with an other node as its stencil. <br/>
- * The stencil node will be retained.
- * @deprecated since v3.0, please use "new cc.ClippingNode(stencil)" instead
+ *通过一个节点作为模板创建、初始化另一个节点
+ * The stencil node will be retained. 模板节点会被保留
+ * @deprecated since v3.0, please use "new cc.ClippingNode(stencil)" instead 
+ * v3.0以后不赞成使用，建议使用"new cc.ClippingNode(stencil)"替代
  * @param {cc.Node} [stencil=null]
  * @return {cc.ClippingNode}
  * @example
