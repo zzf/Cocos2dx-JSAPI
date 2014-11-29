@@ -89,10 +89,12 @@
 
 ## L
 
+- listener， 监听器
 
 ## M
 
 - markup	标记
+- macro 宏
 
 ## N
 
@@ -137,6 +139,7 @@
 - triple	三元组	
 - Tuples, 元组
 - the set, 集合
+- texture 纹理
 
 ## U
 

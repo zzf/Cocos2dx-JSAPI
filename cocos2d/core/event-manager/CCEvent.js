@@ -333,7 +333,7 @@ cc.EventMouse.BUTTON_LEFT = 0;
 cc.EventMouse.BUTTON_RIGHT = 2;
 
 /**
- * The tag of Mouse middle button  (The right button number is 1 on browser) 鼠标中间按钮标签（在浏览器上，中间按钮的数字是1）？？？right button or middle button???
+ * The tag of Mouse middle button  (The middle button number is 1 on browser) 鼠标中间按钮标签（在浏览器上，中间按钮的数字是1）
  * @constant
  * @type {Number}
  */
