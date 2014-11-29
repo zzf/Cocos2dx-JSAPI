@@ -270,7 +270,7 @@ cc.IMEDispatcher = cc.Class.extend(/**  @lends cc.imeDispatcher# */{
 
     /**
      * Dispatch keyboard notification
-	 * 分发键盘输入即将展示的消息
+	 * 分发键盘即将展示的消息
      * @param {cc.IMEKeyboardNotificationInfo} info
      */
     dispatchKeyboardWillShow:function (info) {
@@ -286,7 +286,7 @@ cc.IMEDispatcher = cc.Class.extend(/**  @lends cc.imeDispatcher# */{
 
     /**
      * Dispatch keyboard notification
-	 * 分发键盘输入已经展示的消息
+	 * 分发键盘已经展示的消息
      * @param {cc.IMEKeyboardNotificationInfo} info
      */
     dispatchKeyboardDidShow:function (info) {
@@ -301,7 +301,7 @@ cc.IMEDispatcher = cc.Class.extend(/**  @lends cc.imeDispatcher# */{
 
     /**
      * Dispatch keyboard notification
-	 * 分发键盘输入即将隐藏的消息
+	 * 分发键盘即将隐藏的消息
      * @param {cc.IMEKeyboardNotificationInfo} info
      */
     dispatchKeyboardWillHide:function (info) {
@@ -368,7 +368,7 @@ cc.IMEDispatcher = cc.Class.extend(/**  @lends cc.imeDispatcher# */{
 	/**
      * 打开键盘输入法
      * @param {cc.IMEDelegate} delegate
-     * @return {Boolean} 如果旧的委托可以脱离IME输入并且新的委托可以连接IME输入，则返回成功 否则返回失败
+     * @return {Boolean} 如果可以打开新的输入法并关闭旧的输入法，则返回成功否则返回失败
      * @example
      * //例如
      * var ret = cc.imeDispatcher.attachDelegateWithIME(this);
@@ -510,7 +510,7 @@ cc.IMEDispatcher = cc.Class.extend(/**  @lends cc.imeDispatcher# */{
      * });
      */
 	/**
-     * 处理键盘码值
+     * 处理按键事件
      * @param {Number} keyCode
      * @example
      * //例如
