@@ -26,16 +26,16 @@
 
 /**
  * <p>cc.AtlasNode is a subclass of cc.Node, it knows how to render a TextureAtlas object. </p>
- * <p>cc.AtlasNodeÊÇcc.NodeµÄ×ÓÀà,cc.AtlasNode¿ÉÒÔÓÃÀ´äÖÈ¾Ò»¸öTextureAtlas¶ÔÏó</p>
+ * <p>cc.AtlasNodeæ˜¯cc.Nodeçš„å­ç±»,cc.AtlasNodeå¯ä»¥ç”¨æ¥æ¸²æŸ“ä¸€ä¸ªTextureAtlaså¯¹è±¡</p>
  *
  * <p>If you are going to render a TextureAtlas consider subclassing cc.AtlasNode (or a subclass of cc.AtlasNode)</p>
- * <p>Èç¹ûÄãÏëÒªäÖÈ¾Ò»¸öTextureAtlas ¿ÉÒÔ¿¼ÂÇ¼Ì³Ğcc.AtlasNode(»òÕßcc.AtlasNodeµÄ×ÓÀà)</p>
+ * <p>å¦‚æœä½ æƒ³è¦æ¸²æŸ“ä¸€ä¸ªTextureAtlas å¯ä»¥è€ƒè™‘ç»§æ‰¿cc.AtlasNode(æˆ–è€…cc.AtlasNodeçš„å­ç±»)</p>
  *
  * <p>All features from cc.Node are valid</p>
- * <p>ËùÓĞ¼Ì³Ğ×Ôcc.NodeµÄ¹¦ÄÜ¶¼ÊÇ¿ÉÓÃµÄ</p>
+ * <p>æ‰€æœ‰ç»§æ‰¿è‡ªcc.Nodeçš„åŠŸèƒ½éƒ½æ˜¯å¯ç”¨çš„</p>
  *
  * <p>You can create a cc.AtlasNode with an Atlas file, the width, the height of each item and the quantity of items to render</p>
- * <p>Äã¿ÉÒÔÊ¹ÓÃÒ»¸öAtlasÎÄ¼ş,itemµÄ¿í¡¢¸ß¸úitemsÊıÁ¿À´½øĞĞ»æÖÆ</p>
+ * <p>ä½ å¯ä»¥ä½¿ç”¨ä¸€ä¸ªAtlasæ–‡ä»¶,itemçš„å®½ã€é«˜è·Ÿitemsæ•°é‡æ¥è¿›è¡Œç»˜åˆ¶</p>
  *
  * @class
  * @extends cc.Node
@@ -56,33 +56,33 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
     quadsToDraw: 0,
 
     //! chars per row
-    //! Ã¿ĞĞ×Ö·ûÊı
+    //! æ¯è¡Œå­—ç¬¦æ•°
     _itemsPerRow: 0,
     //! chars per column
-    //! Ã¿ÁĞ×Ö·ûÊı
+    //! æ¯åˆ—å­—ç¬¦æ•°
     _itemsPerColumn: 0,
     //! width of each char
-    //! Ã¿¸ö×Ö·ûµÄ¿í
+    //! æ¯ä¸ªå­—ç¬¦çš„å®½
     _itemWidth: 0,
     //! height of each char
-    //! Ã¿¸ö×Ö·ûµÄ¸ß
+    //! æ¯ä¸ªå­—ç¬¦çš„é«˜
     _itemHeight: 0,
 
     _colorUnmodified: null,
 
     // protocol variables
-    // Ğ­ÒéÊÇ·ñ¿ÉÓÃ
+    // åè®®æ˜¯å¦å¯ç”¨
     _opacityModifyRGB: false,
     _blendFunc: null,
 
     // This variable is only used for CCLabelAtlas FPS display. So plz don't modify its value.
-    // ¸ÃÖµÖ»ÓÃÓÚCCLabelAtlas FPSµÄÏÔÊ¾.ËùÒÔplz²»ÓÃĞŞ¸Ä¸ÃÖµ
+    // è¯¥å€¼åªç”¨äºCCLabelAtlas FPSçš„æ˜¾ç¤º.æ‰€ä»¥plzä¸ç”¨ä¿®æ”¹è¯¥å€¼
     _ignoreContentScaleFactor: false,
     _className: "AtlasNode",
 
     /**
      * <p>Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function.</p>
-     * <p>¹¹Ôìº¯Êı,ÖØĞ´Ëü½øĞĞ¼Ì³Ğ¸¸ÀàÖĞµÄ¹¹Ôì¶¯×÷,ÔÚ"ctor"º¯ÊıÖĞ¼ÇµÃµ÷ÓÃ"this._super()"½øĞĞ¼Ì³Ğ</p>
+     * <p>æ„é€ å‡½æ•°,é‡å†™å®ƒè¿›è¡Œç»§æ‰¿çˆ¶ç±»ä¸­çš„æ„é€ åŠ¨ä½œ,åœ¨"ctor"å‡½æ•°ä¸­è®°å¾—è°ƒç”¨"this._super()"è¿›è¡Œç»§æ‰¿</p>
      * @param {String} tile
      * @param {Number} tileWidth
      * @param {Number} tileHeight
@@ -104,9 +104,9 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Updates the Atlas (indexed vertex array).
-     * ¸üĞÂAtlas(¶¥µãË÷ÒıÊı×é).
+     * æ›´æ–°Atlas(é¡¶ç‚¹ç´¢å¼•æ•°ç»„).
      * Empty implementation, shall be overridden in subclasses
-     * Çå¿ÕÊµÏÖ·½·¨,ĞèÒª±»×ÓÀàÖØĞ´
+     * æ¸…ç©ºå®ç°æ–¹æ³•,éœ€è¦è¢«å­ç±»é‡å†™
      * @function
      */
     updateAtlasValues: function () {
@@ -115,7 +115,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Get color value of the atlas node
-     * »ñÈ¡atlas½ÚµãµÄÑÕÉ«Öµ
+     * è·å–atlasèŠ‚ç‚¹çš„é¢œè‰²å€¼
      * @function
      * @return {cc.Color}
      */
@@ -127,9 +127,9 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Set whether color should be changed with the opacity value,
-     * ÉèÖÃÑÕÉ«ÖµÊÇ·ñÒª¸ú×ÅÍ¸Ã÷¶È½øĞĞ¸Ä±ä,
+     * è®¾ç½®é¢œè‰²å€¼æ˜¯å¦è¦è·Ÿç€é€æ˜åº¦è¿›è¡Œæ”¹å˜,
      * if true, node color will change while opacity changes.
-     * Èç¹ûÎªtrue,½ÚµãµÄÑÕÉ«ĞèÒªÒòÍ¸Ã÷¶ÈÖµµÄ¸Ä±ä¶ø¸Ä±ä.
+     * å¦‚æœä¸ºtrue,èŠ‚ç‚¹çš„é¢œè‰²éœ€è¦å› é€æ˜åº¦å€¼çš„æ”¹å˜è€Œæ”¹å˜.
      * @function
      * @param {Boolean} value
      */
@@ -141,7 +141,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Get whether color should be changed with the opacity value
-     * »ñÈ¡ÑÕÉ«ÖµÊÇ·ñÓĞÒòÍ¸Ã÷¶ÈÖµµÄ¸Ä±ä¶ø¸Ä±ä
+     * è·å–é¢œè‰²å€¼æ˜¯å¦æœ‰å› é€æ˜åº¦å€¼çš„æ”¹å˜è€Œæ”¹å˜
      * @function
      * @return {Boolean}
      */
@@ -151,7 +151,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Get node's blend function
-     * »ñÈ¡½ÚµãµÄ»ìºÏº¯Êı
+     * è·å–èŠ‚ç‚¹çš„æ··åˆå‡½æ•°
      * @function
      * @return {cc.BlendFunc}
      */
@@ -161,9 +161,9 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Set node's blend function
-     * ÉèÖÃ½ÚµãµÄ»ìºÏº¯Êı
+     * è®¾ç½®èŠ‚ç‚¹çš„æ··åˆå‡½æ•°
      * This function accept either cc.BlendFunc object or source value and destination value
-     * ¸Ãº¯Êı½ÓÊÜÒ»¸ö»ìºÏº¯Êı¶ÔÏó»òÕßÒ»¸öÔ´¸úÄ¿±êÖµ
+     * è¯¥å‡½æ•°æ¥å—ä¸€ä¸ªæ··åˆå‡½æ•°å¯¹è±¡æˆ–è€…ä¸€ä¸ªæºè·Ÿç›®æ ‡å€¼
      * @function
      * @param {Number | cc.BlendFunc} src
      * @param {Number} dst
@@ -177,7 +177,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Set the atlas texture
-     * ÉèÖÃatlasÎÆÀí
+     * è®¾ç½®atlasçº¹ç†
      * @function
      * @param {cc.TextureAtlas} value The texture
      */
@@ -187,7 +187,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Get the atlas texture
-     * »ñÈ¡atlasÎÆÀí
+     * è·å–atlasçº¹ç†
      * @function
      * @return {cc.TextureAtlas}
      */
@@ -197,7 +197,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Get the number of quads to be rendered
-     * »ñÈ¡äÖÈ¾¹ıµÄËÄ±ßĞÎµÄÊıÁ¿
+     * è·å–æ¸²æŸ“è¿‡çš„å››è¾¹å½¢çš„æ•°é‡
      * @function
      * @return {Number}
      */
@@ -207,7 +207,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Set the number of quads to be rendered
-     * ÉèÖÃÒª½øĞĞäÖÈ¾µÄËÄ±ßĞÎµÄÊıÁ¿
+     * è®¾ç½®è¦è¿›è¡Œæ¸²æŸ“çš„å››è¾¹å½¢çš„æ•°é‡
      * @function
      * @param {Number} quadsToDraw
      */
@@ -223,7 +223,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Initializes an cc.AtlasNode object with an atlas texture file name, the width, the height of each tile and the quantity of tiles to render
-     * ÓÃAtlasÎÄ¼ş³õÊ¼»¯cc.AtlasNode¶ÔÏó,²¢ÉèÖÃ¿í¡¢¸ß¡¢itmesÊıÁ¿ 
+     * ç”¨Atlasæ–‡ä»¶åˆå§‹åŒ–cc.AtlasNodeå¯¹è±¡,å¹¶è®¾ç½®å®½ã€é«˜ã€itmesæ•°é‡ 
      * @function
      * @param {String} tile             The atlas texture file name
      * @param {Number} tileWidth        The width of each tile
@@ -240,7 +240,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Initializes an CCAtlasNode with an atlas texture, the width, the height of each tile and the quantity of tiles to render
-     * ÓÃatlasÎÆÀí³õÊ¼»¯AtlasNode,²¢ÉèÖÃ¿í¡¢¸ß¡¢itmesÊıÁ¿ 
+     * ç”¨atlasçº¹ç†åˆå§‹åŒ–AtlasNode,å¹¶è®¾ç½®å®½ã€é«˜ã€itmesæ•°é‡ 
      * @function
      * @param {cc.Texture2D} texture    The atlas texture
      * @param {Number} tileWidth        The width of each tile
@@ -299,7 +299,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Render function using the canvas 2d context or WebGL context, internal usage only, please do not call this function
-     * Ê¹ÓÃcanvas 2dÉÏÏÂÎÄ»òÕßWebGLÉÏÏÂÎÄäÖÈ¾º¯Êı,½ö¹©ÄÚ²¿Ê¹ÓÃ,Çë±ğµ÷ÓÃ¸Ãº¯Êı
+     * ä½¿ç”¨canvas 2dä¸Šä¸‹æ–‡æˆ–è€…WebGLä¸Šä¸‹æ–‡æ¸²æŸ“å‡½æ•°,ä»…ä¾›å†…éƒ¨ä½¿ç”¨,è¯·åˆ«è°ƒç”¨è¯¥å‡½æ•°
      * @function
      * @param {CanvasRenderingContext2D | WebGLRenderingContext} ctx The render context
      */
@@ -317,7 +317,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Set node's color
-     * ÉèÖÃ½ÚµãµÄÑÕÉ«
+     * è®¾ç½®èŠ‚ç‚¹çš„é¢œè‰²
      * @function
      * @param {cc.Color} color Color object created with cc.color(r, g, b).
      */
@@ -377,7 +377,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Set node's opacity
-     * ÉèÖÃ½ÚµãµÄÍ¸Ã÷¶È
+     * è®¾ç½®èŠ‚ç‚¹çš„é€æ˜åº¦
      * @function
      * @param {Number} opacity The opacity value
      */
@@ -406,7 +406,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Get the current texture
-     * »ñÈ¡µ±Ç°ÎÆÀí
+     * è·å–å½“å‰çº¹ç†
      * @function
      * @return {cc.Texture2D}
      */
@@ -422,7 +422,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
 
     /**
      * Replace the current texture with a new one
-     * Ê¹ÓÃĞÂÎÆÀíÌæ»»µ±Ç°ÎÆÀí
+     * ä½¿ç”¨æ–°çº¹ç†æ›¿æ¢å½“å‰çº¹ç†
      * @function
      * @param {cc.Texture2D} texture    The new texture
      */
@@ -517,12 +517,12 @@ if (cc._renderType === cc._RENDER_TYPE_WEBGL) {
 }
 
 // Override properties
-// ÖØĞ´ÊôĞÔ
+// é‡å†™å±æ€§
 cc.defineGetterSetter(_p, "opacity", _p.getOpacity, _p.setOpacity);
 cc.defineGetterSetter(_p, "color", _p.getColor, _p.setColor);
 
 // Extended properties
-// À©Õ¹ÊôĞÔ
+// æ‰©å±•å±æ€§
 /** @expose */
 _p.texture;
 cc.defineGetterSetter(_p, "texture", _p.getTexture, _p.setTexture);
@@ -534,7 +534,7 @@ _p.quadsToDraw;
 
 /**
  * Creates a cc.AtlasNode with an Atlas file the width and height of each item and the quantity of items to render
- * ´ÓAtlasÎÄ¼ş´´½¨Ò»¸öAtlasNode,²¢ÉèÖÃËüµÄ¿í¡¢¸ßÒÔ¼°itmesÊıÁ¿
+ * ä»Atlasæ–‡ä»¶åˆ›å»ºä¸€ä¸ªAtlasNode,å¹¶è®¾ç½®å®ƒçš„å®½ã€é«˜ä»¥åŠitmesæ•°é‡
  * @deprecated since v3.0, please use new construction instead
  * @function
  * @static

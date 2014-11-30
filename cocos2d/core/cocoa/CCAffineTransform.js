@@ -26,9 +26,9 @@
 
 /**
  * <p>cc.AffineTransform class represent an affine transform matrix. It's composed basically by translation, rotation, scale transformations.<br/>
- * <p>cc.AffineTransformÀà±íÊ¾Ò»¸öÄÚÁª±ä»»¾ØÕó.Ëü°üÀ¨»ù±¾µÄ±ä»»,Ğı×ª,Ëõ·Å±ä»».
+ * <p>cc.AffineTransformç±»è¡¨ç¤ºä¸€ä¸ªå†…è”å˜æ¢çŸ©é˜µ.å®ƒåŒ…æ‹¬åŸºæœ¬çš„å˜æ¢,æ—‹è½¬,ç¼©æ”¾å˜æ¢.
  * Please do not use its constructor directly, use cc.affineTransformMake alias function instead.
- * Çë±ğÖ±½ÓÊ¹ÓÃËüµÄ¹¹Ôìº¯Êı,Ê¹ÓÃcc.affineTransformMakeº¯ÊıÀ´Ìæ»»
+ * è¯·åˆ«ç›´æ¥ä½¿ç”¨å®ƒçš„æ„é€ å‡½æ•°,ä½¿ç”¨cc.affineTransformMakeå‡½æ•°æ¥æ›¿æ¢
  * </p>
  * @class cc.AffineTransform
  * @param {Number} a
@@ -50,7 +50,7 @@ cc.AffineTransform = function (a, b, c, d, tx, ty) {
 
 /**
  * Create a cc.AffineTransform object with all contents in the matrix
- * Ê¹ÓÃ¾ØÕóÖĞµÄÖµ´´½¨Ò»¸öcc.AffineTransform¶ÔÏó
+ * ä½¿ç”¨çŸ©é˜µä¸­çš„å€¼åˆ›å»ºä¸€ä¸ªcc.AffineTransformå¯¹è±¡
  * @function
  * 
  * @param {Number} a
@@ -67,7 +67,7 @@ cc.affineTransformMake = function (a, b, c, d, tx, ty) {
 
 /**
  * Apply the affine transformation on a point.
- * ¶Ôµã½øĞĞÄÚÁª±ä»»
+ * å¯¹ç‚¹è¿›è¡Œå†…è”å˜æ¢
  * @function
  * 
  * @param {cc.Point} point
@@ -85,7 +85,7 @@ cc._pointApplyAffineTransform = function (x, y, t) {
 
 /**
  * Apply the affine transformation on a size.
- * ¶Ô³ß´çÊ¹ÓÃÄÚÁª±ä»»
+ * å¯¹å°ºå¯¸ä½¿ç”¨å†…è”å˜æ¢
  * @function
  * 
  * @param {cc.Size} size
@@ -98,7 +98,7 @@ cc.sizeApplyAffineTransform = function (size, t) {
 
 /**
  * <p>Create a identity transformation matrix: <br/>
- * <p>´´½¨Ò»¸ö±êÊ¶±ä»»¾ØÕó<br/>
+ * <p>åˆ›å»ºä¸€ä¸ªæ ‡è¯†å˜æ¢çŸ©é˜µ<br/>
  * [ 1, 0, 0, <br/>
  *   0, 1, 0 ]</p>
  * @function
@@ -111,7 +111,7 @@ cc.affineTransformMakeIdentity = function () {
 
 /**
  * <p>Create a identity transformation matrix: <br/>
- * <p>´´½¨Ò»¸ö±êÊ¶±ä»»¾ØÕó<br/>
+ * <p>åˆ›å»ºä¸€ä¸ªæ ‡è¯†å˜æ¢çŸ©é˜µ<br/>
  * <p><br/>
  * [ 1, 0, 0, <br/>
  *   0, 1, 0 ]</p>
@@ -127,7 +127,7 @@ cc.affineTransformIdentity = function () {
 
 /**
  * Apply the affine transformation on a rect.
- * ¶ÔÒ»¸ö¾ØĞÎ½øÓÃÄÚÁª±ä»»
+ * å¯¹ä¸€ä¸ªçŸ©å½¢è¿›ç”¨å†…è”å˜æ¢
  * @function
  * 
  * @param {cc.Rect} rect
@@ -178,7 +178,7 @@ cc._rectApplyAffineTransformIn = function(rect, anAffineTransform){
 
 /**
  * Create a new affine transformation with a base transformation matrix and a translation based on it.
- * ´´½¨Ò»¸ö»ùÓÚ»ù×¼±ä»»¾ØÕó¸ú±ä»»ÖµµÄÄÚÁª±ä»»¾ØÕó.
+ * åˆ›å»ºä¸€ä¸ªåŸºäºåŸºå‡†å˜æ¢çŸ©é˜µè·Ÿå˜æ¢å€¼çš„å†…è”å˜æ¢çŸ©é˜µ.
  * @function
  * 
  * @param {cc.AffineTransform} t The base affine transform object
@@ -199,7 +199,7 @@ cc.affineTransformTranslate = function (t, tx, ty) {
 
 /**
  * Create a new affine transformation with a base transformation matrix and a scale based on it.
- * ´´½¨Ò»¸ö»ùÓÚ»ù×¼±ä»»¾ØÕó¸úËõ·Å±ÈÀıµÄÄÚÁª±ä»»¾ØÕó.
+ * åˆ›å»ºä¸€ä¸ªåŸºäºåŸºå‡†å˜æ¢çŸ©é˜µè·Ÿç¼©æ”¾æ¯”ä¾‹çš„å†…è”å˜æ¢çŸ©é˜µ.
  * @function
  * @param {cc.AffineTransform} t The base affine transform object
  * @param {Number} sx The scale on x axis
@@ -212,7 +212,7 @@ cc.affineTransformScale = function (t, sx, sy) {
 
 /**
  * Create a new affine transformation with a base transformation matrix and a rotation based on it.
- * ´´½¨Ò»¸ö»ùÓÚ»ù×¼±ä»»¾ØÕó¸úĞı×ª½Ç¶ÈµÄÄÚÁª±ä»»¾ØÕó.
+ * åˆ›å»ºä¸€ä¸ªåŸºäºåŸºå‡†å˜æ¢çŸ©é˜µè·Ÿæ—‹è½¬è§’åº¦çš„å†…è”å˜æ¢çŸ©é˜µ.
  * @function
  * @param {cc.AffineTransform} aTransform The base affine transform object
  * @param {Number} anAngle  The angle to rotate
@@ -232,7 +232,7 @@ cc.affineTransformRotate = function (aTransform, anAngle) {
 
 /**
  * Concatenate a transform matrix to another and return the result:<br/>
- * ¶Ô¾ØÕó½øĞĞ³Ë»ı±ä»»,²¢·µ»Ø½á¹ûÖµ
+ * å¯¹çŸ©é˜µè¿›è¡Œä¹˜ç§¯å˜æ¢,å¹¶è¿”å›ç»“æœå€¼
  * t' = t1 * t2
  * @function
  * @param {cc.AffineTransform} t1 The first transform object
@@ -250,7 +250,7 @@ cc.affineTransformConcat = function (t1, t2) {
 
 /**
  * Return true if an affine transform equals to another, false otherwise.
- * Èç¹ûÁ½¸ö·ÂÉä±ä»»ÏàµÈÔò·µ»Øtrue,·ñÔò·µ»Øfalse.
+ * å¦‚æœä¸¤ä¸ªä»¿å°„å˜æ¢ç›¸ç­‰åˆ™è¿”å›true,å¦åˆ™è¿”å›false.
  * @function
  * @param {cc.AffineTransform} t1
  * @param {cc.AffineTransform} t2
@@ -262,7 +262,7 @@ cc.affineTransformEqualToTransform = function (t1, t2) {
 
 /**
  * Get the invert transform of an AffineTransform object
- * »ñÈ¡Ò»¸öÄæ±ä»»AffineTransform¶ÔÏó
+ * è·å–ä¸€ä¸ªé€†å˜æ¢AffineTransformå¯¹è±¡
  * @function
  * @param {cc.AffineTransform} t
  * @return {cc.AffineTransform} The inverted transform object

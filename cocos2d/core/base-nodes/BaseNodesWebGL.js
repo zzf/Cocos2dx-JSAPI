@@ -64,7 +64,7 @@ cc._tmp.WebGLCCNode = function () {
     _p.visit = function () {
         var _t = this;
         // quick return if not visible
-        // Èç¹û²»¿É¼ûÔòÁ¢¼´·µ»Ø
+        // å¦‚æœä¸å¯è§åˆ™ç«‹å³è¿”å›
         if (!_t._visible)
             return;
 
@@ -74,7 +74,7 @@ cc._tmp.WebGLCCNode = function () {
         var context = cc._renderContext, i, currentStack = cc.current_stack;
 
         //optimize performance for javascript
-        //javascript ĞÔÄÜÓÅ»¯
+        //javascript æ€§èƒ½ä¼˜åŒ–
         currentStack.stack.push(currentStack.top);
         cc.kmMat4Assign(_t._stackMatrix, currentStack.top);
         currentStack.top = _t._stackMatrix;
@@ -87,7 +87,7 @@ cc._tmp.WebGLCCNode = function () {
             var childLen = locChildren.length;
             _t.sortAllChildren();
             // draw children zOrder < 0
-            // Èç¹ûZÖáµÄÖµĞ¡0 Ôò½øĞĞ»æÖÆ
+            // å¦‚æœZè½´çš„å€¼å°0 åˆ™è¿›è¡Œç»˜åˆ¶
             for (i = 0; i < childLen; i++) {
                 if (locChildren[i] && locChildren[i]._localZOrder < 0)
                     locChildren[i].visit();
@@ -97,7 +97,7 @@ cc._tmp.WebGLCCNode = function () {
             if(this._rendererCmd)
                 cc.renderer.pushRenderCommand(this._rendererCmd);
             // draw children zOrder >= 0
-            // Èç¹ûZÖáµÄÖµ´óÓÚµÈÓÚ0 Ôò½øĞĞ»æÖÆ
+            // å¦‚æœZè½´çš„å€¼å¤§äºç­‰äº0 åˆ™è¿›è¡Œç»˜åˆ¶
             for (; i < childLen; i++) {
                 if (locChildren[i]) {
                     locChildren[i].visit();
@@ -109,7 +109,7 @@ cc._tmp.WebGLCCNode = function () {
         }
 
         //optimize performance for javascript
-        //javascript ĞÔÄÜÓÅ»¯
+        //javascript æ€§èƒ½ä¼˜åŒ–
         currentStack.top = currentStack.stack.pop();
     };
 
@@ -118,7 +118,7 @@ cc._tmp.WebGLCCNode = function () {
             parentMatrix = pMatrix || (this._parent ? this._parent._stackMatrix : cc.current_stack.top);
 
         // Convert 3x3 into 4x4 matrix
-        // ½«3x3¾ØÕó×ª»»Îª4x4¾ØÕó
+        // å°†3x3çŸ©é˜µè½¬æ¢ä¸º4x4çŸ©é˜µ
         var trans = this.nodeToParentTransform();
         var t4x4Mat = t4x4.mat;
         t4x4Mat[0] = trans.a;
@@ -129,15 +129,15 @@ cc._tmp.WebGLCCNode = function () {
         t4x4Mat[13] = trans.ty;
 
         // Update Z vertex manually
-        // ¸üĞÂZÖá¶¥µã
+        // æ›´æ–°Zè½´é¡¶ç‚¹
         t4x4Mat[14] = this._vertexZ;
 
         //optimize performance for Javascript
-        //javascript ĞÔÄÜÓÅ»¯
+        //javascript æ€§èƒ½ä¼˜åŒ–
         cc.kmMat4Multiply(stackMatrix, parentMatrix, t4x4);
 
         // XXX: Expensive calls. Camera should be integrated into the cached affine matrix
-        // XXX: ¸ß´ú¼Ûµ÷ÓÃ.ÉãÏñ»úĞèÒª¼¯³Éµ½»º´æÖĞµÄ·ÂÉä¾ØÕóÖĞ
+        // XXX: é«˜ä»£ä»·è°ƒç”¨.æ‘„åƒæœºéœ€è¦é›†æˆåˆ°ç¼“å­˜ä¸­çš„ä»¿å°„çŸ©é˜µä¸­
         if (this._camera != null && !(this.grid != null && this.grid.isActive())) {
             var apx = this._anchorPointInPoints.x, apy = this._anchorPointInPoints.y;
             var translate = (apx !== 0.0 || apy !== 0.0);
@@ -174,11 +174,11 @@ cc._tmp.WebGLCCNode = function () {
     _p.transform = function () {
         var _t = this;
         //optimize performance for javascript
-        //javascript ĞÔÄÜÓÅ»¯
+        //javascript æ€§èƒ½ä¼˜åŒ–
         var t4x4 = _t._transform4x4, topMat4 = cc.current_stack.top;
 
         // Convert 3x3 into 4x4 matrix
-        // ½«3x3¾ØÕó×ª»»Îª4x4¾ØÕó
+        // å°†3x3çŸ©é˜µè½¬æ¢ä¸º4x4çŸ©é˜µ
         var trans = _t.nodeToParentTransform();
         var t4x4Mat = t4x4.mat;
         t4x4Mat[0] = trans.a;
@@ -189,15 +189,15 @@ cc._tmp.WebGLCCNode = function () {
         t4x4Mat[13] = trans.ty;
 
         // Update Z vertex manually
-        // ¸üĞÂZÖá¶¥µã
+        // æ›´æ–°Zè½´é¡¶ç‚¹
         t4x4Mat[14] = _t._vertexZ;
 
         //optimize performance for Javascript
-        //javascript ĞÔÄÜÓÅ»¯
+        //javascript æ€§èƒ½ä¼˜åŒ–
         cc.kmMat4Multiply(topMat4, topMat4, t4x4);
 
         // XXX: Expensive calls. Camera should be integrated into the cached affine matrix
-        // XXX: ¸ß´ú¼Ûµ÷ÓÃ.ÉãÏñ»úĞèÒª¼¯³Éµ½»º´æÖĞµÄ·ÂÉä¾ØÕóÖĞ
+        // XXX: é«˜ä»£ä»·è°ƒç”¨.æ‘„åƒæœºéœ€è¦é›†æˆåˆ°ç¼“å­˜ä¸­çš„ä»¿å°„çŸ©é˜µä¸­
         if (_t._camera != null && !(_t.grid != null && _t.grid.isActive())) {
             var apx = _t._anchorPointInPoints.x, apy = _t._anchorPointInPoints.y;
             var translate = (apx !== 0.0 || apy !== 0.0);

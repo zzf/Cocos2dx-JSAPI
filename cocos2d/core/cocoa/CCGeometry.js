@@ -26,7 +26,7 @@
 
 /**
  * cc.Point is the class for point object, please do not use its constructor to create points, use cc.p() alias function instead.
- * cc.PointÊÇµã¶ÔÏóµÄÀà,Çë±ğÊ¹ÓÃÆä¹¹ÔìÆ÷È¥´´½¨µã,Ê¹ÓÃcc.p()º¯ÊıÀ´´úÌæ.
+ * cc.Pointæ˜¯ç‚¹å¯¹è±¡çš„ç±»,è¯·åˆ«ä½¿ç”¨å…¶æ„é€ å™¨å»åˆ›å»ºç‚¹,ä½¿ç”¨cc.p()å‡½æ•°æ¥ä»£æ›¿.
  * @class cc.Point
  * @param {Number} x
  * @param {Number} y
@@ -39,7 +39,7 @@ cc.Point = function (x, y) {
 
 /**
  * Helper function that creates a cc.Point.
- * ´´½¨cc.PointµÄ°ïÖúº¯Êı
+ * åˆ›å»ºcc.Pointçš„å¸®åŠ©å‡½æ•°
  * @function
  * @param {Number|cc.Point} x a Number or a size object
  * @param {Number} y
@@ -53,13 +53,13 @@ cc.Point = function (x, y) {
 cc.p = function (x, y) {
     // This can actually make use of "hidden classes" in JITs and thus decrease
     // memory usage and overall performance drastically
-    // ÔÚJITsÖĞ,ÕâÀïÊµ¼ÊÉÏ¿ÉÒÔÊ¹ÓÃ"ÄäÃûÀà",À´½µµÍÄÚ´æÊ¹ÓÃÂÊ¸úÌá¸ßĞÔÄÜ
+    // åœ¨JITsä¸­,è¿™é‡Œå®é™…ä¸Šå¯ä»¥ä½¿ç”¨"åŒ¿åç±»",æ¥é™ä½å†…å­˜ä½¿ç”¨ç‡è·Ÿæé«˜æ€§èƒ½
     // return cc.p(x, y);
     // but this one will instead flood the heap with newly allocated hash maps
     // giving little room for optimization by the JIT,
-    // µ«ÕâÀï¿ÉÒÔ¶Ô¹şÏ£Ó³Éä½øĞĞÖØĞÂ·ÖÅä,ÁôÏÂĞ¡·ù¶ÈµÄÓÅ»¯¿Õ¼ä¸øJIT,
+    // ä½†è¿™é‡Œå¯ä»¥å¯¹å“ˆå¸Œæ˜ å°„è¿›è¡Œé‡æ–°åˆ†é…,ç•™ä¸‹å°å¹…åº¦çš„ä¼˜åŒ–ç©ºé—´ç»™JIT,
     // note: we have tested this item on Chrome and firefox, it is faster than cc.p(x, y)
-    // ×¢Òâ: ÎÒÃÇÒÑ¾­ÔÚChrome¸úfirefoxÖĞ½øĞĞ²âÊÔ¹ı,Ëü±Ècc.p(x,y)¸ü¿ì
+    // æ³¨æ„: æˆ‘ä»¬å·²ç»åœ¨Chromeè·Ÿfirefoxä¸­è¿›è¡Œæµ‹è¯•è¿‡,å®ƒæ¯”cc.p(x,y)æ›´å¿«
     if (x == undefined)
         return {x: 0, y: 0};
     if (y == undefined)
@@ -69,7 +69,7 @@ cc.p = function (x, y) {
 
 /**
  * Check whether a point's value equals to another
- * ÅĞ¶ÏÁ½¸öµãÊÇ·ñÏàµÈ
+ * åˆ¤æ–­ä¸¤ä¸ªç‚¹æ˜¯å¦ç›¸ç­‰
  * @function
  * @param {cc.Point} point1
  * @param {cc.Point} point2
@@ -82,7 +82,7 @@ cc.pointEqualToPoint = function (point1, point2) {
 
 /**
  * cc.Size is the class for size object, please do not use its constructor to create sizes, use cc.size() alias function instead.
- * cc.SizeÊÇ³ß´ç¶ÔÏóµÄÀà,Çë±ğÊ¹ÓÃÆä¹¹ÔìÆ÷È¥´´½¨³ß´ç,Ê¹ÓÃcc.size()º¯ÊıÀ´Ìæ´ú.
+ * cc.Sizeæ˜¯å°ºå¯¸å¯¹è±¡çš„ç±»,è¯·åˆ«ä½¿ç”¨å…¶æ„é€ å™¨å»åˆ›å»ºå°ºå¯¸,ä½¿ç”¨cc.size()å‡½æ•°æ¥æ›¿ä»£.
  * @class cc.Size
  * @param {Number} width
  * @param {Number} height
@@ -95,7 +95,7 @@ cc.Size = function (width, height) {
 
 /**
  * Helper function that creates a cc.Size.
- * ´´½¨cc.Size¶ÔÏóµÄ°ïÖúº¯Êı
+ * åˆ›å»ºcc.Sizeå¯¹è±¡çš„å¸®åŠ©å‡½æ•°
  * @function
  * @param {Number|cc.Size} w width or a size object
  * @param {Number} h height
@@ -109,13 +109,13 @@ cc.Size = function (width, height) {
 cc.size = function (w, h) {
     // This can actually make use of "hidden classes" in JITs and thus decrease
     // memory usage and overall performance drastically
-    // ÔÚJITsÖĞ,ÕâÀïÊµ¼ÊÉÏ¿ÉÒÔÊ¹ÓÃ"ÄäÃûÀà",À´½µµÍÄÚ´æÊ¹ÓÃÂÊ¸úÌá¸ßĞÔÄÜ
+    // åœ¨JITsä¸­,è¿™é‡Œå®é™…ä¸Šå¯ä»¥ä½¿ç”¨"åŒ¿åç±»",æ¥é™ä½å†…å­˜ä½¿ç”¨ç‡è·Ÿæé«˜æ€§èƒ½
     //return cc.size(w, h);
     // but this one will instead flood the heap with newly allocated hash maps
     // giving little room for optimization by the JIT
-    // µ«ÕâÀï¿ÉÒÔ¶Ô¹şÏ£Ó³Éä½øĞĞÖØĞÂ·ÖÅä,ÁôÏÂĞ¡·ù¶ÈµÄÓÅ»¯¿Õ¼ä¸øJIT,
+    // ä½†è¿™é‡Œå¯ä»¥å¯¹å“ˆå¸Œæ˜ å°„è¿›è¡Œé‡æ–°åˆ†é…,ç•™ä¸‹å°å¹…åº¦çš„ä¼˜åŒ–ç©ºé—´ç»™JIT,
     // note: we have tested this item on Chrome and firefox, it is faster than cc.size(w, h)
-    // ×¢Òâ: ÎÒÃÇÒÑ¾­ÔÚChrome¸úfirefoxÖĞ½øĞĞ²âÊÔ¹ı,Ëü±Ècc.size(w, h)¸ü¿ì
+    // æ³¨æ„: æˆ‘ä»¬å·²ç»åœ¨Chromeè·Ÿfirefoxä¸­è¿›è¡Œæµ‹è¯•è¿‡,å®ƒæ¯”cc.size(w, h)æ›´å¿«
     if (w === undefined)
         return {width: 0, height: 0};
     if (h === undefined)
@@ -125,7 +125,7 @@ cc.size = function (w, h) {
 
 /**
  * Check whether a point's value equals to another
- * ÅĞ¶ÏÒ»¸öµãµÄÖµÊÇ·ñµÈÓÚÁíÍâÒ»¸ö
+ * åˆ¤æ–­ä¸€ä¸ªç‚¹çš„å€¼æ˜¯å¦ç­‰äºå¦å¤–ä¸€ä¸ª
  * @function
  * @param {cc.Size} size1
  * @param {cc.Size} size2
@@ -138,7 +138,7 @@ cc.sizeEqualToSize = function (size1, size2) {
 
 /**
  * cc.Rect is the class for rect object, please do not use its constructor to create rects, use cc.rect() alias function instead.
- * cc.RectÊÇ¾ØĞÎ¶ÔÏóµÄÀà,Çë±ğÊ¹ÓÃÆä¹¹ÔìÆ÷È¥´´½¨³ß´ç,Ê¹ÓÃcc.rect()º¯ÊıÀ´Ìæ´ú.
+ * cc.Rectæ˜¯çŸ©å½¢å¯¹è±¡çš„ç±»,è¯·åˆ«ä½¿ç”¨å…¶æ„é€ å™¨å»åˆ›å»ºå°ºå¯¸,ä½¿ç”¨cc.rect()å‡½æ•°æ¥æ›¿ä»£.
  * @class cc.Rect
  * @param {Number} width
  * @param {Number} height
@@ -153,7 +153,7 @@ cc.Rect = function (x, y, width, height) {
 
 /**
  * Helper function that creates a cc.Rect.
- * ´´½¨Ò»¸öcc.Rect¶ÔÏóµÄ°ïÖúº¯Êı
+ * åˆ›å»ºä¸€ä¸ªcc.Rectå¯¹è±¡çš„å¸®åŠ©å‡½æ•°
  * @function
  * @param {Number|cc.Rect} x a number or a rect object
  * @param {Number} y
@@ -176,7 +176,7 @@ cc.rect = function (x, y, w, h) {
 
 /**
  * Check whether a rect's value equals to another
- * ÅĞ¶ÏÒ»¸ö¾ØĞÎµÄÖµÊÇ·ñµÈÓÚÁíÍâÒ»¸ö¾ØĞÎ
+ * åˆ¤æ–­ä¸€ä¸ªçŸ©å½¢çš„å€¼æ˜¯å¦ç­‰äºå¦å¤–ä¸€ä¸ªçŸ©å½¢
  * @function
  * @param {cc.Rect} rect1
  * @param {cc.Rect} rect2
@@ -192,7 +192,7 @@ cc._rectEqualToZero = function(rect){
 
 /**
  * Check whether the rect1 contains rect2
- * ÅĞ¶Ïrect1ÊÇ·ñ°üº¬rect2
+ * åˆ¤æ–­rect1æ˜¯å¦åŒ…å«rect2
  * @function
  * @param {cc.Rect} rect1
  * @param {cc.Rect} rect2
@@ -208,7 +208,7 @@ cc.rectContainsRect = function (rect1, rect2) {
 
 /**
  * Returns the rightmost x-value of a rect
- * ·µ»Ø¾ØĞÎXÖá×îÓÒ±ßµÄÖµ
+ * è¿”å›çŸ©å½¢Xè½´æœ€å³è¾¹çš„å€¼
  * @function
  * @param {cc.Rect} rect
  * @return {Number} The rightmost x value
@@ -219,7 +219,7 @@ cc.rectGetMaxX = function (rect) {
 
 /**
  * Return the midpoint x-value of a rect
- * ·µ»Ø¾ØĞÎXÖáµÄÖĞµã
+ * è¿”å›çŸ©å½¢Xè½´çš„ä¸­ç‚¹
  * @function
  * @param {cc.Rect} rect
  * @return {Number} The midpoint x value
@@ -229,7 +229,7 @@ cc.rectGetMidX = function (rect) {
 };
 /**
  * Returns the leftmost x-value of a rect
- * ·µ»Ø¾ØĞÎXÖá×î×ó±ßµÄÖµ
+ * è¿”å›çŸ©å½¢Xè½´æœ€å·¦è¾¹çš„å€¼
  * @function
  * @param {cc.Rect} rect
  * @return {Number} The leftmost x value
@@ -240,7 +240,7 @@ cc.rectGetMinX = function (rect) {
 
 /**
  * Return the topmost y-value of a rect
- * ·µ»Ø¾ØĞÎYÖá×îÉÏÃæµÄÖµ
+ * è¿”å›çŸ©å½¢Yè½´æœ€ä¸Šé¢çš„å€¼
  * @function
  * @param {cc.Rect} rect
  * @return {Number} The topmost y value
@@ -251,7 +251,7 @@ cc.rectGetMaxY = function (rect) {
 
 /**
  * Return the midpoint y-value of a rect
- * ·µ»Ø¾ØĞÎYÖáÖĞµã
+ * è¿”å›çŸ©å½¢Yè½´ä¸­ç‚¹
  * @function
  * @param {cc.Rect} rect
  * @return {Number} The midpoint y value
@@ -262,7 +262,7 @@ cc.rectGetMidY = function (rect) {
 
 /**
  * Return the bottommost y-value of a rect
- * ·µ»Ø¾ØĞÎYÖáµ×±ß×î´óÖµ
+ * è¿”å›çŸ©å½¢Yè½´åº•è¾¹æœ€å¤§å€¼
  * @function
  * @param {cc.Rect} rect
  * @return {Number} The bottommost y value
@@ -273,7 +273,7 @@ cc.rectGetMinY = function (rect) {
 
 /**
  * Check whether a rect contains a point
- * ÅĞ¶Ï¾ØĞÎÊÇ·ñ°üº¬Ä³¸öµã
+ * åˆ¤æ–­çŸ©å½¢æ˜¯å¦åŒ…å«æŸä¸ªç‚¹
  * @function
  * @param {cc.Rect} rect
  * @param {cc.Point} point
@@ -286,7 +286,7 @@ cc.rectContainsPoint = function (rect, point) {
 
 /**
  * Check whether a rect intersect with another
- * ÅĞ¶ÏÒ»¸ö¾ØĞÎÊÇ·ñÔÚÁíÍâÒ»¸ö¾ØĞÎÄÚ
+ * åˆ¤æ–­ä¸€ä¸ªçŸ©å½¢æ˜¯å¦åœ¨å¦å¤–ä¸€ä¸ªçŸ©å½¢å†…
  * @function
  * @param {cc.Rect} rectA
  * @param {cc.Rect} rectB
@@ -302,7 +302,7 @@ cc.rectIntersectsRect = function (ra, rb) {
 
 /**
  * Check whether a rect overlaps another
- * ÅĞ¶ÏÁ½¸ö¾ØĞÎÊÇ·ñÓĞ½»¼¯
+ * åˆ¤æ–­ä¸¤ä¸ªçŸ©å½¢æ˜¯å¦æœ‰äº¤é›†
  * @function
  * @param {cc.Rect} rectA
  * @param {cc.Rect} rectB
@@ -317,7 +317,7 @@ cc.rectOverlapsRect = function (rectA, rectB) {
 
 /**
  * Returns the smallest rectangle that contains the two source rectangles.
- * ·µ»ØÄÜ°üº¬Á½¸ö¾ØĞÎµÄ×îĞ¡¾ØĞÎ
+ * è¿”å›èƒ½åŒ…å«ä¸¤ä¸ªçŸ©å½¢çš„æœ€å°çŸ©å½¢
  * @function
  * @param {cc.Rect} rectA
  * @param {cc.Rect} rectB
@@ -334,7 +334,7 @@ cc.rectUnion = function (rectA, rectB) {
 
 /**
  * Returns the overlapping portion of 2 rectangles
- * ·µ»ØÁ½¸ö¾ØĞÎµÄÖØµş²¿·Ö
+ * è¿”å›ä¸¤ä¸ªçŸ©å½¢çš„é‡å éƒ¨åˆ†
  * @function
  * @param {cc.Rect} rectA
  * @param {cc.Rect} rectB
