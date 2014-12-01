@@ -25,6 +25,7 @@
  ****************************************************************************/
 /**
  * A tag constant for identifying fade scenes
+ * 一个标记用于识别淡出的场景
  * @constant
  * @type Number
  */
@@ -32,24 +33,28 @@ cc.SCENE_FADE = 4208917214;
 
 /**
  * horizontal orientation Type where the Left is nearer
+ * 水平方向，接近左边
  * @constant
  * @type Number
  */
 cc.TRANSITION_ORIENTATION_LEFT_OVER = 0;
 /**
  * horizontal orientation type where the Right is nearer
+ * 水平方向,接近右边
  * @constant
  * @type Number
  */
 cc.TRANSITION_ORIENTATION_RIGHT_OVER = 1;
 /**
  * vertical orientation type where the Up is nearer
+ * 垂直方向,接近上边
  * @constant
  * @type Number
  */
 cc.TRANSITION_ORIENTATION_UP_OVER = 0;
 /**
  * vertical orientation type where the Bottom is nearer
+ * 垂直方向,接近底边
  * @constant
  * @type Number
  */
@@ -58,8 +63,8 @@ cc.TRANSITION_ORIENTATION_DOWN_OVER = 1;
 /**
  * @class
  * @extends cc.Scene
- * @param {Number} t time in seconds
- * @param {cc.Scene} scene the scene to transit with
+ * @param {Number} t time in seconds 持续时间(秒)
+ * @param {cc.Scene} scene the scene to transit with 用于转换的场景
  * @example
  * var trans = new TransitionScene(time,scene);
  */
@@ -73,9 +78,11 @@ cc.TransitionScene = cc.Scene.extend(/** @lends cc.TransitionScene# */{
 
     /**
      * creates a base transition with duration and incoming scene
+     * 创建一个基本的具有持续时间和进入场景的转换
      * Constructor of cc.TransitionScene
-     * @param {Number} t time in seconds
-     * @param {cc.Scene} scene the scene to transit with
+     * TransitionScene的构造函数
+     * @param {Number} t time in seconds 持续时间(秒)
+     * @param {cc.Scene} scene the scene to transit with 用于转换的场景
      */
     ctor:function (t, scene) {
         cc.Scene.prototype.ctor.call(this);
@@ -87,11 +94,13 @@ cc.TransitionScene = cc.Scene.extend(/** @lends cc.TransitionScene# */{
     _setNewScene:function (dt) {
         this.unschedule(this._setNewScene);
         // Before replacing, save the "send cleanup to scene"
+        // 在替换之前, 保存一个"send cleanup to scene"
         var director = cc.director;
         this._isSendCleanupToScene = director.isSendCleanupToScene();
         director.runScene(this._inScene);
 
         // enable events while transitions
+        // 在转场时打开事件
         cc.eventManager.setEnabled(true);
 
         // issue #267
@@ -120,7 +129,9 @@ cc.TransitionScene = cc.Scene.extend(/** @lends cc.TransitionScene# */{
     /**
      *  <p>
      *     Event callback that is invoked every time when cc.TransitionScene enters the 'stage'.                                   <br/>
+     *     每次调用事件回调会在TransitionScene事件进入'舞台'时
      *     If the TransitionScene enters the 'stage' with a transition, this event is called when the transition starts.        <br/>
+     *     当这个TransitionScene进入'舞台时', 当转场开始时这个事件会被调用
      *     During onEnter you can't access a "sister/brother" node.                                                    <br/>
      *     If you override onEnter, you must call its parent's onEnter function with this._super().
      * </p>
