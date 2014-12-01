@@ -48,8 +48,11 @@
  * var node = new cc.AtlasNode("pathOfTile", 16, 16, 1);
  *
  * @property {cc.Texture2D}     texture         - Current used texture
+ * @property {cc.Texture2D}     texture         - 当前使用的纹理
  * @property {cc.TextureAtlas}  textureAtlas    - Texture atlas for cc.AtlasNode
+ * @property {cc.TextureAtlas}  textureAtlas    - cc.AtlasNodeTexture的地图纹理
  * @property {Number}           quadsToDraw     - Number of quads to draw
+ * @property {Number}           quadsToDraw     - 要回执的四边形的数量
  */
 cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
     textureAtlas: null,
@@ -180,6 +183,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
      * 设置atlas纹理
      * @function
      * @param {cc.TextureAtlas} value The texture
+     * @param {cc.TextureAtlas} 纹理的值
      */
     setTextureAtlas: function (value) {
         this.textureAtlas = value;
@@ -226,9 +230,13 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
      * 用Atlas文件初始化cc.AtlasNode对象,并设置宽、高、itmes数量 
      * @function
      * @param {String} tile             The atlas texture file name
+     * @param {String} tile             地图纹理的文件名
      * @param {Number} tileWidth        The width of each tile
+     * @param {Number} tileWidth        每个瓦片的宽度
      * @param {Number} tileHeight       The height of each tile
+     * @param {Number} tileHeight       每个瓦片的高度
      * @param {Number} itemsToRender    The quantity of tiles to be rendered
+     * @param {Number} itemsToRender    要渲染的瓦片数量
      * @return {Boolean}
      */
     initWithTileFile: function (tile, tileWidth, tileHeight, itemsToRender) {
@@ -243,9 +251,13 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
      * 用atlas纹理初始化AtlasNode,并设置宽、高、itmes数量 
      * @function
      * @param {cc.Texture2D} texture    The atlas texture
+     * @param {cc.Texture2D} texture    地图纹理
      * @param {Number} tileWidth        The width of each tile
+     * @param {Number} tileWidth        每个瓦片的宽度
      * @param {Number} tileHeight       The height of each tile
+     * @param {Number} tileHeight       每个瓦片的高度
      * @param {Number} itemsToRender    The quantity of tiles to be rendered
+     * @param {Number} itemsToRender    要渲染的瓦片数量
      * @return {Boolean}
      */
     initWithTexture: null,
@@ -302,6 +314,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
      * 使用canvas 2d上下文或者WebGL上下文渲染函数,仅供内部使用,请别调用该函数
      * @function
      * @param {CanvasRenderingContext2D | WebGLRenderingContext} ctx The render context
+     * @param {CanvasRenderingContext2D | WebGLRenderingContext} ctx 渲染上下文
      */
     draw: null,
 
@@ -320,6 +333,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
      * 设置节点的颜色
      * @function
      * @param {cc.Color} color Color object created with cc.color(r, g, b).
+     * @param {cc.Color} color cc.color(r, g, b)创建的颜色对象.
      */
     setColor: null,
 
@@ -380,6 +394,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
      * 设置节点的透明度
      * @function
      * @param {Number} opacity The opacity value
+     * @param {Number} opacity 透明度的值
      */
     setOpacity: function (opacity) {
     },
@@ -387,6 +402,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
     _setOpacityForCanvas: function (opacity) {
         cc.Node.prototype.setOpacity.call(this, opacity);
         // special opacity for premultiplied textures
+        // 自左乘纹理的特殊透明度
         if (this._opacityModifyRGB) {
             this.color = this._colorUnmodified;
         }
@@ -395,6 +411,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
     _setOpacityForWebGL: function (opacity) {
         cc.Node.prototype.setOpacity.call(this, opacity);
         // special opacity for premultiplied textures
+        // 自左乘纹理的特殊透明度
         if (this._opacityModifyRGB) {
             this.color = this._colorUnmodified;
         } else {
@@ -425,6 +442,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
      * 使用新纹理替换当前纹理
      * @function
      * @param {cc.Texture2D} texture    The new texture
+     * @param {cc.Texture2D} texture    新的纹理
      */
     setTexture: null,
 

@@ -42,6 +42,7 @@ cc.Point = function (x, y) {
  * 创建cc.Point的帮助函数
  * @function
  * @param {Number|cc.Point} x a Number or a size object
+ * @param {Number|cc.Point} x 一个数字或者尺寸对象
  * @param {Number} y
  * @return {cc.Point}
  * @example
@@ -98,6 +99,7 @@ cc.Size = function (width, height) {
  * 创建cc.Size对象的帮助函数
  * @function
  * @param {Number|cc.Size} w width or a size object
+ * @param {Number|cc.Size} w 宽度或者尺寸对象
  * @param {Number} h height
  * @return {cc.Size}
  * @example
@@ -156,6 +158,7 @@ cc.Rect = function (x, y, width, height) {
  * 创建一个cc.Rect对象的帮助函数
  * @function
  * @param {Number|cc.Rect} x a number or a rect object
+ * @param {Number|cc.Rect} x 一个数字或者一个矩形对象
  * @param {Number} y
  * @param {Number} w
  * @param {Number} h
@@ -212,6 +215,7 @@ cc.rectContainsRect = function (rect1, rect2) {
  * @function
  * @param {cc.Rect} rect
  * @return {Number} The rightmost x value
+ * @return {Number} 最右边的X值
  */
 cc.rectGetMaxX = function (rect) {
     return (rect.x + rect.width);
@@ -223,6 +227,7 @@ cc.rectGetMaxX = function (rect) {
  * @function
  * @param {cc.Rect} rect
  * @return {Number} The midpoint x value
+ * @return {Number} X轴的中点值
  */
 cc.rectGetMidX = function (rect) {
     return (rect.x + rect.width / 2.0);
@@ -233,6 +238,7 @@ cc.rectGetMidX = function (rect) {
  * @function
  * @param {cc.Rect} rect
  * @return {Number} The leftmost x value
+ * @return {Number} X轴最左边的值
  */
 cc.rectGetMinX = function (rect) {
     return rect.x;
@@ -244,6 +250,7 @@ cc.rectGetMinX = function (rect) {
  * @function
  * @param {cc.Rect} rect
  * @return {Number} The topmost y value
+ * @return {Number} Y轴最上面的值
  */
 cc.rectGetMaxY = function (rect) {
     return(rect.y + rect.height);
@@ -255,6 +262,7 @@ cc.rectGetMaxY = function (rect) {
  * @function
  * @param {cc.Rect} rect
  * @return {Number} The midpoint y value
+ * @return {Number} Y轴的中点值
  */
 cc.rectGetMidY = function (rect) {
     return rect.y + rect.height / 2.0;
@@ -266,6 +274,7 @@ cc.rectGetMidY = function (rect) {
  * @function
  * @param {cc.Rect} rect
  * @return {Number} The bottommost y value
+ * @return {Number} Y轴最低端的值
  */
 cc.rectGetMinY = function (rect) {
     return rect.y;
