@@ -72,7 +72,7 @@ cc.PointObject = cc.Class.extend(/** @lends cc.PointObject# */{
     },
 
     /**
-     * Gets the child. 获取子类
+     * Gets the child. 获取子元素
      * @return {cc.Node}
      */
     getChild:function () {
@@ -80,7 +80,7 @@ cc.PointObject = cc.Class.extend(/** @lends cc.PointObject# */{
     },
 
     /**
-     * Set the child. 设置子类
+     * Set the child. 设置子元素
      * @param  {cc.Node} value
      */
     setChild:function (value) {
