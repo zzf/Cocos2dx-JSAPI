@@ -33,11 +33,11 @@
  *       - offset
  * </p>
  * @class
- * @extends cc.Class
- * @param spriteFrame
- * @param delayUnits
- * @param userInfo
- * @returns {AnimationFrame}
+ * @extends cc.Class	- 继承自cc.Class
+ * @param spriteFrame	- 精灵帧
+ * @param delayUnits	- 精灵帧的延续时长
+ * @param userInfo	- 用户自定义的信息
+ * @returns {AnimationFrame}	- 返回动画帧
  */
 cc.AnimationFrame = cc.Class.extend(/** @lends cc.AnimationFrame# */{
     _spriteFrame:null,
@@ -52,6 +52,8 @@ cc.AnimationFrame = cc.Class.extend(/** @lends cc.AnimationFrame# */{
 
     /**
      * Create a new animation frame and copy all contents into it
+     * 创建一个新的动画帧并且复制当前动画帧对象的所有内容
+     * 
      * @returns {AnimationFrame}
      */
     clone: function(){
@@ -62,6 +64,8 @@ cc.AnimationFrame = cc.Class.extend(/** @lends cc.AnimationFrame# */{
 
     /**
      * Create a new animation frame and copy all contents into it
+     * 创建一个新的动画帧并且复制当前动画帧对象的所有内容
+     * 
      * @returns {AnimationFrame}
      */
     copyWithZone:function (pZone) {
@@ -70,6 +74,8 @@ cc.AnimationFrame = cc.Class.extend(/** @lends cc.AnimationFrame# */{
 
     /**
      * Create a new animation frame and copy all contents into it
+     * 创建一个新的动画帧并且复制当前动画帧对象的所有内容
+     * 
      * @returns {AnimationFrame}
      */
     copy:function (pZone) {
@@ -80,6 +86,8 @@ cc.AnimationFrame = cc.Class.extend(/** @lends cc.AnimationFrame# */{
 
     /**
      * initializes the animation frame with a spriteframe, number of delay units and a notification user info
+     * 初始化动画帧，有三个参数：精灵帧、延迟的时长、用户的自定义数据
+     * 
      * @param {cc.SpriteFrame} spriteFrame
      * @param {Number} delayUnits
      * @param {object} userInfo
@@ -94,6 +102,8 @@ cc.AnimationFrame = cc.Class.extend(/** @lends cc.AnimationFrame# */{
 
     /**
      * Returns sprite frame to be used
+     * 获取将要被使用的精灵帧
+     * 
      * @return {cc.SpriteFrame}
      */
     getSpriteFrame:function () {
@@ -102,6 +112,8 @@ cc.AnimationFrame = cc.Class.extend(/** @lends cc.AnimationFrame# */{
 
     /**
      * Sets sprite frame to be used
+     * 设置将要被使用的精灵帧
+     * 
      * @param {cc.SpriteFrame} spriteFrame
      */
     setSpriteFrame:function (spriteFrame) {
@@ -110,6 +122,8 @@ cc.AnimationFrame = cc.Class.extend(/** @lends cc.AnimationFrame# */{
 
     /**
      * Returns how many units of time the frame takes getter
+     * 获取精灵的延续时长
+     * 
      * @return {Number}
      */
     getDelayUnits:function () {
@@ -118,6 +132,8 @@ cc.AnimationFrame = cc.Class.extend(/** @lends cc.AnimationFrame# */{
 
     /**
      * Sets how many units of time the frame takes setter
+     * 设置精灵的延续时长
+     * 
      * @param delayUnits
      */
     setDelayUnits:function (delayUnits) {
@@ -126,6 +142,8 @@ cc.AnimationFrame = cc.Class.extend(/** @lends cc.AnimationFrame# */{
 
     /**
      * Returns the user custom information
+     * 获取用户的自定义数据
+     * 
      * @return {object}
      */
     getUserInfo:function () {
@@ -134,6 +152,8 @@ cc.AnimationFrame = cc.Class.extend(/** @lends cc.AnimationFrame# */{
 
     /**
      * Sets the user custom information
+     * 设置用户的自定义数据
+     * 
      * @param {object} userInfo
      */
     setUserInfo:function (userInfo) {
@@ -143,7 +163,11 @@ cc.AnimationFrame = cc.Class.extend(/** @lends cc.AnimationFrame# */{
 
 /**
  * Creates an animation frame.
+ * 创建一个精灵帧
+ * 
  * @deprecated since v3.0, please use the new construction instead
+ * v3.0以后弃用，请使用new的构造方式进行替代
+ * 
  * @param {cc.SpriteFrame} spriteFrame
  * @param {Number} delayUnits
  * @param {object} userInfo
@@ -167,10 +191,14 @@ cc.AnimationFrame.create = function(spriteFrame,delayUnits,userInfo){
  * @param {Number} [loops=1]
  *
  * @example
- * // 1. Creates an empty animation
+ * 示例
+ * 
+ * // 1. Creates an empty animation	
+ * // 创建一个空的动画帧
  * var animation1 = new cc.Animation();
  *
  * // 2. Create an animation with sprite frames, delay and loops.
+ * // 分别使用精灵帧、延续时长、循环次数来创建动画
  * var spriteFrames = [];
  * var frame = cc.spriteFrameCache.getSpriteFrame("grossini_dance_01.png");
  * spriteFrames.push(frame);
@@ -179,6 +207,7 @@ cc.AnimationFrame.create = function(spriteFrame,delayUnits,userInfo){
  * var animation2 = new cc.Animation(spriteFrames, 0.2, 2);
  *
  * // 3. Create an animation with animation frames, delay and loops.
+ * // 分别使用动画帧、延续时长、循环次数来创建动画
  * var animationFrames = [];
  * var frame =  new cc.AnimationFrame();
  * animationFrames.push(frame);
@@ -187,9 +216,11 @@ cc.AnimationFrame.create = function(spriteFrame,delayUnits,userInfo){
  * var animation3 = new cc.Animation(animationFrames, 0.2, 2);
  *
  * //create an animate with this animation
+ * // 通过动画来创建一个action
  * var action = cc.animate(animation1);
  *
  * //run animate
+ * // 运行动画
  * sprite.runAction(action);
  */
 cc.Animation = cc.Class.extend(/** @lends cc.Animation# */{
@@ -223,6 +254,8 @@ cc.Animation = cc.Class.extend(/** @lends cc.Animation# */{
 
     /**
      * Returns the array of animation frames
+     * 返回动画帧数组
+     * 
      * @return {Array}
      */
     getFrames:function () {
@@ -231,6 +264,8 @@ cc.Animation = cc.Class.extend(/** @lends cc.Animation# */{
 
     /**
      * Sets array of animation frames
+     * 设置动画帧数组
+     * 
      * @param {Array} frames
      */
     setFrames:function (frames) {
@@ -239,6 +274,8 @@ cc.Animation = cc.Class.extend(/** @lends cc.Animation# */{
 
     /**
      * Adds a frame to a cc.Animation, the frame will be added with one "delay unit".
+     * 新增一个动画帧，该帧默认为一个延时单位，总的动画帧长也增加一个延时单位
+     * 
      * @param {cc.SpriteFrame} frame
      */
     addSpriteFrame:function (frame) {
@@ -252,6 +289,8 @@ cc.Animation = cc.Class.extend(/** @lends cc.Animation# */{
 
     /**
      * Adds a frame with an image filename. Internally it will create a cc.SpriteFrame and it will add it. The frame will be added with one "delay unit".
+     * 使用图片的文件名新增一个精灵帧. 其内部会创建一个cc.SpriteFrame并添加它，该动画帧将自动添加一个延时单位
+     * 
      * @param {String} fileName
      */
     addSpriteFrameWithFile:function (fileName) {
@@ -265,6 +304,8 @@ cc.Animation = cc.Class.extend(/** @lends cc.Animation# */{
 
     /**
      * Adds a frame with a texture and a rect. Internally it will create a cc.SpriteFrame and it will add it. The frame will be added with one "delay unit".
+     * 通过texture和rect来创建一个精灵帧. 其内部会创建一个cc.SpriteFrame并添加它，该动画帧将自动添加一个延时单位
+     * 
      * @param {cc.Texture2D} texture
      * @param {cc.Rect} rect
      */
@@ -275,6 +316,8 @@ cc.Animation = cc.Class.extend(/** @lends cc.Animation# */{
 
     /**
      * Initializes a cc.Animation with cc.AnimationFrame, do not call this method yourself, please pass parameters to constructor to initialize.
+     * 使用精灵帧来初始化一个动画，请使用构造函数传参的方式来进行初始化，不要主动调用该方法
+     * 
      * @param {Array} arrayOfAnimationFrames
      * @param {Number} delayPerUnit
      * @param {Number} [loops=1]
@@ -299,6 +342,8 @@ cc.Animation = cc.Class.extend(/** @lends cc.Animation# */{
 
     /**
      * Clone the current animation
+     * 克隆当前的动画
+     * 
      * @return {cc.Animation}
      */
     clone: function(){
@@ -310,6 +355,8 @@ cc.Animation = cc.Class.extend(/** @lends cc.Animation# */{
 
     /**
      * Clone the current animation
+     * 克隆当前的动画
+     * 
      * @return {cc.Animation}
      */
     copyWithZone:function (pZone) {
@@ -328,6 +375,8 @@ cc.Animation = cc.Class.extend(/** @lends cc.Animation# */{
 
     /**
      * Clone the current animation
+     * 克隆当前的动画
+     * 
      * @param pZone
      * @returns {cc.Animation}
      */
@@ -337,6 +386,8 @@ cc.Animation = cc.Class.extend(/** @lends cc.Animation# */{
 
     /**
      * Returns how many times the animation is going to loop. 0 means animation is not animated. 1, animation is executed one time, ...
+     * 返回动画要循环执行的次数，0, 表示它不是一个动画. 1, 表示已经被执行过一次 ...
+     * 
      * @return {Number}
      */
     getLoops:function () {
@@ -345,6 +396,8 @@ cc.Animation = cc.Class.extend(/** @lends cc.Animation# */{
 
     /**
      * Sets how many times the animation is going to loop. 0 means animation is not animated. 1, animation is executed one time, ...
+     * 设置动画要循环执行的次数，0, 表示它不是一个动画. 1, 表示已经被执行过一次 ...
+     * 
      * @param {Number} value
      */
     setLoops:function (value) {
@@ -353,6 +406,8 @@ cc.Animation = cc.Class.extend(/** @lends cc.Animation# */{
 
     /**
      * Sets whether or not it shall restore the original frame when the animation finishes
+     * 设置当动画播放完毕之后是否恢复成初始的帧
+     * 
      * @param {Boolean} restOrigFrame
      */
     setRestoreOriginalFrame:function (restOrigFrame) {
