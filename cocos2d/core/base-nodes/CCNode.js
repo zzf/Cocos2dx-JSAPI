@@ -26,7 +26,7 @@
 
 /**
  * Default Node tag
- * Ä¬ÈÏ½Úµã±êÇ©
+ * é»˜è®¤èŠ‚ç‚¹æ ‡ç­¾
  * @constant
  * @type Number
  */
@@ -34,103 +34,103 @@ cc.NODE_TAG_INVALID = -1;
 
 /**
  * XXX: Yes, nodes might have a sort problem once every 15 days if the game runs at 60 FPS and each frame sprites are reordered.
- * XXX: ÊÇµÄ,½Úµã»òĞí»áÓĞÒ»¸öÅÅĞòÎÊÌâ,Èç¹ûÓÎÏ·ÔËĞĞÔÚ60FPSÇÒÃ¿Ò»¸öÓÎÏ·Ö¡¶¼ÖØĞÂÅÅĞò,15ÌìÒ»´Î.
+ * XXX: æ˜¯çš„,èŠ‚ç‚¹æˆ–è®¸ä¼šæœ‰ä¸€ä¸ªæ’åºé—®é¢˜,å¦‚æœæ¸¸æˆè¿è¡Œåœ¨60FPSä¸”æ¯ä¸€ä¸ªæ¸¸æˆå¸§éƒ½é‡æ–°æ’åº,15å¤©ä¸€æ¬¡.
  */
 cc.s_globalOrderOfArrival = 1;
 
 /**
  * <p>cc.Node is the root class of all node. Anything that gets drawn or contains things that get drawn is a cc.Node.<br/>
- * <p>cc.NodeÊÇËùÓĞ½ÚµãµÄ¸¸Àà,ËùÓĞµÄ»æÖÆ»òÕß°üº¬µÄ¶«Î÷¶¼ÊÇÒ»¸öcc.Node.
+ * <p>cc.Nodeæ˜¯æ‰€æœ‰èŠ‚ç‚¹çš„çˆ¶ç±»,æ‰€æœ‰çš„ç»˜åˆ¶æˆ–è€…åŒ…å«çš„ä¸œè¥¿éƒ½æ˜¯ä¸€ä¸ªcc.Node.
  * The most popular cc.Nodes are: cc.Scene, cc.Layer, cc.Sprite, cc.Menu.</p>
- * ×îµäĞÍµÄcc.NodesÓĞ:cc.Scene,cc.Layer,cc.Sprite,cc.Menu.</p>
+ * æœ€å…¸å‹çš„cc.Nodesæœ‰:cc.Scene,cc.Layer,cc.Sprite,cc.Menu.</p>
  *
  * <p>The main features of a cc.Node are: <br/>
- * <p>Ò»¸öcc.NodeµÄÖ÷ÒªÌØµã:
+ * <p>ä¸€ä¸ªcc.Nodeçš„ä¸»è¦ç‰¹ç‚¹:
  * - They can contain other cc.Node nodes (addChild, getChildByTag, removeChild, etc) <br/>
- * - ËûÃÇ¿ÉÒÔ°üº¬ÆäËûµÄ½Úµã¶ÔÏó(addChild, getChildByTag, removeChild, etc)<br/>
+ * - ä»–ä»¬å¯ä»¥åŒ…å«å…¶ä»–çš„èŠ‚ç‚¹å¯¹è±¡(addChild, getChildByTag, removeChild, etc)<br/>
  * - They can schedule periodic callback (schedule, unschedule, etc) <br/>
- * - ËûÃÇ¿ÉÒÔ°²ÅÅ¶¨ÆÚµÄ»Øµ÷(schedule, unschedule, etc)<br/>
+ * - ä»–ä»¬å¯ä»¥å®‰æ’å®šæœŸçš„å›è°ƒ(schedule, unschedule, etc)<br/>
  * - They can execute actions (runAction, stopAction, etc) <br/></p>
- * - ËûÃÇ¿ÉÒÔÖ´ĞĞÒ»Ğ©¶¯×÷(runAction, stopAction, etc)<br/></p>
+ * - ä»–ä»¬å¯ä»¥æ‰§è¡Œä¸€äº›åŠ¨ä½œ(runAction, stopAction, etc)<br/></p>
  *
  * <p>Some cc.Node nodes provide extra functionality for them or their children.</p>
- * <p>ÓĞĞ©cc.Node½ÚµãÌá¹©¶îÍâµÄº¯Êı¸øÆä×Ô¼º»ñÈ¡Æä×ÓÀà.</p>
+ * <p>æœ‰äº›cc.NodeèŠ‚ç‚¹æä¾›é¢å¤–çš„å‡½æ•°ç»™å…¶è‡ªå·±è·å–å…¶å­ç±».</p>
  *
  * <p>Subclassing a cc.Node usually means (one/all) of: <br/>
- * <p>×ÓÀà½ÚµãÍ¨³£ÒâÎ¶×Å(µ¥Ò»µÄ/ËùÓĞµÄ):<br/>
+ * <p>å­ç±»èŠ‚ç‚¹é€šå¸¸æ„å‘³ç€(å•ä¸€çš„/æ‰€æœ‰çš„):<br/>
  * - overriding constructor function "ctor" to initialize resources and schedule callbacks<br/>
- * - ÖØĞ´¹¹Ôìº¯Êı"ctor"È¥³õÊ¼»¯×ÊÔ´¸ú°²ÅÅ»Øµ÷<br/>
+ * - é‡å†™æ„é€ å‡½æ•°"ctor"å»åˆå§‹åŒ–èµ„æºè·Ÿå®‰æ’å›è°ƒ<br/>
  * - create callbacks to handle the advancement of time<br/></p>
- * - ´´½¨»Øµ÷À´²Ù×÷½øĞĞµÄÊ±¼ä<br/></p>
+ * - åˆ›å»ºå›è°ƒæ¥æ“ä½œè¿›è¡Œçš„æ—¶é—´<br/></p>
  *
  * <p>Features of cc.Node: <br/>
- * <p>cc.Node¹¦ÄÜ:<br/>
+ * <p>cc.NodeåŠŸèƒ½:<br/>
  * - position  <br/>
- * - Î»ÖÃ<br/>
+ * - ä½ç½®<br/>
  * - scale (x, y) <br/>
- * - x,yÖáËõ·Å
+ * - x,yè½´ç¼©æ”¾
  * - rotation (in degrees, clockwise)<br/>
- * - ½Ç¶ÈµÄĞı×ª<br/>
+ * - è§’åº¦çš„æ—‹è½¬<br/>
  * - anchor point<br/>
- * - Ãªµã<br/>
+ * - é”šç‚¹<br/>
  * - size <br/>
- * - ³ß´ç <br/>
+ * - å°ºå¯¸ <br/>
  * - color <br/>
- * - ÑÕÉ« <br/>
+ * - é¢œè‰² <br/>
  * - opacity <br/>
- * - Í¸Ã÷¶È <br/>
+ * - é€æ˜åº¦ <br/>
  * - visible<br/>
- * - ¿É¼ûĞÔ<br/>
+ * - å¯è§æ€§<br/>
  * - z-order<br/>
- * - ZÖáÅÅĞò<br/>
+ * - Zè½´æ’åº<br/>
  * - WebGL z position<br/></P>
- * - WebGLµÄZÖáÎ»ÖÃ<br/></p>
+ * - WebGLçš„Zè½´ä½ç½®<br/></p>
  *
  * <p> Default values: <br/>
- * <p> Ä¬ÈÏÖµ: <br/>
+ * <p> é»˜è®¤å€¼: <br/>
  * - rotation: 0 <br/>
- * - Ğı×ª:0 <br/>
+ * - æ—‹è½¬:0 <br/>
  * - position: (x=0,y=0) <br/>
- * - Î»ÖÃ: (x=0,y=0) <br/>
+ * - ä½ç½®: (x=0,y=0) <br/>
  * - scale: (x=1,y=1) <br/>
- * - Ëõ·Å±ÈÀı: (x=1,y=1) <br/>
+ * - ç¼©æ”¾æ¯”ä¾‹: (x=1,y=1) <br/>
  * - contentSize: (x=0,y=0)<br/>
- * - ÎÄ±¾³ß´ç: (x=0,y=0)<br/>
+ * - æ–‡æœ¬å°ºå¯¸: (x=0,y=0)<br/>
  * - anchorPoint: (x=0,y=0)<br/>
- * - Ãªµã: (x=0,y=0)<br/>
+ * - é”šç‚¹: (x=0,y=0)<br/>
  * - color: (r=255,g=255,b=255)<br/>
- * - ÑÕÉ«: (r=255,g=255,b=255)<br/>
+ * - é¢œè‰²: (r=255,g=255,b=255)<br/>
  * - opacity: 255</p>
- * - Í¸Ã÷¶È: 255</p>
+ * - é€æ˜åº¦: 255</p>
  *
  * <p> Limitations:<br/>
- * <p> ¾ÖÏŞĞÔ:<br/>
+ * <p> å±€é™æ€§:<br/>
  * - A cc.Node is a "void" object. It doesn't have a texture <br/></P>
- * - Ò»¸öcc.NodeÊÇÒ»¸ö"void"¶ÔÏó.ËüÃ»ÓĞÎÆÀí<br/></p>
+ * - ä¸€ä¸ªcc.Nodeæ˜¯ä¸€ä¸ª"void"å¯¹è±¡.å®ƒæ²¡æœ‰çº¹ç†<br/></p>
  *
  * <p>Order in transformations with grid disabled <br/>
- * <p>ÆôÓÃÍø¸ñ±ä»»ÅÅĞò<br/>
+ * <p>å¯ç”¨ç½‘æ ¼å˜æ¢æ’åº<br/>
  * -# The node will be translated (position)  <br/>
- * -# ½ÚµãµÄÎ»ÖÃ»á±»±ä»»  <br/>
+ * -# èŠ‚ç‚¹çš„ä½ç½®ä¼šè¢«å˜æ¢  <br/>
  * -# The node will be rotated (rotation)<br/>
- * -# ½Úµã»á±»Ğı×ª<br/>
+ * -# èŠ‚ç‚¹ä¼šè¢«æ—‹è½¬<br/>
  * -# The node will be scaled (scale)  <br/>
- * -# ½Úµã»á±»Ëõ·Å<br/>
+ * -# èŠ‚ç‚¹ä¼šè¢«ç¼©æ”¾<br/>
  *
  * <p>Order in transformations with grid enabled<br/>
- * <p>²»ÆôÓÃÍø¸ñ±ä»»ÅÅĞò<br/>
+ * <p>ä¸å¯ç”¨ç½‘æ ¼å˜æ¢æ’åº<br/>
  * -# The node will be translated (position)<br/>
- * -# ½ÚµãµÄÎ»ÖÃ»á±»±ä»»  <br/>
+ * -# èŠ‚ç‚¹çš„ä½ç½®ä¼šè¢«å˜æ¢  <br/>
  * -# The node will be rotated (rotation) <br/>
- * -# ½Úµã»á±»Ğı×ª<br/>
+ * -# èŠ‚ç‚¹ä¼šè¢«æ—‹è½¬<br/>
  * -# The node will be scaled (scale) <br/>
- * -# ½Úµã»á±»Ëõ·Å<br/>
+ * -# èŠ‚ç‚¹ä¼šè¢«ç¼©æ”¾<br/>
  * -# The grid will capture the screen <br/>
- * -# Íø¸ñ½«»á²¶×½ÆÁÄ»<br/>
+ * -# ç½‘æ ¼å°†ä¼šæ•æ‰å±å¹•<br/>
  * -# The node will be moved according to the camera values (camera) <br/>
- * -# ½Úµã½«»á¸ù¾İÉãÏñ»úµÄÖµ½øĞĞÒÆ¶¯ <br/>
+ * -# èŠ‚ç‚¹å°†ä¼šæ ¹æ®æ‘„åƒæœºçš„å€¼è¿›è¡Œç§»åŠ¨ <br/>
  * -# The grid will render the captured screen <br/></P>
- * -# Íø¸ñ½«»áäÖÈ¾±»²¶×½µÄÆÁÄ» <br/></P>
+ * -# ç½‘æ ¼å°†ä¼šæ¸²æŸ“è¢«æ•æ‰çš„å±å¹• <br/></P>
  *
  * @class
  * @extends cc.Class
@@ -173,8 +173,8 @@ cc.s_globalOrderOfArrival = 1;
  * @property {Number}               glServerState       - The state of OpenGL server side
  */
 cc.Node = cc.Class.extend(/** @lends cc.Node# */{
-    _localZOrder: 0,                                     ///< Local order (relative to its siblings) used to sort the node //< ±¾µØÅÅĞò(Ïà¶ÔÓÚÆäÍ¬¼¶Àà)ÓÃÀ´ÅÅĞò½Úµã
-    _globalZOrder: 0,                                    ///< Global order used to sort the node //<ÓÃÀ´È«¾ÖÅÅĞò½Úµã
+    _localZOrder: 0,                                     ///< Local order (relative to its siblings) used to sort the node //< æœ¬åœ°æ’åº(ç›¸å¯¹äºå…¶åŒçº§ç±»)ç”¨æ¥æ’åºèŠ‚ç‚¹
+    _globalZOrder: 0,                                    ///< Global order used to sort the node //<ç”¨æ¥å…¨å±€æ’åºèŠ‚ç‚¹
     _vertexZ: 0.0,
 
     _rotationX: 0,
@@ -190,7 +190,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     _skewX: 0.0,
     _skewY: 0.0,
     // children (lazy allocs),
-    // ×ÓÀà(ÑÓ³ÙÄÚ´æ·ÖÅä),
+    // å­ç±»(å»¶è¿Ÿå†…å­˜åˆ†é…),
     _children: null,
     // lazy alloc,
     _visible: true,
@@ -200,22 +200,22 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     _running: false,
     _parent: null,
     // "whole screen" objects. like Scenes and Layers, should set _ignoreAnchorPointForPosition to true
-    // "È«ÆÁ"¶ÔÏó.¾ÍÏñScenes¸úLayers,ĞèÒªÉèÖÃ_ignoreAnchorPointForPositionÎªtrue
+    // "å…¨å±"å¯¹è±¡.å°±åƒScenesè·ŸLayers,éœ€è¦è®¾ç½®_ignoreAnchorPointForPositionä¸ºtrue
     _ignoreAnchorPointForPosition: false,
     tag: cc.NODE_TAG_INVALID,
     // userData is always initialized as nil
-    // userDataÒ»°ã±»³õÊ¼»¯³Énil
+    // userDataä¸€èˆ¬è¢«åˆå§‹åŒ–æˆnil
     userData: null,
     userObject: null,
     _transformDirty: true,
     _inverseDirty: true,
     _cacheDirty: false,
     // Cached parent serves to construct the cached parent chain
-    // ·şÎñÓÚ¸¸ÀàµÄ»º´æ,ÓÃÓÚ¹¹½¨¸¸ÀàµÄ»º´æÁ´
+    // æœåŠ¡äºçˆ¶ç±»çš„ç¼“å­˜,ç”¨äºæ„å»ºçˆ¶ç±»çš„ç¼“å­˜é“¾
     _cachedParent: null,
     _transformGLDirty: null,
-    _transform: null,                            //local transform //±¾µØ±ä»»
-    _transformWorld: null,                       //world transform //ÊÀ½ç×ø±ê±ä»»
+    _transform: null,                            //local transform //æœ¬åœ°å˜æ¢
+    _transformWorld: null,                       //world transform //ä¸–ç•Œåæ ‡å˜æ¢
     _inverse: null,
 
     //since 2.0 api
@@ -237,7 +237,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     _rotationRadiansY: 0,
     _className: "Node",
     _showNode: false,
-    _name: "",                     ///<a string label, an user defined string to identify this node ///<Ò»¸ö×Ö·û´®±êÇ©,ÓÃ»§¶¨ÒåÒ»¸ö×Ö·û´®±êÇ©¸ø½Úµã
+    _name: "",                     ///<a string label, an user defined string to identify this node ///<ä¸€ä¸ªå­—ç¬¦ä¸²æ ‡ç­¾,ç”¨æˆ·å®šä¹‰ä¸€ä¸ªå­—ç¬¦ä¸²æ ‡ç­¾ç»™èŠ‚ç‚¹
 
     _displayedOpacity: 255,
     _realOpacity: 255,
@@ -247,7 +247,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     _cascadeOpacityEnabled: false,
     _hashOfName: 0,
 
-    _curLevel: -1,                           //for new renderer //ÎªÁËĞÂµÄäÖÈ¾Æ÷
+    _curLevel: -1,                           //for new renderer //ä¸ºäº†æ–°çš„æ¸²æŸ“å™¨
     _rendererCmd:null,
     _renderCmdDirty: false,
 
@@ -281,7 +281,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Initializes the instance of cc.Node
-     * ³õÊ¼»¯cc.NodeÊµÀı
+     * åˆå§‹åŒ–cc.Nodeå®ä¾‹
      * @function
      * @returns {boolean} Whether the initialization was successful.
      */
@@ -355,20 +355,20 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Sets node's dirty flag to true so that it can be updated in visit function of the next frame
-     * ÉèÖÃ½ÚµãµÄ±êÖ¾Îªtrue,ÒÔ±ãÓÚÏÂÒ»Ö¡·ÃÎÊº¯ÊıÊ±½øĞĞ¸üĞÂ
+     * è®¾ç½®èŠ‚ç‚¹çš„æ ‡å¿—ä¸ºtrue,ä»¥ä¾¿äºä¸‹ä¸€å¸§è®¿é—®å‡½æ•°æ—¶è¿›è¡Œæ›´æ–°
      * @function
      */
     setNodeDirty: null,
 
     /**
      * <p>Properties configuration function </br>
-     * <p>ÊôĞÔÅäÖÃº¯Êı</br>
+     * <p>å±æ€§é…ç½®å‡½æ•°</br>
      * All properties in attrs will be set to the node, </br>
-     * ËùÓĞÔÚattrsÖĞµÄÊôĞÔ½«»á±»ÉèÖÃµ½½ÚµãÖĞ,</br>
+     * æ‰€æœ‰åœ¨attrsä¸­çš„å±æ€§å°†ä¼šè¢«è®¾ç½®åˆ°èŠ‚ç‚¹ä¸­,</br>
      * when the setter of the node is available, </br>
-     * µ±½ÚµãµÄsetter·½·¨¿ÉÓÃÊ±,</br>
+     * å½“èŠ‚ç‚¹çš„setteræ–¹æ³•å¯ç”¨æ—¶,</br>
      * the property will be set via setter function.</br>
-     * ÊôĞÔ½«Í¨¹ısetterº¯Êı½øĞĞÉèÖÃ.</br>
+     * å±æ€§å°†é€šè¿‡setterå‡½æ•°è¿›è¡Œè®¾ç½®.</br>
      * </p>
      * @function
      * @param {Object} attrs Properties to be set to node
@@ -381,15 +381,15 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>Returns the skew degrees in X </br>
-     * <p>»ñÈ¡XÖáµÄÇãĞ±½Ç¶È</br>
+     * <p>è·å–Xè½´çš„å€¾æ–œè§’åº¦</br>
      * The X skew angle of the node in degrees.  <br/>
-     * ½ÚµãXÖáµÄÇãĞ±½Ç µ¥Î»:¶È<br/>
+     * èŠ‚ç‚¹Xè½´çš„å€¾æ–œè§’ å•ä½:åº¦<br/>
      * This angle describes the shear distortion in the X direction.<br/>
-     * ¸Ã½Ç¶È±íÊ¾µÄÊÇXÖá·½ÏòÉÏµÄÇãĞ±³Ì¶È<br/>
+     * è¯¥è§’åº¦è¡¨ç¤ºçš„æ˜¯Xè½´æ–¹å‘ä¸Šçš„å€¾æ–œç¨‹åº¦<br/>
      * Thus, it is the angle between the Y axis and the left edge of the shape </br>
-     * ¸Ã½Ç¶ÈÊÇYÖáÓëÆä×ó±ßÔµÖ®¼äµÄ¼Ğ½Ç</br>
+     * è¯¥è§’åº¦æ˜¯Yè½´ä¸å…¶å·¦è¾¹ç¼˜ä¹‹é—´çš„å¤¹è§’</br>
      * The default skewX angle is 0. Positive values distort the node in a CW direction.</br>
-     * Ä¬ÈÏµÄXÖáÇãĞ±½ÇÎª0.È·ÇĞµÄÖµ±íÊ¾µÄÊÇ½ÚµãÔÚCW·½ÏòÉÏµÄÇãĞ±¶È.</br>
+     * é»˜è®¤çš„Xè½´å€¾æ–œè§’ä¸º0.ç¡®åˆ‡çš„å€¼è¡¨ç¤ºçš„æ˜¯èŠ‚ç‚¹åœ¨CWæ–¹å‘ä¸Šçš„å€¾æ–œåº¦.</br>
      * </p>
      * @function
      * @return {Number} The X skew angle of the node in degrees.
@@ -401,14 +401,14 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /**
      * <p>
      * Changes the X skew angle of the node in degrees.                                                    <br/>
-     * ¸Ä±ä½ÚµãXÖá·½ÏòÉÏµÄÇãĞ±½Ç¶È                                                    <br/>
+     * æ”¹å˜èŠ‚ç‚¹Xè½´æ–¹å‘ä¸Šçš„å€¾æ–œè§’åº¦                                                    <br/>
      * <br/>
      * This angle describes the shear distortion in the X direction.                                       <br/>
-     * ¸Ã½Ç¶È±íÊ¾µÄÊÇXÖá·½ÏòÉÏµÄÇãĞ±³Ì¶È<br/>
+     * è¯¥è§’åº¦è¡¨ç¤ºçš„æ˜¯Xè½´æ–¹å‘ä¸Šçš„å€¾æ–œç¨‹åº¦<br/>
      * Thus, it is the angle between the Y axis and the left edge of the shape                             <br/>
-     * ¸Ã½Ç¶ÈÊÇYÖáÓëÆä×ó±ßÔµÖ®¼äµÄ¼Ğ½Ç</br>
+     * è¯¥è§’åº¦æ˜¯Yè½´ä¸å…¶å·¦è¾¹ç¼˜ä¹‹é—´çš„å¤¹è§’</br>
      * The default skewX angle is 0. Positive values distort the node in a CW direction.
-     * Ä¬ÈÏµÄXÖáÇãĞ±½ÇÎª0.È·ÇĞµÄÖµ±íÊ¾µÄÊÇ½ÚµãÔÚCW·½ÏòÉÏµÄÇãĞ±¶È.</br>
+     * é»˜è®¤çš„Xè½´å€¾æ–œè§’ä¸º0.ç¡®åˆ‡çš„å€¼è¡¨ç¤ºçš„æ˜¯èŠ‚ç‚¹åœ¨CWæ–¹å‘ä¸Šçš„å€¾æ–œåº¦.</br>
      * </p>
      * @function
      * @param {Number} newSkewX The X skew angle of the node in degrees.
@@ -420,15 +420,15 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>Returns the skew degrees in Y               <br/>
-     * <p>»ñÈ¡YÖáµÄÇãĞ±½Ç¶È</br>
+     * <p>è·å–Yè½´çš„å€¾æ–œè§’åº¦</br>
      * The Y skew angle of the node in degrees.                            <br/>
-     * ½ÚµãYÖá·½ÏòµÄÇãĞ±½Ç¶È µ¥Î»:¶È<br/>
+     * èŠ‚ç‚¹Yè½´æ–¹å‘çš„å€¾æ–œè§’åº¦ å•ä½:åº¦<br/>
      * This angle describes the shear distortion in the Y direction.       <br/>
-     * ¸Ã½Ç¶È±íÊ¾µÄÊÇYÖá·½ÏòÉÏµÄÇãĞ±³Ì¶È<br/>
+     * è¯¥è§’åº¦è¡¨ç¤ºçš„æ˜¯Yè½´æ–¹å‘ä¸Šçš„å€¾æ–œç¨‹åº¦<br/>
      * Thus, it is the angle between the X axis and the bottom edge of the shape       <br/>
-     * ¸Ã½Ç¶ÈÊÇXÖáÓëÆäµ×±ßÔµÖ®¼äµÄ¼Ğ½Ç</br>
+     * è¯¥è§’åº¦æ˜¯Xè½´ä¸å…¶åº•è¾¹ç¼˜ä¹‹é—´çš„å¤¹è§’</br>
      * The default skewY angle is 0. Positive values distort the node in a CCW direction.    <br/>
-     * Ä¬ÈÏµÄYÖáÇãĞ±½ÇÎª0.È·ÇĞµÄÖµ±íÊ¾µÄÊÇ½ÚµãÔÚCCW·½ÏòÉÏµÄÇãĞ±¶È.</br>
+     * é»˜è®¤çš„Yè½´å€¾æ–œè§’ä¸º0.ç¡®åˆ‡çš„å€¼è¡¨ç¤ºçš„æ˜¯èŠ‚ç‚¹åœ¨CCWæ–¹å‘ä¸Šçš„å€¾æ–œåº¦.</br>
      * </p>
      * @function
      * @return {Number} The Y skew angle of the node in degrees.
@@ -440,14 +440,14 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /**
      * <p>
      * Changes the Y skew angle of the node in degrees.                                                        <br/>
-     * ¸Ä±ä½ÚµãYÖá·½ÏòÉÏµÄÇãĞ±½Ç¶È                                                    <br/>
+     * æ”¹å˜èŠ‚ç‚¹Yè½´æ–¹å‘ä¸Šçš„å€¾æ–œè§’åº¦                                                    <br/>
      *                                                                                                         <br/>
      * This angle describes the shear distortion in the Y direction.                                           <br/>
-     * ¸Ã½Ç¶È±íÊ¾µÄÊÇYÖá·½ÏòÉÏµÄÇãĞ±³Ì¶È<br/>
+     * è¯¥è§’åº¦è¡¨ç¤ºçš„æ˜¯Yè½´æ–¹å‘ä¸Šçš„å€¾æ–œç¨‹åº¦<br/>
      * Thus, it is the angle between the X axis and the bottom edge of the shape                               <br/>
-     * ¸Ã½Ç¶ÈÊÇXÖáÓëÆäµ×±ßÔµÖ®¼äµÄ¼Ğ½Ç</br>
+     * è¯¥è§’åº¦æ˜¯Xè½´ä¸å…¶åº•è¾¹ç¼˜ä¹‹é—´çš„å¤¹è§’</br>
      * The default skewY angle is 0. Positive values distort the node in a CCW direction.                      <br/>
-     * Ä¬ÈÏµÄYÖáÇãĞ±½ÇÎª0.È·ÇĞµÄÖµ±íÊ¾µÄÊÇ½ÚµãÔÚCCW·½ÏòÉÏµÄÇãĞ±¶È.</br>
+     * é»˜è®¤çš„Yè½´å€¾æ–œè§’ä¸º0.ç¡®åˆ‡çš„å€¼è¡¨ç¤ºçš„æ˜¯èŠ‚ç‚¹åœ¨CCWæ–¹å‘ä¸Šçš„å€¾æ–œåº¦.</br>
      * </p>
      * @function
      * @param {Number} newSkewY  The Y skew angle of the node in degrees.
@@ -459,22 +459,22 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p> LocalZOrder is the 'key' used to sort the node relative to its siblings.                                    <br/>
-     * <p> LocalZOrderÊÇÓÃÀ´ÓëÆäÍ¬¼¶½Úµã½øĞĞÅÅĞòµÄ¹Ø¼ü<br/>
+     * <p> LocalZOrderæ˜¯ç”¨æ¥ä¸å…¶åŒçº§èŠ‚ç‚¹è¿›è¡Œæ’åºçš„å…³é”®<br/>
      *                                                                                                                 <br/>
      * The Node's parent will sort all its children based ont the LocalZOrder value.                                   <br/>
-     * ½ÚµãµÄ¸¸Àà»á»ùÓÚLocalZOrderÖµ¶ÔËùÓĞµÄ×ÓÀà½øĞĞÅÅĞò<br/>
+     * èŠ‚ç‚¹çš„çˆ¶ç±»ä¼šåŸºäºLocalZOrderå€¼å¯¹æ‰€æœ‰çš„å­ç±»è¿›è¡Œæ’åº<br/>
      * If two nodes have the same LocalZOrder, then the node that was added first to the children's array              <br/>
      * will be in front of the other node in the array.                                                                <br/>
-     * Èç¹ûÁ½¸ö½ÚµãÓµÓĞÏàÍ¬µÄLocalZOrder,ÄÇÃ´ÏÈ±»Ìí¼Óµ½×Ó½ÚµãÊı×éÖĞµÄ½Úµã½«»áÅÅÔÚÁíÒ»¸ö½ÚµãµÄÇ°Ãæ<br/>
+     * å¦‚æœä¸¤ä¸ªèŠ‚ç‚¹æ‹¥æœ‰ç›¸åŒçš„LocalZOrder,é‚£ä¹ˆå…ˆè¢«æ·»åŠ åˆ°å­èŠ‚ç‚¹æ•°ç»„ä¸­çš„èŠ‚ç‚¹å°†ä¼šæ’åœ¨å¦ä¸€ä¸ªèŠ‚ç‚¹çš„å‰é¢<br/>
      * 
      * <br/>
      * Also, the Scene Graph is traversed using the "In-Order" tree traversal algorithm ( http://en.wikipedia.org/wiki/Tree_traversal#In-order )
-     * Í¬Ê±,Scene GraphÊ¹ÓÃµÄÊÇ"In-Order"Ê÷±éÀúËã·¨(http://en.wikipedia.org/wiki/Tree_traversal#In-order)
+     * åŒæ—¶,Scene Graphä½¿ç”¨çš„æ˜¯"In-Order"æ ‘éå†ç®—æ³•(http://en.wikipedia.org/wiki/Tree_traversal#In-order)
      * <br/>
      * And Nodes that have LocalZOder values < 0 are the "left" subtree                                                 <br/>
-     * ÓµÓĞLocalZOderµÄÖµĞ¡ÓÚ0µÄ½ÚµãÎª×ó±ßµÄ×Ó½ÚµãÊ÷<br/>
+     * æ‹¥æœ‰LocalZOderçš„å€¼å°äº0çš„èŠ‚ç‚¹ä¸ºå·¦è¾¹çš„å­èŠ‚ç‚¹æ ‘<br/>
      * While Nodes with LocalZOder >=0 are the "right" subtree.    </p>
-     * LocalZOderÖµ´óÓÚµÈÓÚ0µÄÎªÓÒ±ßµÄ×Ó½ÚµãÊ÷</p>
+     * LocalZOderå€¼å¤§äºç­‰äº0çš„ä¸ºå³è¾¹çš„å­èŠ‚ç‚¹æ ‘</p>
      * @function
      * @param {Number} localZOrder
      */
@@ -486,14 +486,14 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     //Helper function used by `setLocalZOrder`. Don't use it unless you know what you are doing.
-    //setLocalZOrderµÄ°ïÖúº¯Êı.³ı·ÇÄãÖªµÀÄãÔÚ×öÊ²Ã´,·ñÔò±ğµ÷ÓÃ¸Ãº¯Êı.
+    //setLocalZOrderçš„å¸®åŠ©å‡½æ•°.é™¤éä½ çŸ¥é“ä½ åœ¨åšä»€ä¹ˆ,å¦åˆ™åˆ«è°ƒç”¨è¯¥å‡½æ•°.
     _setLocalZOrder: function (localZOrder) {
         this._localZOrder = localZOrder;
     },
 
     /**
      * Returns the local Z order of this node.
-     * ·µ»Ø½ÚµãµÄ±¾µØZÖáË³ĞòÖµ
+     * è¿”å›èŠ‚ç‚¹çš„æœ¬åœ°Zè½´é¡ºåºå€¼
      * @function
      * @returns {Number} The local (relative to its siblings) Z order.
      */
@@ -503,7 +503,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns z order of this node
-     * ·µ»Ø½ÚµãµÄZÖáË³ĞòÖµ
+     * è¿”å›èŠ‚ç‚¹çš„Zè½´é¡ºåºå€¼
      * @function
      * @return {Number}
      * @deprecated since 3.0, please use getLocalZOrder instead
@@ -516,16 +516,16 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /**
      * <p>
      *     Sets the Z order which stands for the drawing order, and reorder this node in its parent's children array.     <br/>
-     *     ÉèÖÃ»ùÓÚ»æÖÆË³ĞòµÄZÖáË³ĞòÖµ,²¢ÇÒÖØĞÂÅÅĞò¸Ã½ÚµãÔÚ¸¸Àà×Ó½ÚµãÊı×éÖĞµÄÎ»ÖÃ<br/>
+     *     è®¾ç½®åŸºäºç»˜åˆ¶é¡ºåºçš„Zè½´é¡ºåºå€¼,å¹¶ä¸”é‡æ–°æ’åºè¯¥èŠ‚ç‚¹åœ¨çˆ¶ç±»å­èŠ‚ç‚¹æ•°ç»„ä¸­çš„ä½ç½®<br/>
      *                                                                                                                    <br/>
      *      The Z order of node is relative to its "brothers": children of the same parent.                               <br/>
-     *			½ÚµãµÄZÖáË³ĞòÖµ¹ØÏµµ½ÆäĞÖµÜ:Í¬¼¶×ÓÀà<br/>
+     *			èŠ‚ç‚¹çš„Zè½´é¡ºåºå€¼å…³ç³»åˆ°å…¶å…„å¼Ÿ:åŒçº§å­ç±»<br/>
      *      It's nothing to do with OpenGL's z vertex. This one only affects the draw order of nodes in cocos2d.          <br/>
-     *			²»±ØÒª´¦ÀíOpenGLµÄZÖá¶¥µãÖµ.¸ÃÖµÔÚcocos2dÖĞÖ»Ó°Ïì»æÖÆ½ÚµãµÄË³Ğò<br/>
+     *			ä¸å¿…è¦å¤„ç†OpenGLçš„Zè½´é¡¶ç‚¹å€¼.è¯¥å€¼åœ¨cocos2dä¸­åªå½±å“ç»˜åˆ¶èŠ‚ç‚¹çš„é¡ºåº<br/>
      *      The larger number it is, the later this node will be drawn in each message loop.                              <br/>
-     * 			¸ÃÖµÔ½´ó,¸Ã½Úµã½«»áÔÚÃ¿¸öÏûÏ¢Ñ­»·ÖĞÔ½ÖÃºó.<br/>
+     * 			è¯¥å€¼è¶Šå¤§,è¯¥èŠ‚ç‚¹å°†ä¼šåœ¨æ¯ä¸ªæ¶ˆæ¯å¾ªç¯ä¸­è¶Šç½®å.<br/>
      *      Please refer to setVertexZ(float) for the difference.
-     *			Çë²ÎÔÄsetVertexZ(float)¸ú¸Ãº¯ÊıµÄÇø±ğ.
+     *			è¯·å‚é˜…setVertexZ(float)è·Ÿè¯¥å‡½æ•°çš„åŒºåˆ«.
      *			
      * </p>
      * @function
@@ -539,25 +539,25 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>Defines the oder in which the nodes are renderer.                                                                               <br/>
-     * <p>¶¨ÒåäÖÈ¾½ÚµãµÄË³Ğò
+     * <p>å®šä¹‰æ¸²æŸ“èŠ‚ç‚¹çš„é¡ºåº
      * Nodes that have a Global Z Order lower, are renderer first.                                                                        <br/>
-     * ¶¨ÒåäÖÈ¾½ÚµãµÄË³Ğò ÓµÓĞÈ«¾ÖZË³ĞòÔ½Ğ¡µÄ½Úµã,×îÏÈäÖÈ¾ <br/>
+     * å®šä¹‰æ¸²æŸ“èŠ‚ç‚¹çš„é¡ºåº æ‹¥æœ‰å…¨å±€Zé¡ºåºè¶Šå°çš„èŠ‚ç‚¹,æœ€å…ˆæ¸²æŸ“ <br/>
      *                                                                                                                                    <br/>
      * In case two or more nodes have the same Global Z Order, the oder is not guaranteed.                                                <br/>
-     * ¼ÙÉèÁ½¸ö»òÕß¸ü¶àµÄ½ÚµãÓµÓĞÏàÍ¬µÄÈ«¾ÖZË³Ğò,ÄÇÃ´äÖÈ¾Ë³ĞòÎŞ·¨±£Ö¤.<br/>
+     * å‡è®¾ä¸¤ä¸ªæˆ–è€…æ›´å¤šçš„èŠ‚ç‚¹æ‹¥æœ‰ç›¸åŒçš„å…¨å±€Zé¡ºåº,é‚£ä¹ˆæ¸²æŸ“é¡ºåºæ— æ³•ä¿è¯.<br/>
      * The only exception if the Nodes have a Global Z Order == 0. In that case, the Scene Graph order is used.                           <br/>
-     * Î¨Ò»µÄÀıÍâÊÇÈç¹û½ÚµãµÄÈ«¾ÖZË³ĞòÎªÁã,ÄÇÃ´³¡¾°Í¼Ë³ĞòÊÇ¿ÉÒÔÊ¹ÓÃµÄ.<br/>
+     * å”¯ä¸€çš„ä¾‹å¤–æ˜¯å¦‚æœèŠ‚ç‚¹çš„å…¨å±€Zé¡ºåºä¸ºé›¶,é‚£ä¹ˆåœºæ™¯å›¾é¡ºåºæ˜¯å¯ä»¥ä½¿ç”¨çš„.<br/>
      *                                                                                                                                    <br/>
      * By default, all nodes have a Global Z Order = 0. That means that by default, the Scene Graph order is used to render the nodes.    <br/>
-     * Ä¬ÈÏµÄ,ËùÓĞµÄ½ÚµãÈ«¾ÖZË³Ğò¶¼ÊÇÁã.Õâ¾ÍÊÇËµ,Ä¬ÈÏÊ¹ÓÃ³¡¾°Í¼Ë³ĞòÀ´äÖÈ¾½Úµã.<br/>
+     * é»˜è®¤çš„,æ‰€æœ‰çš„èŠ‚ç‚¹å…¨å±€Zé¡ºåºéƒ½æ˜¯é›¶.è¿™å°±æ˜¯è¯´,é»˜è®¤ä½¿ç”¨åœºæ™¯å›¾é¡ºåºæ¥æ¸²æŸ“èŠ‚ç‚¹.<br/>
      *                                                                                                                                    <br/>
      * Global Z Order is useful when you need to render nodes in an order different than the Scene Graph order.                           <br/>
-     * È«¾ÖZË³ĞòÊÇ·Ç³£ÓĞÓÃµÄµ±ÄãĞèÒªäÖÈ¾½Úµã°´ÕÕ²»Í¬µÄË³Ğò¶ø²»ÊÇ³¡¾°Í¼Ë³Ğò<br/>
+     * å…¨å±€Zé¡ºåºæ˜¯éå¸¸æœ‰ç”¨çš„å½“ä½ éœ€è¦æ¸²æŸ“èŠ‚ç‚¹æŒ‰ç…§ä¸åŒçš„é¡ºåºè€Œä¸æ˜¯åœºæ™¯å›¾é¡ºåº<br/>
      *                                                                                                                                    <br/>
      * Limitations: Global Z Order can't be used used by Nodes that have SpriteBatchNode as one of their ancestors.                       <br/>
-     * ¾ÖÏŞĞÔ:È«¾ÖZË³Ğò²»ÄÜ¹»±»ÓµÓĞ¼Ì³Ğ"SpriteBatchNode"µÄ½ÚµãÊ¹ÓÃ<br/>
+     * å±€é™æ€§:å…¨å±€Zé¡ºåºä¸èƒ½å¤Ÿè¢«æ‹¥æœ‰ç»§æ‰¿"SpriteBatchNode"çš„èŠ‚ç‚¹ä½¿ç”¨<br/>
      * And if ClippingNode is one of the ancestors, then "global Z order" will be relative to the ClippingNode.   </p>
-     * ²¢ÇÒÈç¹û"ClippingNode"ÊÇÆäÖĞÖ®Ò»µÄÉÏ´ú£¬ÄÇÃ´"global Z order" ½«»áºÍ"ClippingNode"ÓĞ¹Ø</p>
+     * å¹¶ä¸”å¦‚æœ"ClippingNode"æ˜¯å…¶ä¸­ä¹‹ä¸€çš„ä¸Šä»£ï¼Œé‚£ä¹ˆ"global Z order" å°†ä¼šå’Œ"ClippingNode"æœ‰å…³</p>
      * @function
      * @param {Number} globalZOrder
      */
@@ -570,7 +570,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Return the Node's Global Z Order.
-     * ·µ»Ø½ÚµãµÄÈ«¾ÖZË³Ğò.
+     * è¿”å›èŠ‚ç‚¹çš„å…¨å±€Zé¡ºåº.
      * @function
      * @returns {number} The node's global Z order
      */
@@ -580,7 +580,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns WebGL Z vertex of this node.
-     * ·µ»Ø½ÚµãµÄWebGLµÄZ¶¥µã.
+     * è¿”å›èŠ‚ç‚¹çš„WebGLçš„Zé¡¶ç‚¹.
      * @function
      * @return {Number} WebGL Z vertex of this node
      */
@@ -591,19 +591,19 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /**
      * <p>
      *     Sets the real WebGL Z vertex.                                                                          <br/>
-     *		 ÉèÖÃÊµ¼ÊµÄWebGLµÄZ¶¥µã
+     *		 è®¾ç½®å®é™…çš„WebGLçš„Zé¡¶ç‚¹
      *                                                                                                            <br/>
      *      Differences between openGL Z vertex and cocos2d Z order:                                              <br/>
-     *			openGLµÄZ¶¥µã¸úcocos2dµÄZË³ĞòµÄ²»Í¬:<br/>
+     *			openGLçš„Zé¡¶ç‚¹è·Ÿcocos2dçš„Zé¡ºåºçš„ä¸åŒ:<br/>
      *      - WebGL Z modifies the Z vertex, and not the Z order in the relation between parent-children         <br/>
-     *			- WebGLµÄZ¶¥µãĞŞ¸ÄZ¶¥µã,¶ø²»ÊÇ¸ú¸¸×ÓÀàÓĞ¹ØÁªµÄZË³Ğò<br/>
+     *			- WebGLçš„Zé¡¶ç‚¹ä¿®æ”¹Zé¡¶ç‚¹,è€Œä¸æ˜¯è·Ÿçˆ¶å­ç±»æœ‰å…³è”çš„Zé¡ºåº<br/>
      *      - WebGL Z might require to set 2D projection                                                         <br/>
-     *			- WebGLµÄZ¶¥µãÒªÇóÉèÖÃ2DÄ£Ê½
+     *			- WebGLçš„Zé¡¶ç‚¹è¦æ±‚è®¾ç½®2Dæ¨¡å¼
      *      - cocos2d Z order works OK if all the nodes uses the same WebGL Z vertex. eg: vertexZ = 0            <br/>
-     *			- Èç¹ûËùÓĞµÄ½ÚµãÊ¹ÓÃÏàÍ¬µÄWebGLµÄZ¶¥µã,cocos2dµÄZË³ĞòµÄÅÅĞò²»»áÓĞÓ°Ïì<br/>
+     *			- å¦‚æœæ‰€æœ‰çš„èŠ‚ç‚¹ä½¿ç”¨ç›¸åŒçš„WebGLçš„Zé¡¶ç‚¹,cocos2dçš„Zé¡ºåºçš„æ’åºä¸ä¼šæœ‰å½±å“<br/>
      *                                                                                                            <br/>
      *      @warning Use it at your own risk since it might break the cocos2d parent-children z order
-     *			@¾¯¸æ:Ê¹ÓÃÆäÊÇÓĞ·çÏÕµÄ,Ëü¿ÉÄÜ»áÆÆ»µcocos2dµÄ¸¸×ÓÀàµÄZË³Ğò<br/>
+     *			@è­¦å‘Š:ä½¿ç”¨å…¶æ˜¯æœ‰é£é™©çš„,å®ƒå¯èƒ½ä¼šç ´åcocos2dçš„çˆ¶å­ç±»çš„Zé¡ºåº<br/>
      * </p>
      * @function
      * @param {Number} Var
@@ -614,7 +614,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns the rotation (angle) of the node in degrees. 0 is the default rotation angle. Positive values rotate node clockwise.
-     * ·µ»Ø½ÚµãµÄĞı×ª½Ç¶È.Ä¬ÈÏµÄĞı×ª½Ç¶ÈÎª0.ÕıÊıÊ¹µÃ½ÚµãË³Ê±ÕëĞı×ª.
+     * è¿”å›èŠ‚ç‚¹çš„æ—‹è½¬è§’åº¦.é»˜è®¤çš„æ—‹è½¬è§’åº¦ä¸º0.æ­£æ•°ä½¿å¾—èŠ‚ç‚¹é¡ºæ—¶é’ˆæ—‹è½¬.
      * @function
      * @return {Number} The rotation of the node in degrees.
      */
@@ -627,12 +627,12 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /**
      * <p>
      *     Sets the rotation (angle) of the node in degrees.                                             <br/>
-     *		 ÉèÖÃ½ÚµãµÄĞı×ª½Ç¶È<br/>
+     *		 è®¾ç½®èŠ‚ç‚¹çš„æ—‹è½¬è§’åº¦<br/>
      *                                                                                                   <br/>
      *      0 is the default rotation angle.                                                             <br/>
-     *			Ä¬ÈÏµÄĞı×ª½Ç¶ÈÎª0<br/>
+     *			é»˜è®¤çš„æ—‹è½¬è§’åº¦ä¸º0<br/>
      *      Positive values rotate node clockwise, and negative values for anti-clockwise.
-     *			ÕıÊıÊ¹µÃ½ÚµãË³Ê±ÕëĞı×ª,¸ºÊıÊ¹µÃ½ÚµãÄæÊ±ÕëĞı×ª.
+     *			æ­£æ•°ä½¿å¾—èŠ‚ç‚¹é¡ºæ—¶é’ˆæ—‹è½¬,è´Ÿæ•°ä½¿å¾—èŠ‚ç‚¹é€†æ—¶é’ˆæ—‹è½¬.
      * </p>
      * @function
      * @param {Number} newRotation The rotation of the node in degrees.
@@ -646,12 +646,12 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns the X axis rotation (angle) which represent a horizontal rotational skew of the node in degrees. <br/>
-     * ·µ»ØXÖáµÄĞı×ª½Ç¶È±íÊ¾µÄÊÇ½ÚµãµÄË®Æ½Ğı×ªÇãĞ±½Ç¶È.<br/>
+     * è¿”å›Xè½´çš„æ—‹è½¬è§’åº¦è¡¨ç¤ºçš„æ˜¯èŠ‚ç‚¹çš„æ°´å¹³æ—‹è½¬å€¾æ–œè§’åº¦.<br/>
      * 
      * 0 is the default rotation angle. Positive values rotate node clockwise<br/>
-     * Ä¬ÈÏµÄĞı×ª½Ç¶ÈÖµÎª0.ÕıÊıÊ¹µÃ½ÚµãË³Ê±ÕëĞı×ª<br/>
+     * é»˜è®¤çš„æ—‹è½¬è§’åº¦å€¼ä¸º0.æ­£æ•°ä½¿å¾—èŠ‚ç‚¹é¡ºæ—¶é’ˆæ—‹è½¬<br/>
      * (support only in WebGL rendering mode)
-     * (Ö»ÔÚWebGLµÄäÖÈ¾Ä£Ê½ÏÂÖ§³Ö)
+     * (åªåœ¨WebGLçš„æ¸²æŸ“æ¨¡å¼ä¸‹æ”¯æŒ)
      * @function
      * @return {Number} The X rotation in degrees.
      */
@@ -662,13 +662,13 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /**
      * <p>
      *     Sets the X rotation (angle) of the node in degrees which performs a horizontal rotational skew.        <br/>
-     *		 ÉèÖÃ½ÚµãµÄXÖáĞı×ª½Ç¶ÈÀ´½øĞĞË®Æ½Ğı×ªÇãĞ±<br/>
+     *		 è®¾ç½®èŠ‚ç‚¹çš„Xè½´æ—‹è½¬è§’åº¦æ¥è¿›è¡Œæ°´å¹³æ—‹è½¬å€¾æ–œ<br/>
      *     (support only in WebGL rendering mode)                                                                 <br/>
-     * 		 (Ö»ÔÚWebGLµÄäÖÈ¾Ä£Ê½ÏÂÖ§³Ö)<br/>
+     * 		 (åªåœ¨WebGLçš„æ¸²æŸ“æ¨¡å¼ä¸‹æ”¯æŒ)<br/>
      *     0 is the default rotation angle.                                                                       <br/>
-     *		 Ä¬ÈÏµÄĞı×ª½Ç¶ÈÖµÎª0.
+     *		 é»˜è®¤çš„æ—‹è½¬è§’åº¦å€¼ä¸º0.
      *     Positive values rotate node clockwise, and negative values for anti-clockwise.
-     *		 ÕıÊıÊ¹µÃ½ÚµãË³Ê±ÕëĞı×ª,¸ºÊıÊ¹µÃ½ÚµãÄæÊ±ÕëĞı×ª.
+     *		 æ­£æ•°ä½¿å¾—èŠ‚ç‚¹é¡ºæ—¶é’ˆæ—‹è½¬,è´Ÿæ•°ä½¿å¾—èŠ‚ç‚¹é€†æ—¶é’ˆæ—‹è½¬.
      * </p>
      * @param {Number} rotationX The X rotation in degrees which performs a horizontal rotational skew.
      */
@@ -680,11 +680,11 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns the Y axis rotation (angle) which represent a vertical rotational skew of the node in degrees. <br/>
-     * ·µ»ØYÖáµÄĞı×ª½Ç¶È±íÊ¾µÄÊÇ½ÚµãµÄÊúÖ±Ğı×ªÇãĞ±½Ç¶È.<br/>
+     * è¿”å›Yè½´çš„æ—‹è½¬è§’åº¦è¡¨ç¤ºçš„æ˜¯èŠ‚ç‚¹çš„ç«–ç›´æ—‹è½¬å€¾æ–œè§’åº¦.<br/>
      * 0 is the default rotation angle. Positive values rotate node clockwise<br/>
-     * Ä¬ÈÏµÄĞı×ª½Ç¶ÈÖµÎª0.ÕıÊıÊ¹µÃ½ÚµãË³Ê±ÕëĞı×ª<br/>
+     * é»˜è®¤çš„æ—‹è½¬è§’åº¦å€¼ä¸º0.æ­£æ•°ä½¿å¾—èŠ‚ç‚¹é¡ºæ—¶é’ˆæ—‹è½¬<br/>
      * (support only in WebGL rendering mode)
-     * (Ö»ÔÚWebGLµÄäÖÈ¾Ä£Ê½ÏÂÖ§³Ö)<br/>
+     * (åªåœ¨WebGLçš„æ¸²æŸ“æ¨¡å¼ä¸‹æ”¯æŒ)<br/>
      * @function
      * @return {Number} The Y rotation in degrees.
      */
@@ -695,13 +695,13 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /**
      * <p>
      *    Sets the Y rotation (angle) of the node in degrees which performs a vertical rotational skew.         <br/>
-     *		ÉèÖÃ½ÚµãµÄYÖáĞı×ª½Ç¶ÈÀ´½øĞĞÊúÖ±Ğı×ªÇãĞ±<br/>
+     *		è®¾ç½®èŠ‚ç‚¹çš„Yè½´æ—‹è½¬è§’åº¦æ¥è¿›è¡Œç«–ç›´æ—‹è½¬å€¾æ–œ<br/>
      *    (support only in WebGL rendering mode)                                                                <br/>
-     * 		(Ö»ÔÚWebGLµÄäÖÈ¾Ä£Ê½ÏÂÖ§³Ö)<br/>
+     * 		(åªåœ¨WebGLçš„æ¸²æŸ“æ¨¡å¼ä¸‹æ”¯æŒ)<br/>
      *    0 is the default rotation angle.                                                                      <br/>
-     * 		Ä¬ÈÏµÄĞı×ª½Ç¶ÈÖµÎª0.<br/>
+     * 		é»˜è®¤çš„æ—‹è½¬è§’åº¦å€¼ä¸º0.<br/>
      *    Positive values rotate node clockwise, and negative values for anti-clockwise.
-     *		ÕıÊıÊ¹µÃ½ÚµãË³Ê±ÕëĞı×ª,¸ºÊıÊ¹µÃ½ÚµãÄæÊ±ÕëĞı×ª.
+     *		æ­£æ•°ä½¿å¾—èŠ‚ç‚¹é¡ºæ—¶é’ˆæ—‹è½¬,è´Ÿæ•°ä½¿å¾—èŠ‚ç‚¹é€†æ—¶é’ˆæ—‹è½¬.
      * </p>
      * @param rotationY The Y rotation in degrees.
      */
@@ -713,9 +713,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns the scale factor of the node.
-     * ·µ»Ø½ÚµãµÄËõ·Å±ÈÀı
+     * è¿”å›èŠ‚ç‚¹çš„ç¼©æ”¾æ¯”ä¾‹
      * @warning: Assertion will fail when _scaleX != _scaleY.
-     * @¾¯¸æ:µ±_scaleX != _scaleY¶ÏÑÔ»áÊ§°Ü.
+     * @è­¦å‘Š:å½“_scaleX != _scaleYæ–­è¨€ä¼šå¤±è´¥.
      * @function
      * @return {Number} The scale factor
      */
@@ -727,7 +727,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Sets the scale factor of the node. 1.0 is the default scale factor. This function can modify the X and Y scale at the same time.
-     * ÉèÖÃ½ÚµãµÄËõ·Å±ÈÀı.Ä¬ÈÏµÄËõ·Å±ÈÀıÊÇ1.0.¸Ãº¯Êı¿ÉÒÔÍ¬Ê±ĞŞ¸ÄXÖá¸úYÖáµÄËõ·Å±ÈÀı.
+     * è®¾ç½®èŠ‚ç‚¹çš„ç¼©æ”¾æ¯”ä¾‹.é»˜è®¤çš„ç¼©æ”¾æ¯”ä¾‹æ˜¯1.0.è¯¥å‡½æ•°å¯ä»¥åŒæ—¶ä¿®æ”¹Xè½´è·ŸYè½´çš„ç¼©æ”¾æ¯”ä¾‹.
      * @function
      * @param {Number} scale or scaleX value
      * @param {Number} [scaleY=]
@@ -740,7 +740,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns the scale factor on X axis of this node
-     * ·µ»Ø½ÚµãXÖáµÄËõ·Å±ÈÀı
+     * è¿”å›èŠ‚ç‚¹Xè½´çš„ç¼©æ”¾æ¯”ä¾‹
      * @function
      * @return {Number} The scale factor on X axis.
      */
@@ -751,9 +751,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /**
      * <p>
      *     Changes the scale factor on X axis of this node                                   <br/>
-     *		 ¸Ä±ä½ÚµãXÖáµÄËõ·Å±ÈÀı<br/>
+     *		 æ”¹å˜èŠ‚ç‚¹Xè½´çš„ç¼©æ”¾æ¯”ä¾‹<br/>
      *     The deafult value is 1.0 if you haven't changed it before
-     *		 Èç¹ûÄãÃ»ÓĞĞŞ¸Ä¹ı¸ÃÖµµÄ»°,Ä¬ÈÏÖµÎª1.0
+     *		 å¦‚æœä½ æ²¡æœ‰ä¿®æ”¹è¿‡è¯¥å€¼çš„è¯,é»˜è®¤å€¼ä¸º1.0
      * </p>
      * @function
      * @param {Number} newScaleX The scale factor on X axis.
@@ -765,7 +765,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns the scale factor on Y axis of this node
-     * ·µ»Ø½ÚµãYÖáµÄËõ·Å±ÈÀı
+     * è¿”å›èŠ‚ç‚¹Yè½´çš„ç¼©æ”¾æ¯”ä¾‹
      * @function
      * @return {Number} The scale factor on Y axis.
      */
@@ -776,9 +776,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /**
      * <p>
      *     Changes the scale factor on Y axis of this node                                            <br/>
-     *		 ¸Ä±ä½ÚµãµÄYÖáµÄËõ·Å±ÈÀı
+     *		 æ”¹å˜èŠ‚ç‚¹çš„Yè½´çš„ç¼©æ”¾æ¯”ä¾‹
      *     The Default value is 1.0 if you haven't changed it before.
-     *		 Èç¹ûÄãÃ»ÓĞĞŞ¸Ä¹ı¸ÃÖµµÄ»°,Ä¬ÈÏÖµÎª1.0
+     *		 å¦‚æœä½ æ²¡æœ‰ä¿®æ”¹è¿‡è¯¥å€¼çš„è¯,é»˜è®¤å€¼ä¸º1.0
      * </p>
      * @function
      * @param {Number} newScaleY The scale factor on Y axis.
@@ -791,13 +791,13 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /**
      * <p>
      *     Changes the position (x,y) of the node in cocos2d coordinates.<br/>
-     *		 ¸Ä±ä½ÚµãµÄÔÚcocos2d×ø±êÏµÖĞµÄÎ»ÖÃ
+     *		 æ”¹å˜èŠ‚ç‚¹çš„åœ¨cocos2dåæ ‡ç³»ä¸­çš„ä½ç½®
      *     The original point (0,0) is at the left-bottom corner of screen.<br/>
-     *		 Ô­µã(0,0)ÔÚÆÁÄ»µÄ×óÏÂ½Ç.<br/>
+     *		 åŸç‚¹(0,0)åœ¨å±å¹•çš„å·¦ä¸‹è§’.<br/>
      *     Usually we use cc.p(x,y) to compose CCPoint object.<br/>
-     *	   ¾­³£Ê¹ÓÃcc.p(x,y)À´¹¹½¨CCPoint¶ÔÏó.<br/>
+     *	   ç»å¸¸ä½¿ç”¨cc.p(x,y)æ¥æ„å»ºCCPointå¯¹è±¡.<br/>
      *     and Passing two numbers (x,y) is more efficient than passing CCPoint object.
-     *		 ²¢ÇÒÊ¹ÓÃÁ½¸öÊı×Ö(x,y)±ÈÊ¹ÓÃCCPoint¸üÓĞĞ§ÂÊ.
+     *		 å¹¶ä¸”ä½¿ç”¨ä¸¤ä¸ªæ•°å­—(x,y)æ¯”ä½¿ç”¨CCPointæ›´æœ‰æ•ˆç‡.
      * </p>
      * @function
      * @param {cc.Point|Number} newPosOrxValue The position (x,y) of the node in coordinates or the X coordinate for position
@@ -822,9 +822,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /**
      * <p>
      * Sets the position (x,y) using values between 0 and 1.                                                <br/>
-     * ÉèÖÃÎ»ÖÃµÄÖµÔÚÇø¼ä[0,1]ÄÚ.<br/>
+     * è®¾ç½®ä½ç½®çš„å€¼åœ¨åŒºé—´[0,1]å†….<br/>
      * The positions in pixels is calculated like the following:                                            <br/>
-     * ÏñËØÎ»ÖÃµÄ¼ÆËãÈçÏÂ:<br/>
+     * åƒç´ ä½ç½®çš„è®¡ç®—å¦‚ä¸‹:<br/>
      *   _position = _normalizedPosition * parent.getContentSize()
      * </p>
      * @param {cc.Point|Number} posOrX
@@ -845,7 +845,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>Returns a copy of the position (x,y) of the node in cocos2d coordinates. (0,0) is the left-bottom corner.</p>
-     * <p>·µ»Ø½ÚµãÔÚcocos2d×ø±êÏµÖĞµÄÎ»ÖÃµÄ±¸·İ.(0,0)Îª×óÏÂ½ÇµÄµã</p>
+     * <p>è¿”å›èŠ‚ç‚¹åœ¨cocos2dåæ ‡ç³»ä¸­çš„ä½ç½®çš„å¤‡ä»½.(0,0)ä¸ºå·¦ä¸‹è§’çš„ç‚¹</p>
      * @function
      * @return {cc.Point} The position (x,y) of the node in OpenGL coordinates
      */
@@ -855,7 +855,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * returns the normalized position
-     * ·µ»ØÕı³£Î»ÖÃ
+     * è¿”å›æ­£å¸¸ä½ç½®
      * @returns {cc.Point}
      */
     getNormalizedPosition: function(){
@@ -864,7 +864,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>Returns the x axis position of the node in cocos2d coordinates.</p>
-     * <p>·µ»Ø½ÚµãÔÚcoco2d×ø±êÏµÖĞµÄXÖáÎ»ÖÃ.</p>
+     * <p>è¿”å›èŠ‚ç‚¹åœ¨coco2dåæ ‡ç³»ä¸­çš„Xè½´ä½ç½®.</p>
      * @function
      * @return {Number}
      */
@@ -874,7 +874,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>Sets the x axis position of the node in cocos2d coordinates.</p>
-     * <p>ÉèÖÃ½ÚµãÔÚcoco2d×ø±êÏµÖĞµÄXÖáÎ»ÖÃ.</p>
+     * <p>è®¾ç½®èŠ‚ç‚¹åœ¨coco2dåæ ‡ç³»ä¸­çš„Xè½´ä½ç½®.</p>
      * @function
      * @param {Number} x The new position in x axis
      */
@@ -885,7 +885,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>Returns the y axis position of the node in cocos2d coordinates.</p>
-     * <p>·µ»Ø½ÚµãÔÚcoco2d×ø±êÏµÖĞµÄYÖáÎ»ÖÃ.</p>
+     * <p>è¿”å›èŠ‚ç‚¹åœ¨coco2dåæ ‡ç³»ä¸­çš„Yè½´ä½ç½®.</p>
      * @function
      * @return {Number}
      */
@@ -895,7 +895,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>Sets the y axis position of the node in cocos2d coordinates.</p>
-     * <p>ÉèÖÃ½ÚµãÔÚcoco2d×ø±êÏµÖĞµÄYÖáÎ»ÖÃ.</p>
+     * <p>è®¾ç½®èŠ‚ç‚¹åœ¨coco2dåæ ‡ç³»ä¸­çš„Yè½´ä½ç½®.</p>
      * @function
      * @param {Number} y The new position in y axis
      */
@@ -906,7 +906,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns the amount of children.
-     * ·µ»Ø×ÓÀàµÄÊıÁ¿.
+     * è¿”å›å­ç±»çš„æ•°é‡.
      * @function
      * @return {Number} The amount of children.
      */
@@ -916,9 +916,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns an array of all children  <br/>
-     * ·µ»Ø°üº¬ËùÓĞ×ÓÀàµÄÊı×é<br/>
+     * è¿”å›åŒ…å«æ‰€æœ‰å­ç±»çš„æ•°ç»„<br/>
      * Composing a "tree" structure is a very important feature of CCNode
-     * ¹¹½¨Ò»¸öÊı½á¹¹ÌåÊÇCCNode·Ç³£ÖØÒªµÄ¹¦ÄÜ
+     * æ„å»ºä¸€ä¸ªæ•°ç»“æ„ä½“æ˜¯CCNodeéå¸¸é‡è¦çš„åŠŸèƒ½
      * @function
      * @return {Array} An array of children
      * @example
@@ -934,7 +934,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns if the node is visible
-     * ·µ»Ø½ÚµãÊÇ·ñ¿É¼û
+     * è¿”å›èŠ‚ç‚¹æ˜¯å¦å¯è§
      * @function
      * @see cc.Node#setVisible
      * @return {Boolean} true if the node is visible, false if the node is hidden.
@@ -945,9 +945,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Sets whether the node is visible <br/>
-     * ÉèÖÃ½ÚµãÊÇ·ñ¿É¼û<br/>
+     * è®¾ç½®èŠ‚ç‚¹æ˜¯å¦å¯è§<br/>
      * The default value is true
-     * Ä¬ÈÏÖµÊÇ¿É¼ûµÄ
+     * é»˜è®¤å€¼æ˜¯å¯è§çš„
      * @function
      * @param {Boolean} visible Pass true to make the node visible, false to hide the node.
      */
@@ -961,17 +961,17 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      *  <p>Returns a copy of the anchor point.<br/>
-     *  <p>·µ»Ø½ÚµãµÄÃªµã±¸·İ.<br/>
+     *  <p>è¿”å›èŠ‚ç‚¹çš„é”šç‚¹å¤‡ä»½.<br/>
      *  Anchor point is the point around which all transformations and positioning manipulations take place.<br/>
-     *  Ò»¸öÃªµãÊÇËùÓĞµÄ×ª»»ºÍ¶¨Î»²Ù×÷·¢ÉúµÄµã.<br/>
+     *  ä¸€ä¸ªé”šç‚¹æ˜¯æ‰€æœ‰çš„è½¬æ¢å’Œå®šä½æ“ä½œå‘ç”Ÿçš„ç‚¹.<br/>
      *  It's like a pin in the node where it is "attached" to its parent. <br/>
-     *  Ëü¾ÍÏñÔÚ½ÚµãÉÏÁ¬½ÓÆä¸¸ÀàµÄ´óÍ·Õë.<br/>
+     *  å®ƒå°±åƒåœ¨èŠ‚ç‚¹ä¸Šè¿æ¥å…¶çˆ¶ç±»çš„å¤§å¤´é’ˆ.<br/>
      *  The anchorPoint is normalized, like a percentage. (0,0) means the bottom-left corner and (1,1) means the top-right corner. <br/>
-     *  ÃªµãÊÇ±ê×¼»¯µÄ,¾ÍÏñ°Ù·Ö±ÈÒ»Ñù.¡£(0,0)±íÊ¾×óÏÂ½Ç,(1,1)±íÊ¾ÓÒÉÏ½Ç.<br/>
+     *  é”šç‚¹æ˜¯æ ‡å‡†åŒ–çš„,å°±åƒç™¾åˆ†æ¯”ä¸€æ ·.ã€‚(0,0)è¡¨ç¤ºå·¦ä¸‹è§’,(1,1)è¡¨ç¤ºå³ä¸Šè§’.<br/>
      *  But you can use values higher than (1,1) and lower than (0,0) too.  <br/>
-     *  µ«ÊÇÄã¿ÉÒÔÊ¹ÓÃ±È(1,1)¸ü¸ßµÄÖµ»òÕß±È(0,0)¸üµÍµÄÖµ.<br/>
+     *  ä½†æ˜¯ä½ å¯ä»¥ä½¿ç”¨æ¯”(1,1)æ›´é«˜çš„å€¼æˆ–è€…æ¯”(0,0)æ›´ä½çš„å€¼.<br/>
      *  The default anchor point is (0.5,0.5), so it starts at the center of the node. <br/></p>
-     *	 Ä¬ÈÏµÄÃªµãÊÇ(0.5,0.5),Òò´ËËü¿ªÊ¼ÓÚ½ÚµãµÄÖĞĞÄÎ»ÖÃ<br/></p>
+     *	 é»˜è®¤çš„é”šç‚¹æ˜¯(0.5,0.5),å› æ­¤å®ƒå¼€å§‹äºèŠ‚ç‚¹çš„ä¸­å¿ƒä½ç½®<br/></p>
      * @function
      * @return {cc.Point}  The anchor point of node.
      */
@@ -982,18 +982,18 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /**
      * <p>
      *     Sets the anchor point in percent.                                                                                              <br/>
-     *		 ÉèÖÃÃªµã,ÓÃ°Ù·Ö±È±íÊ¾.<br/>
+     *		 è®¾ç½®é”šç‚¹,ç”¨ç™¾åˆ†æ¯”è¡¨ç¤º.<br/>
      *                                                                                                                                    <br/>
      *     anchor point is the point around which all transformations and positioning manipulations take place.                            <br/>
-     *  	 Ò»¸öÃªµãÊÇËùÓĞµÄ×ª»»ºÍ¶¨Î»²Ù×÷·¢ÉúµÄµã.<br/>
+     *  	 ä¸€ä¸ªé”šç‚¹æ˜¯æ‰€æœ‰çš„è½¬æ¢å’Œå®šä½æ“ä½œå‘ç”Ÿçš„ç‚¹.<br/>
      *     It's like a pin in the node where it is "attached" to its parent.                                                              <br/>
-     *  	 Ëü¾ÍÏñÔÚ½ÚµãÉÏÁ¬½ÓÆä¸¸ÀàµÄ´óÍ·Õë.<br/>
+     *  	 å®ƒå°±åƒåœ¨èŠ‚ç‚¹ä¸Šè¿æ¥å…¶çˆ¶ç±»çš„å¤§å¤´é’ˆ.<br/>
      *     The anchorPoint is normalized, like a percentage. (0,0) means the bottom-left corner and (1,1) means the top-right corner.     <br/>
-     *  	 ÃªµãÊÇ±ê×¼»¯µÄ,¾ÍÏñ°Ù·Ö±ÈÒ»Ñù.¡£(0,0)±íÊ¾×óÏÂ½Ç,(1,1)±íÊ¾ÓÒÉÏ½Ç.<br/>
+     *  	 é”šç‚¹æ˜¯æ ‡å‡†åŒ–çš„,å°±åƒç™¾åˆ†æ¯”ä¸€æ ·.ã€‚(0,0)è¡¨ç¤ºå·¦ä¸‹è§’,(1,1)è¡¨ç¤ºå³ä¸Šè§’.<br/>
      *     But you can use values higher than (1,1) and lower than (0,0) too.                                                             <br/>
-     *  	 µ«ÊÇÄã¿ÉÒÔÊ¹ÓÃ±È(1,1)¸ü¸ßµÄÖµ»òÕß±È(0,0)¸üµÍµÄÖµ.<br/>
+     *  	 ä½†æ˜¯ä½ å¯ä»¥ä½¿ç”¨æ¯”(1,1)æ›´é«˜çš„å€¼æˆ–è€…æ¯”(0,0)æ›´ä½çš„å€¼.<br/>
      *     The default anchor point is (0.5,0.5), so it starts at the center of the node.
-     *	 	 Ä¬ÈÏµÄÃªµãÊÇ(0.5,0.5),Òò´ËËü¿ªÊ¼ÓÚ½ÚµãµÄÖĞĞÄÎ»ÖÃ
+     *	 	 é»˜è®¤çš„é”šç‚¹æ˜¯(0.5,0.5),å› æ­¤å®ƒå¼€å§‹äºèŠ‚ç‚¹çš„ä¸­å¿ƒä½ç½®
      * </p>
      * @function
      * @param {cc.Point|Number} point The anchor point of node or The x axis anchor of node.
@@ -1054,9 +1054,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns a copy of the anchor point in absolute pixels.  <br/>
-     * ·µ»Ø¾ø¶ÔÏñËØµÄÃªµãµÄ±¸·İ<br/>
+     * è¿”å›ç»å¯¹åƒç´ çš„é”šç‚¹çš„å¤‡ä»½<br/>
      * you can only read it. If you wish to modify it, use setAnchorPoint
-     * ÄãÖ»ÄÜ¶ÁÈ¡Ëü.Èç¹ûÄãÏëÒªĞŞ¸ÄËü,Ê¹ÓÃsetAnchorPoint
+     * ä½ åªèƒ½è¯»å–å®ƒ.å¦‚æœä½ æƒ³è¦ä¿®æ”¹å®ƒ,ä½¿ç”¨setAnchorPoint
      * @see cc.Node#getAnchorPoint
      * @function
      * @return {cc.Point} The anchor point in absolute pixels.
@@ -1084,11 +1084,11 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>Returns a copy the untransformed size of the node. <br/>
-     * <p>·µ»ØÎ´×ª»»½ÚµãµÄ´óĞ¡.<br/>
+     * <p>è¿”å›æœªè½¬æ¢èŠ‚ç‚¹çš„å¤§å°.<br/>
      * The contentSize remains the same no matter the node is scaled or rotated.<br/>
-     * ¸ÃcontentSize±£³ÖÒ»ÖÂ²»¹Ü½ÚµãÊÇËõ·Å»òÕßĞı×ª.<br/>
+     * è¯¥contentSizeä¿æŒä¸€è‡´ä¸ç®¡èŠ‚ç‚¹æ˜¯ç¼©æ”¾æˆ–è€…æ—‹è½¬.<br/>
      * All nodes has a size. Layer and Scene has the same size of the screen by default. <br/></p>
-     * ×óÓÒµÄ½Úµã¶¼ÓĞ´óĞ¡.LayerºÍSceneÄ¬ÈÏÓµÓĞ¸úÆÁÄ»Ò»ÑùµÄ´óĞ¡.<br/></p>
+     * å·¦å³çš„èŠ‚ç‚¹éƒ½æœ‰å¤§å°.Layerå’ŒSceneé»˜è®¤æ‹¥æœ‰è·Ÿå±å¹•ä¸€æ ·çš„å¤§å°.<br/></p>
      * @function
      * @return {cc.Size} The untransformed size of the node.
      */
@@ -1099,12 +1099,12 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /**
      * <p>
      *     Sets the untransformed size of the node.                                             <br/>
-     *		 ÉèÖÃ×ª»»½ÚµãµÄ´óĞ¡<br/>
+     *		 è®¾ç½®è½¬æ¢èŠ‚ç‚¹çš„å¤§å°<br/>
      *                                                                                          <br/>
      *     The contentSize remains the same no matter the node is scaled or rotated.            <br/>
-     * 		 ¸ÃcontentSize±£³ÖÒ»ÖÂ²»¹Ü½ÚµãÊÇËõ·Å»òÕßĞı×ª.<br/>
+     * 		 è¯¥contentSizeä¿æŒä¸€è‡´ä¸ç®¡èŠ‚ç‚¹æ˜¯ç¼©æ”¾æˆ–è€…æ—‹è½¬.<br/>
      *     All nodes has a size. Layer and Scene has the same size of the screen.
-     * 		 ×óÓÒµÄ½Úµã¶¼ÓĞ´óĞ¡.LayerºÍSceneÄ¬ÈÏÓµÓĞ¸úÆÁÄ»Ò»ÑùµÄ´óĞ¡.
+     * 		 å·¦å³çš„èŠ‚ç‚¹éƒ½æœ‰å¤§å°.Layerå’ŒSceneé»˜è®¤æ‹¥æœ‰è·Ÿå±å¹•ä¸€æ ·çš„å¤§å°.
      * </p>
      * @function
      * @param {cc.Size|Number} size The untransformed size of the node or The untransformed size's width of the node.
@@ -1132,9 +1132,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /**
      * <p>
      *     Returns whether or not the node accepts event callbacks.                                     <br/>
-     *		 ²»¹Ü½ÚµãÊÇ·ñ½ÓÊÜ»Øµ÷ÊÂ¼ş¶¼·µ»Ø<br/>
+     *		 ä¸ç®¡èŠ‚ç‚¹æ˜¯å¦æ¥å—å›è°ƒäº‹ä»¶éƒ½è¿”å›<br/>
      *     Running means the node accept event callbacks like onEnter(), onExit(), update()
-     *		 ÔËĞĞÒâÎ¶×Å½ÓÊÜ»Øµ÷ÊÂ¼şÀıÈç:onEnter(), onExit(), update()
+     *		 è¿è¡Œæ„å‘³ç€æ¥å—å›è°ƒäº‹ä»¶ä¾‹å¦‚:onEnter(), onExit(), update()
      * </p>
      * @function
      * @return {Boolean} Whether or not the node is running.
@@ -1145,7 +1145,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns a reference to the parent node
-     * ·µ»Ø¸¸Àà½ÚµãµÄÒıÓÃ
+     * è¿”å›çˆ¶ç±»èŠ‚ç‚¹çš„å¼•ç”¨
      * @function
      * @return {cc.Node} A reference to the parent node
      */
@@ -1155,7 +1155,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Sets the parent node
-     * ÉèÖÃ¸¸Àà½Úµã
+     * è®¾ç½®çˆ¶ç±»èŠ‚ç‚¹
      * @param {cc.Node} parent A reference to the parent node
      */
     setParent: function (parent) {
@@ -1164,9 +1164,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns whether the anchor point will be ignored when you position this node.<br/>
-     * ·µ»Øµ±ÄãÒÆ¶¯½ÚµãµÄÎ»ÖÃÊ±,ÊÇ·ñºöÂÔ½ÚµãµÄÃªµã.<br/>
+     * è¿”å›å½“ä½ ç§»åŠ¨èŠ‚ç‚¹çš„ä½ç½®æ—¶,æ˜¯å¦å¿½ç•¥èŠ‚ç‚¹çš„é”šç‚¹.<br/>
      * When anchor point ignored, position will be calculated based on the origin point (0, 0) in parent's coordinates.
-     * µ±Ãªµã±»ºöÂÔµÄÊ±ºò,Î»ÖÃ½«»áÔÚ¸¸Àà×ø±êÏµÖĞ»ùÓÚÔ­µã(0,0)½øĞĞ¼ÆËã.
+     * å½“é”šç‚¹è¢«å¿½ç•¥çš„æ—¶å€™,ä½ç½®å°†ä¼šåœ¨çˆ¶ç±»åæ ‡ç³»ä¸­åŸºäºåŸç‚¹(0,0)è¿›è¡Œè®¡ç®—.
      * @function
      * @see cc.Node#ignoreAnchorPointForPosition
      * @return {Boolean} true if the anchor point will be ignored when you position this node.
@@ -1178,13 +1178,13 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /**
      * <p>
      *     Sets whether the anchor point will be ignored when you position this node.                              <br/>
-     * 		 ÉèÖÃµ±ÄãÒÆ¶¯½ÚµãµÄÎ»ÖÃÊ±,ÊÇ·ñºöÂÔ½ÚµãµÄÃªµã.<br/>
+     * 		 è®¾ç½®å½“ä½ ç§»åŠ¨èŠ‚ç‚¹çš„ä½ç½®æ—¶,æ˜¯å¦å¿½ç•¥èŠ‚ç‚¹çš„é”šç‚¹.<br/>
      *     When anchor point ignored, position will be calculated based on the origin point (0, 0) in parent's coordinates.  <br/>
-     * 		 µ±Ãªµã±»ºöÂÔµÄÊ±ºò,Î»ÖÃ½«»áÔÚ¸¸Àà×ø±êÏµÖĞ»ùÓÚÔ­µã(0,0)½øĞĞ¼ÆËã.
+     * 		 å½“é”šç‚¹è¢«å¿½ç•¥çš„æ—¶å€™,ä½ç½®å°†ä¼šåœ¨çˆ¶ç±»åæ ‡ç³»ä¸­åŸºäºåŸç‚¹(0,0)è¿›è¡Œè®¡ç®—.
      *     This is an internal method, only used by CCLayer and CCScene. Don't call it outside framework.        <br/>
-     *		 ÕâÊÇÒ»¸öÄÚ²¿µ÷ÓÃ·½·¨,½ö½öÔÚCCLayerºÍCCSceneÖĞÊ¹ÓÃ.±ğÔÚÍâÎ§¿ò¼ÜÖĞµ÷ÓÃ.<br/>
+     *		 è¿™æ˜¯ä¸€ä¸ªå†…éƒ¨è°ƒç”¨æ–¹æ³•,ä»…ä»…åœ¨CCLayerå’ŒCCSceneä¸­ä½¿ç”¨.åˆ«åœ¨å¤–å›´æ¡†æ¶ä¸­è°ƒç”¨.<br/>
      *     The default value is false, while in CCLayer and CCScene are true
-     *     Ä¬ÈÏÖµÎªfalse,µ±ÔÚCCLayerºÍCCSceneÊÇtrue
+     *     é»˜è®¤å€¼ä¸ºfalse,å½“åœ¨CCLayerå’ŒCCSceneæ˜¯true
      * </p>
      * @function
      * @param {Boolean} newValue true if anchor point will be ignored when you position this node
@@ -1198,7 +1198,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns a tag that is used to identify the node easily.
-     * ·µ»ØÈİÒ×±ê¼ÇÒ»¸ö½ÚµãµÄ±êÇ©.
+     * è¿”å›å®¹æ˜“æ ‡è®°ä¸€ä¸ªèŠ‚ç‚¹çš„æ ‡ç­¾.
      * @function
      * @return {Number} An integer that identifies the node.
      * @example
@@ -1229,9 +1229,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Changes the tag that is used to identify the node easily. <br/>
-     * ¸Ä±äÈİÒ×±ê¼Ç½ÚµãµÄ±êÇ©.<br/>
+     * æ”¹å˜å®¹æ˜“æ ‡è®°èŠ‚ç‚¹çš„æ ‡ç­¾.<br/>
      * Please refer to getTag for the sample code.
-     * Çë²ÎÔÄgetTag½øĞĞÊ¹ÓÃ.
+     * è¯·å‚é˜…getTagè¿›è¡Œä½¿ç”¨.
      * @function
      * @see cc.Node#getTag
      * @param {Number} tag A integer that identifies the node.
@@ -1242,7 +1242,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Changes the name that is used to identify the node easily.
-     * ¸Ä±ä±ê¼Ç½ÚµãµÄÃû×Ö.
+     * æ”¹å˜æ ‡è®°èŠ‚ç‚¹çš„åå­—.
      * @function
      * @param {String} name
      */
@@ -1252,7 +1252,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns a string that is used to identify the node.
-     * ·µ»Ø±ê¼Ç½ÚµãÃû×ÖµÄ×Ö·û´®.
+     * è¿”å›æ ‡è®°èŠ‚ç‚¹åå­—çš„å­—ç¬¦ä¸².
      * @function
      * @returns {string} A string that identifies the node.
      */
@@ -1263,9 +1263,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /**
      * <p>
      *     Returns a custom user data pointer                                                               <br/>
-     *		 ·µ»ØÒ»¸ö×Ô¶¨ÒåµÄÓÃ»§Êı¾İµã<br/>
+     *		 è¿”å›ä¸€ä¸ªè‡ªå®šä¹‰çš„ç”¨æˆ·æ•°æ®ç‚¹<br/>
      *     You can set everything in UserData pointer, a data block, a structure or an object.
-     *		 Äã¿ÉÒÔËæÒâÉèÖÃUserDataÎªÖ¸Õë, Ò»¸öÊı¾İ¿é, ½á¹¹Ìå»òÕßÒ»¸ö¶ÔÏó.
+     *		 ä½ å¯ä»¥éšæ„è®¾ç½®UserDataä¸ºæŒ‡é’ˆ, ä¸€ä¸ªæ•°æ®å—, ç»“æ„ä½“æˆ–è€…ä¸€ä¸ªå¯¹è±¡.
      * </p>
      * @function
      * @return {object}  A custom user data pointer
@@ -1277,9 +1277,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /**
      * <p>
      *    Sets a custom user data reference                                                                   <br/>
-     *		ÉèÖÃ×Ô¶¨ÒåÓÃ»§Êı¾İÒıÓÃ<br/>
+     *		è®¾ç½®è‡ªå®šä¹‰ç”¨æˆ·æ•°æ®å¼•ç”¨<br/>
      *    You can set everything in UserData reference, a data block, a structure or an object, etc.
-     *		Äã¿ÉÒÔËæÒâÉèÖÃUserDataÎªÖ¸Õë, Ò»¸öÊı¾İ¿é, ½á¹¹Ìå»òÕßÒ»¸ö¶ÔÏó.
+     *		ä½ å¯ä»¥éšæ„è®¾ç½®UserDataä¸ºæŒ‡é’ˆ, ä¸€ä¸ªæ•°æ®å—, ç»“æ„ä½“æˆ–è€…ä¸€ä¸ªå¯¹è±¡.
      * </p>
      * @function
      * @warning Don't forget to release the memory manually in JSB, especially before you change this data pointer, and before this node is autoreleased.
@@ -1291,9 +1291,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns a user assigned cocos2d object.                             <br/>
-     * ·µ»ØÒ»¸öÓÃ»§Ö¸¶¨µÄcocos2d¶ÔÏó.<br/>
+     * è¿”å›ä¸€ä¸ªç”¨æˆ·æŒ‡å®šçš„cocos2då¯¹è±¡.<br/>
      * Similar to userData, but instead of holding all kinds of data it can only hold a cocos2d object
-     * ÀàËÆµÄ,µ«²»ÊÇ¿ÉÒÔ»ñÈ¡ËùÓĞÀàĞÍµÄÊı¾İ,ËüÖ»ÄÜ»ñÈ¡cocos2d¶ÔÏó
+     * ç±»ä¼¼çš„,ä½†ä¸æ˜¯å¯ä»¥è·å–æ‰€æœ‰ç±»å‹çš„æ•°æ®,å®ƒåªèƒ½è·å–cocos2då¯¹è±¡
      * @function
      * @return {object} A user assigned CCObject
      */
@@ -1304,13 +1304,13 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /**
      * <p>
      *      Sets a user assigned cocos2d object                                                                                       <br/>
-     *			ÉèÖÃÒ»¸öÓÃ»§Ö¸¶¨µÄcocos2d¶ÔÏó<br/>
+     *			è®¾ç½®ä¸€ä¸ªç”¨æˆ·æŒ‡å®šçš„cocos2då¯¹è±¡<br/>
      *      Similar to UserData, but instead of holding all kinds of data it can only hold a cocos2d object                        <br/>
-     * ÀàËÆµÄ,µ«²»ÊÇ¿ÉÒÔ»ñÈ¡ËùÓĞÀàĞÍµÄÊı¾İ,ËüÖ»ÄÜ»ñÈ¡cocos2d¶ÔÏó<br/>
+     * ç±»ä¼¼çš„,ä½†ä¸æ˜¯å¯ä»¥è·å–æ‰€æœ‰ç±»å‹çš„æ•°æ®,å®ƒåªèƒ½è·å–cocos2då¯¹è±¡<br/>
      *      In JSB, the UserObject will be retained once in this method, and the previous UserObject (if existed) will be release. <br/>
-     *		  ÔÚJSBÖĞ,UserObjectÔÚ¸Ãº¯ÊıÖĞÖ»±£´æÒ»´Î,ÉÏÒ»¸öUserObject»á±»ÊÍ·Åµô.<br/>
+     *		  åœ¨JSBä¸­,UserObjectåœ¨è¯¥å‡½æ•°ä¸­åªä¿å­˜ä¸€æ¬¡,ä¸Šä¸€ä¸ªUserObjectä¼šè¢«é‡Šæ”¾æ‰.<br/>
      *      The UserObject will be released in CCNode's destruction.
-     *		  UserObject½«»áÔÚCCNodeÖĞÊÍ·ÅÆÆ»µµô.
+     *		  UserObjectå°†ä¼šåœ¨CCNodeä¸­é‡Šæ”¾ç ´åæ‰.
      * </p>
      * @param {object} newValue A user cocos2d object
      */
@@ -1323,7 +1323,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns the arrival order, indicates which children should be added previously.
-     * ·µ»Øµ½´ïË³Ğò,Ö¸³öÄÄÒ»¸ö×ÓÀàÏÈ±»Ìí¼Ó
+     * è¿”å›åˆ°è¾¾é¡ºåº,æŒ‡å‡ºå“ªä¸€ä¸ªå­ç±»å…ˆè¢«æ·»åŠ 
      * @function
      * @return {Number} The arrival order.
      */
@@ -1334,12 +1334,12 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /**
      * <p>
      *     Sets the arrival order when this node has a same ZOrder with other children.                             <br/>
-     *		 ÉèÖÃµ½´ïË³Ğò,µ±Õâ¸ö½ÚµãºÍÆäËû×Ó½ÚµãÓĞÏàÍ¬µÄZOrderÊ±<br/>
+     *		 è®¾ç½®åˆ°è¾¾é¡ºåº,å½“è¿™ä¸ªèŠ‚ç‚¹å’Œå…¶ä»–å­èŠ‚ç‚¹æœ‰ç›¸åŒçš„ZOrderæ—¶<br/>
      *                                                                                                              <br/>
      *     A node which called addChild subsequently will take a larger arrival order,                              <br/>
-     *		 Ò»¸öµ÷ÓÃÁËÖ®ºóµ÷ÓÃÁËaddChildº¯ÊıµÄ½Úµã½«»áÓĞ¸ü´óµÄµ½´ïË³ĞòÖµ<br/>
+     *		 ä¸€ä¸ªè°ƒç”¨äº†ä¹‹åè°ƒç”¨äº†addChildå‡½æ•°çš„èŠ‚ç‚¹å°†ä¼šæœ‰æ›´å¤§çš„åˆ°è¾¾é¡ºåºå€¼<br/>
      *     If two children have the same Z order, the child with larger arrival order will be drawn later.
-     *		 Èç¹ûÁ½¸ö×Ó¶ÔÏóÓĞÏàÍ¬µÄZÖáË³Ğò,Õâ¸öÓĞ¸ü´óµ½´ïË³ĞòµÄ×ÓÀà½«»áºó»æÖÆ
+     *		 å¦‚æœä¸¤ä¸ªå­å¯¹è±¡æœ‰ç›¸åŒçš„Zè½´é¡ºåº,è¿™ä¸ªæœ‰æ›´å¤§åˆ°è¾¾é¡ºåºçš„å­ç±»å°†ä¼šåç»˜åˆ¶
      * </p>
      * @function
      * @warning This method is used internally for zOrder sorting, don't change this manually
@@ -1351,9 +1351,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>Returns the CCActionManager object that is used by all actions.<br/>
-     * <p>µÃµ½±»ËùÓĞ¶¯×÷Ê¹ÓÃµÄCCActionManager¶ÔÏó<br/>
+     * <p>å¾—åˆ°è¢«æ‰€æœ‰åŠ¨ä½œä½¿ç”¨çš„CCActionManagerå¯¹è±¡<br/>
      * (IMPORTANT: If you set a new cc.ActionManager, then previously created actions are going to be removed.)</p>
-     * (ÖØÒª:Èç¹ûÄãÉèÖÃÁËÒ»¸öĞÂµÄcc.ActionManager,ÔòÏÈÇ°´´½¨µÄ¶¯×÷½«»á±»Çå³ıµô.)</p>	
+     * (é‡è¦:å¦‚æœä½ è®¾ç½®äº†ä¸€ä¸ªæ–°çš„cc.ActionManager,åˆ™å…ˆå‰åˆ›å»ºçš„åŠ¨ä½œå°†ä¼šè¢«æ¸…é™¤æ‰.)</p>	
      * @function
      * @see cc.Node#setActionManager
      * @return {cc.ActionManager} A CCActionManager object.
@@ -1367,7 +1367,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>Sets the cc.ActionManager object that is used by all actions. </p>
-     * <p>ÉèÖÃ±»ËùÓĞ¶¯×÷Ê¹ÓÃµÄcc.ActionManager¶ÔÏó</p>
+     * <p>è®¾ç½®è¢«æ‰€æœ‰åŠ¨ä½œä½¿ç”¨çš„cc.ActionManagerå¯¹è±¡</p>
      * @function
      * @warning If you set a new CCActionManager, then previously created actions will be removed.
      * @param {cc.ActionManager} actionManager A CCActionManager object that is used by all actions.
@@ -1382,7 +1382,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /**
      * <p>
      *   Returns the cc.Scheduler object used to schedule all "updates" and timers.
-     *	 µÃµ½ÓÃÀ´µ÷¶ÈËùÓĞµÄ"updates"¸ú¶¨Ê±Æ÷µÄµ÷¶ÈÆ÷¶ÔÏó
+     *	 å¾—åˆ°ç”¨æ¥è°ƒåº¦æ‰€æœ‰çš„"updates"è·Ÿå®šæ—¶å™¨çš„è°ƒåº¦å™¨å¯¹è±¡
      * </p>
      * @function
      * @return {cc.Scheduler} A CCScheduler object.
@@ -1397,9 +1397,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /**
      * <p>
      *   Sets a CCScheduler object that is used to schedule all "updates" and timers.           <br/>
-     *	 ÉèÖÃÒ»¸öµ÷¶ÈÆ÷¶ÔÏóÀ´ÓÃÓÚµ÷¶ÈËùÓĞµÄ"updates"ºÍ¶¨Ê±Æ÷<br/>
+     *	 è®¾ç½®ä¸€ä¸ªè°ƒåº¦å™¨å¯¹è±¡æ¥ç”¨äºè°ƒåº¦æ‰€æœ‰çš„"updates"å’Œå®šæ—¶å™¨<br/>
      *   IMPORTANT: If you set a new cc.Scheduler, then previously created timers/update are going to be removed.
-     *	 ÖØÒª:Èç¹ûÄãÉèÖÃÁËÒ»¸öĞÂµÄcc.Scheduler,ÄÇÃ´ÏÈÇ°´´½¨µÄ¶¨Ê±Æ÷/¸üĞÂº¯Êı¶¼½«»á±»Çå³ıµô.
+     *	 é‡è¦:å¦‚æœä½ è®¾ç½®äº†ä¸€ä¸ªæ–°çš„cc.Scheduler,é‚£ä¹ˆå…ˆå‰åˆ›å»ºçš„å®šæ—¶å™¨/æ›´æ–°å‡½æ•°éƒ½å°†ä¼šè¢«æ¸…é™¤æ‰.
      * </p>
      * @function
      * @warning If you set a new CCScheduler, then previously created timers/update are going to be removed.
@@ -1414,7 +1414,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns a "local" axis aligned bounding box of the node. <br/>
-     * ·µ»Ø½ÚµãµÄ±¾µØ×ø±êÏµµÄÍâ±ß¿ò.<br/>
+     * è¿”å›èŠ‚ç‚¹çš„æœ¬åœ°åæ ‡ç³»çš„å¤–è¾¹æ¡†.<br/>
      * 
      * @deprecated since v3.0, please use getBoundingBox instead
      * @return {cc.Rect}
@@ -1426,9 +1426,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns a "local" axis aligned bounding box of the node. <br/>
-     * ·µ»Ø½ÚµãµÄ±¾µØ×ø±êÏµµÄÍâ±ß¿ò.<br/>
+     * è¿”å›èŠ‚ç‚¹çš„æœ¬åœ°åæ ‡ç³»çš„å¤–è¾¹æ¡†.<br/>
      * The returned box is relative only to its parent.
-     * ¸Ã·µ»ØµÄ±ß¿òÖ»¸úËüµÄ¸¸ÀàÓĞ¹ØÁª.
+     * è¯¥è¿”å›çš„è¾¹æ¡†åªè·Ÿå®ƒçš„çˆ¶ç±»æœ‰å…³è”.
      * @function
      * @return {cc.Rect} The calculated bounding box of the node
      */
@@ -1439,29 +1439,29 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Stops all running actions and schedulers
-     * Í£Ö¹ËùÓĞµÄ¶¯×÷¸úµ÷¶ÈÆ÷.
+     * åœæ­¢æ‰€æœ‰çš„åŠ¨ä½œè·Ÿè°ƒåº¦å™¨.
      * @function
      */
     cleanup: function () {
         // actions
-        // ¶¯×÷
+        // åŠ¨ä½œ
         this.stopAllActions();
         this.unscheduleAllCallbacks();
 
         // event
-        // ÊÂ¼ş
+        // äº‹ä»¶
         cc.eventManager.removeListeners(this);
 
         // timers
-        // ¶¨Ê±Æ÷
+        // å®šæ—¶å™¨
         this._arrayMakeObjectsPerformSelector(this._children, cc.Node._stateCallbackType.cleanup);
     },
 
     // composition: GET
-    // ×é³É:GET
+    // ç»„æˆ:GET
     /**
      * Returns a child from the container given its tag
-     * ´ÓÈİÆ÷ÖĞÍ¨¹ı×Ó½ÚµãµÄ±êÇ©»ñÈ¡Ò»¸ö×Ó½Úµã
+     * ä»å®¹å™¨ä¸­é€šè¿‡å­èŠ‚ç‚¹çš„æ ‡ç­¾è·å–ä¸€ä¸ªå­èŠ‚ç‚¹
      * @function
      * @param {Number} aTag An identifier to find the child node.
      * @return {cc.Node} a CCNode object whose tag equals to the input parameter
@@ -1480,7 +1480,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns a child from the container given its name
-     * ´ÓÈİÆ÷ÖĞÍ¨¹ı×Ó½ÚµãµÄÃû³Æ»ñÈ¡Ò»¸ö×Ó½Úµã
+     * ä»å®¹å™¨ä¸­é€šè¿‡å­èŠ‚ç‚¹çš„åç§°è·å–ä¸€ä¸ªå­èŠ‚ç‚¹
      * @function
      * @param {Number} name An identifier to find the child node.
      * @return {cc.Node} a CCNode object whose name equals to the input parameter
@@ -1500,12 +1500,12 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     // composition: ADD
-		// ×é³É:ADD
+		// ç»„æˆ:ADD
     /** <p>"add" logic MUST only be in this method <br/> </p>
-    /** <p>"add" ·½Ê½±ØĞëÊ¹ÓÃ¸Ã·½·¨<br/> </p>
+    /** <p>"add" æ–¹å¼å¿…é¡»ä½¿ç”¨è¯¥æ–¹æ³•<br/> </p>
      *
      * <p>If the child is added to a 'running' node, then 'onEnter' and 'onEnterTransitionDidFinish' will be called immediately.</p>
-     * <p>Èç¹û×Ó½Úµã±»Ìí¼Óµ½ÁËÒ»¸ö"running(»î¶¯×ÅµÄ)"½Úµã,ÄÇÃ´'onEnter'ºÍ'onEnterTransitionDidFinish' ½«»áÁ¢¼´µ÷ÓÃ</p>
+     * <p>å¦‚æœå­èŠ‚ç‚¹è¢«æ·»åŠ åˆ°äº†ä¸€ä¸ª"running(æ´»åŠ¨ç€çš„)"èŠ‚ç‚¹,é‚£ä¹ˆ'onEnter'å’Œ'onEnterTransitionDidFinish' å°†ä¼šç«‹å³è°ƒç”¨</p>
      * @function
      * @param {cc.Node} child  A child node
      * @param {Number} [localZOrder=]  Z order for drawing priority. Please refer to setZOrder(int)
@@ -1547,7 +1547,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
         if( this._running ){
             child.onEnter();
             // prevent onEnterTransitionDidFinish to be called twice when a node is added in onEnter
-            // µ±Ò»¸ö½ÚµãÔÚonEnter±»Ìí¼ÓÄÇÃ´·ÀÖ¹onEnterTransitionDidFinish±»µ÷ÓÃÁ½´Î
+            // å½“ä¸€ä¸ªèŠ‚ç‚¹åœ¨onEnterè¢«æ·»åŠ é‚£ä¹ˆé˜²æ­¢onEnterTransitionDidFinishè¢«è°ƒç”¨ä¸¤æ¬¡
             if (this._isTransitionFinished)
                 child.onEnterTransitionDidFinish();
         }
@@ -1559,14 +1559,14 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     // composition: REMOVE
-    // ×é³É:REMOVE
+    // ç»„æˆ:REMOVE
     /**
      * Remove itself from its parent node. If cleanup is true, then also remove all actions and callbacks. <br/>
-     * ´ÓËüµÄ¸¸ÀàÖĞÉ¾³ıÆä±¾Éí.Èç¹ûcleanupÎªtrue,ÄÇÃ´½«»áÉ¾³ıÆäËùÓĞµÄ¶¯×÷¸ú»Øµ÷.<br/>
+     * ä»å®ƒçš„çˆ¶ç±»ä¸­åˆ é™¤å…¶æœ¬èº«.å¦‚æœcleanupä¸ºtrue,é‚£ä¹ˆå°†ä¼šåˆ é™¤å…¶æ‰€æœ‰çš„åŠ¨ä½œè·Ÿå›è°ƒ.<br/>
      * If the cleanup parameter is not passed, it will force a cleanup. <br/>
-     * Èç¹ûcleanupÃ»ÓĞ´«µİ½øÀ´,ÄÇÃ´Ëü½«»áÇ¿ÖÆÉèÖÃÒ»¸öcleanup.<br/>
+     * å¦‚æœcleanupæ²¡æœ‰ä¼ é€’è¿›æ¥,é‚£ä¹ˆå®ƒå°†ä¼šå¼ºåˆ¶è®¾ç½®ä¸€ä¸ªcleanup.<br/>
      * If the node orphan, then nothing happens.
-     * Èç¹û¸Ã½ÚµãÃ»ÓĞÈÎºÎµÄ¸¸Àà,ÄÇÃ´¾Í²»»áÓĞÈÎºÎµÄĞ§¹û.
+     * å¦‚æœè¯¥èŠ‚ç‚¹æ²¡æœ‰ä»»ä½•çš„çˆ¶ç±»,é‚£ä¹ˆå°±ä¸ä¼šæœ‰ä»»ä½•çš„æ•ˆæœ.
      * @function
      * @param {Boolean} [cleanup=true] true if all actions and callbacks on this node should be removed, false otherwise.
      * @see cc.Node#removeFromParentAndCleanup
@@ -1581,9 +1581,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Removes this node itself from its parent node.  <br/>
-     * ´Ó¸Ã½ÚµãµÄ¸¸ÀàÖĞÉ¾³ı¸Ã½Úµã±¾Éí.<br/>
+     * ä»è¯¥èŠ‚ç‚¹çš„çˆ¶ç±»ä¸­åˆ é™¤è¯¥èŠ‚ç‚¹æœ¬èº«.<br/>
      * If the node orphan, then nothing happens.
-     * Èç¹û¸Ã½ÚµãÃ»ÓĞÈÎºÎµÄ¸¸Àà,ÄÇÃ´¾Í²»»áÓĞÈÎºÎµÄĞ§¹û.
+     * å¦‚æœè¯¥èŠ‚ç‚¹æ²¡æœ‰ä»»ä½•çš„çˆ¶ç±»,é‚£ä¹ˆå°±ä¸ä¼šæœ‰ä»»ä½•çš„æ•ˆæœ.
      * @deprecated since v3.0, please use removeFromParent() instead
      * @param {Boolean} [cleanup=true] true if all actions and callbacks on this node should be removed, false otherwise.
      */
@@ -1593,14 +1593,14 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /** <p>Removes a child from the container. It will also cleanup all running actions depending on the cleanup parameter. </p>
-    /** <p>´ÓÒ»¸öÈİÆ÷ÖĞÉ¾³ıÒ»¸ö×Ó½Úµã.¸Ãº¯Êı»áÒÀ¾İcleanupÀ´¶ÔËùÓĞµÄÔËĞĞ¶¯×÷½øĞĞ´¦Àí.</p>
+    /** <p>ä»ä¸€ä¸ªå®¹å™¨ä¸­åˆ é™¤ä¸€ä¸ªå­èŠ‚ç‚¹.è¯¥å‡½æ•°ä¼šä¾æ®cleanupæ¥å¯¹æ‰€æœ‰çš„è¿è¡ŒåŠ¨ä½œè¿›è¡Œå¤„ç†.</p>
      * If the cleanup parameter is not passed, it will force a cleanup. <br/>
-     * Èç¹ûcleanup²ÎÊıÃ»ÓĞ´«µİ½øÀ´,Ëü½«»áÇ¿ÖÆÉèÖÃÒ»¸öcleanup.<br/>
+     * å¦‚æœcleanupå‚æ•°æ²¡æœ‰ä¼ é€’è¿›æ¥,å®ƒå°†ä¼šå¼ºåˆ¶è®¾ç½®ä¸€ä¸ªcleanup.<br/>
      * <p> "remove" logic MUST only be on this method  <br/>
-     * <p> "remove" ·½Ê½±ØĞëÊ¹ÓÃ¸Ã·½·¨<br/>
+     * <p> "remove" æ–¹å¼å¿…é¡»ä½¿ç”¨è¯¥æ–¹æ³•<br/>
      * If a class wants to extend the 'removeChild' behavior it only needs <br/>
      * to override this method </p>
-     * Èç¹ûÒ»¸öÀàÏëÒª¼Ì³Ğ'removeChild'ĞĞÎª,ÔòÖ»ĞèÒªÖØĞ´¸Ã·½·¨¾ÍĞĞ.</p>
+     * å¦‚æœä¸€ä¸ªç±»æƒ³è¦ç»§æ‰¿'removeChild'è¡Œä¸º,åˆ™åªéœ€è¦é‡å†™è¯¥æ–¹æ³•å°±è¡Œ.</p>
      * @function
      * @param {cc.Node} child  The child node which will be removed.
      * @param {Boolean} [cleanup=true]  true if all running actions and callbacks on the child node will be cleanup, false otherwise.
@@ -1621,9 +1621,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Removes a child from the container by tag value. It will also cleanup all running actions depending on the cleanup parameter.
-     * ¸ù¾İ±êÇ©Öµ´ÓÒ»¸öÈİÆ÷ÖĞÉ¾³ıÒ»¸ö×Ó½Úµã.¸Ãº¯Êı»áÒÀ¾İcleanupÀ´¶ÔËùÓĞµÄÔËĞĞ¶¯×÷½øĞĞ´¦Àí.
+     * æ ¹æ®æ ‡ç­¾å€¼ä»ä¸€ä¸ªå®¹å™¨ä¸­åˆ é™¤ä¸€ä¸ªå­èŠ‚ç‚¹.è¯¥å‡½æ•°ä¼šä¾æ®cleanupæ¥å¯¹æ‰€æœ‰çš„è¿è¡ŒåŠ¨ä½œè¿›è¡Œå¤„ç†.
      * If the cleanup parameter is not passed, it will force a cleanup. <br/>
-     * Èç¹ûcleanup²ÎÊıÃ»ÓĞ´«µİ½øÀ´,Ëü½«»áÇ¿ÖÆÉèÖÃÒ»¸öcleanup.<br/>
+     * å¦‚æœcleanupå‚æ•°æ²¡æœ‰ä¼ é€’è¿›æ¥,å®ƒå°†ä¼šå¼ºåˆ¶è®¾ç½®ä¸€ä¸ªcleanup.<br/>
      * @function
      * @param {Number} tag An integer number that identifies a child node
      * @param {Boolean} [cleanup=true] true if all running actions and callbacks on the child node will be cleanup, false otherwise.
@@ -1642,7 +1642,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Removes all children from the container and do a cleanup all running actions depending on the cleanup parameter.
-     * ´ÓÈİÆ÷ÖĞÉ¾³ıËùÓĞµÄ×Ó½Úµã²¢ÇÒÒÀ¾İcleanupÀ´¶ÔËùÓĞµÄÔËĞĞ¶¯×÷½øĞĞ´¦Àí.
+     * ä»å®¹å™¨ä¸­åˆ é™¤æ‰€æœ‰çš„å­èŠ‚ç‚¹å¹¶ä¸”ä¾æ®cleanupæ¥å¯¹æ‰€æœ‰çš„è¿è¡ŒåŠ¨ä½œè¿›è¡Œå¤„ç†.
      * @param {Boolean} [cleanup=true]
      */
     removeAllChildrenWithCleanup: function (cleanup) {
@@ -1652,15 +1652,15 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Removes all children from the container and do a cleanup all running actions depending on the cleanup parameter. <br/>
-     * ´ÓÈİÆ÷ÖĞÉ¾³ıËùÓĞµÄ×Ó½Úµã²¢ÇÒÒÀ¾İcleanupÀ´¶ÔËùÓĞµÄÔËĞĞ¶¯×÷½øĞĞ´¦Àí.
+     * ä»å®¹å™¨ä¸­åˆ é™¤æ‰€æœ‰çš„å­èŠ‚ç‚¹å¹¶ä¸”ä¾æ®cleanupæ¥å¯¹æ‰€æœ‰çš„è¿è¡ŒåŠ¨ä½œè¿›è¡Œå¤„ç†.
      * If the cleanup parameter is not passed, it will force a cleanup. <br/>
-     * Èç¹ûcleanup²ÎÊıÃ»ÓĞ´«µİ½øÀ´,Ëü½«»áÇ¿ÖÆÉèÖÃÒ»¸öcleanup.<br/>
+     * å¦‚æœcleanupå‚æ•°æ²¡æœ‰ä¼ é€’è¿›æ¥,å®ƒå°†ä¼šå¼ºåˆ¶è®¾ç½®ä¸€ä¸ªcleanup.<br/>
      * @function
      * @param {Boolean} [cleanup=true] true if all running actions on all children nodes should be cleanup, false otherwise.
      */
     removeAllChildren: function (cleanup) {
         // not using detachChild improves speed here
-        // ÔÚÕâÀï²»Ê¹ÓÃdetachChildÀ´Ìá¸ßËÙ¶È
+        // åœ¨è¿™é‡Œä¸ä½¿ç”¨detachChildæ¥æé«˜é€Ÿåº¦
         var __children = this._children;
         if (__children != null) {
             if (cleanup == null)
@@ -1669,11 +1669,11 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
                 var node = __children[i];
                 if (node) {
                     // IMPORTANT:
-                    // ÖØÒª
+                    // é‡è¦
                     //  -1st do onExit
-                    //  -1st Ö´ĞĞonExit
+                    //  -1st æ‰§è¡ŒonExit
                     //  -2nd cleanup
-                    //  -2nd Çå³ı
+                    //  -2nd æ¸…é™¤
                     if (this._running) {
                         node.onExitTransitionDidStart();
                         node.onExit();
@@ -1681,7 +1681,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
                     if (cleanup)
                         node.cleanup();
                     // set parent nil at the end
-                    // ×îºóÉèÖÃ¸¸ÀàÎªnil
+                    // æœ€åè®¾ç½®çˆ¶ç±»ä¸ºnil
                     node.parent = null;
                 }
             }
@@ -1691,23 +1691,23 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     _detachChild: function (child, doCleanup) {
         // IMPORTANT:
-        // ÖØÒª
+        // é‡è¦
         //  -1st do onExit
-        //  -1st Ö´ĞĞonExit
+        //  -1st æ‰§è¡ŒonExit
         //  -2nd cleanup
-        //  -2nd Çå³ı
+        //  -2nd æ¸…é™¤
         if (this._running) {
             child.onExitTransitionDidStart();
             child.onExit();
         }
 
         // If you don't do cleanup, the child's actions will not get removed and the
-        // Èç¹ûÄã²»Ïë½øĞĞÇå³ı,ÄÇÃ´×Ó½ÚµãµÄ¶¯×÷½«²»»á±»ÒÆ³ı
+        // å¦‚æœä½ ä¸æƒ³è¿›è¡Œæ¸…é™¤,é‚£ä¹ˆå­èŠ‚ç‚¹çš„åŠ¨ä½œå°†ä¸ä¼šè¢«ç§»é™¤
         if (doCleanup)
             child.cleanup();
 
         // set parent nil at the end
-        // ×îºóÉèÖÃ¸¸ÀàÎªnil
+        // æœ€åè®¾ç½®çˆ¶ç±»ä¸ºnil
         child.parent = null;
         child._cachedParent = null;
 
@@ -1721,9 +1721,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /** Reorders a child according to a new z value. <br/>
-    /** ¶ÔÒ»¸öº¢×ÓÖØĞÂÅÅĞò,Éè¶¨Ò»¸öĞÂµÄzÖáµÄÖµ<br/>
+    /** å¯¹ä¸€ä¸ªå­©å­é‡æ–°æ’åº,è®¾å®šä¸€ä¸ªæ–°çš„zè½´çš„å€¼<br/>
      * The child MUST be already added.
-     * ×Ó½Úµã±ØĞëÒÑ¾­Ìí¼Ó.
+     * å­èŠ‚ç‚¹å¿…é¡»å·²ç»æ·»åŠ .
      * @function
      * @param {cc.Node} child An already added child node. It MUST be already added.
      * @param {Number} zOrder Z order for drawing priority. Please refer to setZOrder(int)
@@ -1740,9 +1740,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /**
      * <p>
      *     Sorts the children array once before drawing, instead of every time when a child is added or reordered.    <br/>
-     *		 ÔÚ»æÖÆÖ®Ç°¶Ô×Ó½ÚµãÊı×é½øĞĞÅÅĞòÒ»´Î,¶ø²»ÊÇÃ¿´ÎÌí¼Ó»òÕßÉ¾³ı×Ó½ÚµãÊ±¶¼ÅÅĞò.<br>
+     *		 åœ¨ç»˜åˆ¶ä¹‹å‰å¯¹å­èŠ‚ç‚¹æ•°ç»„è¿›è¡Œæ’åºä¸€æ¬¡,è€Œä¸æ˜¯æ¯æ¬¡æ·»åŠ æˆ–è€…åˆ é™¤å­èŠ‚ç‚¹æ—¶éƒ½æ’åº.<br>
      *     This approach can improves the performance massively.
-     *		  Õâ¸ö·½·¨¿ÉÒÔ´óÁ¿µØÌá¸ßĞÔÄÜ.
+     *		  è¿™ä¸ªæ–¹æ³•å¯ä»¥å¤§é‡åœ°æé«˜æ€§èƒ½.
      * </p>
      * @function
      * @note Don't call this manually unless a child added needs to be removed in the same frame
@@ -1752,14 +1752,14 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
             var _children = this._children;
 
             // insertion sort
-            // ²åÈëÅÅĞò
+            // æ’å…¥æ’åº
             var len = _children.length, i, j, tmp;
             for(i=1; i<len; i++){
                 tmp = _children[i];
                 j = i - 1;
 
                 //continue moving element downwards while zOrder is smaller or when zOrder is the same but mutatedIndex is smaller
-                //µ±zOrderÊÇ¸üĞ¡»òÕßµ±zOrderÊÇÒ»ÑùµÄµ«mutatedIndex¸üĞ¡Ê±¼ÌĞøÍùÏÂÒÆ¶¯ÔªËØ
+                //å½“zOrderæ˜¯æ›´å°æˆ–è€…å½“zOrderæ˜¯ä¸€æ ·çš„ä½†mutatedIndexæ›´å°æ—¶ç»§ç»­å¾€ä¸‹ç§»åŠ¨å…ƒç´ 
                 while(j >= 0){
                     if(tmp._localZOrder < _children[j]._localZOrder){
                         _children[j+1] = _children[j];
@@ -1774,28 +1774,28 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
             }
 
             //don't need to check children recursively, that's done in visit of each child
-            //²»ĞèÒªµİ¹éÈ·ÈÏ×Ó½Úµã,ÔÚ·ÃÎÊÃ¿¸ö×Ó½ÚµãµÄÊ±ºò¶¼ÒÑ¾­È·ÈÏÍêÁË
+            //ä¸éœ€è¦é€’å½’ç¡®è®¤å­èŠ‚ç‚¹,åœ¨è®¿é—®æ¯ä¸ªå­èŠ‚ç‚¹çš„æ—¶å€™éƒ½å·²ç»ç¡®è®¤å®Œäº†
             this._reorderChildDirty = false;
         }
     },
 
     /**
      * Render function using the canvas 2d context or WebGL context, internal usage only, please do not call this function
-     * Ê¹ÓÃcanvas 2dÉÏÏÂÎÄ¸úWebGLÉÏÏÂÎÄ½øĞĞäÖÈ¾µÄº¯Êı,½ö¹©ÄÚ²¿Ê¹ÓÃ,Çë²»Òªµ÷ÓÃ¸Ãº¯Êı
+     * ä½¿ç”¨canvas 2dä¸Šä¸‹æ–‡è·ŸWebGLä¸Šä¸‹æ–‡è¿›è¡Œæ¸²æŸ“çš„å‡½æ•°,ä»…ä¾›å†…éƒ¨ä½¿ç”¨,è¯·ä¸è¦è°ƒç”¨è¯¥å‡½æ•°
      * @function
      * @param {CanvasRenderingContext2D | WebGLRenderingContext} ctx The render context
      */
     draw: function (ctx) {
         // override me
-        // ÖØĞ´
+        // é‡å†™
         // Only use- this function to draw your staff.
-        // Ö»Ê¹ÓÃ¸Ãº¯Êı½øĞĞ»æÖÆÄãµÄ¹¤×÷
+        // åªä½¿ç”¨è¯¥å‡½æ•°è¿›è¡Œç»˜åˆ¶ä½ çš„å·¥ä½œ
         // DON'T draw your stuff outside this method
-        // ±ğÔÚ¸Ãº¯ÊıÒÔÍâ½øĞĞÄãµÄ»æÖÆ¹¤×÷
+        // åˆ«åœ¨è¯¥å‡½æ•°ä»¥å¤–è¿›è¡Œä½ çš„ç»˜åˆ¶å·¥ä½œ
     },
 
     // Internal use only, do not call it by yourself,
-    // ½ö¹©ÄÚ²¿Ê¹ÓÃ,Çë±ğµ÷ÓÃ¸Ãº¯Êı.
+    // ä»…ä¾›å†…éƒ¨ä½¿ç”¨,è¯·åˆ«è°ƒç”¨è¯¥å‡½æ•°.
     transformAncestors: function () {
         if (this._parent != null) {
             this._parent.transformAncestors();
@@ -1804,23 +1804,23 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     //scene managment
-    //³¡¾°¹ÜÀí
+    //åœºæ™¯ç®¡ç†
     /**
      * <p>
      *     Event callback that is invoked every time when CCNode enters the 'stage'.                                   <br/>
-     * 		 Ã¿´Îµ±CCNode½øÈë"stage"Ê±²Åµ÷ÓÃÊÂ¼ş»Øµ÷<br/>
+     * 		 æ¯æ¬¡å½“CCNodeè¿›å…¥"stage"æ—¶æ‰è°ƒç”¨äº‹ä»¶å›è°ƒ<br/>
      *     If the CCNode enters the 'stage' with a transition, this event is called when the transition starts.        <br/>
-     *		  Èç¹ûCCNode½øÈë"stage"×´Ì¬Ê±°éËæ×ÅÒ»¸ö×ª»»(transition),ÄÇÃ´ÊÂ¼ş½«»áÔÚÕâ¸ö×ª»»¿ªÊ¼µÄÊ±ºò±»µ÷ÓÃ.<br/>
+     *		  å¦‚æœCCNodeè¿›å…¥"stage"çŠ¶æ€æ—¶ä¼´éšç€ä¸€ä¸ªè½¬æ¢(transition),é‚£ä¹ˆäº‹ä»¶å°†ä¼šåœ¨è¿™ä¸ªè½¬æ¢å¼€å§‹çš„æ—¶å€™è¢«è°ƒç”¨.<br/>
      *     During onEnter you can't access a "sister/brother" node.                                                    <br/>
-     *		 ÔÚonEnter¹ı³ÌÖĞ,Äã²»ÄÜ¹»½ÓÈë"sister/brother"Í¬¼¶½Úµã<br/>
+     *		 åœ¨onEnterè¿‡ç¨‹ä¸­,ä½ ä¸èƒ½å¤Ÿæ¥å…¥"sister/brother"åŒçº§èŠ‚ç‚¹<br/>
      *     If you override onEnter, you must call its parent's onEnter function with this._super().
-     *      Èç¹ûÄãÖØĞ´ÁËonEnter·½·¨,ÄãÓ¦¸ÃÊ¹ÓÃthis._super()µ÷ÓÃËüµÄ¸¸ÀàµÄonEnterº¯Êı.
+     *      å¦‚æœä½ é‡å†™äº†onEnteræ–¹æ³•,ä½ åº”è¯¥ä½¿ç”¨this._super()è°ƒç”¨å®ƒçš„çˆ¶ç±»çš„onEnterå‡½æ•°.
      * </p>
      * @function
      */
     onEnter: function () {
         this._isTransitionFinished = false;
-        this._running = true;//should be running before resumeSchedule //ĞèÒªÔÚresumeScheduleÖ®Ç°Ö´ĞĞ
+        this._running = true;//should be running before resumeSchedule //éœ€è¦åœ¨resumeScheduleä¹‹å‰æ‰§è¡Œ
         this._arrayMakeObjectsPerformSelector(this._children, cc.Node._stateCallbackType.onEnter);
         this.resume();
     },
@@ -1828,11 +1828,11 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /**
      * <p>
      *     Event callback that is invoked when the CCNode enters in the 'stage'.                                                        <br/>
-     *		 Ã¿´Îµ±CCNode½øÈë"stage"Ê±²Åµ÷ÓÃÊÂ¼ş»Øµ÷.<br/>
+     *		 æ¯æ¬¡å½“CCNodeè¿›å…¥"stage"æ—¶æ‰è°ƒç”¨äº‹ä»¶å›è°ƒ.<br/>
      *     If the CCNode enters the 'stage' with a transition, this event is called when the transition finishes.                       <br/>
-     *		 Èç¹ûCCNode½øÈë"stage"×´Ì¬Ê±°éËæ×ÅÒ»¸ö×ª»»(transition),ÄÇÃ´ÊÂ¼ş½«»áÔÚÕâ¸ö×ª»»½áÊøµÄÊ±ºò±»µ÷ÓÃ.<br/>
+     *		 å¦‚æœCCNodeè¿›å…¥"stage"çŠ¶æ€æ—¶ä¼´éšç€ä¸€ä¸ªè½¬æ¢(transition),é‚£ä¹ˆäº‹ä»¶å°†ä¼šåœ¨è¿™ä¸ªè½¬æ¢ç»“æŸçš„æ—¶å€™è¢«è°ƒç”¨.<br/>
      *     If you override onEnterTransitionDidFinish, you shall call its parent's onEnterTransitionDidFinish with this._super()
-     *		 Èç¹ûÄãÖØĞ´ÁËonEnterTransitionDidFinish·½·¨,ÄãÓ¦¸ÃÊ¹ÓÃthis._super()µ÷ÓÃËüµÄ¸¸ÀàÖĞµÄonEnterTransitionDidFinishº¯Êı
+     *		 å¦‚æœä½ é‡å†™äº†onEnterTransitionDidFinishæ–¹æ³•,ä½ åº”è¯¥ä½¿ç”¨this._super()è°ƒç”¨å®ƒçš„çˆ¶ç±»ä¸­çš„onEnterTransitionDidFinishå‡½æ•°
      * </p>
      * @function
      */
@@ -1843,11 +1843,11 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>callback that is called every time the cc.Node leaves the 'stage'.  <br/>
-     * <p>Ã¿´Îµ±cc.NodeÀë¿ª"stage"Ê±²Åµ÷ÓÃÊÂ¼ş»Øµ÷.<br/>
+     * <p>æ¯æ¬¡å½“cc.Nodeç¦»å¼€"stage"æ—¶æ‰è°ƒç”¨äº‹ä»¶å›è°ƒ.<br/>
      * If the cc.Node leaves the 'stage' with a transition, this callback is called when the transition starts. <br/>
-     *  Èç¹ûcc.NodeÀë¿ª"stage"×´Ì¬Ê±°éËæ×ÅÒ»¸ö×ª»»(transition),ÄÇÃ´ÊÂ¼ş½«»áÔÚÕâ¸ö×ª»»¿ªÊ¼µÄÊ±ºò±»µ÷ÓÃ.<br/>
+     *  å¦‚æœcc.Nodeç¦»å¼€"stage"çŠ¶æ€æ—¶ä¼´éšç€ä¸€ä¸ªè½¬æ¢(transition),é‚£ä¹ˆäº‹ä»¶å°†ä¼šåœ¨è¿™ä¸ªè½¬æ¢å¼€å§‹çš„æ—¶å€™è¢«è°ƒç”¨.<br/>
      * If you override onExitTransitionDidStart, you shall call its parent's onExitTransitionDidStart with this._super()</p>
-     * Èç¹ûÄãÖØĞ´ÁËonExitTransitionDidStart·½·¨,ÄãÓ¦¸ÃÊ¹ÓÃthis._super()µ÷ÓÃËüµÄ¸¸ÀàÖĞµÄonExitTransitionDidStartº¯Êı
+     * å¦‚æœä½ é‡å†™äº†onExitTransitionDidStartæ–¹æ³•,ä½ åº”è¯¥ä½¿ç”¨this._super()è°ƒç”¨å®ƒçš„çˆ¶ç±»ä¸­çš„onExitTransitionDidStartå‡½æ•°
      * @function
      */
     onExitTransitionDidStart: function () {
@@ -1857,13 +1857,13 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /**
      * <p>
      * callback that is called every time the cc.Node leaves the 'stage'.                                         <br/>
-     * Ã¿´Îµ±cc.NodeÀë¿ª"stage"Ê±²Åµ÷ÓÃÊÂ¼ş»Øµ÷
+     * æ¯æ¬¡å½“cc.Nodeç¦»å¼€"stage"æ—¶æ‰è°ƒç”¨äº‹ä»¶å›è°ƒ
      * If the cc.Node leaves the 'stage' with a transition, this callback is called when the transition finishes. <br/>
-     * Èç¹ûcc.NodeÀë¿ª"stage"×´Ì¬Ê±°éËæ×ÅÒ»¸ö×ª»»(transition), ÄÇÃ´ÊÂ¼ş½«»áÔÚÕâ¸ö×ª»»½áÊøµÄÊ±ºò±»µ÷ÓÃ<br/>
+     * å¦‚æœcc.Nodeç¦»å¼€"stage"çŠ¶æ€æ—¶ä¼´éšç€ä¸€ä¸ªè½¬æ¢(transition), é‚£ä¹ˆäº‹ä»¶å°†ä¼šåœ¨è¿™ä¸ªè½¬æ¢ç»“æŸçš„æ—¶å€™è¢«è°ƒç”¨<br/>
      * During onExit you can't access a sibling node.                                                             <br/>
-     * ÔÚonEnter¹ı³ÌÖĞÖĞÄã²»ÄÜ¹»½ÓÈëÒ»¸öÍ¬¼¶½Úµã.<br/>
+     * åœ¨onEnterè¿‡ç¨‹ä¸­ä¸­ä½ ä¸èƒ½å¤Ÿæ¥å…¥ä¸€ä¸ªåŒçº§èŠ‚ç‚¹.<br/>
      * If you override onExit, you shall call its parent's onExit with this._super().
-     * Èç¹ûÄãÖØĞ´ÁËonExit·½·¨,ÄãÓ¦¸ÃÊ¹ÓÃthis._super()µ÷ÓÃËüµÄ¸¸ÀàÖĞµÄonExitº¯Êı
+     * å¦‚æœä½ é‡å†™äº†onExitæ–¹æ³•,ä½ åº”è¯¥ä½¿ç”¨this._super()è°ƒç”¨å®ƒçš„çˆ¶ç±»ä¸­çš„onExitå‡½æ•°
      * </p>
      * @function
      */
@@ -1877,9 +1877,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     // actions
     /**
      * Executes an action, and returns the action that is executed.<br/>
-     * Ö´ĞĞÒ»¸ö¶¯×÷,²¢ÇÒ·µ»ØÖ´ĞĞµÄ¸Ã¶¯×÷.<br/>
+     * æ‰§è¡Œä¸€ä¸ªåŠ¨ä½œ,å¹¶ä¸”è¿”å›æ‰§è¡Œçš„è¯¥åŠ¨ä½œ.<br/>
      * The node becomes the action's target. Refer to cc.Action's getTarget()
-     * Õâ¸ö½Úµã½«»á±ä³É¶¯×÷µÄÄ¿±ê,²Î¿¼cc.ActionµÄgetTarget()
+     * è¿™ä¸ªèŠ‚ç‚¹å°†ä¼šå˜æˆåŠ¨ä½œçš„ç›®æ ‡,å‚è€ƒcc.Actionçš„getTarget()
      * @function
      * @warning Starting from v0.8 actions don't retain their target anymore.
      * @param {cc.Action} action
@@ -1894,7 +1894,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Stops and removes all actions from the running action list .
-     * ´ÓÔËĞĞÖĞµÄ¶¯×÷ÁĞ±íÖĞÍ£Ö¹ºÍÉ¾³ıËùÓĞµÄ¶¯×÷.
+     * ä»è¿è¡Œä¸­çš„åŠ¨ä½œåˆ—è¡¨ä¸­åœæ­¢å’Œåˆ é™¤æ‰€æœ‰çš„åŠ¨ä½œ.
      * @function
      */
     stopAllActions: function () {
@@ -1903,7 +1903,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Stops and removes an action from the running action list.
-     * ´ÓÔËĞĞÖĞµÄ¶¯×÷ÁĞ±íÖĞÍ£Ö¹ºÍÉ¾³ıÒ»¸ö¶¯×÷.
+     * ä»è¿è¡Œä¸­çš„åŠ¨ä½œåˆ—è¡¨ä¸­åœæ­¢å’Œåˆ é™¤ä¸€ä¸ªåŠ¨ä½œ.
      * @function
      * @param {cc.Action} action An action object to be removed.
      */
@@ -1913,7 +1913,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Removes an action from the running action list by its tag.
-     * ¸ù¾İËüµÄ±êÇ©´ÓÔËĞĞ×ÅµÄ¶¯×÷ÁĞ±íÖĞÉ¾³ı¸Ã¶¯×÷.
+     * æ ¹æ®å®ƒçš„æ ‡ç­¾ä»è¿è¡Œç€çš„åŠ¨ä½œåˆ—è¡¨ä¸­åˆ é™¤è¯¥åŠ¨ä½œ.
      * @function
      * @param {Number} tag A tag that indicates the action to be removed.
      */
@@ -1927,7 +1927,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns an action from the running action list by its tag.
-     * ¸ù¾İËüµÄ±êÇ©´ÓÔËĞĞ×ÅµÄ¶¯×÷ÁĞ±íÖĞ·µ»ØÒ»¸ö¶¯×÷.
+     * æ ¹æ®å®ƒçš„æ ‡ç­¾ä»è¿è¡Œç€çš„åŠ¨ä½œåˆ—è¡¨ä¸­è¿”å›ä¸€ä¸ªåŠ¨ä½œ.
      * @function
      * @see cc.Node#getTag and cc.Node#setTag
      * @param {Number} tag
@@ -1942,13 +1942,13 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /** <p>Returns the numbers of actions that are running plus the ones that are schedule to run (actions in actionsToAdd and actions arrays).<br/>
-    /** <p>·µ»Ø»î¶¯×ÅµÄ¶¯×÷¼ÓÉÏÕıÔÚµ÷¶ÈÔËĞĞµÄ¶¯×÷µÄ×ÜÊı(ÔÚactionsToAdd×´Ì¬µÄ¶¯×÷ºÍ¶¯×÷Êı×éÖĞµÄ).<br/>
+    /** <p>è¿”å›æ´»åŠ¨ç€çš„åŠ¨ä½œåŠ ä¸Šæ­£åœ¨è°ƒåº¦è¿è¡Œçš„åŠ¨ä½œçš„æ€»æ•°(åœ¨actionsToAddçŠ¶æ€çš„åŠ¨ä½œå’ŒåŠ¨ä½œæ•°ç»„ä¸­çš„).<br/>
      *    Composable actions are counted as 1 action. Example:<br/>
-     *    ×é³ÉµÄ¶¯×÷±»¼ÇÎªÒ»¸ö¶¯×÷.ÀıÈç:<br/>
+     *    ç»„æˆçš„åŠ¨ä½œè¢«è®°ä¸ºä¸€ä¸ªåŠ¨ä½œ.ä¾‹å¦‚:<br/>
      *    If you are running 1 Sequence of 7 actions, it will return 1. <br/>
-     *    Èç¹ûÄãÕıÔÚÔËĞĞÒ»¸ö°üº¬7¸ö¶¯×÷µÄSequence, Ëü½«·µ»Ø 1.<br/>
+     *    å¦‚æœä½ æ­£åœ¨è¿è¡Œä¸€ä¸ªåŒ…å«7ä¸ªåŠ¨ä½œçš„Sequence, å®ƒå°†è¿”å› 1.<br/>
      *    If you are running 7 Sequences of 2 actions, it will return 7.</p>
-     *    Èç¹ûÄãÕıÔÚÔËĞĞ°üº¬2¸ö¶¯×÷ÖĞµÄ7¸öSequences,Ëü½«·µ»Ø 7.</p>
+     *    å¦‚æœä½ æ­£åœ¨è¿è¡ŒåŒ…å«2ä¸ªåŠ¨ä½œä¸­çš„7ä¸ªSequences,å®ƒå°†è¿”å› 7.</p>
      * @function
      * @return {Number} The number of actions that are running plus the ones that are schedule to run
      */
@@ -1957,14 +1957,18 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     // cc.Node - Callbacks
-    // cc.Node - »Øµ÷
+    // cc.Node - å›è°ƒ
     // timers
-    // ¶¨Ê±Æ÷
+    // å®šæ—¶å™¨
     /**
      * <p>schedules the "update" method.                                                                           <br/>
+     * <p>è°ƒåº¦å™¨è°ƒåº¦"update"æ–¹æ³•.<br/>
      * It will use the order number 0. This method will be called every frame.                                  <br/>
+     * å®ƒä½¿ç”¨çš„åºåˆ—å·æ˜¯0.è¯¥æ–¹æ³•å°†è°ƒç”¨æ¯ä¸€å¸§.<br/>
      * Scheduled methods with a lower order value will be called before the ones that have a higher order value.<br/>
+     * æ‹¥æœ‰ä½é¡ºåºå€¼çš„è°ƒåº¦æ–¹æ³•å°†ä¼šåœ¨æœ‰ç”¨é«˜é¡ºåºå€¼çš„æ–¹æ³•ä¹‹å‰è¢«è°ƒç”¨.<br/>
      * Only one "update" method could be scheduled per node.</p>
+     * åœ¨æ¯ä¸€ä¸ªèŠ‚ç‚¹ä¸­,åªæœ‰ä¸€ä¸ª"update"æ–¹æ³•èƒ½å¤Ÿè¢«è°ƒåº¦.</p>
      * @function
      */
     scheduleUpdate: function () {
@@ -1974,9 +1978,13 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /**
      * <p>
      * schedules the "update" callback function with a custom priority.
+     * è°ƒåº¦è¿™ä¸ª"update"æ–¹æ³•ä¼´éšç€ä¸€ä¸ªè‡ªå®šä¹‰ä¼˜å…ˆçº§
      * This callback function will be called every frame.<br/>
+     * è¿™ä¸ªå›è°ƒå‡½æ•°å°†ä¼šåœ¨æ¯ä¸€å¸§è¢«è°ƒç”¨
      * Scheduled callback functions with a lower priority will be called before the ones that have a higher value.<br/>
+     * æ‹¥æœ‰ä½é¡ºåºå€¼çš„è°ƒåº¦æ–¹æ³•å°†ä¼šåœ¨æœ‰ç”¨é«˜é¡ºåºå€¼çš„æ–¹æ³•ä¹‹å‰è¢«è°ƒç”¨.<br/>
      * Only one "update" callback function could be scheduled per node (You can't have 2 'update' callback functions).<br/>
+     * åœ¨æ¯ä¸€ä¸ªèŠ‚ç‚¹ä¸­,åªæœ‰ä¸€ä¸ª"update"æ–¹æ³•èƒ½å¤Ÿè¢«è°ƒåº¦(ä½ ä¸èƒ½å¤Ÿæœ‰2ä¸ª"update"å›è°ƒå‡½æ•°).<br/>
      * </p>
      * @function
      * @param {Number} priority
@@ -1987,6 +1995,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Unschedules the "update" method.
+     * ä¸è°ƒåº¦"update"æ–¹æ³•.
      * @function
      * @see cc.Node#scheduleUpdate
      */
@@ -1996,7 +2005,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>Schedules a custom selector.         <br/>
+     * <p>è°ƒåº¦ä¸€ä¸ªè‡ªå®šä¹‰çš„é€‰æ‹©å™¨.<br/>
      * If the selector is already scheduled, then the interval parameter will be updated without scheduling it again.</p>
+     * å¦‚æœè¿™ä¸ªé€‰æ‹©å™¨å·²ç»è¢«è°ƒåº¦äº†,é‚£ä¹ˆå†…éƒ¨çš„å‚æ•°å°†ä¼šè¢«æ›´æ–°è€Œä¸ç”¨å†æ¬¡è°ƒåº¦ä¸€é.</p>
      * @function
      * @param {function} callback_fn A function wrapped as a selector
      * @param {Number} interval  Tick interval in seconds. 0 means tick every frame. If interval = 0, it's recommended to use scheduleUpdate() instead.
@@ -2017,6 +2028,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Schedules a callback function that runs only once, with a delay of 0 or larger
+     * è°ƒåº¦ä¸€ä¸ªåªè¿è¡Œä¸€æ¬¡çš„å›è°ƒå‡½æ•°,ä¼´éšç€ä¸€ä¸ª0sæˆ–è€…æ›´å¤§æ—¶é•¿çš„å»¶æ—¶
      * @function
      * @see cc.Node#schedule
      * @param {function} callback_fn  A function wrapped as a selector
@@ -2028,6 +2040,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * unschedules a custom callback function.
+     * ä¸è°ƒåº¦ä¸€ä¸ªè‡ªå®šä¹‰çš„å›è°ƒå‡½æ•°.
      * @function
      * @see cc.Node#schedule
      * @param {function} callback_fn  A function wrapped as a selector
@@ -2041,6 +2054,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>unschedule all scheduled callback functions: custom callback functions, and the 'update' callback function.<br/>
+     * <p>ä¸è°ƒåº¦æ‰€æœ‰çš„è°ƒåº¦å›è°ƒå‡½æ•°:è‡ªå®šä¹‰å›è°ƒå‡½æ•°,å’Œ'update'å›è°ƒå‡½æ•°.<br/>
      * Actions are not affected by this method.</p>
      * @function
      */
@@ -2050,7 +2064,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Resumes all scheduled selectors and actions.<br/>
+     * é‡ç½®æ‰€æœ‰çš„è°ƒåº¦é€‰æ‹©å™¨è·Ÿè°ƒåº¦åŠ¨ä½œ.<br/>
      * This method is called internally by onEnter
+     * è¯¥æ–¹æ³•åœ¨onEnteræ–¹æ³•å†…éƒ¨è¢«è°ƒç”¨.
      * @function
      * @deprecated since v3.0, please use resume() instead
      */
@@ -2061,7 +2077,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>Resumes all scheduled selectors and actions.<br/>
+     * <p>é‡ç½®æ‰€æœ‰çš„è°ƒåº¦é€‰æ‹©å™¨è·Ÿè°ƒåº¦åŠ¨ä½œ.<br/>
      * This method is called internally by onEnter</p>
+     * è¯¥æ–¹æ³•åœ¨onEnteræ–¹æ³•å†…éƒ¨è¢«è°ƒç”¨.</p>
      */
     resume: function () {
         this.scheduler.resumeTarget(this);
@@ -2071,7 +2089,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>Pauses all scheduled selectors and actions.<br/>
+     * <p>æš‚åœæ‰€æœ‰çš„è°ƒåº¦é€‰æ‹©å™¨è·Ÿè°ƒåº¦åŠ¨ä½œ.<br/>
      * This method is called internally by onExit</p>
+     * è¯¥æ–¹æ³•åœ¨onEnteræ–¹æ³•å†…éƒ¨è¢«è°ƒç”¨.</p>
      * @deprecated since v3.0, please use pause instead
      * @function
      */
@@ -2082,7 +2102,10 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>Pauses all scheduled selectors and actions.<br/>
+     * <p>æš‚åœæ‰€æœ‰çš„è°ƒåº¦é€‰æ‹©å™¨è·Ÿè°ƒåº¦åŠ¨ä½œ.<br/>
      * This method is called internally by onExit</p>
+     * è¯¥æ–¹æ³•åœ¨onEnteræ–¹æ³•å†…éƒ¨è¢«è°ƒç”¨.</p>
+     * 
      * @function
      */
     pause: function () {
@@ -2093,8 +2116,11 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      *<p>Sets the additional transform.<br/>
+     *<p>ä¸ºèŠ‚ç‚¹è®¾ç½®ä¸€ä¸ªé™„åŠ è½¬æ¢çŸ©é˜µ.<br/>
      *  The additional transform will be concatenated at the end of getNodeToParentTransform.<br/>
+     *  è¯¥é™„åŠ è½¬æ¢çŸ©é˜µå°†ä¼šåœ¨getNodeToParentTransformç»“æŸåè¿›è¡Œçº§è”.<br/>
      *  It could be used to simulate `parent-child` relationship between two nodes (e.g. one is in BatchNode, another isn't).<br/>
+     *  å®ƒå°†è¢«ç”¨äºæ¨¡æ‹Ÿä¸¤ä¸ªèŠ‚ç‚¹ä¹‹é—´çš„parent-childå…³ç³»
      *  </p>
      *  @function
      *  @param {cc.AffineTransform} additionalTransform  The additional transform
@@ -2104,40 +2130,51 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * this.addChild(batch);
      *
      * // create two sprites, spriteA will be added to batchNode, they are using different textures.
+     * // åˆ›å»ºä¸¤ä¸ªç²¾çµ,spriteAå°†ä¼šè¢«æ·»åŠ åˆ°batchNode,ä»–ä»¬ä½¿ç”¨ä¸åŒçš„çº¹ç†.
      * var spriteA = new cc.Sprite(batch->getTexture());
      * var spriteB = new cc.Sprite("Icon-72.png");
      *
      * batch.addChild(spriteA);
      *
      * // We can't make spriteB as spriteA's child since they use different textures. So just add it to layer.
+     * // æˆ‘ä»¬ä¸èƒ½å°†spriteBå½“åšspriteAçš„å­èŠ‚ç‚¹æ¥å¤„ç†å› ä¸ºä»–ä»¬ä½¿ç”¨ä¸åŒçš„çº¹ç†.æ‰€ä»¥å°†å…¶æ·»åŠ åˆ°layerä¸­.
      * // But we want to simulate `parent-child` relationship for these two node.
+     * // ä½†æˆ‘ä»¬æƒ³ä¸ºè¿™ä¸¤ä¸ªèŠ‚ç‚¹æ¨¡æ‹Ÿ'parent-child'(çˆ¶å­)å…³ç³».
      * this.addChild(spriteB);
      *
      * //position
      * spriteA.setPosition(ccp(200, 200));
      *
      * // Gets the spriteA's transform.
+     * // è·å–spriteAçš„å˜æ¢.
      * var t = spriteA.getNodeToParentTransform();
      *
      * // Sets the additional transform to spriteB, spriteB's position will based on its pseudo parent i.e. spriteA.
+     * // è®¾ç½®é™„åŠ å˜æ¢çŸ©é˜µç»™spriteB,spriteBçš„ä½ç½®å°†ä¼šåŸºäºå…¶ä¼ªçˆ¶äº²çš„ä½ç½®å³spriteA.
      * spriteB.setAdditionalTransform(t);
      *
      * //scale
+     * //ç¼©æ”¾
      * spriteA.setScale(2);
      *
      * // Gets the spriteA's transform.
+     * // è·å–spriteAçš„å˜æ¢.
      * t = spriteA.getNodeToParentTransform();
      *
      * // Sets the additional transform to spriteB, spriteB's scale will based on its pseudo parent i.e. spriteA.
+     * // è®¾ç½®é™„åŠ å˜æ¢çŸ©é˜µç»™spriteB,spriteBçš„ç¼©æ”¾æ¯”ä¾‹å°†ä¼šåŸºäºå…¶ä¼ªçˆ¶äº²çš„ç¼©æ”¾æ¯”ä¾‹å³spriteA.
      * spriteB.setAdditionalTransform(t);
      *
      * //rotation
+     * //æ—‹è½¬
      * spriteA.setRotation(20);
      *
      * // Gets the spriteA's transform.
+     * // è·å–spriteAçš„å˜æ¢.
      * t = spriteA.getNodeToParentTransform();
      *
      * // Sets the additional transform to spriteB, spriteB's rotation will based on its pseudo parent i.e. spriteA.
+     * // è®¾ç½®é™„åŠ å˜æ¢çŸ©é˜µç»™spriteB,spriteBçš„æ—‹è½¬å°†ä¼šåŸºäºå…¶ä¼ªçˆ¶äº²çš„æ—‹è½¬å³spriteA.
      * spriteB.setAdditionalTransform(t);
      */
     setAdditionalTransform: function (additionalTransform) {
@@ -2148,6 +2185,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns the matrix that transform parent's space coordinates to the node's (local) space coordinates.<br/>
+     * è¿”å›ç”±çˆ¶ç±»ç©ºé—´åæ ‡ç³»å˜æ¢è‡³èŠ‚ç‚¹çš„æœ¬åœ°åæ ‡ç³»çš„çŸ©é˜µ.<br/>
      * The matrix is in Pixels.
      * @function
      * @return {cc.AffineTransform}
@@ -2170,6 +2208,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns the world affine transform matrix. The matrix is in Pixels.
+     * è¿”å›ä¸–ç•Œä»¿å°„å˜æ¢çŸ©é˜µ.çŸ©é˜µå•ä½æ˜¯åƒç´ .
      * @function
      * @return {cc.AffineTransform}
      */
@@ -2190,6 +2229,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns the inverse world affine transform matrix. The matrix is in Pixels.
+     * è¿”å›é€†ä¸–ç•Œä»¿å°„å˜æ¢çŸ©é˜µ.çŸ©é˜µå•ä½æ˜¯åƒç´ .
      * @function
      * @return {cc.AffineTransform}
      */
@@ -2207,6 +2247,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Converts a Point to node (local) space coordinates. The result is in Points.
+     * ä¸€ä¸ªèŠ‚ç‚¹åˆ°ç©ºé—´åæ ‡ç³»çš„è½¬æ¢.ç»“æœä»¥Pointsä¸ºå•ä½.
      * @function
      * @param {cc.Point} worldPoint
      * @return {cc.Point}
@@ -2217,6 +2258,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Converts a Point to world space coordinates. The result is in Points.
+     * ä¸€ä¸ªèŠ‚ç‚¹åˆ°ä¸–ç•Œåæ ‡ç³»çš„è½¬æ¢.ç»“æœä»¥Pointsä¸ºå•ä½.
      * @function
      * @param {cc.Point} nodePoint
      * @return {cc.Point}
@@ -2228,7 +2270,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Converts a Point to node (local) space coordinates. The result is in Points.<br/>
+     * ä¸€ä¸ªèŠ‚ç‚¹è‡³æœ¬åœ°ç©ºé—´åæ ‡ç³»çš„è½¬.ç»“æœä»¥Pointsä¸ºå•ä½.
      * treating the returned/received node point as anchor relative.
+     * å°†returned/receivedèŠ‚ç‚¹çš„pointå½“ä½œç›¸å¯¹åº”çš„é”šç‚¹.
      * @function
      * @param {cc.Point} worldPoint
      * @return {cc.Point}
@@ -2239,7 +2283,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Converts a local Point to world space coordinates.The result is in Points.<br/>
+     * ä¸€ä¸ªèŠ‚ç‚¹åˆ°ä¸–ç•Œåæ ‡ç³»çš„è½¬æ¢.ç»“æœä»¥Pointsä¸ºå•ä½.<br/>
      * treating the returned/received node point as anchor relative.
+     * å°†returned/receivedèŠ‚ç‚¹çš„pointå½“ä½œç›¸å¯¹åº”çš„é”šç‚¹.
      * @function
      * @param {cc.Point} nodePoint
      * @return {cc.Point}
@@ -2256,6 +2302,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /** convenience methods which take a cc.Touch instead of cc.Point
+    /** ä¸€ä¸ªä¾¿åˆ©çš„å°†cc.Touchè½¬æ¢æˆcc.Pointçš„æ–¹æ³•
      * @function
      * @param {cc.Touch} touch The touch object
      * @return {cc.Point}
@@ -2263,12 +2310,14 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     convertTouchToNodeSpace: function (touch) {
         var point = touch.getLocation();
         //TODO This point needn't convert to GL in HTML5
+        //TODO è¯¥ç‚¹åœ¨HTML5ä¸­ä¸éœ€è¦è½¬æ¢è‡³GL
         //point = cc.director.convertToGL(point);
         return this.convertToNodeSpace(point);
     },
 
     /**
      * converts a cc.Touch (world coordinates) into a local coordiante. This method is AR (Anchor Relative).
+     * å°†cc.Touch(ä¸–ç•Œåæ ‡ç³»)è½¬æ¢æˆæœ¬åœ°åæ ‡ç³».è¿™ä¸ªæ–¹æ³•æ˜¯AR(ç›¸å¯¹äºé”šç‚¹). 
      * @function
      * @param {cc.Touch} touch The touch object
      * @return {cc.Point}
@@ -2281,8 +2330,11 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Update will be called automatically every frame if "scheduleUpdate" is called when the node is "live".<br/>
+     * å¦‚æœ"scheduleUpdate"è¢«è°ƒç”¨ä¸”èŠ‚ç‚¹æ˜¯æ´»åŠ¨çš„,Updateå°†ä¼šè¢«æ¯ä¸€å¸§è°ƒç”¨.<br/>
      * The default behavior is to invoke the visit function of node's componentContainer.<br/>
+     * é»˜è®¤çš„åŠ¨ä½œæ˜¯è°ƒç”¨èŠ‚ç‚¹çš„componentContainerè®¿é—®å‡½æ•°.<br/>
      * Override me to implement your own update logic.
+     * é‡å†™è¯¥å‡½æ•°ä»è€Œå®ç°ä½ è‡ªå·±çš„æ›´æ–°æ–¹æ³•.
      * @function
      * @param {Number} dt Delta time since last update
      */
@@ -2294,28 +2346,42 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /**
      * <p>
      * Calls children's updateTransform() method recursively.                                        <br/>
+     * é€’å½’è°ƒç”¨å­èŠ‚ç‚¹çš„updateTransform()æ–¹æ³•.<br/>
      *                                                                                               <br/>
      * This method is moved from CCSprite, so it's no longer specific to CCSprite.                   <br/>
+     * è¿™ä¸ªæ–¹æ³•ä»Spriteç±»ä¸­åˆ é™¤,å› æ­¤å®ƒä¸å†é€‚ç”¨äºSprite.<br/>
      * As the result, you apply CCSpriteBatchNode's optimization on your customed CCNode.            <br/>
+     * å› æ­¤,ä½ åº”è¯¥åœ¨ä½ è‡ªå®šä¹‰çš„CCNodeä¸­ä½¿ç”¨SpriteBatchNodeçš„ä¼˜åŒ–.<br/>
      * e.g., batchNode->addChild(myCustomNode), while you can only addChild(sprite) before.
+     * ä¾‹å¦‚,batchNode->addChild(myCustomNode),ä½ åªèƒ½å…ˆaddChild(sprite).
      * </p>
      * @function
      */
     updateTransform: function () {
         // Recursively iterate over children
+        // é€’å½’éå†å­èŠ‚ç‚¹
         this._arrayMakeObjectsPerformSelector(this._children, cc.Node._stateCallbackType.updateTransform);
     },
 
     /**
      * <p>Currently JavaScript Bindings (JSB), in some cases, needs to use retain and release. This is a bug in JSB,
+     * <p>å½“å‰JavaScript Bindings (JSB),åœ¨æŸäº›æƒ…å†µä¸‹,éœ€è¦ä½¿ç”¨retainå’Œrelease,è¿™æ˜¯åœ¨JSBä¸­çš„ä¸€ä¸ªbug,
      * and the ugly workaround is to use retain/release. So, these 2 methods were added to be compatible with JSB.
+     * ä¸”ä¸å¥½çš„è§£å†³æ–¹å¼æ˜¯ä½¿ç”¨retain/release.æ‰€ä»¥,è¿™ä¸¤ä¸ªæ–¹æ³•éœ€è¦æ·»åŠ ä½¿å…¶å…¼å®¹JSB.
      * This is a hack, and should be removed once JSB fixes the retain/release bug<br/>
+     * è¿™æ˜¯ä¸€ä¸ªæ¼æ´,ä¸€æ—¦JSBä¿®å¤äº†retain/releaseçš„bug,åˆ™å®ƒéœ€è¦è¢«ç§»é™¤<br/>
      * You will need to retain an object if you created an engine object and haven't added it into the scene graph during the same frame.<br/>
+     * ä½ å°†éœ€è¦ä¿ç•™ä¸€ä¸ªå¯¹è±¡,å¦‚æœä½ åˆ›å»ºä¸€ä¸ªå¼•æ“å¯¹è±¡ä½†åœ¨æ¯ä¸€å¸§ä¸­æ²¡æœ‰å°†å…¶æ·»åŠ è¿›scene graphä¸­.<br/>
      * Otherwise, JSB's native autorelease pool will consider this object a useless one and release it directly,<br/>
+     * ç„¶å,JSBæœ¬åœ°è‡ªåŠ¨é‡Šæ”¾æ± å°†ä¼šåˆ¤æ–­ä¸€ä¸ªæœªè¢«ä½¿ç”¨çš„å¯¹è±¡å¹¶ç«‹å³é‡Šæ”¾è¯¥å¯¹è±¡,<br/>
      * when you want to use it later, a "Invalid Native Object" error will be raised.<br/>
+     * å½“ç„¶æƒ³è¦åœ¨åé¢ä¸­ä½¿ç”¨å®ƒ,ä¸€ä¸ª"æ— æ•ˆçš„åŸç”Ÿå¯¹è±¡"é”™è¯¯å°†ä¼šè¢«æç¤º.<br/>
      * The retain function can increase a reference count for the native object to avoid it being released,<br/>
+     * è¯¥ä¿ç•™å‡½æ•°ä¼šä¸ºåŸç”Ÿå¯¹è±¡è¿›è¡Œè®¡ç®—å¼•ç”¨æ•°é‡é¿å…å…¶è¢«é‡Šæ”¾æ‰,<br/>
      * you need to manually invoke release function when you think this object is no longer needed, otherwise, there will be memory learks.<br/>
+     * ä½ éœ€è¦æ‰‹å·¥è°ƒç”¨è¯¥é‡Šæ”¾å‡½æ•°å½“ä½ è®¤ä¸ºä¸€ä¸ªå¯¹è±¡å°†ä¸åœ¨è¢«éœ€è¦çš„æ—¶å€™,å¦åˆ™,å°†ä¼šå†…å­˜æ³„éœ².<br/>
      * retain and release function call should be paired in developer's game code.</p>
+     * åœ¨å¼€å‘è€…çš„ä»£ç ä¸­,retainå’Œreleaseå‡½æ•°éœ€è¦å¤‡æˆå¯¹çš„è°ƒç”¨.</p>
      * @function
      * @see cc.Node#release
      */
@@ -2323,14 +2389,23 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
     /**
      * <p>Currently JavaScript Bindings (JSB), in some cases, needs to use retain and release. This is a bug in JSB,
+     * <p>å½“å‰JavaScript Bindings (JSB),åœ¨æŸäº›æƒ…å†µä¸‹,éœ€è¦ä½¿ç”¨retainå’Œrelease,è¿™æ˜¯åœ¨JSBä¸­çš„ä¸€ä¸ªbug,
      * and the ugly workaround is to use retain/release. So, these 2 methods were added to be compatible with JSB.
+     * ä¸”ä¸å¥½çš„è§£å†³æ–¹å¼æ˜¯ä½¿ç”¨retain/release.æ‰€ä»¥,è¿™ä¸¤ä¸ªæ–¹æ³•éœ€è¦æ·»åŠ ä½¿å…¶å…¼å®¹JSB.
      * This is a hack, and should be removed once JSB fixes the retain/release bug<br/>
+     * è¿™æ˜¯ä¸€ä¸ªæ¼æ´,ä¸€æ—¦JSBä¿®å¤äº†retain/releaseçš„bug,åˆ™å®ƒéœ€è¦è¢«ç§»é™¤<br/>
      * You will need to retain an object if you created an engine object and haven't added it into the scene graph during the same frame.<br/>
+     * ä½ å°†éœ€è¦ä¿ç•™ä¸€ä¸ªå¯¹è±¡,å¦‚æœä½ åˆ›å»ºä¸€ä¸ªå¼•æ“å¯¹è±¡ä½†åœ¨æ¯ä¸€å¸§ä¸­æ²¡æœ‰å°†å…¶æ·»åŠ è¿›scene graphä¸­.<br/>
      * Otherwise, JSB's native autorelease pool will consider this object a useless one and release it directly,<br/>
+     * ç„¶å,JSBæœ¬åœ°è‡ªåŠ¨é‡Šæ”¾æ± å°†ä¼šåˆ¤æ–­ä¸€ä¸ªæœªè¢«ä½¿ç”¨çš„å¯¹è±¡å¹¶ç«‹å³é‡Šæ”¾è¯¥å¯¹è±¡,<br/>
      * when you want to use it later, a "Invalid Native Object" error will be raised.<br/>
+     * å½“ç„¶æƒ³è¦åœ¨åé¢ä¸­ä½¿ç”¨å®ƒ,ä¸€ä¸ª"æ— æ•ˆçš„åŸç”Ÿå¯¹è±¡"é”™è¯¯å°†ä¼šè¢«æç¤º.<br/>
      * The retain function can increase a reference count for the native object to avoid it being released,<br/>
+     * è¯¥ä¿ç•™å‡½æ•°ä¼šä¸ºåŸç”Ÿå¯¹è±¡è¿›è¡Œè®¡ç®—å¼•ç”¨æ•°é‡é¿å…å…¶è¢«é‡Šæ”¾æ‰,<br/>
      * you need to manually invoke release function when you think this object is no longer needed, otherwise, there will be memory learks.<br/>
+     * ä½ éœ€è¦æ‰‹å·¥è°ƒç”¨è¯¥é‡Šæ”¾å‡½æ•°å½“ä½ è®¤ä¸ºä¸€ä¸ªå¯¹è±¡å°†ä¸åœ¨è¢«éœ€è¦çš„æ—¶å€™,å¦åˆ™,å°†ä¼šå†…å­˜æ³„éœ².<br/>
      * retain and release function call should be paired in developer's game code.</p>
+     * åœ¨å¼€å‘è€…çš„ä»£ç ä¸­,retainå’Œreleaseå‡½æ•°éœ€è¦å¤‡æˆå¯¹çš„è°ƒç”¨.</p>
      * @function
      * @see cc.Node#retain
      */
@@ -2339,7 +2414,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns a component identified by the name given.
-     * ¸ù¾İ×é¼şÃû³Æ»ñÈ¡×é¼ş
+     * æ ¹æ®ç»„ä»¶åç§°è·å–ç»„ä»¶
      * @function
      * @param {String} name The name to search for
      * @return {cc.Component} The component found
@@ -2352,7 +2427,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Adds a component to the node's component container.
-     * Ìí¼ÓÒ»¸ö×é¼Ûµ½½ÚµãµÄ×é¼şÈİÆ÷ÖĞ.
+     * æ·»åŠ ä¸€ä¸ªç»„ä»·åˆ°èŠ‚ç‚¹çš„ç»„ä»¶å®¹å™¨ä¸­.
      * @function
      * @param {cc.Component} component
      */
@@ -2363,7 +2438,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Removes a component identified by the given name or removes the component object given
-     * ¸ù¾İ¶¨ÒåµÄ×é¼şÃû³Æ»òÕß×é¼ş¶ÔÏóÉ¾³ı×é¼ş
+     * æ ¹æ®å®šä¹‰çš„ç»„ä»¶åç§°æˆ–è€…ç»„ä»¶å¯¹è±¡åˆ é™¤ç»„ä»¶
      * @function
      * @param {String|cc.Component} component
      */
@@ -2375,7 +2450,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Removes all components of cc.Node, it called when cc.Node is exiting from stage.
-     * É¾³ı½ÚµãµÄËùÓĞ×é¼ş,µ±½ÚµãÍË³öµÄÊ±ºò»á½øĞĞµ÷ÓÃ
+     * åˆ é™¤èŠ‚ç‚¹çš„æ‰€æœ‰ç»„ä»¶,å½“èŠ‚ç‚¹é€€å‡ºçš„æ—¶å€™ä¼šè¿›è¡Œè°ƒç”¨
      * @function
      */
     removeAllComponents: function () {
@@ -2387,14 +2462,14 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function.
-     * ¹¹Ôìº¯Êı,ÎªÁË¼Ì³Ğ¸¸Àà¹¹ÔìÆ÷ÖĞµÄĞĞÎª½øĞĞÖØĞ´,¼ÇµÃÔÚÒª¼Ì³ĞµÄº¯ÊıÖĞµ÷ÓÃ"this._super()".
+     * æ„é€ å‡½æ•°,ä¸ºäº†ç»§æ‰¿çˆ¶ç±»æ„é€ å™¨ä¸­çš„è¡Œä¸ºè¿›è¡Œé‡å†™,è®°å¾—åœ¨è¦ç»§æ‰¿çš„å‡½æ•°ä¸­è°ƒç”¨"this._super()".
      * @function
      */
     ctor: null,
 
     /**
      * Recursive method that visit its children and draw them
-     * µİ¹é·ÃÎÊ×ÓÀà²¢»æÖÆ³ö×ÓÀà
+     * é€’å½’è®¿é—®å­ç±»å¹¶ç»˜åˆ¶å‡ºå­ç±»
      * @function
      * @param {CanvasRenderingContext2D|WebGLRenderingContext} ctx
      */
@@ -2402,7 +2477,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Performs view-matrix transformation based on position, scale, rotation and other attributes.
-     * Ö´ĞĞ»ùÓÚÎ»ÖÃ,Ëõ·Å,Ğı×ª¼°ÆäËûÊôĞÔµÄÊÓÍ¼¾ØÕó±ä»»
+     * æ‰§è¡ŒåŸºäºä½ç½®,ç¼©æ”¾,æ—‹è½¬åŠå…¶ä»–å±æ€§çš„è§†å›¾çŸ©é˜µå˜æ¢
      * @function
      * @param {CanvasRenderingContext2D|WebGLRenderingContext} ctx Render context
      */
@@ -2410,7 +2485,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>Returns the matrix that transform the node's (local) space coordinates into the parent's space coordinates.<br/>
-     * <p>»ñÈ¡½Úµã´Ó±¾µØ¿Õ¼ä×ø±êµ½¸¸ÀàÖĞµÄ¿Õ¼ä×ø±êµÄ×ª»»¾ØÕó<br/>
+     * <p>è·å–èŠ‚ç‚¹ä»æœ¬åœ°ç©ºé—´åæ ‡åˆ°çˆ¶ç±»ä¸­çš„ç©ºé—´åæ ‡çš„è½¬æ¢çŸ©é˜µ<br/>
      * The matrix is in Pixels.</p>
      * @function
      * @return {cc.AffineTransform}
@@ -2422,7 +2497,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns the matrix that transform the node's (local) space coordinates into the parent's space coordinates.<br/>
-     * »ñÈ¡½Úµã´Ó±¾µØ¿Õ¼ä×ø±êµ½¸¸ÀàÖĞµÄ¿Õ¼ä×ø±êµÄ×ª»»¾ØÕó<br/>
+     * è·å–èŠ‚ç‚¹ä»æœ¬åœ°ç©ºé—´åæ ‡åˆ°çˆ¶ç±»ä¸­çš„ç©ºé—´åæ ‡çš„è½¬æ¢çŸ©é˜µ<br/>
      * The matrix is in Pixels.
      * @function
      * @return {cc.AffineTransform} The affine transform object
@@ -2451,7 +2526,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns a camera object that lets you move the node using a gluLookAt
-     * »ñÈ¡Ò»¸öÉãÏñ»ú¶ÔÏó,Ê¹Äã¿ÉÒÔÊ¹ÓÃÒ»¸ögluLookAt¶Ô½Úµã½øĞĞÒÆ¶¯
+     * è·å–ä¸€ä¸ªæ‘„åƒæœºå¯¹è±¡,ä½¿ä½ å¯ä»¥ä½¿ç”¨ä¸€ä¸ªgluLookAtå¯¹èŠ‚ç‚¹è¿›è¡Œç§»åŠ¨
      * @function
      * @return {cc.Camera} A CCCamera object that lets you move the node using a gluLookAt
      * @deprecated since v3.0, no alternative function
@@ -2469,9 +2544,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>Returns a grid object that is used when applying effects.<br/>
-     * <p>µ±Ê¹ÓÃĞ§¹ûµÄÊ±ºò,»ñÈ¡Ò»¸ö±»Ê¹ÓÃµÄÍø¸ñ¶ÔÏó<br/>
+     * <p>å½“ä½¿ç”¨æ•ˆæœçš„æ—¶å€™,è·å–ä¸€ä¸ªè¢«ä½¿ç”¨çš„ç½‘æ ¼å¯¹è±¡<br/>
      * This function have been deprecated, please use cc.NodeGrid to run grid actions</p>
-     * ¸Ãº¯ÊıÒÑ±»·ÏÆú,ÇëÊ¹ÓÃcc.NodeGrid½øĞĞ´´½¨Íø¸ñ¶¯×÷</p>
+     * è¯¥å‡½æ•°å·²è¢«åºŸå¼ƒ,è¯·ä½¿ç”¨cc.NodeGridè¿›è¡Œåˆ›å»ºç½‘æ ¼åŠ¨ä½œ</p>
      * @function
      * @return {cc.GridBase} A CCGrid object that is used when applying effects
      * @deprecated since v3.0, no alternative function
@@ -2482,9 +2557,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>Changes a grid object that is used when applying effects<br/>
-     * <p>µ±Ê¹ÓÃĞ§¹ûµÄÊ±ºò,¸Ä±äÒ»¸ö±»Ê¹ÓÃµÄÍø¸ñ¶ÔÏó<br/>
+     * <p>å½“ä½¿ç”¨æ•ˆæœçš„æ—¶å€™,æ”¹å˜ä¸€ä¸ªè¢«ä½¿ç”¨çš„ç½‘æ ¼å¯¹è±¡<br/>
      * This function have been deprecated, please use cc.NodeGrid to run grid actions</p>
-     * ¸Ãº¯ÊıÒÑ±»·ÏÆú,ÇëÊ¹ÓÃcc.NodeGrid½øĞĞ´´½¨Íø¸ñ¶¯×÷</p>
+     * è¯¥å‡½æ•°å·²è¢«åºŸå¼ƒ,è¯·ä½¿ç”¨cc.NodeGridè¿›è¡Œåˆ›å»ºç½‘æ ¼åŠ¨ä½œ</p>
      * @function
      * @param {cc.GridBase} grid A CCGrid object that is used when applying effects
      * @deprecated since v3.0, no alternative function
@@ -2495,7 +2570,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Return the shader program currently used for this node
-     * »ñÈ¡½Úµãµ±Ç°ËùÊ¹ÓÃµÄ×ÅÉ«¹ı³Ì
+     * è·å–èŠ‚ç‚¹å½“å‰æ‰€ä½¿ç”¨çš„ç€è‰²è¿‡ç¨‹
      * @function
      * @return {cc.GLProgram} The shader program currently used for this node
      */
@@ -2511,10 +2586,10 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      *     It should be set in initialize phase.
      * </p>
      * <p>
-     *		ÉèÖÃ½Úµã×ÅÉ«¹ı³Ì
+     *		è®¾ç½®èŠ‚ç‚¹ç€è‰²è¿‡ç¨‹
      *
-     *		v2.0°æ±¾ÒÔºó,Ã¿¸öÒªäÖÈ¾µÄ½Úµã¶¼ÒªÉèÖÃËüµÄ×ÅÉ«¹ı³Ì
-     *		Ëü±ØĞëÔÚ³õÊ¼»¯½×¶Î½øĞĞ
+     *		v2.0ç‰ˆæœ¬ä»¥å,æ¯ä¸ªè¦æ¸²æŸ“çš„èŠ‚ç‚¹éƒ½è¦è®¾ç½®å®ƒçš„ç€è‰²è¿‡ç¨‹
+     *		å®ƒå¿…é¡»åœ¨åˆå§‹åŒ–é˜¶æ®µè¿›è¡Œ
      * </p>
      * @function
      * @param {cc.GLProgram} newShaderProgram The shader program which fetches from CCShaderCache.
@@ -2527,7 +2602,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns the state of OpenGL server side.
-     * »ñÈ¡OpenGL·şÎñ¶ËµÄ×´Ì¬
+     * è·å–OpenGLæœåŠ¡ç«¯çš„çŠ¶æ€
      * @function
      * @return {Number} The state of OpenGL server side.
      * @deprecated since v3.0, no need anymore
@@ -2538,7 +2613,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Sets the state of OpenGL server side.
-     * ÉèÖÃOpenGL·şÎñ¶ËµÄ×´Ì¬
+     * è®¾ç½®OpenGLæœåŠ¡ç«¯çš„çŠ¶æ€
      * @function
      * @param {Number} state The state of OpenGL server side.
      * @deprecated since v3.0, no need anymore
@@ -2549,7 +2624,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns a "world" axis aligned bounding box of the node.
-     * »ñÈ¡½ÚµãµÄÊÀ½ç×ø±êÏµµÄ±ß¿ò
+     * è·å–èŠ‚ç‚¹çš„ä¸–ç•Œåæ ‡ç³»çš„è¾¹æ¡†
      * @function
      * @return {cc.Rect}
      */
@@ -2559,7 +2634,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
         rect = cc.rectApplyAffineTransform(rect, this.getNodeToWorldTransform());
 
         //query child's BoundingBox
-        //²éÑ¯×ÓÀàµÄBoundingBox
+        //æŸ¥è¯¢å­ç±»çš„BoundingBox
         if (!this._children)
             return rect;
 
@@ -2581,7 +2656,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
         rect = cc.rectApplyAffineTransform(rect, trans);
 
         //query child's BoundingBox
-        //²éÑ¯×ÓÀàµÄBoundingBox
+        //æŸ¥è¯¢å­ç±»çš„BoundingBox
         if (!this._children)
             return rect;
 
@@ -2607,7 +2682,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
         }
         if (_t._transformDirty) {
             // Translate values
-            // ±ä»»Öµ
+            // å˜æ¢å€¼
             var x = _t._position.x;
             var y = _t._position.y;
             var apx = _t._anchorPointInPoints.x, napx = -apx;
@@ -2620,11 +2695,11 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
             }
 
             // Rotation values
-            // Ğı×ªÖµ
+            // æ—‹è½¬å€¼
             // Change rotation code to handle X and Y
-            // ¸Ä±äĞı×ª´úÂëÀ´´¦Àí´¦ÀíXÖá¸úYÖá
+            // æ”¹å˜æ—‹è½¬ä»£ç æ¥å¤„ç†å¤„ç†Xè½´è·ŸYè½´
             // If we skew with the exact same value for both x and y then we're simply just rotating
-            // Èç¹ûÎÒÃÇÖ»ÓÃÏàÍ¬µÄÖµÀ´¶ÔXÖá¸úYÖá½øĞĞÇãĞ±,ÄÇÃ´ÎÒÃÇ½ö½öÖ»ÊÇ½øĞĞÁËĞı×ª
+            // å¦‚æœæˆ‘ä»¬åªç”¨ç›¸åŒçš„å€¼æ¥å¯¹Xè½´è·ŸYè½´è¿›è¡Œå€¾æ–œ,é‚£ä¹ˆæˆ‘ä»¬ä»…ä»…åªæ˜¯è¿›è¡Œäº†æ—‹è½¬
             var cx = 1, sx = 0, cy = 1, sy = 0;
             if (_t._rotationX !== 0 || _t._rotationY !== 0) {
                 cx = Math.cos(-_t._rotationRadiansX);
@@ -2635,20 +2710,20 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
             var needsSkewMatrix = ( _t._skewX || _t._skewY );
 
             // optimization:
-            // ÓÅ»¯:
+            // ä¼˜åŒ–:
             // inline anchor point calculation if skew is not needed
-            // Èç¹û²»ĞèÒªÇãĞ± Ôò½øĞĞÄÚÁªÃªµãµÄ¼ÆËã
+            // å¦‚æœä¸éœ€è¦å€¾æ–œ åˆ™è¿›è¡Œå†…è”é”šç‚¹çš„è®¡ç®—
             // Adjusted transform calculation for rotational skew
-            // ¶ÔĞı×ªÇãĞ±½øĞĞ±ä»»¼ÆËã
+            // å¯¹æ—‹è½¬å€¾æ–œè¿›è¡Œå˜æ¢è®¡ç®—
             if (!needsSkewMatrix && (apx !== 0 || apy !== 0)) {
                 x += cy * napx * scx + -sx * napy * scy;
                 y += sy * napx * scx + cx * napy * scy;
             }
 
             // Build Transform Matrix
-            // Éú³É×ª»»¾ØÕó
+            // ç”Ÿæˆè½¬æ¢çŸ©é˜µ
             // Adjusted transform calculation for rotational skew
-            // ¶ÔĞı×ªÇãĞ±½øĞĞ±ä»»¼ÆËã
+            // å¯¹æ—‹è½¬å€¾æ–œè¿›è¡Œå˜æ¢è®¡ç®—
             var t = _t._transform;
             t.a = cy * scx;
             t.b = sy * scx;
@@ -2658,9 +2733,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
             t.ty = y;
 
             // XXX: Try to inline skew
-            // XXX: ³¢ÊÔÄÚÁªÇãĞ±
+            // XXX: å°è¯•å†…è”å€¾æ–œ
             // If skew is needed, apply skew and then anchor point
-            // Èç¹ûĞèÒªÇãĞ±,Ê¹ÓÃÇãĞ±È»ºóÔÙÃªµã
+            // å¦‚æœéœ€è¦å€¾æ–œ,ä½¿ç”¨å€¾æ–œç„¶åå†é”šç‚¹
             if (needsSkewMatrix) {
                 t = cc.affineTransformConcat({a: 1.0, b: Math.tan(cc.degreesToRadians(_t._skewY)),
                     c: Math.tan(cc.degreesToRadians(_t._skewX)), d: 1.0, tx: 0.0, ty: 0.0}, t);
@@ -2686,7 +2761,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns the opacity of Node
-     * »ñÈ¡½ÚµãµÄÍ¸Ã÷¶È
+     * è·å–èŠ‚ç‚¹çš„é€æ˜åº¦
      * @function
      * @returns {number} opacity
      */
@@ -2696,9 +2771,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns the displayed opacity of Node,
-     * ·µ»Ø½ÚµãµÄÏÔÊ¾µÄÍ¸Ã÷¶ÈÖµ,
+     * è¿”å›èŠ‚ç‚¹çš„æ˜¾ç¤ºçš„é€æ˜åº¦å€¼,
      * the difference between displayed opacity and opacity is that displayed opacity is calculated based on opacity and parent node's opacity when cascade opacity enabled.
-     * ÏÔÊ¾Í¸Ã÷¶È¸úÍ¸Ã÷¶ÈµÄÇø±ğÔÚÓÚ:µ±ÆôÓÃ¼¶ÁªÍ¸Ã÷¶ÈµÄÊ±ºò,ÏÔÊ¾Í¸Ã÷¶ÈÊÇ»ùÓÚ×ÔÉíµÄÍ¸Ã÷¶È¸ú¸¸ÀàµÄÍ¸Ã÷¶È¼ÆËã³öÀ´µÄ.
+     * æ˜¾ç¤ºé€æ˜åº¦è·Ÿé€æ˜åº¦çš„åŒºåˆ«åœ¨äº:å½“å¯ç”¨çº§è”é€æ˜åº¦çš„æ—¶å€™,æ˜¾ç¤ºé€æ˜åº¦æ˜¯åŸºäºè‡ªèº«çš„é€æ˜åº¦è·Ÿçˆ¶ç±»çš„é€æ˜åº¦è®¡ç®—å‡ºæ¥çš„.
      * @function
      * @returns {number} displayed opacity
      */
@@ -2708,7 +2783,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Sets the opacity of Node
-     * ÉèÖÃ½ÚµãµÄÍ¸Ã÷¶ÈÖµ
+     * è®¾ç½®èŠ‚ç‚¹çš„é€æ˜åº¦å€¼
      * @function
      * @param {Number} opacity
      */
@@ -2725,7 +2800,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Update displayed opacity
-     * ¸üĞÂÏÔÊ¾µÄÍ¸Ã÷¶ÈÖµ
+     * æ›´æ–°æ˜¾ç¤ºçš„é€æ˜åº¦å€¼
      * @function
      * @param {Number} parentOpacity
      */
@@ -2745,7 +2820,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns whether node's opacity value affect its child nodes.
-     * ·µ»Ø½ÚµãµÄÍ¸Ã÷¶ÈÖµÊÇ·ñ»áÓ°Ïìµ½Æä×Ó½Úµã.
+     * è¿”å›èŠ‚ç‚¹çš„é€æ˜åº¦å€¼æ˜¯å¦ä¼šå½±å“åˆ°å…¶å­èŠ‚ç‚¹.
      * @function
      * @returns {boolean}
      */
@@ -2755,7 +2830,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Enable or disable cascade opacity, if cascade enabled, child nodes' opacity will be the multiplication of parent opacity and its own opacity.
-     * ÆôÓÃ»ò²»ÆôÓÃ¼¶ÁªÍ¸Ã÷¶È,Èç¹ûÆôÓÃ,×Ó½ÚµãµÄÍ¸Ã÷¶ÈÖµÊÇ¸¸ÀàµÄÍ¸Ã÷¶ÈÖµ¸úÆä±¾ÉíÍ¸Ã÷¶ÈÖµµÄ³Ë»ı
+     * å¯ç”¨æˆ–ä¸å¯ç”¨çº§è”é€æ˜åº¦,å¦‚æœå¯ç”¨,å­èŠ‚ç‚¹çš„é€æ˜åº¦å€¼æ˜¯çˆ¶ç±»çš„é€æ˜åº¦å€¼è·Ÿå…¶æœ¬èº«é€æ˜åº¦å€¼çš„ä¹˜ç§¯
      * @function
      * @param {boolean} cascadeOpacityEnabled
      */
@@ -2790,7 +2865,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns the color of Node
-     * ·µ»Ø½ÚµãµÄÑÕÉ«
+     * è¿”å›èŠ‚ç‚¹çš„é¢œè‰²
      * @function
      * @returns {cc.Color}
      */
@@ -2801,9 +2876,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns the displayed color of Node,
-     * ·µ»Ø½ÚµãÏÔÊ¾µÄÑÕÉ«
+     * è¿”å›èŠ‚ç‚¹æ˜¾ç¤ºçš„é¢œè‰²
      * the difference between displayed color and color is that displayed color is calculated based on color and parent node's color when cascade color enabled.
-     * ÏÔÊ¾ÑÕÉ«¸úÑÕÉ«µÄÇø±ğÔÚÓÚ:µ±ÆôÓÃ¼¶ÁªÑÕÉ«µÄÊ±ºò,ÏÔÊ¾ÑÕÉ«ÊÇ»ùÓÚ×ÔÉíµÄÑÕÉ«¸ú¸¸ÀàµÄÑÕÉ«¼ÆËã³öÀ´µÄ.
+     * æ˜¾ç¤ºé¢œè‰²è·Ÿé¢œè‰²çš„åŒºåˆ«åœ¨äº:å½“å¯ç”¨çº§è”é¢œè‰²çš„æ—¶å€™,æ˜¾ç¤ºé¢œè‰²æ˜¯åŸºäºè‡ªèº«çš„é¢œè‰²è·Ÿçˆ¶ç±»çš„é¢œè‰²è®¡ç®—å‡ºæ¥çš„.
      * @function
      * @returns {cc.Color}
      */
@@ -2814,11 +2889,11 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>Sets the color of Node.<br/>
-     * <p>ÉèÖÃ½ÚµãµÄÑÕÉ«<br/>
+     * <p>è®¾ç½®èŠ‚ç‚¹çš„é¢œè‰²<br/>
      * When color doesn't include opacity value like cc.color(128,128,128), this function only change the color. <br/>
-     * µ±ÑÕÉ«Î´°üº¬Í¸Ã÷¶ÈµÄÖµ ÀıÈç:cc.color(128,128,128),¸Ãº¯Êı½ö½öÊÇ¸Ä±äÑÕÉ«<br/>
+     * å½“é¢œè‰²æœªåŒ…å«é€æ˜åº¦çš„å€¼ ä¾‹å¦‚:cc.color(128,128,128),è¯¥å‡½æ•°ä»…ä»…æ˜¯æ”¹å˜é¢œè‰²<br/>
      * When color include opacity like cc.color(128,128,128,100), then this function will change the color and the opacity.</p>
-     * µ«ÑÕÉ«°üº¬Í¸Ã÷¶ÈÖµ ÀıÈç:cc.color(128,128,128,100),¸Ãº¯Êı½«¸Ä±äÑÕÉ«¸úÍ¸Ã÷¶È.</p>
+     * ä½†é¢œè‰²åŒ…å«é€æ˜åº¦å€¼ ä¾‹å¦‚:cc.color(128,128,128,100),è¯¥å‡½æ•°å°†æ”¹å˜é¢œè‰²è·Ÿé€æ˜åº¦.</p>
      * @function
      * @param {cc.Color} color The new color given
      */
@@ -2838,7 +2913,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Update the displayed color of Node
-     * ¸üĞÂ½ÚµãÏÔÊ¾µÄÑÕÉ«
+     * æ›´æ–°èŠ‚ç‚¹æ˜¾ç¤ºçš„é¢œè‰²
      * @function
      * @param {cc.Color} parentColor
      */
@@ -2860,7 +2935,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns whether node's color value affect its child nodes.
-     * ·µ»Ø¸Ã½ÚµãµÄÑÕÉ«ÖµÊÇ·ñ»áÓ°Ïìµ½Æä×Ó½Úµã
+     * è¿”å›è¯¥èŠ‚ç‚¹çš„é¢œè‰²å€¼æ˜¯å¦ä¼šå½±å“åˆ°å…¶å­èŠ‚ç‚¹
      * @function
      * @returns {boolean}
      */
@@ -2870,7 +2945,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Enable or disable cascade color, if cascade enabled, child nodes' opacity will be the cascade value of parent color and its own color.
-     * ÆôÓÃ»òÕß²»ÆôÓÃ¼¶ÁªÑÕÉ«,Èç¹ûÆôÓÃ,Ôò×Ó½ÚµãµÄÍ¸Ã÷¶È½«¼¶Áª¸¸ÀàµÄÑÕÉ«Öµ¸úÆä±¾ÉíµÄÑÕÉ«Öµ
+     * å¯ç”¨æˆ–è€…ä¸å¯ç”¨çº§è”é¢œè‰²,å¦‚æœå¯ç”¨,åˆ™å­èŠ‚ç‚¹çš„é€æ˜åº¦å°†çº§è”çˆ¶ç±»çš„é¢œè‰²å€¼è·Ÿå…¶æœ¬èº«çš„é¢œè‰²å€¼
      * @param {boolean} cascadeColorEnabled
      */
     setCascadeColorEnabled: function (cascadeColorEnabled) {
@@ -2908,9 +2983,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Set whether color should be changed with the opacity value,
-     * ÉèÖÃÑÕÉ«ÖµÊÇ·ñÒª¸ú×ÅÍ¸Ã÷¶È½øĞĞ¸Ä±ä
+     * è®¾ç½®é¢œè‰²å€¼æ˜¯å¦è¦è·Ÿç€é€æ˜åº¦è¿›è¡Œæ”¹å˜
      * useless in cc.Node, but this function is override in some class to have such behavior.
-     * ¸Ãº¯ÊıÔÚcc.NodeÖĞÎŞĞ§,µ«¸Ãº¯ÊıÔÚÄ³Ğ©ÀàÖĞ±»ÖØĞ´ÁË ÒÔ±ãÊ¹ÓÃ¸Ã¹¦ÄÜ
+     * è¯¥å‡½æ•°åœ¨cc.Nodeä¸­æ— æ•ˆ,ä½†è¯¥å‡½æ•°åœ¨æŸäº›ç±»ä¸­è¢«é‡å†™äº† ä»¥ä¾¿ä½¿ç”¨è¯¥åŠŸèƒ½
      * @function
      * @param {Boolean} opacityValue
      */
@@ -2919,7 +2994,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Get whether color should be changed with the opacity value
-     * »ñÈ¡ÑÕÉ«ÖµÊÇ·ñÓĞÒòÍ¸Ã÷¶ÈÖµµÄ¸Ä±ä¶ø¸Ä±ä
+     * è·å–é¢œè‰²å€¼æ˜¯å¦æœ‰å› é€æ˜åº¦å€¼çš„æ”¹å˜è€Œæ”¹å˜
      * @function
      * @return {Boolean}
      */
@@ -2935,7 +3010,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
 /**
  * Allocates and initializes a node.
- * ·ÖÅä²¢³õÊ¼»¯Ò»¸ö½Úµã
+ * åˆ†é…å¹¶åˆå§‹åŒ–ä¸€ä¸ªèŠ‚ç‚¹
  * @deprecated since v3.0, please use new construction instead.
  * @see cc.Node
  * @return {cc.Node}
@@ -2948,7 +3023,7 @@ cc.Node._stateCallbackType = {onEnter: 1, onExit: 2, cleanup: 3, onEnterTransiti
 
 if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
     //redefine cc.Node
-    //ÖØ¶¨Òå cc.Node
+    //é‡å®šä¹‰ cc.Node
     var _p = cc.Node.prototype;
     _p.ctor = function () {
         this._initNode();
@@ -2967,7 +3042,7 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
     _p.visit = function (ctx) {
         var _t = this;
         // quick return if not visible
-        // Èç¹û²»¿É¼ûÔòÁ¢¼´·µ»Ø
+        // å¦‚æœä¸å¯è§åˆ™ç«‹å³è¿”å›
         if (!_t._visible)
             return;
 
@@ -2975,7 +3050,7 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
             _t._curLevel = _t._parent._curLevel + 1;
 
         //visit for canvas
-        //·ÃÎÊcanvas(»­²¼)
+        //è®¿é—®canvas(ç”»å¸ƒ)
         var i, children = _t._children, child;
         _t.transform();
         var len = children.length;
@@ -3035,14 +3110,14 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
 
     _p.transform = function (ctx) {
         // transform for canvas
-        // ¶Ôcanvas(»­²¼)½øĞĞ×ø±ê±ä»»
+        // å¯¹canvas(ç”»å¸ƒ)è¿›è¡Œåæ ‡å˜æ¢
         var t = this.getNodeToParentTransform(),
-            worldT = this._transformWorld;         //get the world transform //»ñÈ¡ÊÀ½ç×ø±ê±ä»»
+            worldT = this._transformWorld;         //get the world transform //è·å–ä¸–ç•Œåæ ‡å˜æ¢
 
         if(this._parent){
             var pt = this._parent._transformWorld;
             // cc.AffineTransformConcat is incorrect at get world transform
-            // cc.AffineTransformConcatÎŞ·¨»ñµÃÊÀ½ç×ø±ê±ä»»
+            // cc.AffineTransformConcatæ— æ³•è·å¾—ä¸–ç•Œåæ ‡å˜æ¢
             worldT.a = t.a * pt.a + t.b * pt.c;                               //a
             worldT.b = t.a * pt.b + t.b * pt.d;                               //b
             worldT.c = t.c * pt.a + t.d * pt.c;                               //c
@@ -3065,21 +3140,21 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
 
     _p.getNodeToParentTransform = function () {
         var _t = this;
-        if(_t._usingNormalizedPosition && _t._parent){        //TODO need refactor //TODO ĞèÒªÖØ¹¹
+        if(_t._usingNormalizedPosition && _t._parent){        //TODO need refactor //TODO éœ€è¦é‡æ„
             var conSize = _t._parent._contentSize;
             _t._position.x = _t._normalizedPosition.x * conSize.width;
             _t._position.y = _t._normalizedPosition.y * conSize.height;
             _t._normalizedPositionDirty = false;
         }
         if (_t._transformDirty) {
-            var t = _t._transform;// quick reference //¿ìËÙÒıÓÃ
+            var t = _t._transform;// quick reference //å¿«é€Ÿå¼•ç”¨
 
             // base position
             t.tx = _t._position.x;
             t.ty = _t._position.y;
 
             // rotation Cos and Sin
-            // CosºÍSinĞı×ª
+            // Coså’ŒSinæ—‹è½¬
             var Cos = 1, Sin = 0;
             if (_t._rotationX) {
                 Cos = Math.cos(_t._rotationRadiansX);
@@ -3087,7 +3162,7 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
             }
 
             // base abcd
-            // »ù×¼abcd
+            // åŸºå‡†abcd
             t.a = t.d = Cos;
             t.b = -Sin;
             t.c = Sin;
@@ -3097,14 +3172,14 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
 
             // Firefox on Vista and XP crashes
             // GPU thread in case of scale(0.0, 0.0)
-            // Èç¹ûÔÚGPUÏß³ÌÖĞ½øĞĞËõ·Å
+            // å¦‚æœåœ¨GPUçº¿ç¨‹ä¸­è¿›è¡Œç¼©æ”¾
             var sx = (lScaleX < 0.000001 && lScaleX > -0.000001) ? 0.000001 : lScaleX,
                 sy = (lScaleY < 0.000001 && lScaleY > -0.000001) ? 0.000001 : lScaleY;
 
             // skew
             if (_t._skewX || _t._skewY) {
                 // offset the anchorpoint
-                // ÃªµãÆ«ÒÆ
+                // é”šç‚¹åç§»
                 var skx = Math.tan(-_t._skewX * Math.PI / 180);
                 var sky = Math.tan(-_t._skewY * Math.PI / 180);
                 if(skx === Infinity){
@@ -3132,12 +3207,12 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
             }
 
             // adjust anchorPoint
-            // µ÷ÕûÃªµã
+            // è°ƒæ•´é”šç‚¹
             t.tx += Cos * -appX * sx + -Sin * appY * sy;
             t.ty -= Sin * -appX * sx + Cos * appY * sy;
 
             // if ignore anchorPoint
-            // Èç¹ûºöÂÔÃªµã
+            // å¦‚æœå¿½ç•¥é”šç‚¹
             if (_t._ignoreAnchorPointForPosition) {
                 t.tx += appX;
                 t.ty += appY;
