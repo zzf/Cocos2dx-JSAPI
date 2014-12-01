@@ -65,9 +65,9 @@ cc.TGA_ERROR_COMPRESSED_FILE = 5;
  * @param {Number} status
  * @param {Number} type
  * @param {Number} pixelDepth
- * @param {Number} width map width
- * @param {Number} height map height
- * @param {Array} imageData raw data
+ * @param {Number} width map width 地图宽度
+ * @param {Number} height map height 地图高度
+ * @param {Array} imageData raw data 原始数据
  * @param {Number} flipped
  * @constructor
  */
@@ -83,6 +83,7 @@ cc.ImageTGA = function (status, type, pixelDepth, width, height, imageData, flip
 
 /**
  * load the image header field from stream. We only keep those that matter!
+ * 从数据流中读取图片的文件头.
  * @param {Array} buffer
  * @param {Number} bufSize
  * @param {cc.ImageTGA} psInfo
@@ -119,6 +120,7 @@ cc.tgaLoadHeader = function (buffer, bufSize, psInfo) {
 
 /**
  * loads the image pixels. You shouldn't call this function directly.
+ * 读取图片的像素数据, 不能直接去调用这个函数
  * @param {Array} buffer
  * @param {Number} bufSize
  * @param {cc.ImageTGA} psInfo
@@ -129,8 +131,10 @@ cc.tgaLoadImageData = function (buffer, bufSize, psInfo) {
     var step = 18;              // .size_t step = (sizeof(unsigned char) + sizeof(signed short)) * 6;
 
     // mode equal the number of components for each pixel
+    // 计算实际的组件数
     mode = 0 | (psInfo.pixelDepth / 2);
     // total is the number of unsigned chars we'll have to read
+    // total表示已经读取的unsigned chars数
     total = psInfo.height * psInfo.width * mode;
 
     if (step + total > bufSize)
@@ -139,7 +143,9 @@ cc.tgaLoadImageData = function (buffer, bufSize, psInfo) {
     psInfo.imageData = cc.__getSubArray(buffer, step, step + total);
 
     // mode=3 or 4 implies that the image is RGB(A). However TGA
+    // mode=3 或 4 表示这个图片是RGB(A), 或TGA
     // stores it as BGR(A) so we'll have to swap R and B.
+    // 重排为BGR(A),  我们需要去交换R与B的数据伴
     if (mode >= 3) {
         for (i = 0; i < total; i += mode) {
             aux = psInfo.imageData[i];
@@ -152,36 +158,44 @@ cc.tgaLoadImageData = function (buffer, bufSize, psInfo) {
 
 /**
  * converts RGB to grayscale
+ * 把RGB转换成灰度
  * @param {cc.ImageTGA} psInfo
  */
 cc.tgaRGBtogreyscale = function (psInfo) {
     var i, j;
 
     // if the image is already grayscale do nothing
+    // 如果图片已经是灰度图则不处理
     if (psInfo.pixelDepth === 8)
         return;
 
     // compute the number of actual components
+    // 计算实际的组件数
     var mode = psInfo.pixelDepth / 8;
 
     // allocate an array for the new image data
+    // 分配一个存储图片数据的数组
     var newImageData = new Uint8Array(psInfo.height * psInfo.width);
     if (newImageData === null)
         return;
 
     // convert pixels: grayscale = o.30 * R + 0.59 * G + 0.11 * B
+    // 转换像素: grayscale = o.30 * R + 0.59 * G + 0.11 * B
     for (i = 0, j = 0; j < psInfo.width * psInfo.height; i += mode, j++)
         newImageData[j] = (0.30 * psInfo.imageData[i] + 0.59 * psInfo.imageData[i + 1] + 0.11 * psInfo.imageData[i + 2]);
 
     // reassign pixelDepth and type according to the new image type
+    // 根据新的图片类型重新分配像素深度和类型
     psInfo.pixelDepth = 8;
     psInfo.type = 3;
     // reassigning imageData to the new array.
+    // 重新分配图片数据到一个新的数组
     psInfo.imageData = newImageData;
 };
 
 /**
  * releases the memory used for the image
+ * 释放用于图片的内存
  * @param {cc.ImageTGA} psInfo
  */
 cc.tgaDestroy = function (psInfo) {
@@ -194,6 +208,7 @@ cc.tgaDestroy = function (psInfo) {
 
 /**
  * Load RLE image data
+ * 读取RLE图片数据
  * @param buffer
  * @param bufSize
  * @param psInfo
@@ -206,24 +221,30 @@ cc.tgaLoadRLEImageData = function (buffer, bufSize, psInfo) {
     var step = 18;                          // . size_t step = (sizeof(unsigned char) + sizeof(signed short)) * 6;
 
     // mode equal the number of components for each pixel
+    // mode表示每像素的组件数
     mode = psInfo.pixelDepth / 8;
     // total is the number of unsigned chars we'll have to read
+    // total表示已经读取的unsigned chars数
     total = psInfo.height * psInfo.width;
 
     for (i = 0; i < total; i++) {
         // if we have a run length pending, run it
+        // 如果我们有一个runlength则使用
         if (runlength != 0) {
             // we do, update the run length count
+            // 更新runlength数
             runlength--;
             skip = (flag != 0);
         } else {
             // otherwise, read in the run length token
+            // 否则读取runlength的token
             if (step + 1 > bufSize)
                 break;
             runlength = buffer[step];
             step += 1;
 
             // see if it's a RLE encoded sequence
+            // 查看, 如果是一个RLE序列
             flag = runlength & 0x80;
             if (flag)
                 runlength -= 128;
@@ -231,15 +252,19 @@ cc.tgaLoadRLEImageData = function (buffer, bufSize, psInfo) {
         }
 
         // do we need to skip reading this pixel?
+        // 我们需要跳过读取这个像素
         if (!skip) {
             // no, read in the pixel data
+            // 读取像素数据
             if (step + mode > bufSize)
                 break;
             aux = cc.__getSubArray(buffer, step, step + mode);
             step += mode;
 
             // mode=3 or 4 implies that the image is RGB(A). However TGA
+            // mode=3 或 4 表示这个图片是RGB(A), 或TGA
             // stores it as BGR(A) so we'll have to swap R and B.
+            // 重排为BGR(A),  我们需要去交换R与B的数据位
             if (mode >= 3) {
                 var tmp = aux[0];
                 aux[0] = aux[2];
@@ -248,6 +273,7 @@ cc.tgaLoadRLEImageData = function (buffer, bufSize, psInfo) {
         }
 
         // add the pixel to our image
+        // 向图片增加像素
         for (var j = 0; j < mode; j++)
             psInfo.imageData[index + j] = aux[j];
 
@@ -259,10 +285,12 @@ cc.tgaLoadRLEImageData = function (buffer, bufSize, psInfo) {
 
 /**
  * ImageTGA Flip
+ * ImageTGA翻转
  * @param {cc.ImageTGA} psInfo
  */
 cc.tgaFlipImage = function (psInfo) {
     // mode equal the number of components for each pixel
+    // 计算实际的组件数
     var mode = psInfo.pixelDepth / 8;
     var rowbytes = psInfo.width * mode;
 
@@ -298,8 +326,11 @@ cc.BinaryStreamReader = cc.Class.extend({
 
     /**
      * <p>The cc.BinaryStreamReader's constructor. <br/>
+     * <p>BinaryStreamReader的构造函数
      * This function will automatically be invoked when you create a node using new construction: "var node = new cc.BinaryStreamReader()".<br/>
+     * 这个函数会被自动调用, 当使用新的构造方式 var node = new cc.BinaryStreamReader() 时
      * Override it to extend its behavior, remember to call "this._super()" in the extended "ctor" function.</p>
+     * 重载和拓展了功能, 记得在ctor函数中调用this._super();
      * @param binaryData
      */
     ctor:function (binaryData) {
@@ -308,6 +339,7 @@ cc.BinaryStreamReader = cc.Class.extend({
 
     /**
      * Set the binaryData.
+     * 设置二进制数据
      * @param binaryData
      */
     setBinaryData:function (binaryData) {
@@ -317,6 +349,7 @@ cc.BinaryStreamReader = cc.Class.extend({
 
     /**
      * Gets the binaryData.
+     * 获取二进制数据
      * @returns {Object}
      */
     getBinaryData:function () {
