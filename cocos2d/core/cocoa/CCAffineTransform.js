@@ -119,6 +119,7 @@ cc.affineTransformMakeIdentity = function () {
  * 
  * @return {cc.AffineTransform}
  * @deprecated since v3.0, please use cc.affineTransformMakeIdentity() instead
+ * @v3.0版本后弃用, 请使用cc.affineTransformMakeIdentity()代替
  * @see cc.affineTransformMakeIdentity
  */
 cc.affineTransformIdentity = function () {
@@ -182,8 +183,11 @@ cc._rectApplyAffineTransformIn = function(rect, anAffineTransform){
  * @function
  * 
  * @param {cc.AffineTransform} t The base affine transform object
+ * @param {cc.AffineTransform} t 一个基准仿射变换对象
  * @param {Number} tx The translation on x axis
+ * @param {Number} tx X轴的变换
  * @param {Number} ty The translation on y axis
+ * @param {Number} ty Y轴的变换
  * @return {cc.AffineTransform}
  */
 cc.affineTransformTranslate = function (t, tx, ty) {
@@ -202,8 +206,11 @@ cc.affineTransformTranslate = function (t, tx, ty) {
  * 创建一个基于基准变换矩阵跟缩放比例的内联变换矩阵.
  * @function
  * @param {cc.AffineTransform} t The base affine transform object
+ * @param {cc.AffineTransform} t 一个基准仿射变换对象
  * @param {Number} sx The scale on x axis
+ * @param {Number} sx X轴的变换
  * @param {Number} sy The scale on y axis
+ * @param {Number} sy Y轴的变换
  * @return {cc.AffineTransform}
  */
 cc.affineTransformScale = function (t, sx, sy) {
@@ -215,7 +222,9 @@ cc.affineTransformScale = function (t, sx, sy) {
  * 创建一个基于基准变换矩阵跟旋转角度的内联变换矩阵.
  * @function
  * @param {cc.AffineTransform} aTransform The base affine transform object
+ * @param {cc.AffineTransform} aTransform 一个基准仿射变换对象
  * @param {Number} anAngle  The angle to rotate
+ * @param {Number} anAngle  旋转角度
  * @return {cc.AffineTransform}
  */
 cc.affineTransformRotate = function (aTransform, anAngle) {
@@ -236,8 +245,11 @@ cc.affineTransformRotate = function (aTransform, anAngle) {
  * t' = t1 * t2
  * @function
  * @param {cc.AffineTransform} t1 The first transform object
+ * @param {cc.AffineTransform} t1 第一个变换对象
  * @param {cc.AffineTransform} t2 The transform object to concatenate
+ * @param {cc.AffineTransform} t2 连接的变换对象
  * @return {cc.AffineTransform} The result of concatenation
+ * @return {cc.AffineTransform} 连接结果
  */
 cc.affineTransformConcat = function (t1, t2) {
     return {a: t1.a * t2.a + t1.b * t2.c,                          //a
@@ -266,6 +278,7 @@ cc.affineTransformEqualToTransform = function (t1, t2) {
  * @function
  * @param {cc.AffineTransform} t
  * @return {cc.AffineTransform} The inverted transform object
+ * @return {cc.AffineTransform} 逆变换对象
  */
 cc.affineTransformInvert = function (t) {
     var determinant = 1 / (t.a * t.d - t.b * t.c);

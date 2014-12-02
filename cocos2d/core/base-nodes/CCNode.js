@@ -78,7 +78,7 @@ cc.s_globalOrderOfArrival = 1;
  * - color <br/>
  * - 颜色 <br/>
  * - opacity <br/>
- * - 透明度 <br/>
+ * - 不透明度 <br/>
  * - visible<br/>
  * - 可见性<br/>
  * - z-order<br/>
@@ -101,7 +101,7 @@ cc.s_globalOrderOfArrival = 1;
  * - color: (r=255,g=255,b=255)<br/>
  * - 颜色: (r=255,g=255,b=255)<br/>
  * - opacity: 255</p>
- * - 透明度: 255</p>
+ * - 不透明度: 255</p>
  *
  * <p> Limitations:<br/>
  * <p> 局限性:<br/>
@@ -136,41 +136,77 @@ cc.s_globalOrderOfArrival = 1;
  * @extends cc.Class
  *
  * @property {Number}               x                   - x axis position of node
+ * @property {Number}               x                   - 节点的X轴位置
  * @property {Number}               y                   - y axis position of node
+ * @property {Number}               y                   - 节点的Y轴位置
  * @property {Number}               width               - Width of node
+ * @property {Number}               width               - 节点的宽
  * @property {Number}               height              - Height of node
+ * @property {Number}               height              - 节点的高
  * @property {Number}               anchorX             - Anchor point's position on x axis
+ * @property {Number}               anchorX             - X轴上的锚点位置
  * @property {Number}               anchorY             - Anchor point's position on y axis
+ * @property {Number}               anchorY             - Y轴上的锚点位置
  * @property {Boolean}              ignoreAnchor        - Indicate whether ignore the anchor point property for positioning
+ * @property {Boolean}              ignoreAnchor        - 指出是否忽略锚点当设置位置属性的时候
  * @property {Number}               skewX               - Skew x
+ * @property {Number}               skewX               - X轴倾斜
  * @property {Number}               skewY               - Skew y
+ * @property {Number}               skewY               - Y轴倾斜
  * @property {Number}               zIndex              - Z order in depth which stands for the drawing order
+ * @property {Number}               zIndex              - Z顺序值依据于绘制的先后顺序
  * @property {Number}               vertexZ             - WebGL Z vertex of this node, z order works OK if all the nodes uses the same openGL Z vertex
+ * @property {Number}               vertexZ             - 节点的WebGL的Z顶点, 如果所有的节点使用相同的WebGL的Z顶点,Z顺序的排序不会有影响
  * @property {Number}               rotation            - Rotation of node
+ * @property {Number}               rotation            - 节点的旋转角度
  * @property {Number}               rotationX           - Rotation on x axis
+ * @property {Number}               rotationX           - X轴旋转角度
  * @property {Number}               rotationY           - Rotation on y axis
+ * @property {Number}               rotationY           - Y轴旋转角度
  * @property {Number}               scale               - Scale of node
+ * @property {Number}               scale               - 节点缩放比例
  * @property {Number}               scaleX              - Scale on x axis
+ * @property {Number}               scaleX              - X轴的缩放比例
  * @property {Number}               scaleY              - Scale on y axis
+ * @property {Number}               scaleY              - Y轴的缩放比例
  * @property {Boolean}              visible             - Indicate whether node is visible or not
+ * @property {Boolean}              visible             - 指出节点是否可见
  * @property {cc.Color}             color               - Color of node, default value is white: (255, 255, 255)
+ * @property {cc.Color}             color               - 节点的颜色,默认值为白色: (255, 255, 255)
  * @property {Boolean}              cascadeColor        - Indicate whether node's color value affect its child nodes, default value is false
+ * @property {Boolean}              cascadeColor        - 指出节点颜色是否影响它的子节点,默认值为false.
  * @property {Number}               opacity             - Opacity of node, default value is 255
+ * @property {Number}               opacity             - 节点的不透明度,默认值为255
  * @property {Boolean}              opacityModifyRGB    - Indicate whether opacity affect the color value, default value is false
+ * @property {Boolean}              opacityModifyRGB    - 指出不透明度是否影响颜色的值,默认值为false.
  * @property {Boolean}              cascadeOpacity      - Indicate whether node's opacity value affect its child nodes, default value is false
+ * @property {Boolean}              cascadeOpacity      - 指出节点不透明度是否影响它的子节点,默认值为false.
  * @property {Array}                children            - <@readonly> All children nodes
+ * @property {Array}                children            - <@readonly> 左右的子节点
  * @property {Number}               childrenCount       - <@readonly> Number of children
+ * @property {Number}               childrenCount       - <@readonly> 子节点的数量
  * @property {cc.Node}              parent              - Parent node
+ * @property {cc.Node}              parent              - 父类
  * @property {Boolean}              running             - <@readonly> Indicate whether node is running or not
+ * @property {Boolean}              running             - <@readonly> 指出节点是否在运行
  * @property {Number}               tag                 - Tag of node
+ * @property {Number}               tag                 - 节点标签
  * @property {Object}               userData            - Custom user data
+ * @property {Object}               userData            - 用户自定义数据
  * @property {Object}               userObject          - User assigned CCObject, similar to userData, but instead of holding a void* it holds an id
+ * @property {Object}               userObject          - 用户分配的CCObject, 类似于用户数据, 但它不是使用一个void*,而是使用一个id
  * @property {Number}               arrivalOrder        - The arrival order, indicates which children is added previously
+ * @property {Number}               arrivalOrder        - 到达顺序值,指出哪些子节点先被添加.
  * @property {cc.ActionManager}     actionManager       - The CCActionManager object that is used by all actions.
+ * @property {cc.ActionManager}     actionManager       - 被所有动作使用的CCActionManager对象.
  * @property {cc.Scheduler}         scheduler           - cc.Scheduler used to schedule all "updates" and timers.
+ * @property {cc.Scheduler}         scheduler           - cc.Scheduler用来调度所有的更新跟定时器.
  * @property {cc.GridBase}          grid                - grid object that is used when applying effects
+ * @property {cc.GridBase}          grid                - 当使用效果的时候,被使用的网格对象
  * @property {cc.GLProgram}         shaderProgram       - The shader program currently used for this node
+ * @property {cc.GLProgram}         shaderProgram       - 获取节点当前所使用的着色过程
  * @property {Number}               glServerState       - The state of OpenGL server side
+ * @property {Number}               glServerState       - OpenGL服务器的状态
  */
 cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     _localZOrder: 0,                                     ///< Local order (relative to its siblings) used to sort the node //< 本地排序(相对于其同级类)用来排序节点
@@ -284,6 +320,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 初始化cc.Node实例
      * @function
      * @returns {boolean} Whether the initialization was successful.
+     * @returns {boolean} 初始化是否成功.
      */
     init: function () {
         if (this._initializedNode === false)
@@ -372,6 +409,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * </p>
      * @function
      * @param {Object} attrs Properties to be set to node
+     * @param {Object} 设置节点的属性
      */
     attr: function (attrs) {
         for (var key in attrs) {
@@ -393,6 +431,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * </p>
      * @function
      * @return {Number} The X skew angle of the node in degrees.
+     * @return {Number} 节点X轴的倾斜角度.
      */
     getSkewX: function () {
         return this._skewX;
@@ -412,6 +451,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * </p>
      * @function
      * @param {Number} newSkewX The X skew angle of the node in degrees.
+     * @param {Number} newSkewX 节点X轴的倾斜角度.
      */
     setSkewX: function (newSkewX) {
         this._skewX = newSkewX;
@@ -432,6 +472,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * </p>
      * @function
      * @return {Number} The Y skew angle of the node in degrees.
+     * @return {Number} 节点Y轴的倾斜角度.
      */
     getSkewY: function () {
         return this._skewY;
@@ -451,6 +492,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * </p>
      * @function
      * @param {Number} newSkewY  The Y skew angle of the node in degrees.
+     * @param {Number} newSkewY  节点Y轴的倾斜角度.
      */
     setSkewY: function (newSkewY) {
         this._skewY = newSkewY;
@@ -496,6 +538,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 返回节点的本地Z轴顺序值
      * @function
      * @returns {Number} The local (relative to its siblings) Z order.
+     * @returns {Number} 本地的Z顺序值(关联其同级节点).
      */
     getLocalZOrder: function () {
         return this._localZOrder;
@@ -507,6 +550,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * @function
      * @return {Number}
      * @deprecated since 3.0, please use getLocalZOrder instead
+     * @3.0版本后弃用,请使用getLocalZOrder代替.
      */
     getZOrder: function () {
         cc.log(cc._LogInfos.Node_getZOrder);
@@ -530,7 +574,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * </p>
      * @function
      * @param {Number} z Z order of this node.
+     * @param {Number} z 节点的Z顺序值.
      * @deprecated since 3.0, please use setLocalZOrder instead
+     * @3.0版本后弃用,请使用setLocalZOrder代替.
      */
     setZOrder: function (z) {
         cc.log(cc._LogInfos.Node_setZOrder);
@@ -573,6 +619,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 返回节点的全局Z顺序.
      * @function
      * @returns {number} The node's global Z order
+     * @returns {number} 节点的全局Z顺序值
      */
     getGlobalZOrder: function () {
         return this._globalZOrder;
@@ -583,6 +630,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 返回节点的WebGL的Z顶点.
      * @function
      * @return {Number} WebGL Z vertex of this node
+     * @return {Number} 节点的WebGL的Z顶点
      */
     getVertexZ: function () {
         return this._vertexZ;
@@ -617,6 +665,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 返回节点的旋转角度.默认的旋转角度为0.正数使得节点顺时针旋转.
      * @function
      * @return {Number} The rotation of the node in degrees.
+     * @return {Number} 节点的旋转角度.
      */
     getRotation: function () {
         if (this._rotationX !== this._rotationY)
@@ -636,6 +685,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * </p>
      * @function
      * @param {Number} newRotation The rotation of the node in degrees.
+     * @param {Number} newRotation 节点的旋转角度.
      */
     setRotation: function (newRotation) {
         this._rotationX = this._rotationY = newRotation;
@@ -654,6 +704,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * (只在WebGL的渲染模式下支持)
      * @function
      * @return {Number} The X rotation in degrees.
+     * @return {Number} X轴旋转角度
      */
     getRotationX: function () {
         return this._rotationX;
@@ -671,6 +722,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      *		 正数使得节点顺时针旋转,负数使得节点逆时针旋转.
      * </p>
      * @param {Number} rotationX The X rotation in degrees which performs a horizontal rotational skew.
+     * @param {Number} rotationX X轴来进行水平旋转倾斜的旋转角度.
      */
     setRotationX: function (rotationX) {
         this._rotationX = rotationX;
@@ -687,6 +739,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * (只在WebGL的渲染模式下支持)<br/>
      * @function
      * @return {Number} The Y rotation in degrees.
+      * @return {Number} Y轴旋转角度.
      */
     getRotationY: function () {
         return this._rotationY;
@@ -704,6 +757,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      *		正数使得节点顺时针旋转,负数使得节点逆时针旋转.
      * </p>
      * @param rotationY The Y rotation in degrees.
+     * @param rotationY Y轴旋转角度.
      */
     setRotationY: function (rotationY) {
         this._rotationY = rotationY;
@@ -718,6 +772,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * @警告:当_scaleX != _scaleY断言会失败.
      * @function
      * @return {Number} The scale factor
+     * @return {Number} 缩放系数
      */
     getScale: function () {
         if (this._scaleX !== this._scaleY)
@@ -730,6 +785,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 设置节点的缩放比例.默认的缩放比例是1.0.该函数可以同时修改X轴跟Y轴的缩放比例.
      * @function
      * @param {Number} scale or scaleX value
+     * @param {Number} 缩放或者X轴缩放值
      * @param {Number} [scaleY=]
      */
     setScale: function (scale, scaleY) {
@@ -743,6 +799,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 返回节点X轴的缩放比例
      * @function
      * @return {Number} The scale factor on X axis.
+     * @return {Number} X轴缩放比例.
      */
     getScaleX: function () {
         return this._scaleX;
@@ -757,6 +814,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * </p>
      * @function
      * @param {Number} newScaleX The scale factor on X axis.
+     * @param {Number} newScaleX X轴缩放系数.
      */
     setScaleX: function (newScaleX) {
         this._scaleX = newScaleX;
@@ -768,6 +826,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 返回节点Y轴的缩放比例
      * @function
      * @return {Number} The scale factor on Y axis.
+     * @return {Number} Y轴缩放系数.
      */
     getScaleY: function () {
         return this._scaleY;
@@ -782,6 +841,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * </p>
      * @function
      * @param {Number} newScaleY The scale factor on Y axis.
+     * @param {Number} newScaleY Y轴缩放系数.
      */
     setScaleY: function (newScaleY) {
         this._scaleY = newScaleY;
@@ -801,7 +861,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * </p>
      * @function
      * @param {cc.Point|Number} newPosOrxValue The position (x,y) of the node in coordinates or the X coordinate for position
+     * @param {cc.Point|Number} newPosOrxValue 节点坐标系的位置或者X坐标系的位置
      * @param {Number} [yValue] Y coordinate for position
+     * @param {Number} [yValue] Y坐标系位置
      * @example
      *    var size = cc.winSize;
      *    node.setPosition(size.width/2, size.height/2);
@@ -848,6 +910,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * <p>返回节点在cocos2d坐标系中的位置的备份.(0,0)为左下角的点</p>
      * @function
      * @return {cc.Point} The position (x,y) of the node in OpenGL coordinates
+     * @return {cc.Point} 节点在OpenGL坐标系中的位置
      */
     getPosition: function () {
         return cc.p(this._position);
@@ -877,6 +940,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * <p>设置节点在coco2d坐标系中的X轴位置.</p>
      * @function
      * @param {Number} x The new position in x axis
+     * @param {Number} x X轴新的位置值
      */
     setPositionX: function (x) {
         this._position.x = x;
@@ -898,6 +962,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * <p>设置节点在coco2d坐标系中的Y轴位置.</p>
      * @function
      * @param {Number} y The new position in y axis
+     * @param {Number} y Y轴新的位置值
      */
     setPositionY: function (y) {
         this._position.y = y;
@@ -909,6 +974,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 返回子类的数量.
      * @function
      * @return {Number} The amount of children.
+     * @return {Number} 子节点数量.
      */
     getChildrenCount: function () {
         return this._children.length;
@@ -921,8 +987,10 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 构建一个数结构体是CCNode非常重要的功能
      * @function
      * @return {Array} An array of children
+     * @return {Array} 子节点数组
      * @example
      *  //This sample code traverses all children nodes, and set their position to (0,0)
+     *  //此示例代码遍历所有的子节点,并设置他们的位置为(0,0)
      *  var allChildren = parent.getChildren();
      *  for(var i = 0; i< allChildren.length; i++) {
      *      allChildren[i].setPosition(0,0);
@@ -938,6 +1006,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * @function
      * @see cc.Node#setVisible
      * @return {Boolean} true if the node is visible, false if the node is hidden.
+     * @return {Boolean} 如果为true则节点可见,如果为false则节点不可见.
      */
     isVisible: function () {
         return this._visible;
@@ -950,6 +1019,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 默认值是可见的
      * @function
      * @param {Boolean} visible Pass true to make the node visible, false to hide the node.
+     * @param {Boolean} visible 传入true使得节点可见,传入false的话则隐藏节点.
      */
     setVisible: function (visible) {
         if(this._visible != visible){
@@ -974,6 +1044,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      *	 默认的锚点是(0.5,0.5),因此它开始于节点的中心位置<br/></p>
      * @function
      * @return {cc.Point}  The anchor point of node.
+     * @return {cc.Point}  节点的锚点.
      */
     getAnchorPoint: function () {
         return cc.p(this._anchorPoint);
@@ -997,7 +1068,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * </p>
      * @function
      * @param {cc.Point|Number} point The anchor point of node or The x axis anchor of node.
+     * @param {cc.Point|Number} point 节点的锚点或者节点X轴的锚点值.
      * @param {Number} [y] The y axis anchor of node.
+     * @param {Number} [y] 节点Y轴的锚点值
      */
     setAnchorPoint: function (point, y) {
         var locAnchorPoint = this._anchorPoint;
@@ -1060,6 +1133,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * @see cc.Node#getAnchorPoint
      * @function
      * @return {cc.Point} The anchor point in absolute pixels.
+     * @return {cc.Point} 绝对像素中的锚点.
      */
     getAnchorPointInPoints: function () {
         return cc.p(this._anchorPointInPoints);
@@ -1091,6 +1165,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 左右的节点都有大小.Layer和Scene默认拥有跟屏幕一样的大小.<br/></p>
      * @function
      * @return {cc.Size} The untransformed size of the node.
+     * @return {cc.Size} 节点未变换的尺寸.
      */
     getContentSize: function () {
         return cc.size(this._contentSize);
@@ -1108,7 +1183,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * </p>
      * @function
      * @param {cc.Size|Number} size The untransformed size of the node or The untransformed size's width of the node.
+     * @param {cc.Size|Number} size 节点未变换的尺寸或者节点未变换尺寸前的高度.
      * @param {Number} [height] The untransformed size's height of the node.
+     * @param {Number} [height] 节点未变换尺寸前的高度.
      */
     setContentSize: function (size, height) {
         var locContentSize = this._contentSize;
@@ -1138,6 +1215,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * </p>
      * @function
      * @return {Boolean} Whether or not the node is running.
+     * @return {Boolean} 节点是否在运行.
      */
     isRunning: function () {
         return this._running;
@@ -1148,6 +1226,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 返回父类节点的引用
      * @function
      * @return {cc.Node} A reference to the parent node
+     * @return {cc.Node} 父节点的引用
      */
     getParent: function () {
         return this._parent;
@@ -1157,6 +1236,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * Sets the parent node
      * 设置父类节点
      * @param {cc.Node} parent A reference to the parent node
+     * @param {cc.Node} parent 父节点的引用
      */
     setParent: function (parent) {
         this._parent = parent;
@@ -1170,6 +1250,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * @function
      * @see cc.Node#ignoreAnchorPointForPosition
      * @return {Boolean} true if the anchor point will be ignored when you position this node.
+     * @return {Boolean} 当你设置节点位置,锚点将会被忽略的话,则为true.
      */
     isIgnoreAnchorPointForPosition: function () {
         return this._ignoreAnchorPointForPosition;
@@ -1188,6 +1269,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * </p>
      * @function
      * @param {Boolean} newValue true if anchor point will be ignored when you position this node
+     * @param {Boolean} newValue 当你设置节点的位置时,如果锚点被忽略则为true.
      */
     ignoreAnchorPointForPosition: function (newValue) {
         if (newValue != this._ignoreAnchorPointForPosition) {
@@ -1201,8 +1283,10 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 返回容易标记一个节点的标签.
      * @function
      * @return {Number} An integer that identifies the node.
+     * @return {Number} 定义节点的一个整数.
      * @example
      *  //You can set tags to node then identify them easily.
+     *  //你可以给节点设置标签,那就很容易定义节点了.
      * // set tags
      * node1.setTag(TAG_PLAYER);
      * node2.setTag(TAG_MONSTER);
@@ -1235,6 +1319,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * @function
      * @see cc.Node#getTag
      * @param {Number} tag A integer that identifies the node.
+     * @param {Number} tag 定义节点的一个整数.
      */
     setTag: function (tag) {
         this.tag = tag;
@@ -1255,6 +1340,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 返回标记节点名字的字符串.
      * @function
      * @returns {string} A string that identifies the node.
+     * @returns {string} 定义节点的字符串.
      */
     getName: function(){
         return this._name;
@@ -1269,6 +1355,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * </p>
      * @function
      * @return {object}  A custom user data pointer
+     * @return {object}  一个用户自定义的数据指针
      */
     getUserData: function () {
         return this.userData;
@@ -1283,7 +1370,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * </p>
      * @function
      * @warning Don't forget to release the memory manually in JSB, especially before you change this data pointer, and before this node is autoreleased.
+     * @警告:别忘记在JSB中手工释放内存,特别在你改变数据的指针,和节点自动释放的时候.
      * @param {object} Var A custom user data
+     * @param {object} Var 一个自定义的用户数据
      */
     setUserData: function (Var) {
         this.userData = Var;
@@ -1296,6 +1385,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 类似的,但不是可以获取所有类型的数据,它只能获取cocos2d对象
      * @function
      * @return {object} A user assigned CCObject
+     * @return {object} 用户分配的CCObject对象
      */
     getUserObject: function () {
         return this.userObject;
@@ -1313,6 +1403,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      *		  UserObject将会在CCNode中释放破坏掉.
      * </p>
      * @param {object} newValue A user cocos2d object
+     * @param {object} newValue 一个用户cocos2d对象
      */
     setUserObject: function (newValue) {
         if (this.userObject != newValue) {
@@ -1326,6 +1417,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 返回到达顺序,指出哪一个子类先被添加
      * @function
      * @return {Number} The arrival order.
+     * @return {Number} 到达顺序值.
      */
     getOrderOfArrival: function () {
         return this.arrivalOrder;
@@ -1343,7 +1435,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * </p>
      * @function
      * @warning This method is used internally for zOrder sorting, don't change this manually
+     * @警告:该方法是为了内部Z顺序值排序用的,请别手工改变.
      * @param {Number} Var  The arrival order.
+     * @param {Number} Var  到达顺序.
      */
     setOrderOfArrival: function (Var) {
         this.arrivalOrder = Var;
@@ -1357,6 +1451,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * @function
      * @see cc.Node#setActionManager
      * @return {cc.ActionManager} A CCActionManager object.
+     * @return {cc.ActionManager} 一个CCActionManager对象.
      */
     getActionManager: function () {
         if (!this._actionManager) {
@@ -1370,7 +1465,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * <p>设置被所有动作使用的cc.ActionManager对象</p>
      * @function
      * @warning If you set a new CCActionManager, then previously created actions will be removed.
+     * @警告:如果你想要设置一个新的CCActionManager,则先前创建的动作都将被清除.
      * @param {cc.ActionManager} actionManager A CCActionManager object that is used by all actions.
+     * @param {cc.ActionManager} actionManager 用来管理所有动作的CCActionManager对象
      */
     setActionManager: function (actionManager) {
         if (this._actionManager != actionManager) {
@@ -1386,6 +1483,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * </p>
      * @function
      * @return {cc.Scheduler} A CCScheduler object.
+     * @return {cc.Scheduler} 一个CCScheduler对象.
      */
     getScheduler: function () {
         if (!this._scheduler) {
@@ -1403,7 +1501,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * </p>
      * @function
      * @warning If you set a new CCScheduler, then previously created timers/update are going to be removed.
+     * @警告:如果你想要设置一个新的CCScheduler,则先前创建的timers/update将会被清除.
      * @param scheduler A cc.Scheduler object that is used to schedule all "update" and timers.
+     * @param scheduler 一个被用来调度所有的更新跟定时器的cc.Scheduler对象.
      */
     setScheduler: function (scheduler) {
         if (this._scheduler != scheduler) {
@@ -1417,6 +1517,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 返回节点的本地坐标系的外边框.<br/>
      * 
      * @deprecated since v3.0, please use getBoundingBox instead
+     * @v3.0版本后弃用,请使用getBoundingBox代替
      * @return {cc.Rect}
      */
     boundingBox: function(){
@@ -1431,6 +1532,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 该返回的边框只跟它的父类有关联.
      * @function
      * @return {cc.Rect} The calculated bounding box of the node
+     * @return {cc.Rect} 节点计算出来的外边框
      */
     getBoundingBox: function () {
         var rect = cc.rect(0, 0, this._contentSize.width, this._contentSize.height);
@@ -1464,7 +1566,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 从容器中通过子节点的标签获取一个子节点
      * @function
      * @param {Number} aTag An identifier to find the child node.
+     * @param {Number} aTag 寻找子节点的标记.
      * @return {cc.Node} a CCNode object whose tag equals to the input parameter
+     * @return {cc.Node} 一个标签等于入参的CCNode对象
      */
     getChildByTag: function (aTag) {
         var __children = this._children;
@@ -1483,7 +1587,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 从容器中通过子节点的名称获取一个子节点
      * @function
      * @param {Number} name An identifier to find the child node.
+     * @param {Number} name 寻找子节点的标记.
      * @return {cc.Node} a CCNode object whose name equals to the input parameter
+     * @return {cc.Node} 一个名称等于入参的CCNode对象
      */
     getChildByName: function(name){
         if(!name){
@@ -1508,8 +1614,11 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * <p>如果子节点被添加到了一个"running(活动着的)"节点,那么'onEnter'和'onEnterTransitionDidFinish' 将会立即调用</p>
      * @function
      * @param {cc.Node} child  A child node
+     * @param {cc.Node} child  子节点
      * @param {Number} [localZOrder=]  Z order for drawing priority. Please refer to setZOrder(int)
+     * @param {Number} [localZOrder=]  绘制优先级中的Z顺序值.请参阅setZOrder(int).
      * @param {Number} [tag=]  A integer to identify the node easily. Please refer to setTag(int)
+     * @param {Number} [tag=]  便于标记节点的整数. 请参阅setTag(int).
      */
     addChild: function (child, localZOrder, tag) {
         localZOrder = localZOrder === undefined ? child._localZOrder : localZOrder;
@@ -1569,6 +1678,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 如果该节点没有任何的父类,那么就不会有任何的效果.
      * @function
      * @param {Boolean} [cleanup=true] true if all actions and callbacks on this node should be removed, false otherwise.
+     * @param {Boolean} [cleanup=true] 如果子节点中所有的动作和回调函数都被清除的话则为true,否则为false.
      * @see cc.Node#removeFromParentAndCleanup
      */
     removeFromParent: function (cleanup) {
@@ -1585,7 +1695,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * If the node orphan, then nothing happens.
      * 如果该节点没有任何的父类,那么就不会有任何的效果.
      * @deprecated since v3.0, please use removeFromParent() instead
+     * @v3.0版本后弃用,请用removeFromParent()代替
      * @param {Boolean} [cleanup=true] true if all actions and callbacks on this node should be removed, false otherwise.
+     * @param {Boolean} [cleanup=true] 如果子节点中所有的动作和回调函数都被清除的话则为true,否则为false.
      */
     removeFromParentAndCleanup: function (cleanup) {
         cc.log(cc._LogInfos.Node_removeFromParentAndCleanup);
@@ -1603,7 +1715,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 如果一个类想要继承'removeChild'行为,则只需要重写该方法就行.</p>
      * @function
      * @param {cc.Node} child  The child node which will be removed.
+     * @param {cc.Node} child  将被删除的子节点.
      * @param {Boolean} [cleanup=true]  true if all running actions and callbacks on the child node will be cleanup, false otherwise.
+     * @param {Boolean} [cleanup=true]  如果子节点中所有的执行中的动作和回调函数都被清除的话则为true,否则为false.
      */
     removeChild: function (child, cleanup) {
         // explicit nil handling
@@ -1626,7 +1740,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 如果cleanup参数没有传递进来,它将会强制设置一个cleanup.<br/>
      * @function
      * @param {Number} tag An integer number that identifies a child node
+     * @param {Number} tag 标记某个子节点的整数
      * @param {Boolean} [cleanup=true] true if all running actions and callbacks on the child node will be cleanup, false otherwise.
+     * @param {Boolean} [cleanup=true] 如果子节点中所有的执行中的动作和回调函数都被清除的话则为true,否则为false.
      * @see cc.Node#removeChildByTag
      */
     removeChildByTag: function (tag, cleanup) {
@@ -1657,6 +1773,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 如果cleanup参数没有传递进来,它将会强制设置一个cleanup.<br/>
      * @function
      * @param {Boolean} [cleanup=true] true if all running actions on all children nodes should be cleanup, false otherwise.
+     * @param {Boolean} [cleanup=true] 如果所有子节点中所有的执行中的动作都被清除的话则为true,否则为false.
      */
     removeAllChildren: function (cleanup) {
         // not using detachChild improves speed here
@@ -1726,7 +1843,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 子节点必须已经添加.
      * @function
      * @param {cc.Node} child An already added child node. It MUST be already added.
+     * @param {cc.Node} child 一个被添加过的子节点.它必须已经被添加过.
      * @param {Number} zOrder Z order for drawing priority. Please refer to setZOrder(int)
+     * @param {Number} zOrder 绘制优先级中的Z顺序值,请参阅setZOrder(int)
      */
     reorderChild: function (child, zOrder) {
         cc.assert(child, cc._LogInfos.Node_reorderChild);
@@ -1746,6 +1865,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * </p>
      * @function
      * @note Don't call this manually unless a child added needs to be removed in the same frame
+     * @注意:别手工调用该函数除非一个被添加过的子节点需要在同一帧中被删除.
      */
     sortAllChildren: function () {
         if (this._reorderChildDirty) {
@@ -1784,6 +1904,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 使用canvas 2d上下文跟WebGL上下文进行渲染的函数,仅供内部使用,请不要调用该函数
      * @function
      * @param {CanvasRenderingContext2D | WebGLRenderingContext} ctx The render context
+     * @param {CanvasRenderingContext2D | WebGLRenderingContext} ctx 渲染上下文
      */
     draw: function (ctx) {
         // override me
@@ -1882,8 +2003,10 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 这个节点将会变成动作的目标,参考cc.Action的getTarget()
      * @function
      * @warning Starting from v0.8 actions don't retain their target anymore.
+     * @警告:自从v0.8版本后,动作将不在保留他们的目标对象.
      * @param {cc.Action} action
      * @return {cc.Action} An Action pointer
+     * @return {cc.Action} 锚点
      */
     runAction: function (action) {
         cc.assert(action, cc._LogInfos.Node_runAction);
@@ -1906,6 +2029,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 从运行中的动作列表中停止和删除一个动作.
      * @function
      * @param {cc.Action} action An action object to be removed.
+     * @param {cc.Action} action 要被删除的动作对象.
      */
     stopAction: function (action) {
         this.actionManager.removeAction(action);
@@ -1916,6 +2040,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 根据它的标签从运行着的动作列表中删除该动作.
      * @function
      * @param {Number} tag A tag that indicates the action to be removed.
+     * @param {Number} tag 要被删除的动作的标签.
      */
     stopActionByTag: function (tag) {
         if (tag === cc.ACTION_TAG_INVALID) {
@@ -1932,6 +2057,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * @see cc.Node#getTag and cc.Node#setTag
      * @param {Number} tag
      * @return {cc.Action} The action object with the given tag.
+     * @return {cc.Action} 拥有标签的动作对象.
      */
     getActionByTag: function (tag) {
         if (tag === cc.ACTION_TAG_INVALID) {
@@ -1951,6 +2077,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      *    如果你正在运行包含2个动作中的7个Sequences,它将返回 7.</p>
      * @function
      * @return {Number} The number of actions that are running plus the ones that are schedule to run
+     * @return {Number} 被调度去执行的且正在运行中的动作数量.
      */
     getNumberOfRunningActions: function () {
         return this.actionManager.numberOfRunningActionsInTarget(this);
@@ -2010,9 +2137,13 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 如果这个选择器已经被调度了,那么内部的参数将会被更新而不用再次调度一遍.</p>
      * @function
      * @param {function} callback_fn A function wrapped as a selector
+     * @param {function} callback_fn 函数包装成的选择器
      * @param {Number} interval  Tick interval in seconds. 0 means tick every frame. If interval = 0, it's recommended to use scheduleUpdate() instead.
+     * @param {Number} interval  运行时间间隔.0表示运行每一帧.如果 interval = 0, 推荐使用scheduleUpdate()来代替.
      * @param {Number} repeat    The selector will be executed (repeat + 1) times, you can use kCCRepeatForever for tick infinitely.
+     * @param {Number} repeat    选择器将会被执行(repeat + 1)次,你可以使用kCCRepeatForever来无限循环执行.
      * @param {Number} delay     The amount of time that the first tick will wait before execution.
+     * @param {Number} delay     在执行之前,第一次运行需要等待的时间数.
      */
     schedule: function (callback_fn, interval, repeat, delay) {
         interval = interval || 0;
@@ -2032,7 +2163,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * @function
      * @see cc.Node#schedule
      * @param {function} callback_fn  A function wrapped as a selector
+     * @param {function} callback_fn  函数包装成的选择器
      * @param {Number} delay  The amount of time that the first tick will wait before execution.
+     * @param {Number} delay  在执行之前,第一次运行需要等待的时间数.
      */
     scheduleOnce: function (callback_fn, delay) {
         this.schedule(callback_fn, 0.0, 0, delay);
@@ -2044,6 +2177,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * @function
      * @see cc.Node#schedule
      * @param {function} callback_fn  A function wrapped as a selector
+     * @param {function} callback_fn  函数包装成的选择器
      */
     unschedule: function (callback_fn) {
         if (!callback_fn)
@@ -2056,6 +2190,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * <p>unschedule all scheduled callback functions: custom callback functions, and the 'update' callback function.<br/>
      * <p>不调度所有的调度回调函数:自定义回调函数,和'update'回调函数.<br/>
      * Actions are not affected by this method.</p>
+     * 动作不会受到该方法的影响.</p>
      * @function
      */
     unscheduleAllCallbacks: function () {
@@ -2069,6 +2204,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 该方法在onEnter方法内部被调用.
      * @function
      * @deprecated since v3.0, please use resume() instead
+     * @v3.0后弃用,请使用resume()代替
      */
     resumeSchedulerAndActions: function () {
         cc.log(cc._LogInfos.Node_resumeSchedulerAndActions);
@@ -2093,6 +2229,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * This method is called internally by onExit</p>
      * 该方法在onEnter方法内部被调用.</p>
      * @deprecated since v3.0, please use pause instead
+     * @v3.0后弃用,请使用pause代替
      * @function
      */
     pauseSchedulerAndActions: function () {
@@ -2187,6 +2324,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * Returns the matrix that transform parent's space coordinates to the node's (local) space coordinates.<br/>
      * 返回由父类空间坐标系变换至节点的本地坐标系的矩阵.<br/>
      * The matrix is in Pixels.
+     * 矩阵单位是像素.
      * @function
      * @return {cc.AffineTransform}
      */
@@ -2201,6 +2339,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /**
      * @function
      * @deprecated since v3.0, please use getParentToNodeTransform instead
+     * @v3.0版本后弃用,请使用getParentToNodeTransform代替.
      */
     parentToNodeTransform: function () {
         return this.getParentToNodeTransform();
@@ -2222,6 +2361,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /**
      * @function
      * @deprecated since v3.0, please use getNodeToWorldTransform instead
+     * @v3.0版本后弃用,请使用getNodeToWorldTransform代替.
      */
     nodeToWorldTransform: function(){
         return this.getNodeToWorldTransform();
@@ -2240,6 +2380,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /**
      * @function
      * @deprecated since v3.0, please use getWorldToNodeTransform instead
+     * @v3.0版本后弃用,请使用getWorldToNodeTransform代替.
      */
     worldToNodeTransform: function () {
         return this.getWorldToNodeTransform();
@@ -2305,6 +2446,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /** 一个便利的将cc.Touch转换成cc.Point的方法
      * @function
      * @param {cc.Touch} touch The touch object
+     * @param {cc.Touch} touch 触摸对象
      * @return {cc.Point}
      */
     convertTouchToNodeSpace: function (touch) {
@@ -2320,6 +2462,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 将cc.Touch(世界坐标系)转换成本地坐标系.这个方法是AR(相对于锚点). 
      * @function
      * @param {cc.Touch} touch The touch object
+     * @param {cc.Touch} touch 触摸对象
      * @return {cc.Point}
      */
     convertTouchToNodeSpaceAR: function (touch) {
@@ -2337,6 +2480,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 重写该函数从而实现你自己的更新方法.
      * @function
      * @param {Number} dt Delta time since last update
+     * @param {Number} dt 最近一次更新后的延迟时间
      */
     update: function (dt) {
         if (this._componentContainer && !this._componentContainer.isEmpty())
@@ -2417,7 +2561,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 根据组件名称获取组件
      * @function
      * @param {String} name The name to search for
+     * @param {String} name 搜索用的名称
      * @return {cc.Component} The component found
+     * @return {cc.Component} 找到的组件
      */
     getComponent: function (name) {
         if(this._componentContainer)
@@ -2480,6 +2626,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 执行基于位置,缩放,旋转及其他属性的视图矩阵变换
      * @function
      * @param {CanvasRenderingContext2D|WebGLRenderingContext} ctx Render context
+     * @param {CanvasRenderingContext2D|WebGLRenderingContext} ctx渲染上下文
      */
     transform: null,
 
@@ -2487,9 +2634,11 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * <p>Returns the matrix that transform the node's (local) space coordinates into the parent's space coordinates.<br/>
      * <p>获取节点从本地空间坐标到父类中的空间坐标的转换矩阵<br/>
      * The matrix is in Pixels.</p>
+     * 矩阵单位是像素.</p>
      * @function
      * @return {cc.AffineTransform}
      * @deprecated since v3.0, please use getNodeToParentTransform instead
+     * @v3.0版本后弃用, 请使用getNodeToParentTransform替代
      */
     nodeToParentTransform: function(){
         return this.getNodeToParentTransform();
@@ -2499,8 +2648,10 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * Returns the matrix that transform the node's (local) space coordinates into the parent's space coordinates.<br/>
      * 获取节点从本地空间坐标到父类中的空间坐标的转换矩阵<br/>
      * The matrix is in Pixels.
+     * 矩阵单位是像素.
      * @function
      * @return {cc.AffineTransform} The affine transform object
+     * @return {cc.AffineTransform} 仿射变换对象
      */
     getNodeToParentTransform: null,
 
@@ -2529,7 +2680,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 获取一个摄像机对象,使你可以使用一个gluLookAt对节点进行移动
      * @function
      * @return {cc.Camera} A CCCamera object that lets you move the node using a gluLookAt
+     * @return {cc.Camera} A CCCamera可以让你使用一个gluLookAt来移动节点
      * @deprecated since v3.0, no alternative function
+     * @v3.0后弃用,不再使用的函数.
      * @example
      * var camera = node.getCamera();
      * camera.setEye(0, 0, 415/2);
@@ -2549,7 +2702,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 该函数已被废弃,请使用cc.NodeGrid进行创建网格动作</p>
      * @function
      * @return {cc.GridBase} A CCGrid object that is used when applying effects
+     * @return {cc.GridBase} A 使用效果时将被使用的CCGrid对象
      * @deprecated since v3.0, no alternative function
+     * @v3.0后弃用,不再使用的函数.
      */
     getGrid: function () {
         return this.grid;
@@ -2562,6 +2717,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 该函数已被废弃,请使用cc.NodeGrid进行创建网格动作</p>
      * @function
      * @param {cc.GridBase} grid A CCGrid object that is used when applying effects
+     * @param {cc.GridBase} grid 使用效果时将被使用的CCGrid对象
      * @deprecated since v3.0, no alternative function
      */
     setGrid: function (grid) {
@@ -2573,6 +2729,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 获取节点当前所使用的着色过程
      * @function
      * @return {cc.GLProgram} The shader program currently used for this node
+     * @return {cc.GLProgram} 该节点当前使用的着色器.
      */
     getShaderProgram: function () {
         return this._shaderProgram;
@@ -2593,6 +2750,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * </p>
      * @function
      * @param {cc.GLProgram} newShaderProgram The shader program which fetches from CCShaderCache.
+     * @param {cc.GLProgram} newShaderProgram 从CCShaderCache获得的着色器程序.
      * @example
      * node.setGLProgram(cc.shaderCache.programForKey(cc.SHADER_POSITION_TEXTURECOLOR));
      */
@@ -2605,7 +2763,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 获取OpenGL服务端的状态
      * @function
      * @return {Number} The state of OpenGL server side.
+     * @return {Number} OpenGL服务端的状态.
      * @deprecated since v3.0, no need anymore
+     * @v3.0后弃用,不再被使用
      */
     getGLServerState: function () {
         return this._glServerState;
@@ -2616,7 +2776,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 设置OpenGL服务端的状态
      * @function
      * @param {Number} state The state of OpenGL server side.
+     * @param {Number} state OpenGL服务端的状态.
      * @deprecated since v3.0, no need anymore
+     * @v3.0后弃用,不再被使用
      */
     setGLServerState: function (state) {
         this._glServerState = state;
@@ -2761,7 +2923,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns the opacity of Node
-     * 获取节点的透明度
+     * 获取节点的不透明度
      * @function
      * @returns {number} opacity
      */
@@ -2771,11 +2933,12 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns the displayed opacity of Node,
-     * 返回节点的显示的透明度值,
+     * 返回节点的显示的不透明度值,
      * the difference between displayed opacity and opacity is that displayed opacity is calculated based on opacity and parent node's opacity when cascade opacity enabled.
-     * 显示透明度跟透明度的区别在于:当启用级联透明度的时候,显示透明度是基于自身的透明度跟父类的透明度计算出来的.
+     * 显示不透明度跟不透明度的区别在于:当启用级联不透明度的时候,显示不透明度是基于自身的不透明度跟父类的不透明度计算出来的.
      * @function
      * @returns {number} displayed opacity
+     * @returns {number} 显示的不透明度
      */
     getDisplayedOpacity: function () {
         return this._displayedOpacity;
@@ -2783,7 +2946,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Sets the opacity of Node
-     * 设置节点的透明度值
+     * 设置节点的不透明度值
      * @function
      * @param {Number} opacity
      */
@@ -2800,7 +2963,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Update displayed opacity
-     * 更新显示的透明度值
+     * 更新显示的不透明度值
      * @function
      * @param {Number} parentOpacity
      */
@@ -2820,7 +2983,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Returns whether node's opacity value affect its child nodes.
-     * 返回节点的透明度值是否会影响到其子节点.
+     * 返回节点的不透明度值是否会影响到其子节点.
      * @function
      * @returns {boolean}
      */
@@ -2830,7 +2993,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Enable or disable cascade opacity, if cascade enabled, child nodes' opacity will be the multiplication of parent opacity and its own opacity.
-     * 启用或不启用级联透明度,如果启用,子节点的透明度值是父类的透明度值跟其本身透明度值的乘积
+     * 启用或不启用级联不透明度,如果启用,子节点的不透明度值是父类的不透明度值跟其本身不透明度值的乘积
      * @function
      * @param {boolean} cascadeOpacityEnabled
      */
@@ -2891,11 +3054,12 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * <p>Sets the color of Node.<br/>
      * <p>设置节点的颜色<br/>
      * When color doesn't include opacity value like cc.color(128,128,128), this function only change the color. <br/>
-     * 当颜色未包含透明度的值 例如:cc.color(128,128,128),该函数仅仅是改变颜色<br/>
+     * 当颜色未包含不透明度的值 例如:cc.color(128,128,128),该函数仅仅是改变颜色<br/>
      * When color include opacity like cc.color(128,128,128,100), then this function will change the color and the opacity.</p>
-     * 但颜色包含透明度值 例如:cc.color(128,128,128,100),该函数将改变颜色跟透明度.</p>
+     * 但颜色包含不透明度值 例如:cc.color(128,128,128,100),该函数将改变颜色跟透明度.</p>
      * @function
      * @param {cc.Color} color The new color given
+     * @param {cc.Color} color 传入的新的颜色
      */
     setColor: function (color) {
         var locDisplayedColor = this._displayedColor, locRealColor = this._realColor;
@@ -2945,7 +3109,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Enable or disable cascade color, if cascade enabled, child nodes' opacity will be the cascade value of parent color and its own color.
-     * 启用或者不启用级联颜色,如果启用,则子节点的透明度将级联父类的颜色值跟其本身的颜色值
+     * 启用或者不启用级联颜色,如果启用,则子节点的不透明度将级联父类的颜色值跟其本身的颜色值
      * @param {boolean} cascadeColorEnabled
      */
     setCascadeColorEnabled: function (cascadeColorEnabled) {
@@ -2983,7 +3147,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Set whether color should be changed with the opacity value,
-     * 设置颜色值是否要跟着透明度进行改变
+     * 设置颜色值是否要跟着不透明度进行改变
      * useless in cc.Node, but this function is override in some class to have such behavior.
      * 该函数在cc.Node中无效,但该函数在某些类中被重写了 以便使用该功能
      * @function
@@ -2994,7 +3158,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * Get whether color should be changed with the opacity value
-     * 获取颜色值是否有因透明度值的改变而改变
+     * 获取颜色值是否有因不透明度值的改变而改变
      * @function
      * @return {Boolean}
      */
@@ -3012,6 +3176,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
  * Allocates and initializes a node.
  * 分配并初始化一个节点
  * @deprecated since v3.0, please use new construction instead.
+ * @v3.0版本后弃用, 请用新的构造器替代.
  * @see cc.Node
  * @return {cc.Node}
  */
