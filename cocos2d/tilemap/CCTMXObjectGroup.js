@@ -46,7 +46,7 @@ cc.TMXObjectGroup = cc.Class.extend(/** @lends cc.TMXObjectGroup# */{
      * This function will automatically be invoked when you create a node using new construction: "var node = new cc.TMXObjectGroup()".<br/>
      * 当使用新的node构造方式时("var node = new cc.TMXObjectGroup()"), 这个函数会自动的调用
      * Override it to extend its behavior, remember to call "this._super()" in the extended "ctor" function.</p>
-     * 重载和拓展了功能, 记得在ctor函数中调用this._super();
+     * 覆盖和拓展了功能, 记得在ctor函数中调用this._super();
      */
     ctor:function () {
         this.groupName = "";

@@ -24,8 +24,7 @@
  THE SOFTWARE.
  ****************************************************************************/
 /**
- * A tag constant for identifying fade scenes
- * 一个标记用于识别淡出的场景
+ * A tag constant for identifying fade scenes  一个标记用于识别淡出的场景
  * @constant
  * @type Number
  */
@@ -130,13 +129,13 @@ cc.TransitionScene = cc.Scene.extend(/** @lends cc.TransitionScene# */{
     /**
      *  <p>
      *     Event callback that is invoked every time when cc.TransitionScene enters the 'stage'.                                   <br/>
-     *     每次调用事件回调会在TransitionScene事件进入'舞台'时
+     *     每次调用事件回调会在TransitionScene事件进入'舞台'时 <br/>
      *     If the TransitionScene enters the 'stage' with a transition, this event is called when the transition starts.        <br/>
-     *     转场开始时这个事件会被调用, 当这个TransitionScene使用转场进入'舞台' 
+     *     转场开始时这个事件会被调用, 当这个TransitionScene使用转场进入'舞台'  <br/>
      *     During onEnter you can't access a "sister/brother" node.                                                    <br/>
-     *     在onEnter时不能访问兄弟节点
+     *     在onEnter时不能访问兄弟节点 <br/>
      *     If you override onEnter, you must call its parent's onEnter function with this._super().
-     *     如果需要重载onEnter, 必须使用this._super()调用父类的onEnter
+     *     如果需要覆盖onEnter, 必须使用this._super()调用父类的onEnter
      * </p>
      */
     onEnter:function () {
@@ -158,13 +157,13 @@ cc.TransitionScene = cc.Scene.extend(/** @lends cc.TransitionScene# */{
     /**
      *  <p>
      * callback that is called every time the cc.TransitionScene leaves the 'stage'.                                         <br/>
-     * 每次调用事件回调会在TransitionScene事件离开'舞台'时
+     * 每次调用事件回调会在TransitionScene事件离开'舞台'时 <br/>
      * If the cc.TransitionScene leaves the 'stage' with a transition, this callback is called when the transition finishes. <br/>
-     * 转场结束时这个事件会被调用, 当这个TransitionScene使用转场离开'舞台' 
+     * 转场结束时这个事件会被调用, 当这个TransitionScene使用转场离开'舞台'  <br/>
      * During onExit you can't access a sibling node.                                                             <br/>
-     * 在onExit时不能访问兄弟节点
+     * 在onExit时不能访问兄弟节点 <br/>
      * If you override onExit, you shall call its parent's onExit with this._super().
-     * 如果需要重载onExit, 必须使用this._super()调用父类的onExit
+     * 如果需要覆盖onExit, 必须使用this._super()调用父类的onExit <br/>
      * </p>
      */
     onExit:function () {
@@ -1696,7 +1695,7 @@ cc.TransitionCrossFade = cc.TransitionScene.extend(/** @lends cc.TransitionCross
 
     /**
      * overide draw
-     * 重载draw
+     * 覆盖draw
      */
     draw:function () {
         // override draw since both scenes (textures) are rendered in 1 scene
