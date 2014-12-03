@@ -140,6 +140,7 @@
 - Tuples, 元组
 - the set, 集合
 - texture 纹理
+- transition  转场
 
 ## U
 

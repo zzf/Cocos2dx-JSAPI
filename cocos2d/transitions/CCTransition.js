@@ -24,8 +24,7 @@
  THE SOFTWARE.
  ****************************************************************************/
 /**
- * A tag constant for identifying fade scenes
- * 一个标记用于识别淡出的场景
+ * A tag constant for identifying fade scenes  一个标记用于识别淡出的场景
  * @constant
  * @type Number
  */
@@ -100,7 +99,7 @@ cc.TransitionScene = cc.Scene.extend(/** @lends cc.TransitionScene# */{
         director.runScene(this._inScene);
 
         // enable events while transitions
-        // 在过渡时打开事件
+        // 在转场时打开事件
         cc.eventManager.setEnabled(true);
 
         // issue #267
@@ -130,20 +129,20 @@ cc.TransitionScene = cc.Scene.extend(/** @lends cc.TransitionScene# */{
     /**
      *  <p>
      *     Event callback that is invoked every time when cc.TransitionScene enters the 'stage'.                                   <br/>
-     *     每次调用事件回调会在TransitionScene事件进入'舞台'时
+     *     每次调用事件回调会在TransitionScene事件进入'舞台'时 <br/>
      *     If the TransitionScene enters the 'stage' with a transition, this event is called when the transition starts.        <br/>
-     *     过渡开始时这个事件会被调用, 当这个TransitionScene使用过渡进入'舞台' 
+     *     转场开始时这个事件会被调用, 当这个TransitionScene使用转场进入'舞台'  <br/>
      *     During onEnter you can't access a "sister/brother" node.                                                    <br/>
-     *     在onEnter时不能访问兄弟节点
+     *     在onEnter时不能访问兄弟节点 <br/>
      *     If you override onEnter, you must call its parent's onEnter function with this._super().
-     *     如果需要重载onEnter, 必须使用this._super()调用父类的onEnter
+     *     如果需要覆盖onEnter, 必须使用this._super()调用父类的onEnter
      * </p>
      */
     onEnter:function () {
         cc.Node.prototype.onEnter.call(this);
 
         // disable events while transitions
-        // 在过渡时禁用事件管理
+        // 在转场时禁用事件管理
         cc.eventManager.setEnabled(false);
 
         // outScene should not receive the onEnter callback
@@ -158,20 +157,20 @@ cc.TransitionScene = cc.Scene.extend(/** @lends cc.TransitionScene# */{
     /**
      *  <p>
      * callback that is called every time the cc.TransitionScene leaves the 'stage'.                                         <br/>
-     * 每次调用事件回调会在TransitionScene事件离开'舞台'时
+     * 每次调用事件回调会在TransitionScene事件离开'舞台'时 <br/>
      * If the cc.TransitionScene leaves the 'stage' with a transition, this callback is called when the transition finishes. <br/>
-     * 过渡结束时这个事件会被调用, 当这个TransitionScene使用过渡离开'舞台' 
+     * 转场结束时这个事件会被调用, 当这个TransitionScene使用转场离开'舞台'  <br/>
      * During onExit you can't access a sibling node.                                                             <br/>
-     * 在onExit时不能访问兄弟节点
+     * 在onExit时不能访问兄弟节点 <br/>
      * If you override onExit, you shall call its parent's onExit with this._super().
-     * 如果需要重载onExit, 必须使用this._super()调用父类的onExit
+     * 如果需要覆盖onExit, 必须使用this._super()调用父类的onExit <br/>
      * </p>
      */
     onExit:function () {
         cc.Node.prototype.onExit.call(this);
 
         // enable events while transitions
-        // 在过渡时开启事件管理
+        // 在转场时开启事件管理
         cc.eventManager.setEnabled(true);
 
         this._outScene.onExit();
@@ -198,7 +197,7 @@ cc.TransitionScene = cc.Scene.extend(/** @lends cc.TransitionScene# */{
      * initializes a transition with duration and incoming scene
      * 初始化一个具有持续时间和进入的场景
      * @param {Number} t time in seconds 持续时间
-     * @param {cc.Scene} scene a scene to transit to 需要过渡的场景
+     * @param {cc.Scene} scene a scene to transit to 需要转场的场景
      * @return {Boolean} return false if error 如果是error则返回 false
      */
     initWithDuration:function (t, scene) {
@@ -233,7 +232,7 @@ cc.TransitionScene = cc.Scene.extend(/** @lends cc.TransitionScene# */{
 
     /**
      * called after the transition finishes
-     * 在过渡结束后调用
+     * 在转场结束后调用
      */
     finish:function () {
         // clean up
@@ -275,7 +274,7 @@ cc.TransitionScene = cc.Scene.extend(/** @lends cc.TransitionScene# */{
  * 创建一个基本的具有持续时间和进入场景的转换
  * @deprecated since v3.0, please use new cc.TransitionScene(t,scene) instead 从v3.0之后使用 new cc.TransitionScene(t,scene) 替代
  * @param {Number} t time in seconds 持续时间
- * @param {cc.Scene} scene the scene to transit with 需要过渡的场景
+ * @param {cc.Scene} scene the scene to transit with 需要转场的场景
  * @return {cc.TransitionScene|Null}
  */
 cc.TransitionScene.create = function (t, scene) {
@@ -288,7 +287,7 @@ cc.TransitionScene.create = function (t, scene) {
  * Possible orientation: LeftOver, RightOver, UpOver, DownOver<br/>
  * 可用的方向为: LeftOver, RightOver, UpOver, DownOver
  * useful for when you want to make a transition happen between 2 orientations
- * 当需要制造一个使用两个方向之间的过渡时可以使用
+ * 当需要制造一个使用两个方向之间的转场时可以使用
  * @class
  * @extends cc.TransitionScene
  * @param {Number} t time in seconds
@@ -313,7 +312,7 @@ cc.TransitionSceneOriented = cc.TransitionScene.extend(/** @lends cc.TransitionS
     },
     /**
      * initialize the transition
-     * 初始化过渡
+     * 初始化转场
      * @param {Number} t time in seconds 持续时间
      * @param {cc.Scene} scene
      * @param {cc.TRANSITION_ORIENTATION_LEFT_OVER|cc.TRANSITION_ORIENTATION_RIGHT_OVER|cc.TRANSITION_ORIENTATION_UP_OVER|cc.TRANSITION_ORIENTATION_DOWN_OVER} orientation
@@ -574,7 +573,7 @@ cc.TransitionMoveInR = cc.TransitionMoveInL.extend(/** @lends cc.TransitionMoveI
 
 /**
  * create a scene transition that Move in from to the right the incoming scene.
- *  创建一个右侧传入场景过渡
+ *  创建一个右侧传入场景转场
  * @deprecated since v3.0,please use new cc.TransitionMoveInR(t, scene) instead 从v3.0之后使用 new cc.TransitionMoveInR(t, scene) 替代
  * @param {Number} t time in seconds 持续时间
  * @param {cc.Scene} scene
@@ -658,7 +657,7 @@ cc.TransitionMoveInB = cc.TransitionMoveInL.extend(/** @lends cc.TransitionMoveI
 
 /**
  * create a scene transition that Move in from to the bottom the incoming scene.
- * 创建一个从底部传入场景的过渡
+ * 创建一个从底部传入场景的转场
  * @deprecated since v3.0,please use new cc.TransitionMoveInB(t, scene) instead 从v3.0之后使用 new cc.TransitionMoveInB(t, scene) 替代
  * @param {Number} t time in seconds 持续时间
  * @param {cc.Scene} scene
@@ -674,7 +673,7 @@ cc.TransitionMoveInB.create = function (t, scene) {
  * One solution is to use DONT_RENDER_IN_SUBPIXELS images, but NO<br/>
  * 一个解决方案是使用DONT_RENDER_IN_SUBPIXELS的使用, 不行
  * The other issue is that in some transitions (and I don't know why)<br/>
- * 另一个问题在一些过渡(我不知道为毛)
+ * 另一个问题在一些转场(我不知道为毛)
  * the order should be reversed (In in top of Out or vice-versa).
  * 这个问题会被反转(?)
  * @constant
@@ -684,7 +683,7 @@ cc.ADJUST_FACTOR = 0.5;
 
 /**
  * a transition that a new scene is slided from left
- * 一个从左边滑入传入过渡
+ * 一个从左边滑入传入转场
  * @class
  * @extends cc.TransitionScene
  * @param {Number} t time in seconds 持续时间
@@ -751,7 +750,7 @@ cc.TransitionSlideInL = cc.TransitionScene.extend(/** @lends cc.TransitionSlideI
 
 /**
  * create a transition that a new scene is slided from left
- * 创建一个从左边滑入传入场景的过渡.
+ * 创建一个从左边滑入传入场景的转场.
  * @deprecated since v3.0,please use new cc.TransitionSlideInL(t, scene) instead  从v3.0之后使用 new cc.TransitionSlideInL(t, scene) 替代
  * @param {Number} t time in seconds 持续时间
  * @param {cc.Scene} scene
@@ -1549,7 +1548,7 @@ cc.TransitionFade = cc.TransitionScene.extend(/** @lends cc.TransitionFade# */{
 
     /**
      * initializes the transition with a duration and with an RGB color
-     * 使用 duration、RGB color 初始化一个过渡
+     * 使用 duration、RGB color 初始化一个转场
      * @param {Number} t time in seconds 持续时间
      * @param {cc.Scene} scene
      * @param {cc.Color} color
@@ -1696,7 +1695,7 @@ cc.TransitionCrossFade = cc.TransitionScene.extend(/** @lends cc.TransitionCross
 
     /**
      * overide draw
-     * 重载draw
+     * 覆盖draw
      */
     draw:function () {
         // override draw since both scenes (textures) are rendered in 1 scene

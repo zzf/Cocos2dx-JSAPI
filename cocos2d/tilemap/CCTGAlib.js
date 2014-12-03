@@ -330,7 +330,7 @@ cc.BinaryStreamReader = cc.Class.extend({
      * This function will automatically be invoked when you create a node using new construction: "var node = new cc.BinaryStreamReader()".<br/>
      * 这个函数会被自动调用, 当使用新的构造方式 var node = new cc.BinaryStreamReader() 时
      * Override it to extend its behavior, remember to call "this._super()" in the extended "ctor" function.</p>
-     * 重载和拓展了功能, 记得在ctor函数中调用this._super();
+     * 覆盖和拓展了功能, 记得在ctor函数中调用this._super();
      * @param binaryData
      */
     ctor:function (binaryData) {
