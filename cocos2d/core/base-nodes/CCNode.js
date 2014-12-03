@@ -39,174 +39,96 @@ cc.NODE_TAG_INVALID = -1;
 cc.s_globalOrderOfArrival = 1;
 
 /**
- * <p>cc.Node is the root class of all node. Anything that gets drawn or contains things that get drawn is a cc.Node.<br/>
- * <p>cc.Node是所有节点的父类,所有的绘制或者包含的东西都是一个cc.Node.
- * The most popular cc.Nodes are: cc.Scene, cc.Layer, cc.Sprite, cc.Menu.</p>
- * 最典型的cc.Nodes有:cc.Scene,cc.Layer,cc.Sprite,cc.Menu.</p>
+ * <p>cc.Node is the root class of all node. Anything that gets drawn or contains things that get drawn is a cc.Node.<br/>			<p>cc.Node是所有节点的父类,所有的绘制或者包含的东西都是一个cc.Node.
+ * The most popular cc.Nodes are: cc.Scene, cc.Layer, cc.Sprite, cc.Menu.</p>																										最典型的cc.Nodes有:cc.Scene,cc.Layer,cc.Sprite,cc.Menu.</p>
  *
- * <p>The main features of a cc.Node are: <br/>
- * <p>一个cc.Node的主要特点:
- * - They can contain other cc.Node nodes (addChild, getChildByTag, removeChild, etc) <br/>
- * - 他们可以包含其他的节点对象(addChild, getChildByTag, removeChild, etc)<br/>
- * - They can schedule periodic callback (schedule, unschedule, etc) <br/>
- * - 他们可以安排定期的回调(schedule, unschedule, etc)<br/>
- * - They can execute actions (runAction, stopAction, etc) <br/></p>
- * - 他们可以执行一些动作(runAction, stopAction, etc)<br/></p>
+ * <p>The main features of a cc.Node are: <br/>																																									<p>一个cc.Node的主要特点:
+ * - They can contain other cc.Node nodes (addChild, getChildByTag, removeChild, etc) <br/>																			- 他们可以包含其他的节点对象(addChild, getChildByTag, removeChild, etc)<br/>	
+ * - They can schedule periodic callback (schedule, unschedule, etc) <br/>																											- 他们可以安排定期的回调(schedule, unschedule, etc)<br/>
+ * - They can execute actions (runAction, stopAction, etc) <br/></p>																														- 他们可以执行一些动作(runAction, stopAction, etc)<br/></p>
  *
- * <p>Some cc.Node nodes provide extra functionality for them or their children.</p>
- * <p>有些cc.Node节点提供额外的函数给其自己获取其子类.</p>
+ * <p>Some cc.Node nodes provide extra functionality for them or their children.</p>																						<p>有些cc.Node节点提供额外的函数给其自己获取其子类.</p>
  *
- * <p>Subclassing a cc.Node usually means (one/all) of: <br/>
- * <p>子类节点通常意味着(单一的/所有的):<br/>
- * - overriding constructor function "ctor" to initialize resources and schedule callbacks<br/>
- * - 重写构造函数"ctor"去初始化资源跟安排回调<br/>
- * - create callbacks to handle the advancement of time<br/></p>
- * - 创建回调来操作进行的时间<br/></p>
+ * <p>Subclassing a cc.Node usually means (one/all) of: <br/>																																		<p>子类节点通常意味着(单一的/所有的):<br/>
+ * - overriding constructor function "ctor" to initialize resources and schedule callbacks<br/>																	- 重写构造函数"ctor"去初始化资源跟安排回调<br/>
+ * - create callbacks to handle the advancement of time<br/></p>																																- 创建回调来操作进行的时间<br/></p>
  *
- * <p>Features of cc.Node: <br/>
- * <p>cc.Node功能:<br/>
- * - position  <br/>
- * - 位置<br/>
- * - scale (x, y) <br/>
- * - x,y轴缩放
- * - rotation (in degrees, clockwise)<br/>
- * - 角度的旋转<br/>
- * - anchor point<br/>
- * - 锚点<br/>
- * - size <br/>
- * - 尺寸 <br/>
- * - color <br/>
- * - 颜色 <br/>
- * - opacity <br/>
- * - 不透明度 <br/>
- * - visible<br/>
- * - 可见性<br/>
- * - z-order<br/>
- * - Z轴排序<br/>
- * - WebGL z position<br/></P>
- * - WebGL的Z轴位置<br/></p>
+ * <p>Features of cc.Node: <br/>																																																<p>cc.Node功能:<br/>
+ * - position  <br/>																																																						- 位置<br/>
+ * - scale (x, y) <br/>																																																					- x,y轴缩放<br/>
+ * - rotation (in degrees, clockwise)<br/>																																											- 角度的旋转<br/>
+ * - anchor point<br/>																																																					- 锚点<br/>	
+ * - size <br/>																																																									- 尺寸 <br/>
+ * - color <br/>																																																								- 颜色 <br/>
+ * - opacity <br/>																																																							- 不透明度 <br/>
+ * - visible<br/>																																																								- 可见性<br/>	
+ * - z-order<br/>																																																								- Z轴排序<br/>
+ * - WebGL z position<br/></P>																																																	- WebGL的Z轴位置<br/></p>
  *
- * <p> Default values: <br/>
- * <p> 默认值: <br/>
- * - rotation: 0 <br/>
- * - 旋转:0 <br/>
- * - position: (x=0,y=0) <br/>
- * - 位置: (x=0,y=0) <br/>
- * - scale: (x=1,y=1) <br/>
- * - 缩放比例: (x=1,y=1) <br/>
- * - contentSize: (x=0,y=0)<br/>
- * - 文本尺寸: (x=0,y=0)<br/>
- * - anchorPoint: (x=0,y=0)<br/>
- * - 锚点: (x=0,y=0)<br/>
- * - color: (r=255,g=255,b=255)<br/>
- * - 颜色: (r=255,g=255,b=255)<br/>
- * - opacity: 255</p>
- * - 不透明度: 255</p>
+ * <p> Default values: <br/>																																																		<p> 默认值:<br/>
+ * - rotation: 0 <br/>																																																					- 旋转:0 <br/>
+ * - position: (x=0,y=0) <br/>																																																	- 位置: (x=0,y=0) <br/>
+ * - scale: (x=1,y=1) <br/>																																																			- 缩放比例: (x=1,y=1) <br/>
+ * - contentSize: (x=0,y=0)<br/>																																																- 文本尺寸: (x=0,y=0)<br/>
+ * - anchorPoint: (x=0,y=0)<br/>																																																- 锚点: (x=0,y=0)<br/>		
+ * - color: (r=255,g=255,b=255)<br/>																																														- 颜色: (r=255,g=255,b=255)<br/>
+ * - opacity: 255</p>																																																						- 不透明度: 255</p>
  *
- * <p> Limitations:<br/>
- * <p> 局限性:<br/>
- * - A cc.Node is a "void" object. It doesn't have a texture <br/></P>
- * - 一个cc.Node是一个"void"对象.它没有纹理<br/></p>
+ * <p> Limitations:<br/>																																																				<p> 局限性:<br/>
+ * - A cc.Node is a "void" object. It doesn't have a texture <br/></P>																													- 一个cc.Node是一个"void"对象.它没有纹理<br/></p>
  *
- * <p>Order in transformations with grid disabled <br/>
- * <p>启用网格变换排序<br/>
- * -# The node will be translated (position)  <br/>
- * -# 节点的位置会被变换  <br/>
- * -# The node will be rotated (rotation)<br/>
- * -# 节点会被旋转<br/>
- * -# The node will be scaled (scale)  <br/>
- * -# 节点会被缩放<br/>
+ * <p>Order in transformations with grid disabled <br/>																																					<p>启用网格变换排序<br/>
+ * -# The node will be translated (position)  <br/>																																							-# 节点的位置会被变换  <br/>
+ * -# The node will be rotated (rotation)<br/>																																									-# 节点会被旋转<br/>
+ * -# The node will be scaled (scale)  <br/>																																										-# 节点会被缩放<br/>
  *
- * <p>Order in transformations with grid enabled<br/>
- * <p>不启用网格变换排序<br/>
- * -# The node will be translated (position)<br/>
- * -# 节点的位置会被变换  <br/>
- * -# The node will be rotated (rotation) <br/>
- * -# 节点会被旋转<br/>
- * -# The node will be scaled (scale) <br/>
- * -# 节点会被缩放<br/>
- * -# The grid will capture the screen <br/>
- * -# 网格将会捕捉屏幕<br/>
- * -# The node will be moved according to the camera values (camera) <br/>
- * -# 节点将会根据摄像机的值进行移动 <br/>
- * -# The grid will render the captured screen <br/></P>
- * -# 网格将会渲染被捕捉的屏幕 <br/></P>
+ * <p>Order in transformations with grid enabled<br/>																																						<p>不启用网格变换排序<br/>
+ * -# The node will be translated (position)<br/>																																								-# 节点的位置会被变换  <br/>
+ * -# The node will be rotated (rotation) <br/>																																									-# 节点会被旋转<br/>
+ * -# The node will be scaled (scale) <br/>																																											-# 节点会被缩放<br/>
+ * -# The grid will capture the screen <br/>																																										-# 网格将会捕捉屏幕<br/>
+ * -# The node will be moved according to the camera values (camera) <br/>																											-# 节点将会根据摄像机的值进行移动 <br/>
+ * -# The grid will render the captured screen <br/></P>																																				-# 网格将会渲染被捕捉的屏幕 <br/></P>
  *
  * @class
  * @extends cc.Class
  *
- * @property {Number}               x                   - x axis position of node
- * @property {Number}               x                   - 节点的X轴位置
- * @property {Number}               y                   - y axis position of node
- * @property {Number}               y                   - 节点的Y轴位置
- * @property {Number}               width               - Width of node
- * @property {Number}               width               - 节点的宽
- * @property {Number}               height              - Height of node
- * @property {Number}               height              - 节点的高
- * @property {Number}               anchorX             - Anchor point's position on x axis
- * @property {Number}               anchorX             - X轴上的锚点位置
- * @property {Number}               anchorY             - Anchor point's position on y axis
- * @property {Number}               anchorY             - Y轴上的锚点位置
- * @property {Boolean}              ignoreAnchor        - Indicate whether ignore the anchor point property for positioning
- * @property {Boolean}              ignoreAnchor        - 指出是否忽略锚点当设置位置属性的时候
- * @property {Number}               skewX               - Skew x
- * @property {Number}               skewX               - X轴倾斜
- * @property {Number}               skewY               - Skew y
- * @property {Number}               skewY               - Y轴倾斜
- * @property {Number}               zIndex              - Z order in depth which stands for the drawing order
- * @property {Number}               zIndex              - Z顺序值依据于绘制的先后顺序
- * @property {Number}               vertexZ             - WebGL Z vertex of this node, z order works OK if all the nodes uses the same openGL Z vertex
- * @property {Number}               vertexZ             - 节点的WebGL的Z顶点, 如果所有的节点使用相同的WebGL的Z顶点,Z顺序的排序不会有影响
- * @property {Number}               rotation            - Rotation of node
- * @property {Number}               rotation            - 节点的旋转角度
- * @property {Number}               rotationX           - Rotation on x axis
- * @property {Number}               rotationX           - X轴旋转角度
- * @property {Number}               rotationY           - Rotation on y axis
- * @property {Number}               rotationY           - Y轴旋转角度
- * @property {Number}               scale               - Scale of node
- * @property {Number}               scale               - 节点缩放比例
- * @property {Number}               scaleX              - Scale on x axis
- * @property {Number}               scaleX              - X轴的缩放比例
- * @property {Number}               scaleY              - Scale on y axis
- * @property {Number}               scaleY              - Y轴的缩放比例
- * @property {Boolean}              visible             - Indicate whether node is visible or not
- * @property {Boolean}              visible             - 指出节点是否可见
- * @property {cc.Color}             color               - Color of node, default value is white: (255, 255, 255)
- * @property {cc.Color}             color               - 节点的颜色,默认值为白色: (255, 255, 255)
- * @property {Boolean}              cascadeColor        - Indicate whether node's color value affect its child nodes, default value is false
- * @property {Boolean}              cascadeColor        - 指出节点颜色是否影响它的子节点,默认值为false.
- * @property {Number}               opacity             - Opacity of node, default value is 255
- * @property {Number}               opacity             - 节点的不透明度,默认值为255
- * @property {Boolean}              opacityModifyRGB    - Indicate whether opacity affect the color value, default value is false
- * @property {Boolean}              opacityModifyRGB    - 指出不透明度是否影响颜色的值,默认值为false.
- * @property {Boolean}              cascadeOpacity      - Indicate whether node's opacity value affect its child nodes, default value is false
- * @property {Boolean}              cascadeOpacity      - 指出节点不透明度是否影响它的子节点,默认值为false.
- * @property {Array}                children            - <@readonly> All children nodes
- * @property {Array}                children            - <@readonly> 左右的子节点
- * @property {Number}               childrenCount       - <@readonly> Number of children
- * @property {Number}               childrenCount       - <@readonly> 子节点的数量
- * @property {cc.Node}              parent              - Parent node
- * @property {cc.Node}              parent              - 父类
- * @property {Boolean}              running             - <@readonly> Indicate whether node is running or not
- * @property {Boolean}              running             - <@readonly> 指出节点是否在运行
- * @property {Number}               tag                 - Tag of node
- * @property {Number}               tag                 - 节点标签
- * @property {Object}               userData            - Custom user data
- * @property {Object}               userData            - 用户自定义数据
- * @property {Object}               userObject          - User assigned CCObject, similar to userData, but instead of holding a void* it holds an id
- * @property {Object}               userObject          - 用户分配的CCObject, 类似于用户数据, 但它不是使用一个void*,而是使用一个id
- * @property {Number}               arrivalOrder        - The arrival order, indicates which children is added previously
- * @property {Number}               arrivalOrder        - 到达顺序值,指出哪些子节点先被添加.
- * @property {cc.ActionManager}     actionManager       - The CCActionManager object that is used by all actions.
- * @property {cc.ActionManager}     actionManager       - 被所有动作使用的CCActionManager对象.
- * @property {cc.Scheduler}         scheduler           - cc.Scheduler used to schedule all "updates" and timers.
- * @property {cc.Scheduler}         scheduler           - cc.Scheduler用来调度所有的更新跟定时器.
- * @property {cc.GridBase}          grid                - grid object that is used when applying effects
- * @property {cc.GridBase}          grid                - 当使用效果的时候,被使用的网格对象
- * @property {cc.GLProgram}         shaderProgram       - The shader program currently used for this node
- * @property {cc.GLProgram}         shaderProgram       - 获取节点当前所使用的着色过程
- * @property {Number}               glServerState       - The state of OpenGL server side
- * @property {Number}               glServerState       - OpenGL服务器的状态
+ * @property {Number}               x                   - x axis position of node																																							@property {Number}               x                   - 节点的X轴位置
+ * @property {Number}               y                   - y axis position of node																																							@property {Number}               y                   - 节点的Y轴位置
+ * @property {Number}               width               - Width of node																																												@property {Number}               width               - 节点的宽
+ * @property {Number}               height              - Height of node																																											@property {Number}               height              - 节点的高	
+ * @property {Number}               anchorX             - Anchor point's position on x axis																																		@property {Number}               anchorX             - X轴上的锚点位置
+ * @property {Number}               anchorY             - Anchor point's position on y axis																																		@property {Number}               anchorY             - Y轴上的锚点位置	
+ * @property {Boolean}              ignoreAnchor        - Indicate whether ignore the anchor point property for positioning																		@property {Boolean}              ignoreAnchor        - 指出是否忽略锚点当设置位置属性的时候
+ * @property {Number}               skewX               - Skew x																																															@property {Number}               skewX               - X轴倾斜
+ * @property {Number}               skewY               - Skew y																																															@property {Number}               skewY               - Y轴倾斜
+ * @property {Number}               zIndex              - Z order in depth which stands for the drawing order																									@property {Number}               zIndex              - Z顺序值依据于绘制的先后顺序	
+ * @property {Number}               vertexZ             - WebGL Z vertex of this node, z order works OK if all the nodes uses the same openGL Z vertex				@property {Number}               vertexZ             - 节点的WebGL的Z顶点, 如果所有的节点使用相同的WebGL的Z顶点,Z顺序的排序不会有影响
+ * @property {Number}               rotation            - Rotation of node																																										@property {Number}               rotation            - 节点的旋转角度
+ * @property {Number}               rotationX           - Rotation on x axis																																									@property {Number}               rotationX           - X轴旋转角度
+ * @property {Number}               rotationY           - Rotation on y axis																																									@property {Number}               rotationY           - Y轴旋转角度
+ * @property {Number}               scale               - Scale of node																																												@property {Number}               scale               - 节点缩放比例
+ * @property {Number}               scaleX              - Scale on x axis																																											@property {Number}               scaleX              - X轴的缩放比例
+ * @property {Number}               scaleY              - Scale on y axis																																											@property {Number}               scaleY              - Y轴的缩放比例
+ * @property {Boolean}              visible             - Indicate whether node is visible or not																															@property {Boolean}              visible             - 指出节点是否可见	
+ * @property {cc.Color}             color               - Color of node, default value is white: (255, 255, 255)																							@property {cc.Color}             color               - 节点的颜色,默认值为白色: (255, 255, 255)
+ * @property {Boolean}              cascadeColor        - Indicate whether node's color value affect its child nodes, default value is false									@property {Boolean}              cascadeColor        - 指出节点颜色是否影响它的子节点,默认值为false.	
+ * @property {Number}               opacity             - Opacity of node, default value is 255																																@property {Number}               opacity             - 节点的不透明度,默认值为255
+ * @property {Boolean}              opacityModifyRGB    - Indicate whether opacity affect the color value, default value is false															@property {Boolean}              opacityModifyRGB    - 指出不透明度是否影响颜色的值,默认值为false.	
+ * @property {Boolean}              cascadeOpacity      - Indicate whether node's opacity value affect its child nodes, default value is false								@property {Boolean}              cascadeOpacity      - 指出节点不透明度是否影响它的子节点,默认值为false.
+ * @property {Array}                children            - <@readonly> All children nodes																																			@property {Array}                children            - <@只读> 所有的子节点
+ * @property {Number}               childrenCount       - <@readonly> Number of children																																			@property {Number}               childrenCount       - <@只读> 子节点的数量
+ * @property {cc.Node}              parent              - Parent node																																													@property {cc.Node}              parent              - 父亲节点
+ * @property {Boolean}              running             - <@readonly> Indicate whether node is running or not																									@property {Boolean}              running             - <@只读> 指出节点是否在运行
+ * @property {Number}               tag                 - Tag of node																																													@property {Number}               tag                 - 节点标签	
+ * @property {Object}               userData            - Custom user data																																										@property {Object}               userData            - 用户自定义数据
+ * @property {Object}               userObject          - User assigned CCObject, similar to userData, but instead of holding a void* it holds an id					@property {Object}               userObject          - 用户分配的CCObject, 类似于用户数据, 但它不是使用一个void*,而是使用一个id
+ * @property {Number}               arrivalOrder        - The arrival order, indicates which children is added previously																			@property {Number}               arrivalOrder        - 到达顺序值,指出哪些子节点先被添加.
+ * @property {cc.ActionManager}     actionManager       - The CCActionManager object that is used by all actions.																							@property {cc.ActionManager}     actionManager       - 被所有动作使用的CCActionManager对象.
+ * @property {cc.Scheduler}         scheduler           - cc.Scheduler used to schedule all "updates" and timers.																							@property {cc.Scheduler}         scheduler           - cc.Scheduler用来调度所有的更新跟定时器.
+ * @property {cc.GridBase}          grid                - grid object that is used when applying effects																											@property {cc.GridBase}          grid                - 当使用效果的时候,被使用的网格对象
+ * @property {cc.GLProgram}         shaderProgram       - The shader program currently used for this node																											@property {cc.GLProgram}         shaderProgram       - 获取节点当前所使用的着色过程
+ * @property {Number}               glServerState       - The state of OpenGL server side																																			@property {Number}               glServerState       - OpenGL服务端的状态		
  */
 cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     _localZOrder: 0,                                     ///< Local order (relative to its siblings) used to sort the node //< 本地排序(相对于其同级类)用来排序节点
@@ -316,11 +238,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Initializes the instance of cc.Node
-     * 初始化cc.Node实例
+     * Initializes the instance of cc.Node																初始化cc.Node实例
      * @function
-     * @returns {boolean} Whether the initialization was successful.
-     * @returns {boolean} 初始化是否成功.
+     * @returns {boolean} Whether the initialization was successful.			@returns {boolean} 初始化是否成功.
      */
     init: function () {
         if (this._initializedNode === false)
@@ -391,25 +311,20 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Sets node's dirty flag to true so that it can be updated in visit function of the next frame
-     * 设置节点的标志为true,以便于下一帧访问函数时进行更新
+     * Sets node's dirty flag to true so that it can be updated in visit function of the next frame		设置节点的标志为true,以便于下一帧访问函数时进行更新
+ 
      * @function
      */
     setNodeDirty: null,
 
     /**
-     * <p>Properties configuration function </br>
-     * <p>属性配置函数</br>
-     * All properties in attrs will be set to the node, </br>
-     * 所有在attrs中的属性将会被设置到节点中,</br>
-     * when the setter of the node is available, </br>
-     * 当节点的setter方法可用时,</br>
-     * the property will be set via setter function.</br>
-     * 属性将通过setter函数进行设置.</br>
+     * <p>Properties configuration function </br>									<p>属性配置函数</br>
+     * All properties in attrs will be set to the node, </br>			所有在attrs中的属性将会被设置到节点中,</br>
+     * when the setter of the node is available, </br>						当节点的setter方法可用时,</br>
+     * the property will be set via setter function.</br>					属性将通过setter函数进行设置.</br>
      * </p>
      * @function
-     * @param {Object} attrs Properties to be set to node
-     * @param {Object} 设置节点的属性
+     * @param {Object} attrs Properties to be set to node					@param {Object} 设置节点的属性
      */
     attr: function (attrs) {
         for (var key in attrs) {
@@ -418,20 +333,14 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * <p>Returns the skew degrees in X </br>
-     * <p>获取X轴的倾斜角度</br>
-     * The X skew angle of the node in degrees.  <br/>
-     * 节点X轴的倾斜角 单位:度<br/>
-     * This angle describes the shear distortion in the X direction.<br/>
-     * 该角度表示的是X轴方向上的倾斜程度<br/>
-     * Thus, it is the angle between the Y axis and the left edge of the shape </br>
-     * 该角度是Y轴与其左边缘之间的夹角</br>
-     * The default skewX angle is 0. Positive values distort the node in a CW direction.</br>
-     * 默认的X轴倾斜角为0.确切的值表示的是节点在CW方向上的倾斜度.</br>
+     * <p>Returns the skew degrees in X </br>																										<p>获取X轴的倾斜角度</br>
+     * The X skew angle of the node in degrees.  <br/>																					节点X轴的倾斜角 单位:度<br/>
+     * This angle describes the shear distortion in the X direction.<br/>												该角度表示的是X轴方向上的倾斜程度<br/>
+     * Thus, it is the angle between the Y axis and the left edge of the shape </br>						该角度是Y轴与其左边缘之间的夹角</br>
+     * The default skewX angle is 0. Positive values distort the node in a CW direction.</br>		默认的X轴倾斜角为0.确切的值表示的是节点在CW方向上的倾斜度.</br>
      * </p>
      * @function
-     * @return {Number} The X skew angle of the node in degrees.
-     * @return {Number} 节点X轴的倾斜角度.
+     * @return {Number} The X skew angle of the node in degrees.																@return {Number} 节点X轴的倾斜角度.
      */
     getSkewX: function () {
         return this._skewX;
@@ -439,19 +348,13 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>
-     * Changes the X skew angle of the node in degrees.                                                    <br/>
-     * 改变节点X轴方向上的倾斜角度                                                    <br/>
-     * <br/>
-     * This angle describes the shear distortion in the X direction.                                       <br/>
-     * 该角度表示的是X轴方向上的倾斜程度<br/>
-     * Thus, it is the angle between the Y axis and the left edge of the shape                             <br/>
-     * 该角度是Y轴与其左边缘之间的夹角</br>
-     * The default skewX angle is 0. Positive values distort the node in a CW direction.
-     * 默认的X轴倾斜角为0.确切的值表示的是节点在CW方向上的倾斜度.</br>
+     * Changes the X skew angle of the node in degrees.                                                    <br/>				改变节点X轴方向上的倾斜角度<br/>
+     * This angle describes the shear distortion in the X direction.                                       <br/>				该角度表示的是X轴方向上的倾斜程度<br/>
+     * Thus, it is the angle between the Y axis and the left edge of the shape                             <br/>				该角度是Y轴与其左边缘之间的夹角</br>
+     * The default skewX angle is 0. Positive values distort the node in a CW direction.																默认的X轴倾斜角为0.确切的值表示的是节点在CW方向上的倾斜度.</br>
      * </p>
      * @function
-     * @param {Number} newSkewX The X skew angle of the node in degrees.
-     * @param {Number} newSkewX 节点X轴的倾斜角度.
+     * @param {Number} newSkewX The X skew angle of the node in degrees.																								@param {Number} newSkewX 节点X轴的倾斜角度.
      */
     setSkewX: function (newSkewX) {
         this._skewX = newSkewX;
@@ -2083,19 +1986,13 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
         return this.actionManager.numberOfRunningActionsInTarget(this);
     },
 
-    // cc.Node - Callbacks
-    // cc.Node - 回调
-    // timers
-    // 定时器
+    // cc.Node - Callbacks			cc.Node - 回调
+    // timers  定时器
     /**
-     * <p>schedules the "update" method.                                                                           <br/>
-     * <p>调度器调度"update"方法.<br/>
-     * It will use the order number 0. This method will be called every frame.                                  <br/>
-     * 它使用的序列号是0.该方法将调用每一帧.<br/>
-     * Scheduled methods with a lower order value will be called before the ones that have a higher order value.<br/>
-     * 拥有低顺序值的调度方法将会在有用高顺序值的方法之前被调用.<br/>
-     * Only one "update" method could be scheduled per node.</p>
-     * 在每一个节点中,只有一个"update"方法能够被调度.</p>
+     * <p>schedules the "update" method.                                                                           <br/>			<p>调度器调度"update"方法.<br/>
+     * It will use the order number 0. This method will be called every frame.                                  <br/>					它使用的序列号是0.该方法将调用每一帧.<br/>
+     * Scheduled methods with a lower order value will be called before the ones that have a higher order value.<br/>					拥有低顺序值的调度方法将会在有用高顺序值的方法之前被调用.<br/>
+     * Only one "update" method could be scheduled per node.</p>																															在每一个节点中,只有一个"update"方法能够被调度.</p>
      * @function
      */
     scheduleUpdate: function () {
@@ -2104,14 +2001,10 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>
-     * schedules the "update" callback function with a custom priority.
-     * 调度这个"update"方法伴随着一个自定义优先级
-     * This callback function will be called every frame.<br/>
-     * 这个回调函数将会在每一帧被调用
-     * Scheduled callback functions with a lower priority will be called before the ones that have a higher value.<br/>
-     * 拥有低顺序值的调度方法将会在有用高顺序值的方法之前被调用.<br/>
-     * Only one "update" callback function could be scheduled per node (You can't have 2 'update' callback functions).<br/>
-     * 在每一个节点中,只有一个"update"方法能够被调度(你不能够有2个"update"回调函数).<br/>
+     * schedules the "update" callback function with a custom priority.																												调度这个"update"方法伴随着一个自定义优先级
+     * This callback function will be called every frame.<br/>																																这个回调函数将会在每一帧被调用.<br/>
+     * Scheduled callback functions with a lower priority will be called before the ones that have a higher value.<br/>				拥有低顺序值的调度方法将会在有用高顺序值的方法之前被调用.<br/>
+     * Only one "update" callback function could be scheduled per node (You can't have 2 'update' callback functions).<br/>		在每一个节点中,只有一个"update"方法能够被调度(你不能够有2个"update"回调函数).<br/>
      * </p>
      * @function
      * @param {Number} priority
@@ -2121,8 +2014,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Unschedules the "update" method.
-     * 不调度"update"方法.
+     * Unschedules the "update" method.			不调度"update"方法.
      * @function
      * @see cc.Node#scheduleUpdate
      */
@@ -2131,19 +2023,14 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * <p>Schedules a custom selector.         <br/>
-     * <p>调度一个自定义的选择器.<br/>
-     * If the selector is already scheduled, then the interval parameter will be updated without scheduling it again.</p>
-     * 如果这个选择器已经被调度了,那么内部的参数将会被更新而不用再次调度一遍.</p>
+     * <p>Schedules a custom selector.         <br/>																																					<p>调度一个自定义的选择器.<br/>
+     * If the selector is already scheduled, then the interval parameter will be updated without scheduling it again.</p>			如果这个选择器已经被调度了,那么内部的参数将会被更新而不用再次调度一遍.</p>	
      * @function
-     * @param {function} callback_fn A function wrapped as a selector
-     * @param {function} callback_fn 函数包装成的选择器
-     * @param {Number} interval  Tick interval in seconds. 0 means tick every frame. If interval = 0, it's recommended to use scheduleUpdate() instead.
-     * @param {Number} interval  运行时间间隔.0表示运行每一帧.如果 interval = 0, 推荐使用scheduleUpdate()来代替.
-     * @param {Number} repeat    The selector will be executed (repeat + 1) times, you can use kCCRepeatForever for tick infinitely.
-     * @param {Number} repeat    选择器将会被执行(repeat + 1)次,你可以使用kCCRepeatForever来无限循环执行.
-     * @param {Number} delay     The amount of time that the first tick will wait before execution.
-     * @param {Number} delay     在执行之前,第一次运行需要等待的时间数.
+     * @param {function} callback_fn A function wrapped as a selector																																											@param {function} callback_fn 函数包装成的选择器
+     * @param {Number} interval  Tick interval in seconds. 0 means tick every frame. If interval = 0, it's recommended to use scheduleUpdate() instead.		@param {Number} interval  运行时间间隔.0表示运行每一帧.如果 interval = 0, 推荐使用scheduleUpdate()来代替.
+     * @param {Number} repeat    The selector will be executed (repeat + 1) times, you can use kCCRepeatForever for tick infinitely.											@param {Number} repeat    选择器将会被执行(repeat + 1)次,你可以使用kCCRepeatForever来无限循环执行.
+     * @param {Number} delay     The amount of time that the first tick will wait before execution.																												@param {Number} delay     在执行之前,第一次运行需要等待的时间数.
+     * 
      */
     schedule: function (callback_fn, interval, repeat, delay) {
         interval = interval || 0;
@@ -2158,26 +2045,21 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Schedules a callback function that runs only once, with a delay of 0 or larger
-     * 调度一个只运行一次的回调函数,伴随着一个0s或者更大时长的延时
+     * Schedules a callback function that runs only once, with a delay of 0 or larger							调度一个只运行一次的回调函数,伴随着一个0s或者更大时长的延时
      * @function
      * @see cc.Node#schedule
-     * @param {function} callback_fn  A function wrapped as a selector
-     * @param {function} callback_fn  函数包装成的选择器
-     * @param {Number} delay  The amount of time that the first tick will wait before execution.
-     * @param {Number} delay  在执行之前,第一次运行需要等待的时间数.
+     * @param {function} callback_fn  A function wrapped as a selector														@param {function} callback_fn  函数包装成的选择器
+     * @param {Number} delay  The amount of time that the first tick will wait before execution.	@param {Number} delay  在执行之前,第一次运行需要等待的时间数.	
      */
     scheduleOnce: function (callback_fn, delay) {
         this.schedule(callback_fn, 0.0, 0, delay);
     },
 
     /**
-     * unschedules a custom callback function.
-     * 不调度一个自定义的回调函数.
+     * unschedules a custom callback function.										不调度一个自定义的回调函数.
      * @function
      * @see cc.Node#schedule
-     * @param {function} callback_fn  A function wrapped as a selector
-     * @param {function} callback_fn  函数包装成的选择器
+     * @param {function} callback_fn  A function wrapped as a selector		@param {function} callback_fn  函数包装成的选择器
      */
     unschedule: function (callback_fn) {
         if (!callback_fn)
@@ -2187,10 +2069,8 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * <p>unschedule all scheduled callback functions: custom callback functions, and the 'update' callback function.<br/>
-     * <p>不调度所有的调度回调函数:自定义回调函数,和'update'回调函数.<br/>
-     * Actions are not affected by this method.</p>
-     * 动作不会受到该方法的影响.</p>
+     * <p>unschedule all scheduled callback functions: custom callback functions, and the 'update' callback function.<br/>		<p>不调度所有的调度回调函数:自定义回调函数,和'update'回调函数.<br/>
+     * Actions are not affected by this method.</p>																																						动作不会受到该方法的影响.</p>
      * @function
      */
     unscheduleAllCallbacks: function () {
@@ -2198,13 +2078,10 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Resumes all scheduled selectors and actions.<br/>
-     * 重置所有的调度选择器跟调度动作.<br/>
-     * This method is called internally by onEnter
-     * 该方法在onEnter方法内部被调用.
+     * Resumes all scheduled selectors and actions.<br/>		重置所有的调度选择器跟调度动作.<br/>
+     * This method is called internally by onEnter					该方法在onEnter方法内部被调用.
      * @function
-     * @deprecated since v3.0, please use resume() instead
-     * @v3.0后弃用,请使用resume()代替
+     * @deprecated since v3.0, please use resume() instead	@v3.0后弃用,请使用resume()代替	
      */
     resumeSchedulerAndActions: function () {
         cc.log(cc._LogInfos.Node_resumeSchedulerAndActions);
@@ -2212,10 +2089,8 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * <p>Resumes all scheduled selectors and actions.<br/>
-     * <p>重置所有的调度选择器跟调度动作.<br/>
-     * This method is called internally by onEnter</p>
-     * 该方法在onEnter方法内部被调用.</p>
+     * <p>Resumes all scheduled selectors and actions.<br/>		<p>重置所有的调度选择器跟调度动作.<br/>
+     * This method is called internally by onEnter</p>				该方法在onEnter方法内部被调用.</p>
      */
     resume: function () {
         this.scheduler.resumeTarget(this);
@@ -2224,12 +2099,10 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * <p>Pauses all scheduled selectors and actions.<br/>
-     * <p>暂停所有的调度选择器跟调度动作.<br/>
-     * This method is called internally by onExit</p>
-     * 该方法在onEnter方法内部被调用.</p>
-     * @deprecated since v3.0, please use pause instead
-     * @v3.0后弃用,请使用pause代替
+     * <p>Pauses all scheduled selectors and actions.<br/>		<p>暂停所有的调度选择器跟调度动作.<br/>
+     * This method is called internally by onExit</p>					该方法在onExit方法内部被调用.</p>
+     * @deprecated since v3.0, please use pause instead				@v3.0后弃用,请使用pause代替
+     * 
      * @function
      */
     pauseSchedulerAndActions: function () {
@@ -2238,10 +2111,8 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * <p>Pauses all scheduled selectors and actions.<br/>
-     * <p>暂停所有的调度选择器跟调度动作.<br/>
-     * This method is called internally by onExit</p>
-     * 该方法在onEnter方法内部被调用.</p>
+     * <p>Pauses all scheduled selectors and actions.<br/>			<p>暂停所有的调度选择器跟调度动作.<br/>
+     * This method is called internally by onExit</p>						该方法在onExit方法内部被调用.</p>
      * 
      * @function
      */
@@ -2252,15 +2123,12 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     *<p>Sets the additional transform.<br/>
-     *<p>为节点设置一个附加转换矩阵.<br/>
-     *  The additional transform will be concatenated at the end of getNodeToParentTransform.<br/>
-     *  该附加转换矩阵将会在getNodeToParentTransform结束后进行级联.<br/>
-     *  It could be used to simulate `parent-child` relationship between two nodes (e.g. one is in BatchNode, another isn't).<br/>
-     *  它将被用于模拟两个节点之间的parent-child关系
+     *<p>Sets the additional transform.<br/>																																														<p>为节点设置一个附加转换矩阵.<br/>
+     *  The additional transform will be concatenated at the end of getNodeToParentTransform.<br/>																			该附加转换矩阵将会在getNodeToParentTransform结束后进行级联.<br/>
+     *  It could be used to simulate `parent-child` relationship between two nodes (e.g. one is in BatchNode, another isn't).<br/>			它将被用于模拟两个节点之间的父子关系(例如:一个BatchNode,另一个不是).<br/>
      *  </p>
      *  @function
-     *  @param {cc.AffineTransform} additionalTransform  The additional transform
+     *  @param {cc.AffineTransform} additionalTransform  The additional transform			@param {cc.AffineTransform} additionalTransform  附加的转换
      *  @example
      * // create a batchNode
      * var batch = new cc.SpriteBatchNode("Icon-114.png");
@@ -2321,10 +2189,8 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Returns the matrix that transform parent's space coordinates to the node's (local) space coordinates.<br/>
-     * 返回由父类空间坐标系变换至节点的本地坐标系的矩阵.<br/>
-     * The matrix is in Pixels.
-     * 矩阵单位是像素.
+     * Returns the matrix that transform parent's space coordinates to the node's (local) space coordinates.<br/>			返回由父类空间坐标系变换至节点的本地坐标系的矩阵.<br/>
+     * The matrix is in Pixels.																																												矩阵单位是像素.	
      * @function
      * @return {cc.AffineTransform}
      */
@@ -2338,16 +2204,14 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * @function
-     * @deprecated since v3.0, please use getParentToNodeTransform instead
-     * @v3.0版本后弃用,请使用getParentToNodeTransform代替.
+     * @deprecated since v3.0, please use getParentToNodeTransform instead		@v3.0版本后弃用,请使用getParentToNodeTransform代替.
      */
     parentToNodeTransform: function () {
         return this.getParentToNodeTransform();
     },
 
     /**
-     * Returns the world affine transform matrix. The matrix is in Pixels.
-     * 返回世界仿射变换矩阵.矩阵单位是像素.
+     * Returns the world affine transform matrix. The matrix is in Pixels.		返回世界仿射变换矩阵.矩阵单位是像素.
      * @function
      * @return {cc.AffineTransform}
      */
@@ -2360,16 +2224,14 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * @function
-     * @deprecated since v3.0, please use getNodeToWorldTransform instead
-     * @v3.0版本后弃用,请使用getNodeToWorldTransform代替.
+     * @deprecated since v3.0, please use getNodeToWorldTransform instead		@v3.0版本后弃用,请使用getNodeToWorldTransform代替.
      */
     nodeToWorldTransform: function(){
         return this.getNodeToWorldTransform();
     },
 
     /**
-     * Returns the inverse world affine transform matrix. The matrix is in Pixels.
-     * 返回逆世界仿射变换矩阵.矩阵单位是像素.
+     * Returns the inverse world affine transform matrix. The matrix is in Pixels.		返回逆世界仿射变换矩阵.矩阵单位是像素.
      * @function
      * @return {cc.AffineTransform}
      */
@@ -2379,16 +2241,14 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * @function
-     * @deprecated since v3.0, please use getWorldToNodeTransform instead
-     * @v3.0版本后弃用,请使用getWorldToNodeTransform代替.
+     * @deprecated since v3.0, please use getWorldToNodeTransform instead			@v3.0版本后弃用,请使用getWorldToNodeTransform代替.
      */
     worldToNodeTransform: function () {
         return this.getWorldToNodeTransform();
     },
 
     /**
-     * Converts a Point to node (local) space coordinates. The result is in Points.
-     * 一个节点到空间坐标系的转换.结果以Points为单位.
+     * Converts a Point to node (local) space coordinates. The result is in Points.		一个节点到空间坐标系的转换.结果以Points为单位.
      * @function
      * @param {cc.Point} worldPoint
      * @return {cc.Point}
@@ -2398,8 +2258,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Converts a Point to world space coordinates. The result is in Points.
-     * 一个节点到世界坐标系的转换.结果以Points为单位.
+     * Converts a Point to world space coordinates. The result is in Points.		一个节点到世界坐标系的转换.结果以Points为单位.
      * @function
      * @param {cc.Point} nodePoint
      * @return {cc.Point}
@@ -2410,10 +2269,8 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Converts a Point to node (local) space coordinates. The result is in Points.<br/>
-     * 一个节点至本地空间坐标系的转.结果以Points为单位.
-     * treating the returned/received node point as anchor relative.
-     * 将returned/received节点的point当作相对应的锚点.
+     * Converts a Point to node (local) space coordinates. The result is in Points.<br/>			一个节点至本地空间坐标系的转.结果以Points为单位.
+     * treating the returned/received node point as anchor relative.													将returned/received节点的point当作相对应的锚点.
      * @function
      * @param {cc.Point} worldPoint
      * @return {cc.Point}
@@ -2423,10 +2280,8 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Converts a local Point to world space coordinates.The result is in Points.<br/>
-     * 一个节点到世界坐标系的转换.结果以Points为单位.<br/>
-     * treating the returned/received node point as anchor relative.
-     * 将returned/received节点的point当作相对应的锚点.
+     * Converts a local Point to world space coordinates.The result is in Points.<br/>		一个节点到世界坐标系的转换.结果以Points为单位.<br/>
+     * treating the returned/received node point as anchor relative.											将returned/received节点的point当作相对应的锚点.
      * @function
      * @param {cc.Point} nodePoint
      * @return {cc.Point}
@@ -2442,11 +2297,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
         return cc.director.convertToUI(worldPoint);
     },
 
-    /** convenience methods which take a cc.Touch instead of cc.Point
-    /** 一个便利的将cc.Touch转换成cc.Point的方法
+    /** convenience methods which take a cc.Touch instead of cc.Point				一个便利的将cc.Touch转换成cc.Point的方法
      * @function
-     * @param {cc.Touch} touch The touch object
-     * @param {cc.Touch} touch 触摸对象
+     * @param {cc.Touch} touch The touch object			@param {cc.Touch} touch 触摸对象
      * @return {cc.Point}
      */
     convertTouchToNodeSpace: function (touch) {
@@ -2458,11 +2311,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * converts a cc.Touch (world coordinates) into a local coordiante. This method is AR (Anchor Relative).
-     * 将cc.Touch(世界坐标系)转换成本地坐标系.这个方法是AR(相对于锚点). 
+     * converts a cc.Touch (world coordinates) into a local coordiante. This method is AR (Anchor Relative).		将cc.Touch(世界坐标系)转换成本地坐标系.这个方法是AR(相对于锚点). 
      * @function
-     * @param {cc.Touch} touch The touch object
-     * @param {cc.Touch} touch 触摸对象
+     * @param {cc.Touch} touch The touch object			@param {cc.Touch} touch 触摸对象
      * @return {cc.Point}
      */
     convertTouchToNodeSpaceAR: function (touch) {
@@ -2472,15 +2323,11 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Update will be called automatically every frame if "scheduleUpdate" is called when the node is "live".<br/>
-     * 如果"scheduleUpdate"被调用且节点是活动的,Update将会被每一帧调用.<br/>
-     * The default behavior is to invoke the visit function of node's componentContainer.<br/>
-     * 默认的动作是调用节点的componentContainer访问函数.<br/>
-     * Override me to implement your own update logic.
-     * 重写该函数从而实现你自己的更新方法.
+     * Update will be called automatically every frame if "scheduleUpdate" is called when the node is "live".<br/>		如果"scheduleUpdate"被调用且节点是活动的,Update将会被每一帧调用.<br/>
+     * The default behavior is to invoke the visit function of node's componentContainer.<br/>												默认的动作是调用节点的componentContainer访问函数.<br/>
+     * Override me to implement your own update logic.																																重写该函数从而实现你自己的更新方法.
      * @function
-     * @param {Number} dt Delta time since last update
-     * @param {Number} dt 最近一次更新后的延迟时间
+     * @param {Number} dt Delta time since last update																																@param {Number} dt 最近一次更新后的延迟时间
      */
     update: function (dt) {
         if (this._componentContainer && !this._componentContainer.isEmpty())
@@ -2489,15 +2336,10 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>
-     * Calls children's updateTransform() method recursively.                                        <br/>
-     * 递归调用子节点的updateTransform()方法.<br/>
-     *                                                                                               <br/>
-     * This method is moved from CCSprite, so it's no longer specific to CCSprite.                   <br/>
-     * 这个方法从Sprite类中删除,因此它不再适用于Sprite.<br/>
-     * As the result, you apply CCSpriteBatchNode's optimization on your customed CCNode.            <br/>
-     * 因此,你应该在你自定义的CCNode中使用SpriteBatchNode的优化.<br/>
-     * e.g., batchNode->addChild(myCustomNode), while you can only addChild(sprite) before.
-     * 例如,batchNode->addChild(myCustomNode),你只能先addChild(sprite).
+     * Calls children's updateTransform() method recursively.                                        <br/>			递归调用子节点的updateTransform()方法.<br/>
+     * This method is moved from CCSprite, so it's no longer specific to CCSprite.                   <br/>			这个方法从Sprite类中删除,因此它不再适用于Sprite.<br/>
+     * As the result, you apply CCSpriteBatchNode's optimization on your customed CCNode.            <br/>			因此,你应该在你自定义的CCNode中使用SpriteBatchNode的优化.<br/>
+     * e.g., batchNode->addChild(myCustomNode), while you can only addChild(sprite) before.											例如,batchNode->addChild(myCustomNode),你只能先addChild(sprite).
      * </p>
      * @function
      */
@@ -2508,48 +2350,31 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * <p>Currently JavaScript Bindings (JSB), in some cases, needs to use retain and release. This is a bug in JSB,
-     * <p>当前JavaScript Bindings (JSB),在某些情况下,需要使用retain和release,这是在JSB中的一个bug,
-     * and the ugly workaround is to use retain/release. So, these 2 methods were added to be compatible with JSB.
-     * 且不好的解决方式是使用retain/release.所以,这两个方法需要添加使其兼容JSB.
-     * This is a hack, and should be removed once JSB fixes the retain/release bug<br/>
-     * 这是一个漏洞,一旦JSB修复了retain/release的bug,则它需要被移除<br/>
-     * You will need to retain an object if you created an engine object and haven't added it into the scene graph during the same frame.<br/>
-     * 你将需要保留一个对象,如果你创建一个引擎对象但在每一帧中没有将其添加进scene graph中.<br/>
-     * Otherwise, JSB's native autorelease pool will consider this object a useless one and release it directly,<br/>
-     * 然后,JSB本地自动释放池将会判断一个未被使用的对象并立即释放该对象,<br/>
-     * when you want to use it later, a "Invalid Native Object" error will be raised.<br/>
-     * 当然想要在后面中使用它,一个"无效的原生对象"错误将会被提示.<br/>
-     * The retain function can increase a reference count for the native object to avoid it being released,<br/>
-     * 该保留函数会为原生对象进行计算引用数量避免其被释放掉,<br/>
-     * you need to manually invoke release function when you think this object is no longer needed, otherwise, there will be memory learks.<br/>
-     * 你需要手工调用该释放函数当你认为一个对象将不在被需要的时候,否则,将会内存泄露.<br/>
-     * retain and release function call should be paired in developer's game code.</p>
-     * 在开发者的代码中,retain和release函数需要备成对的调用.</p>
+     * <p>Currently JavaScript Bindings (JSB), in some cases, needs to use retain and release. This is a bug in JSB,																		<p>当前JavaScript Bindings (JSB),在某些情况下,需要使用retain和release,这是在JSB中的一个bug,		
+     * and the ugly workaround is to use retain/release. So, these 2 methods were added to be compatible with JSB.																			且不好的解决方式是使用retain/release.所以,这两个方法需要添加使其兼容JSB.
+     * This is a hack, and should be removed once JSB fixes the retain/release bug<br/>																																	这是一个漏洞,一旦JSB修复了retain/release的bug,则它需要被移除<br/>
+     * You will need to retain an object if you created an engine object and haven't added it into the scene graph during the same frame.<br/>					你将需要保留一个对象,如果你创建一个引擎对象但在每一帧中没有将其添加进scene graph中.<br/>
+     * Otherwise, JSB's native autorelease pool will consider this object a useless one and release it directly,<br/>																		然后,JSB本地自动释放池将会判断一个未被使用的对象并立即释放该对象,<br/>
+     * when you want to use it later, a "Invalid Native Object" error will be raised.<br/>																															当然想要在后面中使用它,一个"无效的原生对象"错误将会被提示.<br/>
+     * The retain function can increase a reference count for the native object to avoid it being released,<br/>																				该保留函数会为原生对象进行计算引用数量避免其被释放掉,<br/>
+     * you need to manually invoke release function when you think this object is no longer needed, otherwise, there will be memory learks.<br/>				你需要手工调用该释放函数当你认为一个对象将不在被需要的时候,否则,将会内存泄露.<br/>
+     * retain and release function call should be paired in developer's game code.</p>																																	在开发者的代码中,retain和release函数需要备成对的调用.</p>
+     * 
      * @function
      * @see cc.Node#release
      */
     retain: function () {
     },
     /**
-     * <p>Currently JavaScript Bindings (JSB), in some cases, needs to use retain and release. This is a bug in JSB,
-     * <p>当前JavaScript Bindings (JSB),在某些情况下,需要使用retain和release,这是在JSB中的一个bug,
-     * and the ugly workaround is to use retain/release. So, these 2 methods were added to be compatible with JSB.
-     * 且不好的解决方式是使用retain/release.所以,这两个方法需要添加使其兼容JSB.
-     * This is a hack, and should be removed once JSB fixes the retain/release bug<br/>
-     * 这是一个漏洞,一旦JSB修复了retain/release的bug,则它需要被移除<br/>
-     * You will need to retain an object if you created an engine object and haven't added it into the scene graph during the same frame.<br/>
-     * 你将需要保留一个对象,如果你创建一个引擎对象但在每一帧中没有将其添加进scene graph中.<br/>
-     * Otherwise, JSB's native autorelease pool will consider this object a useless one and release it directly,<br/>
-     * 然后,JSB本地自动释放池将会判断一个未被使用的对象并立即释放该对象,<br/>
-     * when you want to use it later, a "Invalid Native Object" error will be raised.<br/>
-     * 当然想要在后面中使用它,一个"无效的原生对象"错误将会被提示.<br/>
-     * The retain function can increase a reference count for the native object to avoid it being released,<br/>
-     * 该保留函数会为原生对象进行计算引用数量避免其被释放掉,<br/>
-     * you need to manually invoke release function when you think this object is no longer needed, otherwise, there will be memory learks.<br/>
-     * 你需要手工调用该释放函数当你认为一个对象将不在被需要的时候,否则,将会内存泄露.<br/>
-     * retain and release function call should be paired in developer's game code.</p>
-     * 在开发者的代码中,retain和release函数需要备成对的调用.</p>
+     * <p>Currently JavaScript Bindings (JSB), in some cases, needs to use retain and release. This is a bug in JSB,																		<p>当前JavaScript Bindings (JSB),在某些情况下,需要使用retain和release,这是在JSB中的一个bug,
+     * and the ugly workaround is to use retain/release. So, these 2 methods were added to be compatible with JSB.																			且不好的解决方式是使用retain/release.所以,这两个方法需要添加使其兼容JSB.
+     * This is a hack, and should be removed once JSB fixes the retain/release bug<br/>																																	这是一个漏洞,一旦JSB修复了retain/release的bug,则它需要被移除<br/>
+     * You will need to retain an object if you created an engine object and haven't added it into the scene graph during the same frame.<br/>					你将需要保留一个对象,如果你创建一个引擎对象但在每一帧中没有将其添加进scene graph中.<br/>
+     * Otherwise, JSB's native autorelease pool will consider this object a useless one and release it directly,<br/>																		然后,JSB本地自动释放池将会判断一个未被使用的对象并立即释放该对象,<br/>
+     * when you want to use it later, a "Invalid Native Object" error will be raised.<br/>																															当然想要在后面中使用它,一个"无效的原生对象"错误将会被提示.<br/>
+     * The retain function can increase a reference count for the native object to avoid it being released,<br/>																				该保留函数会为原生对象进行计算引用数量避免其被释放掉,<br/>
+     * you need to manually invoke release function when you think this object is no longer needed, otherwise, there will be memory learks.<br/>				你需要手工调用该释放函数当你认为一个对象将不在被需要的时候,否则,将会内存泄露.<br/>
+     * retain and release function call should be paired in developer's game code.</p>																																	在开发者的代码中,retain和release函数需要备成对的调用.</p>
      * @function
      * @see cc.Node#retain
      */
@@ -2557,13 +2382,10 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Returns a component identified by the name given.
-     * 根据组件名称获取组件
+     * Returns a component identified by the name given.		根据组件名称获取组件
      * @function
-     * @param {String} name The name to search for
-     * @param {String} name 搜索用的名称
-     * @return {cc.Component} The component found
-     * @return {cc.Component} 找到的组件
+     * @param {String} name The name to search for			@param {String} name 搜索用的名称
+     * @return {cc.Component} The component found				@return {cc.Component} 找到的组件
      */
     getComponent: function (name) {
         if(this._componentContainer)
@@ -2572,8 +2394,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Adds a component to the node's component container.
-     * 添加一个组价到节点的组件容器中.
+     * Adds a component to the node's component container.			添加一个组价到节点的组件容器中.
      * @function
      * @param {cc.Component} component
      */
@@ -2583,8 +2404,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Removes a component identified by the given name or removes the component object given
-     * 根据定义的组件名称或者组件对象删除组件
+     * Removes a component identified by the given name or removes the component object given			根据定义的组件名称或者组件对象删除组件
      * @function
      * @param {String|cc.Component} component
      */
@@ -2595,8 +2415,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Removes all components of cc.Node, it called when cc.Node is exiting from stage.
-     * 删除节点的所有组件,当节点退出的时候会进行调用
+     * Removes all components of cc.Node, it called when cc.Node is exiting from stage.			删除节点的所有组件,当节点退出的时候会进行调用.
      * @function
      */
     removeAllComponents: function () {
@@ -2607,51 +2426,41 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     grid: null,
 
     /**
-     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function.
-     * 构造函数,为了继承父类构造器中的行为进行重写,记得在要继承的函数中调用"this._super()".
+     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function.	构造函数,为了继承父类构造器中的行为进行重写,记得在要继承的函数中调用"this._super()".
      * @function
      */
     ctor: null,
 
     /**
-     * Recursive method that visit its children and draw them
-     * 递归访问子类并绘制出子类
+     * Recursive method that visit its children and draw them			递归访问子类并绘制出子类
      * @function
      * @param {CanvasRenderingContext2D|WebGLRenderingContext} ctx
      */
     visit: null,
 
     /**
-     * Performs view-matrix transformation based on position, scale, rotation and other attributes.
-     * 执行基于位置,缩放,旋转及其他属性的视图矩阵变换
+     * Performs view-matrix transformation based on position, scale, rotation and other attributes.					执行基于位置,缩放,旋转及其他属性的视图矩阵变换.
      * @function
-     * @param {CanvasRenderingContext2D|WebGLRenderingContext} ctx Render context
-     * @param {CanvasRenderingContext2D|WebGLRenderingContext} ctx渲染上下文
+     * @param {CanvasRenderingContext2D|WebGLRenderingContext} ctx Render context		@param {CanvasRenderingContext2D|WebGLRenderingContext} ctx 渲染上下文
      */
     transform: null,
 
     /**
-     * <p>Returns the matrix that transform the node's (local) space coordinates into the parent's space coordinates.<br/>
-     * <p>获取节点从本地空间坐标到父类中的空间坐标的转换矩阵<br/>
-     * The matrix is in Pixels.</p>
-     * 矩阵单位是像素.</p>
+     * <p>Returns the matrix that transform the node's (local) space coordinates into the parent's space coordinates.<br/>		<p>获取节点从本地空间坐标到父类中的空间坐标的转换矩阵<br/>
+     * The matrix is in Pixels.</p>																																														矩阵单位是像素.</p>
      * @function
      * @return {cc.AffineTransform}
-     * @deprecated since v3.0, please use getNodeToParentTransform instead
-     * @v3.0版本后弃用, 请使用getNodeToParentTransform替代
+     * @deprecated since v3.0, please use getNodeToParentTransform instead						@v3.0版本后弃用, 请使用getNodeToParentTransform替代
      */
     nodeToParentTransform: function(){
         return this.getNodeToParentTransform();
     },
 
     /**
-     * Returns the matrix that transform the node's (local) space coordinates into the parent's space coordinates.<br/>
-     * 获取节点从本地空间坐标到父类中的空间坐标的转换矩阵<br/>
-     * The matrix is in Pixels.
-     * 矩阵单位是像素.
+     * Returns the matrix that transform the node's (local) space coordinates into the parent's space coordinates.<br/>				获取节点从本地空间坐标到父类中的空间坐标的转换矩阵<br/>
+     * The matrix is in Pixels.																																																矩阵单位是像素.
      * @function
-     * @return {cc.AffineTransform} The affine transform object
-     * @return {cc.AffineTransform} 仿射变换对象
+     * @return {cc.AffineTransform} The affine transform object			@return {cc.AffineTransform} 仿射变换对象
      */
     getNodeToParentTransform: null,
 
@@ -2676,13 +2485,10 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Returns a camera object that lets you move the node using a gluLookAt
-     * 获取一个摄像机对象,使你可以使用一个gluLookAt对节点进行移动
+     * Returns a camera object that lets you move the node using a gluLookAt											返回一个摄像机对象,使你可以使用一个gluLookAt对节点进行移动	
      * @function
-     * @return {cc.Camera} A CCCamera object that lets you move the node using a gluLookAt
-     * @return {cc.Camera} A CCCamera可以让你使用一个gluLookAt来移动节点
-     * @deprecated since v3.0, no alternative function
-     * @v3.0后弃用,不再使用的函数.
+     * @return {cc.Camera} A CCCamera object that lets you move the node using a gluLookAt				@return {cc.Camera} A CCCamera可以让你使用一个gluLookAt来移动节点
+     * @deprecated since v3.0, no alternative function																						@v3.0后弃用,不再使用的函数.
      * @example
      * var camera = node.getCamera();
      * camera.setEye(0, 0, 415/2);
@@ -2696,40 +2502,32 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * <p>Returns a grid object that is used when applying effects.<br/>
-     * <p>当使用效果的时候,获取一个被使用的网格对象<br/>
-     * This function have been deprecated, please use cc.NodeGrid to run grid actions</p>
-     * 该函数已被废弃,请使用cc.NodeGrid进行创建网格动作</p>
+     * <p>Returns a grid object that is used when applying effects.<br/>											<p>当使用效果的时候,获取一个被使用的网格对象<br/>
+     * This function have been deprecated, please use cc.NodeGrid to run grid actions</p>			该函数已被废弃,请使用cc.NodeGrid进行创建网格动作</p>
      * @function
-     * @return {cc.GridBase} A CCGrid object that is used when applying effects
-     * @return {cc.GridBase} A 使用效果时将被使用的CCGrid对象
-     * @deprecated since v3.0, no alternative function
-     * @v3.0后弃用,不再使用的函数.
+     * @return {cc.GridBase} A CCGrid object that is used when applying effects								@return {cc.GridBase} A 使用效果时将被使用的CCGrid对象
+     * @deprecated since v3.0, no alternative function																				@v3.0后弃用,不再使用的函数.
      */
     getGrid: function () {
         return this.grid;
     },
 
     /**
-     * <p>Changes a grid object that is used when applying effects<br/>
-     * <p>当使用效果的时候,改变一个被使用的网格对象<br/>
-     * This function have been deprecated, please use cc.NodeGrid to run grid actions</p>
-     * 该函数已被废弃,请使用cc.NodeGrid进行创建网格动作</p>
+     * <p>Changes a grid object that is used when applying effects<br/>														<p>当使用效果的时候,改变一个被使用的网格对象<br/>
+     * This function have been deprecated, please use cc.NodeGrid to run grid actions</p>					该函数已被废弃,请使用cc.NodeGrid进行创建网格动作</p>
      * @function
-     * @param {cc.GridBase} grid A CCGrid object that is used when applying effects
-     * @param {cc.GridBase} grid 使用效果时将被使用的CCGrid对象
-     * @deprecated since v3.0, no alternative function
+     * @param {cc.GridBase} grid A CCGrid object that is used when applying effects								@param {cc.GridBase} grid 使用效果时将被使用的CCGrid对象
+     * @deprecated since v3.0, no alternative function																						@v3.0后弃用,不再使用的函数.
      */
     setGrid: function (grid) {
         this.grid = grid;
     },
 
     /**
-     * Return the shader program currently used for this node
-     * 获取节点当前所使用的着色过程
+     * Return the shader program currently used for this node												返回节点当前所使用的着色过程
      * @function
-     * @return {cc.GLProgram} The shader program currently used for this node
-     * @return {cc.GLProgram} 该节点当前使用的着色器.
+     * @return {cc.GLProgram} The shader program currently used for this node				@return {cc.GLProgram} 该节点当前使用的着色器.
+     * 
      */
     getShaderProgram: function () {
         return this._shaderProgram;
@@ -2737,20 +2535,13 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>
-     *     Sets the shader program for this node
+     *     Sets the shader program for this node																			设置节点着色过程
      *
-     *     Since v2.0, each rendering node must set its shader program.
-     *     It should be set in initialize phase.
-     * </p>
-     * <p>
-     *		设置节点着色过程
-     *
-     *		v2.0版本以后,每个要渲染的节点都要设置它的着色过程
-     *		它必须在初始化阶段进行
+     *     Since v2.0, each rendering node must set its shader program.								v2.0版本以后,每个要渲染的节点都要设置它的着色过程.
+     *     It should be set in initialize phase.																			它必须在初始化阶段进行
      * </p>
      * @function
-     * @param {cc.GLProgram} newShaderProgram The shader program which fetches from CCShaderCache.
-     * @param {cc.GLProgram} newShaderProgram 从CCShaderCache获得的着色器程序.
+     * @param {cc.GLProgram} newShaderProgram The shader program which fetches from CCShaderCache.			@param {cc.GLProgram} newShaderProgram 从CCShaderCache获得的着色器程序.
      * @example
      * node.setGLProgram(cc.shaderCache.programForKey(cc.SHADER_POSITION_TEXTURECOLOR));
      */
@@ -2759,34 +2550,27 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Returns the state of OpenGL server side.
-     * 获取OpenGL服务端的状态
+     * Returns the state of OpenGL server side.									返回OpenGL服务端的状态.
      * @function
-     * @return {Number} The state of OpenGL server side.
-     * @return {Number} OpenGL服务端的状态.
-     * @deprecated since v3.0, no need anymore
-     * @v3.0后弃用,不再被使用
+     * @return {Number} The state of OpenGL server side.				@return {Number} OpenGL服务端的状态.
+     * @deprecated since v3.0, no need anymore									@v3.0后弃用,不再被使用	
      */
     getGLServerState: function () {
         return this._glServerState;
     },
 
     /**
-     * Sets the state of OpenGL server side.
-     * 设置OpenGL服务端的状态
+     * Sets the state of OpenGL server side.											设置OpenGL服务端的状态.
      * @function
-     * @param {Number} state The state of OpenGL server side.
-     * @param {Number} state OpenGL服务端的状态.
-     * @deprecated since v3.0, no need anymore
-     * @v3.0后弃用,不再被使用
+     * @param {Number} state The state of OpenGL server side.			@param {Number} state OpenGL服务端的状态.
+     * @deprecated since v3.0, no need anymore										@v3.0后弃用,不再被使用
      */
     setGLServerState: function (state) {
         this._glServerState = state;
     },
 
     /**
-     * Returns a "world" axis aligned bounding box of the node.
-     * 获取节点的世界坐标系的边框
+     * Returns a "world" axis aligned bounding box of the node.		返回节点的世界坐标系的边框.
      * @function
      * @return {cc.Rect}
      */
@@ -2922,8 +2706,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Returns the opacity of Node
-     * 获取节点的不透明度
+     * Returns the opacity of Node			返回节点的不透明度
      * @function
      * @returns {number} opacity
      */
@@ -2932,21 +2715,18 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Returns the displayed opacity of Node,
-     * 返回节点的显示的不透明度值,
-     * the difference between displayed opacity and opacity is that displayed opacity is calculated based on opacity and parent node's opacity when cascade opacity enabled.
-     * 显示不透明度跟不透明度的区别在于:当启用级联不透明度的时候,显示不透明度是基于自身的不透明度跟父类的不透明度计算出来的.
+     * Returns the displayed opacity of Node,																																																																			返回节点的显示的不透明度值,
+     * the difference between displayed opacity and opacity is that displayed opacity is calculated based on opacity and parent node's opacity when cascade opacity enabled.			显示不透明度跟不透明度的区别在于:当启用级联不透明度的时候,显示不透明度是基于自身的不透明度跟父类的不透明度计算出来的.
      * @function
-     * @returns {number} displayed opacity
-     * @returns {number} 显示的不透明度
+     * @returns {number} displayed opacity				@returns {number} 显示的不透明度
+     * 
      */
     getDisplayedOpacity: function () {
         return this._displayedOpacity;
     },
 
     /**
-     * Sets the opacity of Node
-     * 设置节点的不透明度值
+     * Sets the opacity of Node				设置节点的不透明度值
      * @function
      * @param {Number} opacity
      */
@@ -2962,8 +2742,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Update displayed opacity
-     * 更新显示的不透明度值
+     * Update displayed opacity			更新显示的不透明度值
      * @function
      * @param {Number} parentOpacity
      */
@@ -2982,8 +2761,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Returns whether node's opacity value affect its child nodes.
-     * 返回节点的不透明度值是否会影响到其子节点.
+     * Returns whether node's opacity value affect its child nodes.			返回节点的不透明度值是否会影响到其子节点.
      * @function
      * @returns {boolean}
      */
@@ -2992,8 +2770,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Enable or disable cascade opacity, if cascade enabled, child nodes' opacity will be the multiplication of parent opacity and its own opacity.
-     * 启用或不启用级联不透明度,如果启用,子节点的不透明度值是父类的不透明度值跟其本身不透明度值的乘积
+     * Enable or disable cascade opacity, if cascade enabled, child nodes' opacity will be the multiplication of parent opacity and its own opacity.			启用或不启用级联不透明度,如果启用,子节点的不透明度值是父类的不透明度值跟其本身不透明度值的乘积.
      * @function
      * @param {boolean} cascadeOpacityEnabled
      */
@@ -3027,8 +2804,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Returns the color of Node
-     * 返回节点的颜色
+     * Returns the color of Node		返回节点的颜色
      * @function
      * @returns {cc.Color}
      */
@@ -3038,10 +2814,8 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Returns the displayed color of Node,
-     * 返回节点显示的颜色
-     * the difference between displayed color and color is that displayed color is calculated based on color and parent node's color when cascade color enabled.
-     * 显示颜色跟颜色的区别在于:当启用级联颜色的时候,显示颜色是基于自身的颜色跟父类的颜色计算出来的.
+     * Returns the displayed color of Node,																																																																	返回节点显示的颜色,			
+     * the difference between displayed color and color is that displayed color is calculated based on color and parent node's color when cascade color enabled.						显示颜色跟颜色的区别在于:当启用级联颜色的时候,显示颜色是基于自身的颜色跟父类的颜色计算出来的.
      * @function
      * @returns {cc.Color}
      */
@@ -3051,15 +2825,12 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * <p>Sets the color of Node.<br/>
-     * <p>设置节点的颜色<br/>
-     * When color doesn't include opacity value like cc.color(128,128,128), this function only change the color. <br/>
-     * 当颜色未包含不透明度的值 例如:cc.color(128,128,128),该函数仅仅是改变颜色<br/>
-     * When color include opacity like cc.color(128,128,128,100), then this function will change the color and the opacity.</p>
-     * 但颜色包含不透明度值 例如:cc.color(128,128,128,100),该函数将改变颜色跟透明度.</p>
+     * <p>Sets the color of Node.<br/>																																																	<p>设置节点的颜色.<br/>
+     * When color doesn't include opacity value like cc.color(128,128,128), this function only change the color. <br/>									当颜色未包含不透明度的值 例如:cc.color(128,128,128),该函数仅仅是改变颜色.<br/>
+     * When color include opacity like cc.color(128,128,128,100), then this function will change the color and the opacity.</p>					但颜色包含不透明度值 例如:cc.color(128,128,128,100),该函数将改变颜色跟不透明度.</p>
      * @function
-     * @param {cc.Color} color The new color given
-     * @param {cc.Color} color 传入的新的颜色
+     * @param {cc.Color} color The new color given					@param {cc.Color} color 传入的新的颜色
+     * 
      */
     setColor: function (color) {
         var locDisplayedColor = this._displayedColor, locRealColor = this._realColor;
@@ -3076,8 +2847,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Update the displayed color of Node
-     * 更新节点显示的颜色
+     * Update the displayed color of Node				更新节点显示的颜色
      * @function
      * @param {cc.Color} parentColor
      */
@@ -3098,8 +2868,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Returns whether node's color value affect its child nodes.
-     * 返回该节点的颜色值是否会影响到其子节点
+     * Returns whether node's color value affect its child nodes.			返回该节点的颜色值是否会影响到其子节点.
      * @function
      * @returns {boolean}
      */
@@ -3108,8 +2877,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Enable or disable cascade color, if cascade enabled, child nodes' opacity will be the cascade value of parent color and its own color.
-     * 启用或者不启用级联颜色,如果启用,则子节点的不透明度将级联父类的颜色值跟其本身的颜色值
+     * Enable or disable cascade color, if cascade enabled, child nodes' opacity will be the cascade value of parent color and its own color.			启用或者不启用级联颜色,如果启用,则子节点的不透明度将级联父类的颜色值跟其本身的颜色值.
      * @param {boolean} cascadeColorEnabled
      */
     setCascadeColorEnabled: function (cascadeColorEnabled) {
@@ -3146,10 +2914,8 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Set whether color should be changed with the opacity value,
-     * 设置颜色值是否要跟着不透明度进行改变
-     * useless in cc.Node, but this function is override in some class to have such behavior.
-     * 该函数在cc.Node中无效,但该函数在某些类中被重写了 以便使用该功能
+     * Set whether color should be changed with the opacity value,																设置颜色值是否要跟着不透明度进行改变,
+     * useless in cc.Node, but this function is override in some class to have such behavior.			该函数在cc.Node中无效,但该函数在某些类中被重写了,以便使用该功能.
      * @function
      * @param {Boolean} opacityValue
      */
@@ -3157,8 +2923,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Get whether color should be changed with the opacity value
-     * 获取颜色值是否有因不透明度值的改变而改变
+     * Get whether color should be changed with the opacity value				获取颜色值是否有因不透明度值的改变而改变
      * @function
      * @return {Boolean}
      */
@@ -3173,10 +2938,8 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 });
 
 /**
- * Allocates and initializes a node.
- * 分配并初始化一个节点
- * @deprecated since v3.0, please use new construction instead.
- * @v3.0版本后弃用, 请用新的构造器替代.
+ * Allocates and initializes a node.																	分配并初始化一个节点
+ * @deprecated since v3.0, please use new construction instead.				@v3.0版本后弃用, 请用新的构造器替代.
  * @see cc.Node
  * @return {cc.Node}
  */
