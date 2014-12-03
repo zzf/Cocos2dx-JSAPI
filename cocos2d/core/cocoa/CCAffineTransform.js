@@ -26,7 +26,9 @@
 
 /**
  * <p>cc.AffineTransform class represent an affine transform matrix. It's composed basically by translation, rotation, scale transformations.<br/>
+ * <p>cc.AffineTransform类表示一个内联变换矩阵.它包括基本的变换,旋转,缩放变换.
  * Please do not use its constructor directly, use cc.affineTransformMake alias function instead.
+ * 请别直接使用它的构造函数,使用cc.affineTransformMake函数来替换
  * </p>
  * @class cc.AffineTransform
  * @param {Number} a
@@ -48,6 +50,7 @@ cc.AffineTransform = function (a, b, c, d, tx, ty) {
 
 /**
  * Create a cc.AffineTransform object with all contents in the matrix
+ * 使用矩阵中的值创建一个cc.AffineTransform对象
  * @function
  * 
  * @param {Number} a
@@ -64,6 +67,7 @@ cc.affineTransformMake = function (a, b, c, d, tx, ty) {
 
 /**
  * Apply the affine transformation on a point.
+ * 对点进行内联变换
  * @function
  * 
  * @param {cc.Point} point
@@ -81,6 +85,7 @@ cc._pointApplyAffineTransform = function (x, y, t) {
 
 /**
  * Apply the affine transformation on a size.
+ * 对尺寸使用内联变换
  * @function
  * 
  * @param {cc.Size} size
@@ -93,6 +98,7 @@ cc.sizeApplyAffineTransform = function (size, t) {
 
 /**
  * <p>Create a identity transformation matrix: <br/>
+ * <p>创建一个标识变换矩阵<br/>
  * [ 1, 0, 0, <br/>
  *   0, 1, 0 ]</p>
  * @function
@@ -105,12 +111,15 @@ cc.affineTransformMakeIdentity = function () {
 
 /**
  * <p>Create a identity transformation matrix: <br/>
+ * <p>创建一个标识变换矩阵<br/>
+ * <p><br/>
  * [ 1, 0, 0, <br/>
  *   0, 1, 0 ]</p>
  * @function
  * 
  * @return {cc.AffineTransform}
  * @deprecated since v3.0, please use cc.affineTransformMakeIdentity() instead
+ * @v3.0版本后弃用, 请使用cc.affineTransformMakeIdentity()代替
  * @see cc.affineTransformMakeIdentity
  */
 cc.affineTransformIdentity = function () {
@@ -119,6 +128,7 @@ cc.affineTransformIdentity = function () {
 
 /**
  * Apply the affine transformation on a rect.
+ * 对一个矩形进用内联变换
  * @function
  * 
  * @param {cc.Rect} rect
@@ -169,11 +179,15 @@ cc._rectApplyAffineTransformIn = function(rect, anAffineTransform){
 
 /**
  * Create a new affine transformation with a base transformation matrix and a translation based on it.
+ * 创建一个基于基准变换矩阵跟变换值的内联变换矩阵.
  * @function
  * 
  * @param {cc.AffineTransform} t The base affine transform object
+ * @param {cc.AffineTransform} t 一个基准仿射变换对象
  * @param {Number} tx The translation on x axis
+ * @param {Number} tx X轴的变换
  * @param {Number} ty The translation on y axis
+ * @param {Number} ty Y轴的变换
  * @return {cc.AffineTransform}
  */
 cc.affineTransformTranslate = function (t, tx, ty) {
@@ -189,10 +203,14 @@ cc.affineTransformTranslate = function (t, tx, ty) {
 
 /**
  * Create a new affine transformation with a base transformation matrix and a scale based on it.
+ * 创建一个基于基准变换矩阵跟缩放比例的内联变换矩阵.
  * @function
  * @param {cc.AffineTransform} t The base affine transform object
+ * @param {cc.AffineTransform} t 一个基准仿射变换对象
  * @param {Number} sx The scale on x axis
+ * @param {Number} sx X轴的变换
  * @param {Number} sy The scale on y axis
+ * @param {Number} sy Y轴的变换
  * @return {cc.AffineTransform}
  */
 cc.affineTransformScale = function (t, sx, sy) {
@@ -201,9 +219,12 @@ cc.affineTransformScale = function (t, sx, sy) {
 
 /**
  * Create a new affine transformation with a base transformation matrix and a rotation based on it.
+ * 创建一个基于基准变换矩阵跟旋转角度的内联变换矩阵.
  * @function
  * @param {cc.AffineTransform} aTransform The base affine transform object
+ * @param {cc.AffineTransform} aTransform 一个基准仿射变换对象
  * @param {Number} anAngle  The angle to rotate
+ * @param {Number} anAngle  旋转角度
  * @return {cc.AffineTransform}
  */
 cc.affineTransformRotate = function (aTransform, anAngle) {
@@ -220,11 +241,15 @@ cc.affineTransformRotate = function (aTransform, anAngle) {
 
 /**
  * Concatenate a transform matrix to another and return the result:<br/>
+ * 对矩阵进行乘积变换,并返回结果值
  * t' = t1 * t2
  * @function
  * @param {cc.AffineTransform} t1 The first transform object
+ * @param {cc.AffineTransform} t1 第一个变换对象
  * @param {cc.AffineTransform} t2 The transform object to concatenate
+ * @param {cc.AffineTransform} t2 连接的变换对象
  * @return {cc.AffineTransform} The result of concatenation
+ * @return {cc.AffineTransform} 连接结果
  */
 cc.affineTransformConcat = function (t1, t2) {
     return {a: t1.a * t2.a + t1.b * t2.c,                          //a
@@ -237,6 +262,7 @@ cc.affineTransformConcat = function (t1, t2) {
 
 /**
  * Return true if an affine transform equals to another, false otherwise.
+ * 如果两个仿射变换相等则返回true,否则返回false.
  * @function
  * @param {cc.AffineTransform} t1
  * @param {cc.AffineTransform} t2
@@ -248,9 +274,11 @@ cc.affineTransformEqualToTransform = function (t1, t2) {
 
 /**
  * Get the invert transform of an AffineTransform object
+ * 获取一个逆变换AffineTransform对象
  * @function
  * @param {cc.AffineTransform} t
  * @return {cc.AffineTransform} The inverted transform object
+ * @return {cc.AffineTransform} 逆变换对象
  */
 cc.affineTransformInvert = function (t) {
     var determinant = 1 / (t.a * t.d - t.b * t.c);

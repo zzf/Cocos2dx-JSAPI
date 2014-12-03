@@ -27,7 +27,7 @@
 cc._tmp.PrototypeColor = function () {
     var _p = cc.color;
     /**
-     * White color (255, 255, 255, 255)
+     * White color (255, 255, 255, 255)  白色
      * @returns {cc.Color}
      * @private
      */
@@ -36,7 +36,7 @@ cc._tmp.PrototypeColor = function () {
     };
 
     /**
-     *  Yellow color (255, 255, 0, 255)
+     *  Yellow color (255, 255, 0, 255)  黄色
      * @returns {cc.Color}
      * @private
      */
@@ -45,7 +45,7 @@ cc._tmp.PrototypeColor = function () {
     };
 
     /**
-     *  Blue color (0, 0, 255, 255)
+     *  Blue color (0, 0, 255, 255)  蓝色
      * @type {cc.Color}
      * @private
      */
@@ -54,7 +54,7 @@ cc._tmp.PrototypeColor = function () {
     };
 
     /**
-     *  Green Color (0, 255, 0, 255)
+     *  Green Color (0, 255, 0, 255)  绿色
      * @type {cc.Color}
      * @private
      */
@@ -63,7 +63,7 @@ cc._tmp.PrototypeColor = function () {
     };
 
     /**
-     *  Red Color (255, 0, 0, 255)
+     *  Red Color (255, 0, 0, 255)  红色
      * @type {cc.Color}
      * @private
      */
@@ -72,7 +72,7 @@ cc._tmp.PrototypeColor = function () {
     };
 
     /**
-     *  Magenta Color (255, 0, 255, 255)
+     *  Magenta Color (255, 0, 255, 255)  品红
      * @type {cc.Color}
      * @private
      */
@@ -81,7 +81,7 @@ cc._tmp.PrototypeColor = function () {
     };
 
     /**
-     *  Black Color (0, 0, 0, 255)
+     *  Black Color (0, 0, 0, 255)  黑色
      * @type {cc.Color}
      * @private
      */
@@ -90,7 +90,7 @@ cc._tmp.PrototypeColor = function () {
     };
 
     /**
-     *  Orange Color (255, 127, 0, 255)
+     *  Orange Color (255, 127, 0, 255)  橙色
      * @type {_p}
      * @private
      */
@@ -99,7 +99,7 @@ cc._tmp.PrototypeColor = function () {
     };
 
     /**
-     *  Gray Color (166, 166, 166, 255)
+     *  Gray Color (166, 166, 166, 255)  灰色
      * @type {_p}
      * @private
      */

@@ -29,6 +29,7 @@ cc._tmp = cc._tmp || {};
 
 cc._tmp.WebGLColor = function () {
     //redefine some types with ArrayBuffer for WebGL
+    //重新定义一些带有WebGL ArrayBuffer数据的类型
     /**
      * @class cc.Color
      * @param {Number} r
@@ -51,6 +52,7 @@ cc._tmp.WebGLColor = function () {
         return new cc.Color(r, g, b, a, arrayBuffer, offset);
     };
     //redefine cc.Color
+    //重新定义cc.Color
     /**
      * @class cc.Color
      * @param {Number} r
@@ -126,6 +128,7 @@ cc._tmp.WebGLColor = function () {
 
 
     //redefine cc.Vertex2F
+    //重新定义cc.Vertex2F
     /**
      * @class cc.Vertex2F
      * @param {Number} x
@@ -170,6 +173,7 @@ cc._tmp.WebGLColor = function () {
     });
 
     // redefine cc.Vertex3F
+    //重新定义cc.Vertex3F
     /**
      * @class cc.Vertex3F
      * @param {Number} x
@@ -227,6 +231,7 @@ cc._tmp.WebGLColor = function () {
     });
 
     // redefine cc.Tex2F
+    //重新定义cc.Tex2F
     /**
      * @class cc.Tex2F
      * @param {Number} u
@@ -271,6 +276,7 @@ cc._tmp.WebGLColor = function () {
     });
 
     //redefine cc.Quad2
+    //重新定义cc.Quad2
     /**
      * @class cc.Quad2
      * @param {cc.Vertex2F} tl
@@ -299,6 +305,7 @@ cc._tmp.WebGLColor = function () {
 
     /**
      * A 3D Quad. 4 * 3 floats
+     * 3D四边形  4 * 3个浮点型
      * @Class cc.Quad3
      * @Construct
      * @param {cc.Vertex3F} bl1
@@ -357,6 +364,7 @@ cc._tmp.WebGLColor = function () {
     });
 
     //redefine cc.V3F_C4B_T2F
+    //重新定义cc.V3F_C4B_T2F
     /**
      * @class cc.V3F_C4B_T2F
      * @param {cc.Vertex3F} vertices
@@ -422,6 +430,7 @@ cc._tmp.WebGLColor = function () {
     });
 
     //redefine cc.V3F_C4B_T2F_Quad
+    //重新定义cc.V3F_C4B_T2F_Quad
     /**
      * @cc.class cc.V3F_C4B_T2F_Quad
      * @param {cc.V3F_C4B_T2F} tl
@@ -559,6 +568,7 @@ cc._tmp.WebGLColor = function () {
     };
 
     //redefine cc.V2F_C4B_T2F
+    //重新定义cc.V2F_C4B_T2F
     /**
      * @class cc.V2F_C4B_T2F
      * @param {new cc.Vertex2F} vertices
@@ -622,6 +632,7 @@ cc._tmp.WebGLColor = function () {
     });
 
     //redefine cc.V2F_C4B_T2F_Triangle
+    //重新定义cc.V2F_C4B_T2F_Triangle
     /**
      * @class cc.V2F_C4B_T2F_Triangle
      * @param {cc.V2F_C4B_T2F} a
