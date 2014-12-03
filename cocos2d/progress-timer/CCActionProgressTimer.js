@@ -38,7 +38,7 @@
  * 到某个百分比的进度条
  * @class
  * @extends cc.ActionInterval
- * @param {Number} duration duration in seconds
+ * @param {Number} duration 以秒为单位
  * @param {Number} percent
  * @example
  * var to = new cc.ProgressTo(2, 100);
@@ -73,7 +73,7 @@ cc.ProgressTo = cc.ActionInterval.extend(/** @lends cc.ProgressTo# */{
      * @return {Boolean}
      */
     /** 使用持续时间和百分比进行初始化
-     * @param {Number} duration duration in seconds
+     * @param {Number} duration 以秒为单位
      * @param {Number} percent
      * @return {Boolean}
      */
@@ -174,7 +174,7 @@ cc.progressTo = function (duration, percent) {
  * 通过持续时间和百分比创建并初始化
  * @static
  * @deprecated 自v3.0弃用，使用cc.progressTo代替
- * @param {Number} duration duration in seconds
+ * @param {Number} duration 以秒为单位
  * @param {Number} percent
  * @return {cc.ProgressTo}
  */
@@ -194,7 +194,7 @@ cc.ProgressTo.create = cc.progressTo;
  * 从起始百分比到结束百分比的进度条
  * @class
  * @extends cc.ActionInterval
- * @param {Number} duration duration in seconds
+ * @param {Number} duration 以秒为单位
  * @param {Number} fromPercentage
  * @param {Number} toPercentage
  * @example
@@ -233,7 +233,7 @@ cc.ProgressFromTo = cc.ActionInterval.extend(/** @lends cc.ProgressFromTo# */{
      * @return {Boolean}
      */
     /** 通过持续时间，起始百分比和结束百分比初始化这个action
-     * @param {Number} duration duration in seconds
+     * @param {Number} duration 以秒为单位
      * @param {Number} fromPercentage
      * @param {Number} toPercentage
      * @return {Boolean}
