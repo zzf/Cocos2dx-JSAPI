@@ -49,8 +49,8 @@ cc.DrawingPrimitiveCanvas = cc.Class.extend(/** @lends cc.DrawingPrimitiveCanvas
     /**
      * draws a point given x and y coordinate measured in points 画出坐标为x和y的一个点，x和y的坐标系单位为points。
      * @override
-     * @param {cc.Point} point
-     * @param {Number} size
+     * @param {cc.Point} point 点
+     * @param {Number} size 大小
      */
     drawPoint:function (point, size) {
         if (!size) {
@@ -67,9 +67,9 @@ cc.DrawingPrimitiveCanvas = cc.Class.extend(/** @lends cc.DrawingPrimitiveCanvas
     /**
      * draws an array of points. 画出一个Array中的点
      * @override
-     * @param {Array} points point of array
-     * @param {Number} numberOfPoints
-     * @param {Number} size
+     * @param {Array} points point of array  点的数组
+     * @param {Number} numberOfPoints 点的个数
+     * @param {Number} size 大小
      */
     drawPoints:function (points, numberOfPoints, size) {
         if (points == null) {
@@ -90,8 +90,8 @@ cc.DrawingPrimitiveCanvas = cc.Class.extend(/** @lends cc.DrawingPrimitiveCanvas
     /**
      * draws a line given the origin and destination point measured in points  根据一条直线的起点和终点绘制该条直线，起点和终点的单位为points
      * @override
-     * @param {cc.Point} origin
-     * @param {cc.Point} destination
+     * @param {cc.Point} origin 起点
+     * @param {cc.Point} destination 终点
      */
     drawLine:function (origin, destination) {
         var locContext = this._renderContext, locScaleX = cc.view.getScaleX(), locScaleY = cc.view.getScaleY();
@@ -104,8 +104,8 @@ cc.DrawingPrimitiveCanvas = cc.Class.extend(/** @lends cc.DrawingPrimitiveCanvas
 
     /**
      * draws a rectangle given the origin and destination point measured in points. 根据一个矩形的起点和终点绘制该矩形，起点和终点的单位为points（注：起点和终点为矩形对角线的顶点）
-     * @param {cc.Point} origin
-     * @param {cc.Point} destination
+     * @param {cc.Point} origin 起点
+     * @param {cc.Point} destination 终点
      */
     drawRect:function (origin, destination) {
         this.drawLine(cc.p(origin.x, origin.y), cc.p(destination.x, origin.y));
@@ -116,9 +116,9 @@ cc.DrawingPrimitiveCanvas = cc.Class.extend(/** @lends cc.DrawingPrimitiveCanvas
 
     /**
      * draws a solid rectangle given the origin and destination point measured in points. 根据一个实心矩形的起点和终点绘制该实心矩形，起点和终点的单位为points（注：起点和终点为矩形对角线的顶点）
-     * @param {cc.Point} origin
-     * @param {cc.Point} destination
-     * @param {cc.Color} color
+     * @param {cc.Point} origin  起点
+     * @param {cc.Point} destination  终点
+     * @param {cc.Color} color  颜色
      */
     drawSolidRect:function (origin, destination, color) {
         var vertices = [
@@ -134,10 +134,10 @@ cc.DrawingPrimitiveCanvas = cc.Class.extend(/** @lends cc.DrawingPrimitiveCanvas
     /**
      * draws a polygon given a pointer to cc.Point coordinates and the number of vertices measured in points.  根据一个指向多边形的顶点集合的指针和顶点的个数绘制该多边形，顶点的单位为point
      * @override
-     * @param {Array} vertices a pointer to cc.Point coordinates
-     * @param {Number} numOfVertices the number of vertices measured in points
-     * @param {Boolean} closePolygon The polygon can be closed or open
-     * @param {Boolean} [fill=] The polygon can be closed or open and optionally filled with current color
+     * @param {Array} vertices a pointer to cc.Point coordinates  vertices是一个指向顶点数组的指针
+     * @param {Number} numOfVertices the number of vertices measured in points  vertices中顶点的数量
+     * @param {Boolean} closePolygon The polygon can be closed or open 多边形是否闭合
+     * @param {Boolean} [fill=] The polygon can be closed or open and optionally filled with current color 根据多边形是否闭合来决定是否填充颜色
      */
     drawPoly:function (vertices, numOfVertices, closePolygon, fill) {
         fill = fill || false;
@@ -166,9 +166,9 @@ cc.DrawingPrimitiveCanvas = cc.Class.extend(/** @lends cc.DrawingPrimitiveCanvas
 
     /**
      * draws a solid polygon given a pointer to CGPoint coordinates, the number of vertices measured in points, and a color.  根据一个指向实心多边形CGPoint类型的顶点的指针和顶点的个数绘制该实心多边形，顶点的单位为point
-     * @param {Array} polygons
-     * @param {Number} numberOfPoints
-     * @param {cc.Color} color
+     * @param {Array} polygons  指向多边形的顶点数组的指针
+     * @param {Number} numberOfPoints  顶点的数量
+     * @param {cc.Color} color  颜色
      */
     drawSolidPoly:function (polygons, numberOfPoints, color) {
         this.setDrawColor(color.r, color.g, color.b, color.a);
@@ -178,11 +178,11 @@ cc.DrawingPrimitiveCanvas = cc.Class.extend(/** @lends cc.DrawingPrimitiveCanvas
     /**
      * draws a circle given the center, radius and number of segments.  根据一个圆的圆心、半径和弦绘制该圆
      * @override
-     * @param {cc.Point} center center of circle
-     * @param {Number} radius
-     * @param {Number} angle angle in radians
-     * @param {Number} segments
-     * @param {Boolean} [drawLineToCenter=]
+     * @param {cc.Point} center center of circle  圆心
+     * @param {Number} radius  半径
+     * @param {Number} angle angle in radians  弧度
+     * @param {Number} segments  曲线段数
+     * @param {Boolean} [drawLineToCenter=]  是否需要绘制弦
      */
     drawCircle: function (center, radius, angle, segments, drawLineToCenter) {
         drawLineToCenter = drawLineToCenter || false;
@@ -200,10 +200,10 @@ cc.DrawingPrimitiveCanvas = cc.Class.extend(/** @lends cc.DrawingPrimitiveCanvas
     /**
      * draws a quad bezier path 绘制四次方贝塞尔曲线
      * @override
-     * @param {cc.Point} origin
-     * @param {cc.Point} control
-     * @param {cc.Point} destination
-     * @param {Number} segments
+     * @param {cc.Point} origin 起点
+     * @param {cc.Point} control 控制点
+     * @param {cc.Point} destination 终点
+     * @param {Number} segments 曲线段数
      */
     drawQuadBezier:function (origin, control, destination, segments) {
         //this is OpenGL Algorithm 这是OpenGL算法
@@ -225,11 +225,11 @@ cc.DrawingPrimitiveCanvas = cc.Class.extend(/** @lends cc.DrawingPrimitiveCanvas
     /**
      * draws a cubic bezier path 绘制三次方贝塞尔曲线
      * @override
-     * @param {cc.Point} origin
-     * @param {cc.Point} control1
-     * @param {cc.Point} control2
-     * @param {cc.Point} destination
-     * @param {Number} segments
+     * @param {cc.Point} origin  起点
+     * @param {cc.Point} control1 控制点1
+     * @param {cc.Point} control2 控制点2
+     * @param {cc.Point} destination 终点
+     * @param {Number} segments 曲线段数
      */
     drawCubicBezier:function (origin, control1, control2, destination, segments) {
         //this is OpenGL Algorithm  这是OpenGL算法
@@ -251,8 +251,8 @@ cc.DrawingPrimitiveCanvas = cc.Class.extend(/** @lends cc.DrawingPrimitiveCanvas
     /**
      * draw a CatmullRom curve  绘制一条差值曲线
      * @override
-     * @param {Array} points
-     * @param {Number} segments
+     * @param {Array} points 点的数组
+     * @param {Number} segments 曲线段数
      */
     drawCatmullRom:function (points, segments) {
         this.drawCardinalSpline(points, 0.5, segments);
@@ -261,9 +261,9 @@ cc.DrawingPrimitiveCanvas = cc.Class.extend(/** @lends cc.DrawingPrimitiveCanvas
     /**
      * draw a cardinal spline path  绘制一个基数样条路径
      * @override
-     * @param {Array} config
-     * @param {Number} tension
-     * @param {Number} segments
+     * @param {Array} config 参数
+     * @param {Number} tension 张力
+     * @param {Number} segments 曲线段数
      */
     drawCardinalSpline:function (config, tension, segments) {
         //lazy_init();
@@ -393,9 +393,9 @@ cc.DrawingPrimitiveCanvas = cc.Class.extend(/** @lends cc.DrawingPrimitiveCanvas
 
     /**
      * fill text  填充文字
-     * @param {String} strText
-     * @param {Number} x
-     * @param {Number} y
+     * @param {String} strText 字符串
+     * @param {Number} x  字符串x坐标
+     * @param {Number} y  字符串y坐标
      */
     fillText:function (strText, x, y) {
         this._renderContext.fillText(strText, x, -y);
@@ -403,10 +403,10 @@ cc.DrawingPrimitiveCanvas = cc.Class.extend(/** @lends cc.DrawingPrimitiveCanvas
 
     /**
      * set the drawing color with 4 unsigned bytes  根据四个无符号的比特数绘制颜色
-     * @param {Number} r red value (0 to 255)
-     * @param {Number} g green value (0 to 255)
-     * @param {Number} b blue value (0 to 255)
-     * @param {Number} a Alpha value (0 to 255)
+     * @param {Number} r red value (0 to 255)  红色值（0到255）
+     * @param {Number} g green value (0 to 255) 绿色值（0到255）
+     * @param {Number} b blue value (0 to 255)  蓝色值（0到255）
+     * @param {Number} a Alpha value (0 to 255)  透明度值（0到255）
      */
     setDrawColor:function (r, g, b, a) {
         this._renderContext.fillStyle = "rgba(" + r + "," + g + "," + b + "," + a / 255 + ")";
@@ -415,14 +415,14 @@ cc.DrawingPrimitiveCanvas = cc.Class.extend(/** @lends cc.DrawingPrimitiveCanvas
 
     /**
      * set the point size in points. Default 1.  设定点的大小.默认值为1.
-     * @param {Number} pointSize
+     * @param {Number} pointSize  点的大小
      */
     setPointSize:function (pointSize) {
     },
 
     /**
      * set the line width. Default 1.  设定线的宽度.默认值为1.
-     * @param {Number} width
+     * @param {Number} width 线的宽度
      */
     setLineWidth:function (width) {
         this._renderContext.lineWidth = width * cc.view.getScaleX();

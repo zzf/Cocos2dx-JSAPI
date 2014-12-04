@@ -141,7 +141,7 @@ cc.RenderTexture = cc.Node.extend(/** @lends cc.RenderTexture# */{
      * @type CanvasRenderingContext2D
      */
     /**
-     * 保存一个画布上下文对象的引用
+     * 保存一个canvas 2d环境对象的引用
      * @type CanvasRenderingContext2D
      */
     _cacheContext:null,
@@ -500,7 +500,7 @@ cc.RenderTexture = cc.Node.extend(/** @lends cc.RenderTexture# */{
      * @param {Number} r red 0-255
      * @param {Number} g green 0-255
      * @param {Number} b blue 0-255
-     * @param {Number} a alpha 0-255 0 is transparent
+     * @param {Number} a alpha 0-255 0表示透明
      * @param {Number} [depthValue=]
      * @param {Number} [stencilValue=]
      */
@@ -791,7 +791,7 @@ cc.RenderTexture = cc.Node.extend(/** @lends cc.RenderTexture# */{
      * @param {CanvasRenderingContext2D | WebGLRenderingContext} ctx The render context
      */
     /**
-     * 渲染方法，使用canvas2d环境或者WebGL环境，仅限内部使用，不要调用此方法
+     * 渲染方法，使用Canvas2d环境或者WebGL环境，仅限内部使用，不要调用此方法
      * @function
      * @param {CanvasRenderingContext2D | WebGLRenderingContext} ctx The render context
      */
@@ -884,7 +884,7 @@ cc.RenderTexture = cc.Node.extend(/** @lends cc.RenderTexture# */{
      * @return {*}
      */
     /**
-     * 使用纹理数据创建一个新的CCImage对象。调用此方法的类需要使用delete方法释放这个新的CCImage
+     * 使用纹理数据创建一个新的CCImage对象。调用此方法的类需要调用delete释放这个新的CCImage
      * @return {*}
      */
     newCCImage:function(flipImage){
@@ -919,8 +919,10 @@ cc.RenderTexture = cc.Node.extend(/** @lends cc.RenderTexture# */{
     /**
      * Listen "come to background" message, and save render texture. It only has effect on Android.
      * @param {cc.Class} obj
+	 * (doesn't support in HTML5)
      */    /**
      * 监听"come to background" 消息，并且保存渲染纹理，只在安卓上有效。
+     * 在Cocos2d-HTML5不支持此方法
      * @param {cc.Class} obj
      */
     listenToBackground:function (obj) {
@@ -930,9 +932,11 @@ cc.RenderTexture = cc.Node.extend(/** @lends cc.RenderTexture# */{
     /**
      * Listen "come to foreground" message and restore the frame buffer object. It only has effect on Android.
      * @param {cc.Class} obj
+	 * (doesn't support in HTML5)
      */
     /**
      * 监听"come to foreground"消息，并且恢复缓存对象，仅在安卓上有效。
+     * 在Cocos2d-HTML5不支持此方法
      * @param {cc.Class} obj
      */
     listenToForeground:function (obj) {
@@ -1062,7 +1066,7 @@ cc.RenderTexture = cc.Node.extend(/** @lends cc.RenderTexture# */{
      * @return {Boolean}
      */
     /**
-     * 可用时，会自动渲染子节点的纹理。因为兼容性原因，默认禁用。<br/>
+     * 启用时，会自动渲染子节点的纹理。因为兼容性原因，默认禁用。<br/>
      * 在将来版本会默认启用。
      * @return {Boolean}
      */
@@ -1076,7 +1080,7 @@ cc.RenderTexture = cc.Node.extend(/** @lends cc.RenderTexture# */{
      * @return {Boolean}
      */
     /**
-     * 可用时，会自动渲染子节点的纹理。因为兼容性原因，默认禁用。<br/>
+     * 启用时，会自动渲染子节点的纹理。因为兼容性原因，默认禁用。<br/>
      * 在将来版本会默认启用。
      * @return {Boolean}
      */

@@ -61,7 +61,7 @@
  *                                              从左往右时始终设置中点为cc.p(0,y)<br/>
  *                                              从右往左时始终设置中点为cc.p(1,y)<br/>
  *                                              从下往上时始终设置中点为cc.p(x,0)<br/>
- *                                              从上往下时始终设置中点为cc.p(x,0)cc.p(x,1)</p>
+ *                                              从上往下时始终设置中点为cc.p(x,1)</p>
  * @property {cc.Point}     barChangeRate   - 条形进度条的非变化方向的显示比例。
  * @property {enum}         type            - 进度条的类型：圆形|条形 : cc.ProgressTimer.TYPE_RADIAL|cc.ProgressTimer.TYPE_BAR。
  * @property {Number}       percentage      - 进度条显示的百分比，从0到100。
@@ -98,6 +98,7 @@ cc.ProgressTimer = cc.Node.extend(/** @lends cc.ProgressTimer# */{
      *        从左往右时始终设置中点为cc.p(0,y)
      *        从右往左时始终设置中点为cc.p(1,y)
      *        从下往上时始终设置中点为cc.p(x,0)
+     *        从上往下时始终设置中点为cc.p(x,1)
      *  @return {cc.Point}
      */
     getMidpoint:function () {
@@ -550,7 +551,7 @@ cc.ProgressTimer = cc.Node.extend(/** @lends cc.ProgressTimer# */{
      * @param {CanvasRenderingContext2D} ctx
      */
     /**
-     * 重写该方法绘制节点
+     * 重写该方法以绘制节点
      * @function
      * @param {CanvasRenderingContext2D} ctx
      */
@@ -602,6 +603,17 @@ cc.ProgressTimer = cc.Node.extend(/** @lends cc.ProgressTimer# */{
      *                                                                              <br/>
      *    It now deals with flipped texture. If you run into this problem, just use the                       <br/>
      *    sprite property and enable the methods flipX, flipY.                      <br/>
+     * </p>
+     * @private
+     */
+    /**
+     * <p>
+     *    更新操作将纹理映射到进度条的三角形上。                          <br/>
+     *    现在每次更新操作不在花费资源在free/alloc 数据上面 ，            <br/>
+     *    并且如果没有包含其他的变化，则仅仅更新百分比 。                 <br/>
+     *                                                                    <br/>
+     *    现在可以处理反转的纹理，如果你要处理这个问题，                  <br/>
+     *    使用精灵对象的FlipX和FlipY方法即可。                            <br/>
      * </p>
      * @private
      */
@@ -735,6 +747,17 @@ cc.ProgressTimer = cc.Node.extend(/** @lends cc.ProgressTimer# */{
      *                                                                                                          <br/>
      *    It now deals with flipped texture. If you run into this problem, just use the                         <br/>
      *    sprite property and enable the methods flipX, flipY.                                                  <br/>
+     * </p>
+     * @private
+     */
+    /**
+     * <p>
+     *    更新操作将纹理映射到进度条的三角形上。                          <br/>
+     *    现在每次更新操作不在花费资源在free/alloc 数据上面 ，            <br/>
+     *    并且如果没有包含其他的变化，则仅仅更新百分比 。                 <br/>
+     *                                                                    <br/>
+     *    现在可以处理反转的纹理，如果你要处理这个问题，                  <br/>
+     *    使用精灵对象的FlipX和FlipY方法即可。                            <br/>
      * </p>
      * @private
      */
@@ -1004,7 +1027,7 @@ cc.defineGetterSetter(_p, "reverseDir", _p.isReverseDirection, _p.setReverseDire
  */
 /**
  * 通过根据百分比渲染内部精灵的图片文件创建一个进度条对象
- * @deprecated 自v3.0弃用，使用cc.ProgressTimer(sprite) 代替.
+ * @deprecated 自v3.0弃用，使用new cc.ProgressTimer(sprite) 代替.
  * @param {cc.Sprite} sprite
  * @return {cc.ProgressTimer}
  */
