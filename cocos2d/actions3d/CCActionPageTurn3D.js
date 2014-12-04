@@ -26,36 +26,19 @@
 
 /**
  * <p>
- *     This action simulates a page turn from the bottom right hand corner of the screen.     <br/>
- *     It's not much use by itself but is used by the PageTurnTransition.                     <br/>
+ *     This action simulates a page turn from the bottom right hand corner of the screen.     <br/>         这个action将一个页面从右下角的角度模拟成立体的场景
+ *     It's not much use by itself but is used by the PageTurnTransition.                     <br/>         这个action本身不常用，但是会被PageTurnTransition调用
  *                                                                                            <br/>
- *     Based on an original paper by L Hong et al.                                            <br/>
+ *     Based on an original paper by L Hong et al.                                            <br/>        基于一个L Hong et al写的原始文件 
  *     http://www.parc.com/publication/1638/turning-pages-of-3d-electronic-books.html
  * </p>
  * @class
  * @extends cc.Grid3DAction
  */
-
-/**
- * <p>
- *     这个action将一个页面从右下角的角度模拟成立体的场景     <br/>
- *     这个action本身不常用，但是会被PageTurnTransition调用                     <br/> 
- *                                                                                            <br/>
- *     基于一个L Hong et al写的原始文件                                             <br/>
- *     http://www.parc.com/publication/1638/turning-pages-of-3d-electronic-books.html
- * </p>
- * @class
- * @继承 cc.Grid3DAction
- */
 cc.PageTurn3D = cc.Grid3DAction.extend(/** @lends cc.PageTurn3D# */{
     /**
-     * Update each tick                                         <br/>
-     * Time is the percentage of the way through the duration 
-     */
-    
-        /**
-     * 在tick循环里更新（tick是javascript每次检查事件驱动函数的循环）                                         <br/>
-     * 时间参数是一个通过时长设置的百分比数
+     * Update each tick                                         <br/>       在每次tick循环里更新
+     * Time is the percentage of the way through the duration       时间参数是一个通过时长设置的百分比数
      */
     update:function (time) {
         var tt = Math.max(0, time - 0.25);
@@ -109,40 +92,22 @@ cc.PageTurn3D = cc.Grid3DAction.extend(/** @lends cc.PageTurn3D# */{
 });
 
 /**
- * create PageTurn3D action
+ * create PageTurn3D action         创建一个PageTurn3D action
  * @function
  * @param {Number} duration
  * @param {cc.Size} gridSize
  * @return {cc.PageTurn3D}
  */
-
-/**
- * 创建一个PageTurn3D action
- * @function
- * @param {Number} 时长
- * @param {cc.Size} 网格大小
- * @返回 {cc.PageTurn3D}
- */
 cc.pageTurn3D = function (duration, gridSize) {
     return new cc.PageTurn3D(duration, gridSize);
 };
 /**
- * Please use cc.pageTurn3D instead
+ * Please use cc.pageTurn3D instead         3.0后的版本用cc.pageTurn3D代替
  * create PageTurn3D action
  * @param {Number} duration
  * @param {cc.Size} gridSize
  * @return {cc.PageTurn3D}
  * @static
  * @deprecated since v3.0 please use cc.pageTurn3D instead.
- */
-
-/**
- * 请用cc.pageTurn3D代替
- * 创建 PageTurn3D action
- * @param {Number} 时长
- * @param {cc.Size} 网格大小
- * @返回 {cc.PageTurn3D}
- * @static
- * @3.0后的版本用cc.pageTurn3D代替
  */
 cc.PageTurn3D.create = cc.pageTurn3D;

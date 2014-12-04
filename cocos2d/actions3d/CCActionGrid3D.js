@@ -26,7 +26,7 @@
 
 /**
  * cc.Waves3D action. <br />
- * Reference the test cases (Effects Advanced Test)
+ * Reference the test cases (Effects Advanced Test)         参考示例（Effects Advanced Test）
  * @class
  * @extends cc.Grid3DAction
  * @param {Number} duration
@@ -34,112 +34,63 @@
  * @param {Number} waves
  * @param {Number} amplitude
  */
-
-/**
- * cc.Waves3D action. <br />
- * 参考示例（Effects Advanced Test）
- * @class
- * @继承 cc.Grid3DAction
- * @param {Number} 时长
- * @param {cc.Size} 网格大小
- * @param {Number} 波的数量
- * @param {Number} 振幅
- */
 cc.Waves3D = cc.Grid3DAction.extend(/** @lends cc.Waves3D# */{
     _waves: 0,
     _amplitude: 0,
     _amplitudeRate: 0,
 
 	/**
-     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />          
-	 * Create a wave 3d action with duration, grid size, waves and amplitude.          
+     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />          构造函数，重写此函数去继承构造函数的方法，记得在"ctor"函数里调用"this._super()"
+	 * Create a wave 3d action with duration, grid size, waves and amplitude.          用时长、网格大小、波和振幅创建一个wave 3d action
 	 * @param {Number} duration
 	 * @param {cc.Size} gridSize
 	 * @param {Number} waves
 	 * @param {Number} amplitude
 	 */
-    
-    /**
-     * 构造函数，重载此函数去继承构造函数的方法，记得在继承类的"ctor"函数里调用"this._super()"<br />          
-     * 用时长、网格大小、波的数量和振幅创建一个wave 3d action
-     * @param {Number} 时长
-     * @param {cc.Size} 网格大小
-     * @param {Number} 波的数量
-     * @param {Number} 振幅
-     */
     ctor:function (duration, gridSize, waves, amplitude) {
         cc.GridAction.prototype.ctor.call(this);
 		amplitude !== undefined && this.initWithDuration(duration, gridSize, waves, amplitude);
     },
 
     /**
-     * get Amplitude 
+     * get Amplitude        获取振幅
      * @return {Number}
-     */
-    
-        /**
-     * 获取振幅
-     * @返回 {Number}
      */
     getAmplitude:function () {
         return this._amplitude;
     },
 
     /**
-     * set Amplitude
+     * set Amplitude        设置振幅
      * @param {Number} amplitude
-     */
-    
-        /**
-     * 设置振幅
-     * @param {Number} 振幅
      */
     setAmplitude:function (amplitude) {
         this._amplitude = amplitude;
     },
 
     /**
-     * get Amplitude Rate
+     * get Amplitude Rate       获取振幅速率
      * @return {Number}
-     */
-    
-        /**
-     * 获取振幅速率
-     * @返回 {Number}
      */
     getAmplitudeRate:function () {
         return this._amplitudeRate;
     },
 
     /**
-     * set Amplitude Rate
+     * set Amplitude Rate           设置振幅速率
      * @param {Number} amplitudeRate
-     */
-    
-        /**
-     * 设置振幅速率
-     * @param {Number} 振幅速率
      */
     setAmplitudeRate:function (amplitudeRate) {
         this._amplitudeRate = amplitudeRate;
     },
 
     /**
-     * initializes an action with duration, grid size, waves and amplitude          
+     * initializes an action with duration, grid size, waves and amplitude          用时长、网格大小、波和振幅初始化一个action
      * @param {Number} duration
      * @param {cc.Size} gridSize
      * @param {Number} waves
      * @param {Number} amplitude
      * @return {Boolean}
-     */
-    
-        /**
-     * 用时长、网格大小、波的数量和振幅初始化一个action
-     * @param {Number} 时长
-     * @param {cc.Size} 网格大小
-     * @param {Number} 波的数量
-     * @param {Number} 振幅
-     * @返回 {Boolean}
      */
     initWithDuration:function (duration, gridSize, waves, amplitude) {
         if (cc.Grid3DAction.prototype.initWithDuration.call(this, duration, gridSize)) {
@@ -152,13 +103,7 @@ cc.Waves3D = cc.Grid3DAction.extend(/** @lends cc.Waves3D# */{
     },
 
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.        
-     *
-     * @param {Number}  dt
-     */
-    
-        /**
-     * 每帧调用一次，时间参数是设置两帧之间的时长间隔的
+     * Called once per frame. Time is the number of seconds of a frame interval.        每帧调用一次，时间参数是设置两帧之间的时长间隔的
      *
      * @param {Number}  dt
      */
@@ -180,28 +125,19 @@ cc.Waves3D = cc.Grid3DAction.extend(/** @lends cc.Waves3D# */{
 });
 
 /**
- * Create a wave 3d action with duration, grid size, waves and amplitude.           
+ * Create a wave 3d action with duration, grid size, waves and amplitude.           用时长、网格大小、波和振幅创建一个wave 3d action
  * @function
  * @param {Number} duration
  * @param {cc.Size} gridSize
  * @param {Number} waves
  * @param {Number} amplitude
  */
-
-/**
- * 用时长、网格大小、波的数量和振幅创建一个wave 3d action
- * @function
- * @param {Number} 时长
- * @param {cc.Size} 网格大小
- * @param {Number} 波的数量
- * @param {Number} 振幅
- */
 cc.waves3D = function (duration, gridSize, waves, amplitude) {
     return new cc.Waves3D(duration, gridSize, waves, amplitude);
 };
 /**
- * Please use cc.waves3D instead. <br />
- * Create a wave 3d action with duration, grid size, waves and amplitude.           
+ * Please use cc.waves3D instead. <br />        3.0后的版本用cc.waves3D代替
+ * Create a wave 3d action with duration, grid size, waves and amplitude.           用时长、网格大小、波和振幅创建一个wave 3d action
  * @param {Number} duration
  * @param {cc.Size} gridSize
  * @param {Number} waves
@@ -209,49 +145,23 @@ cc.waves3D = function (duration, gridSize, waves, amplitude) {
  * @static
  * @deprecated since v3.0 <br /> Please use cc.waves3D instead.
  */
-
-/**
- * 请用cc.waves3D代替
- * 用时长、网格大小、波的数量和振幅创建一个wave 3d action
- * @param {Number} 时长
- * @param {cc.Size} 网格大小
- * @param {Number} 波的数量
- * @param {Number} 振幅
- * @static
- * @3.0后的版本用cc.waves3D代替
- */
 cc.Waves3D.create = cc.waves3D;
 
 /**
  * cc.FlipX3D action. <br />
- * Flip around. <br /> 
- * Reference the test cases (Effects Test)
+ * Flip around. <br />          左右翻转
+ * Reference the test cases (Effects Test)          参考示例（Effects Test）
  * @class
  * @extends cc.Grid3DAction
  * @param {Number} duration
  */
-
-/**
- * cc.FlipX3D action. <br />
- *  左右翻转<br /> 
- * 参考示例（Effects Test）
- * @class
- * @继承 cc.Grid3DAction
- * @param {Number} 时长
- */
 cc.FlipX3D = cc.Grid3DAction.extend(/** @lends cc.FlipX3D# */{
 
 	/**
-     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />          
-	 * Create a Flip X 3D action with duration.  
+     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />          构造函数，重写此函数去继承构造函数的方法，记得在"ctor"函数里调用"this._super()"
+	 * Create a Flip X 3D action with duration.        用时长创建一个Flip X 3D action
 	 * @param {Number} duration
 	 */
-    
-        /**
-     *  构造函数，重载此函数去继承构造函数的方法，记得在继承类的"ctor"函数里调用"this._super()"<br />          
-     * 用时长创建一个Flip X 3D action
-     * @param {Number} 时长
-     */
 	ctor: function(duration) {
 		if (duration !== undefined)
 			cc.GridAction.prototype.ctor.call(this, duration, cc.size(1, 1));
@@ -259,36 +169,23 @@ cc.FlipX3D = cc.Grid3DAction.extend(/** @lends cc.FlipX3D# */{
 	},
 
     /**
-     * initializes the action with duration
+     * initializes the action with duration         用时长初始化action
      * @param {Number} duration
      * @return {Boolean}
-     */
-    
-        /**
-     * 用时长初始化action
-     * @param {Number} 时长
-     * @返回 {Boolean}
      */
     initWithDuration:function (duration) {
         return cc.Grid3DAction.prototype.initWithDuration.call(this, duration, cc.size(1, 1));
     },
 
     /**
-     * initializes the action with gridSize and duration
+     * initializes the action with gridSize and duration        用网格大小和时长初始化action
      * @param {cc.Size} gridSize
      * @param {Number} duration
      * @return {Boolean}
      */
-    
-        /**
-     * 用网格大小和时长初始化action
-     * @param {cc.Size} 网格大小
-     * @param {Number} 时长
-     * @返回 {Boolean}
-     */
     initWithSize:function (gridSize, duration) {
         if (gridSize.width != 1 || gridSize.height != 1) {
-            // Grid size must be (1,1)      网格大小一定要是（1,1）
+            // Grid size must be (1,1)
             cc.log("Grid size must be (1,1)");
             return false;
         }
@@ -296,13 +193,7 @@ cc.FlipX3D = cc.Grid3DAction.extend(/** @lends cc.FlipX3D# */{
     },
 
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.            
-     *
-     * @param {Number}  dt
-     */
-    
-        /**
-     * 每帧调用一次，时间参数是设置两帧之间的时长间隔的
+     * Called once per frame. Time is the number of seconds of a frame interval.            每帧调用一次，时间参数是设置两帧之间的时长间隔的
      *
      * @param {Number}  dt
      */
@@ -370,26 +261,18 @@ cc.FlipX3D = cc.Grid3DAction.extend(/** @lends cc.FlipX3D# */{
 });
 
 /**
- * Create a Flip X 3D action with duration. <br /> 
- * Flip around. 
+ * Create a Flip X 3D action with duration. <br />          用时长创建一个Flip X 3D action
+ * Flip around.             左右翻转
  * @function
  * @param {Number} duration
  * @return {cc.FlipX3D}
- */
-
-/**
- * 用时长创建一个Flip X 3D action <br />
- * 左右翻转
- * @function
- * @param {Number} 时长
- * @返回 {cc.FlipX3D}
  */
 cc.flipX3D = function (duration) {
     return new cc.FlipX3D(duration);
 };
 
 /**
- * Please use cc.flipX3D instead. <br /> 
+ * Please use cc.flipX3D instead. <br />            3.0后的版本用cc.flipX3D代替
  * Create a Flip X 3D action with duration. <br />
  * Flip around.
  * @param {Number} duration
@@ -397,48 +280,23 @@ cc.flipX3D = function (duration) {
  * @static
  * @deprecated since v3.0 <br /> Please use cc.flipX3D instead.
  */
-
-/**
- * 请用cc.flipX3D代替
- * 用时长创建一个Flip X 3D action. <br />
- * 水平翻转
- * @param {Number} 时长
- * @返回 {cc.FlipX3D}
- * @static
- * @ 3.0后的版本用cc.flipX3D代替
- */
 cc.FlipX3D.create = cc.flipX3D;
 
 /**
  * cc.FlipY3D action. <br />
- * Upside down. <br /> 
- * Reference the test cases (Effects Test)
+ * Upside down. <br />          上下翻转
+ * Reference the test cases (Effects Test)          参考示例（Effects Test）
  * @class
  * @extends cc.FlipX3D
  * @param {Number} duration
  */
-
-/**
- * cc.FlipY3D action. <br />
- * 垂直翻转 <br />          
- * 参考示例（Effects Test）
- * @class
- * @继承 cc.FlipX3D
- * @param {Number} 时长
- */
 cc.FlipY3D = cc.FlipX3D.extend(/** @lends cc.FlipY3D# */{
 
 	/**
-     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />              
+     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />              构造函数，重写此函数去继承构造函数的方法，记得在"ctor"函数里调用"this._super()"
 	 * Create a flip Y 3d action with duration.
 	 * @param {Number} duration
 	 */
-    
-        /**
-     * 构造函数，重载此函数去继承构造函数的方法，记得在继承类的"ctor"函数里调用"this._super()" <br />              
-     * 用时长创建一个flip Y 3d action.
-     * @param {Number} 时长
-     */
 	ctor: function(duration) {
 		if (duration !== undefined)
 			cc.GridAction.prototype.ctor.call(this, duration, cc.size(1, 1));
@@ -446,13 +304,7 @@ cc.FlipY3D = cc.FlipX3D.extend(/** @lends cc.FlipY3D# */{
 	},
 
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.            
-     *
-     * @param {Number}  dt
-     */
-    
-        /**
-     * 每帧调用一次，时间参数是设置两帧之间的时长间隔的
+     * Called once per frame. Time is the number of seconds of a frame interval.            每帧调用一次，时间参数是设置两帧之间的时长间隔的
      *
      * @param {Number}  dt
      */
@@ -521,65 +373,36 @@ cc.FlipY3D = cc.FlipX3D.extend(/** @lends cc.FlipY3D# */{
 });
 
 /**
- * Create a flip Y 3d action with duration. <br />
- * Upside down.
+ * Create a flip Y 3d action with duration. <br />          用时长去创建一个flip Y 3d action
+ * Upside down.             上下翻转
  * @function
  * @param {Number} duration
  * @return {cc.FlipY3D}
- */
-
-/**
- * 用时长去创建一个flip Y 3d action<br />
- * 垂直翻转
- * @function
- * @param {Number} 时长
- * @返回 {cc.FlipY3D}
  */
 cc.flipY3D = function (duration) {
     return new cc.FlipY3D(duration);
 };
 
 /**
- * Please use cc.flipY3D instead. <br />  
+ * Please use cc.flipY3D instead. <br />            3.0后的版本请用cc.flipY3D代替
  * Create a flip Y 3d action with duration.
  * @param {Number} duration
  * @return {cc.FlipY3D}
  * @static
  * @deprecated since v3.0 <br /> Please use cc.flipY3D instead.
  */
-
-/**
- * 请用cc.flipY3D代替
- * 用时长创建一个flip Y 3d action
- * @param {Number} 时长
- * @返回 {cc.FlipY3D}
- * @static
- * @3.0后的版本请用cc.flipY3D代替
- */
 cc.FlipY3D.create = cc.flipY3D;
 
 /**
  * cc.Lens3D action. <br />
- * Upside down. <br />
- * Reference the test cases (Effects Test)
+ * Upside down. <br />              上下翻转
+ * Reference the test cases (Effects Test)          参考示例（Effects Test）
  * @class
  * @extends cc.Grid3DAction
  * @param {Number} duration
  * @param {cc.Size} gridSize
  * @param {cc.Point} position
  * @param {Number} radius
- */
-
-/**
- * cc.Lens3D action. <br />
- * 垂直翻转 <br />
- * 参考示例（Effects Test）
- * @class
- * @继承 cc.Grid3DAction
- * @param {Number} 时长
- * @param {cc.Size} 网格大小
- * @param {cc.Point} 位置
- * @param {Number} 半径
  */
 cc.Lens3D = cc.Grid3DAction.extend(/** @lends cc.Lens3D# */{
     //lens center position          镜头中心位置
@@ -592,22 +415,13 @@ cc.Lens3D = cc.Grid3DAction.extend(/** @lends cc.Lens3D# */{
     _dirty:false,
 
 	/**
-     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />              
-	 * creates a lens 3d action with center position, radius. 
+     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />              构造函数，重写此函数去继承构造函数的方法，记得在"ctor"函数里调用"this._super()"
+	 * creates a lens 3d action with center position, radius.                                     用中心位置、半径去创建一个lens 3d action
 	 * @param {Number} duration
 	 * @param {cc.Size} gridSize
 	 * @param {cc.Point} position
 	 * @param {Number} radius
 	 */
-    
-        /**
-     * 构造函数，重载此函数去继承构造函数的方法，记得在继承类的"ctor"函数里调用"this._super()" <br />              
-     * 用中心位置、半径去创建一个lens 3d action
-     * @param {Number} 时长
-     * @param {cc.Size} 网格大小
-     * @param {cc.Point} 位置
-     * @param {Number} 半径
-     */
     ctor:function (duration, gridSize, position, radius) {
         cc.GridAction.prototype.ctor.call(this);
 
@@ -616,65 +430,40 @@ cc.Lens3D = cc.Grid3DAction.extend(/** @lends cc.Lens3D# */{
     },
 
     /**
-     * Get lens center position
+     * Get lens center position         获取镜头中心位置
      * @return {Number}
-     */
-    
-        /**
-     * 获取镜头中心位置
-     * @返回 {Number}
      */
     getLensEffect:function () {
         return this._lensEffect;
     },
 
     /**
-     * Set lens center position
+     * Set lens center position         设置镜头中心位置
      * @param {Number} lensEffect
-     */
-    
-        /**
-     * 设置镜头中心位置
-     * @param {Number} 镜头效果
      */
     setLensEffect:function (lensEffect) {
         this._lensEffect = lensEffect;
     },
 
     /**
-     * Set whether lens is concave
+     * Set whether lens is concave         设置镜头是否为凹镜头 
      * @param {Boolean} concave
-     */
-    
-        /**
-     * 设置镜头是否为凹镜头 
-     * @param {Boolean} 凹镜头 
      */
     setConcave:function (concave) {
         this._concave = concave;
     },
 
     /**
-     * get Position
+     * get Position         获取位置
      * @return {cc.Point}
-     */
-    
-        /**
-     * 获取位置
-     * @返回 {cc.Point}
      */
     getPosition:function () {
         return this._position;
     },
 
     /**
-     * set Position
+     * set Position         设置位置
      * @param {cc.Point} position
-     */
-    
-       /**
-     * 设置位置
-     * @param {cc.Point} 位置
      */
     setPosition:function (position) {
         if (!cc.pointEqualToPoint(position, this._position)) {
@@ -685,21 +474,12 @@ cc.Lens3D = cc.Grid3DAction.extend(/** @lends cc.Lens3D# */{
     },
 
     /**
-     * initializes the action with center position, radius, a grid size and duration            
+     * initializes the action with center position, radius, a grid size and duration            用中心位置、半径、网格大小和时长初始化action
      * @param {Number} duration
      * @param {cc.Size} gridSize
      * @param {cc.Point} position
      * @param {Number} radius
      * @return {Boolean}
-     */
-    
-        /**
-     * 用中心位置、半径、网格大小和时长初始化action
-     * @param {Number} 时长
-     * @param {cc.Size} 网格大小
-     * @param {cc.Point} 位置
-     * @param {Number} 半径
-     * @返回 {Boolean}
      */
     initWithDuration:function (duration, gridSize, position, radius) {
         if (cc.Grid3DAction.prototype.initWithDuration.call(this, duration, gridSize)) {
@@ -713,13 +493,7 @@ cc.Lens3D = cc.Grid3DAction.extend(/** @lends cc.Lens3D# */{
     },
 
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.        
-     *
-     * @param {Number}  dt
-     */
-    
-        /**
-     * 每帧调用一次，时间参数是设置两帧之间的时长间隔的
+     * Called once per frame. Time is the number of seconds of a frame interval.        每帧调用一次，时间参数是设置两帧之间的时长间隔的
      *
      * @param {Number}  dt
      */
@@ -767,7 +541,7 @@ cc.Lens3D = cc.Grid3DAction.extend(/** @lends cc.Lens3D# */{
 });
 
 /**
- * creates a lens 3d action with center position, radius
+ * creates a lens 3d action with center position, radius            用中心位置和半径创建一个lens 3d action
  * @function
  * @param {Number} duration
  * @param {cc.Size} gridSize
@@ -775,23 +549,13 @@ cc.Lens3D = cc.Grid3DAction.extend(/** @lends cc.Lens3D# */{
  * @param {Number} radius
  * @return {cc.Lens3D}
  */
-
-/**
- * 用中心位置和半径创建一个lens 3d action
- * @function
- * @param {Number} 时长
- * @param {cc.Size} 网格大小
- * @param {cc.Point} 位置
- * @param {Number} 半径
- * @返回 {cc.Lens3D}
- */
 cc.lens3D = function (duration, gridSize, position, radius) {
     return new cc.Lens3D(duration, gridSize, position, radius);
 };
 
 /**
- * Please use cc.lens3D instead
- * creates a lens 3d action with center position, radius
+ * Please use cc.lens3D instead                 3.0后的版本用cc.lens3D代替
+ * creates a lens 3d action with center position, radius            用中心位置和半径创建一个lens 3d action
  * @param {Number} duration
  * @param {cc.Size} gridSize
  * @param {cc.Point} position
@@ -800,23 +564,11 @@ cc.lens3D = function (duration, gridSize, position, radius) {
  * @static
  * @deprecated since v3.0 <br /> Please use cc.lens3D instead.
  */
-
-/**
- * 请用cc.lens3D代替
- * 用中心位置和半径创建一个lens 3d action
- * @param {Number} 时长
- * @param {cc.Size} 网格大小
- * @param {cc.Point} 位置
- * @param {Number} 半径
- * @返回 {cc.Lens3D}
- * @static
- * @3.0后的版本用cc.lens3D代替
- */
 cc.Lens3D.create = cc.lens3D;
 
 /**
  * cc.Ripple3D action. <br />
- * Reference the test cases (Effects Test)
+ * Reference the test cases (Effects Test)              参考示例（Effects Test）
  * @class
  * @extends cc.Grid3DAction
  * @param {Number} duration
@@ -825,19 +577,6 @@ cc.Lens3D.create = cc.lens3D;
  * @param {Number} radius
  * @param {Number} waves
  * @param {Number} amplitude
- */
-
-/**
- * cc.Ripple3D action. <br />
- * 参考示例（Effects Test）
- * @class
- * @继承 cc.Grid3DAction
- * @param {Number} 时长
- * @param {cc.Size} 网格大小
- * @param {cc.Point} 位置
- * @param {Number} 半径
- * @param {Number} 波的数量
- * @param {Number} 振幅
  */
 cc.Ripple3D = cc.Grid3DAction.extend(/** @lends cc.Ripple3D# */{
     /* center position          中心位置 */           
@@ -848,8 +587,8 @@ cc.Ripple3D = cc.Grid3DAction.extend(/** @lends cc.Ripple3D# */{
     _amplitudeRate: 0,
 
 	/**
-     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />              
-	 * creates a ripple 3d action with radius, number of waves, amplitude.             
+     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />              构造函数，重写此函数去继承构造函数的方法，记得在"ctor"函数里调用"this._super()"
+	 * creates a ripple 3d action with radius, number of waves, amplitude.             用半径、波的数量和振幅创建一个ripple 3d action
 	 * @param {Number} duration
 	 * @param {cc.Size} gridSize
 	 * @param {cc.Point} position
@@ -857,17 +596,6 @@ cc.Ripple3D = cc.Grid3DAction.extend(/** @lends cc.Ripple3D# */{
 	 * @param {Number} waves
 	 * @param {Number} amplitude
 	 */
-    
-        /**
-     * 构造函数，重载此函数去继承构造函数的方法，记得在继承类的"ctor"函数里调用"this._super()"<br />              
-     * 用半径、波的数量和振幅创建一个ripple 3d action
-     * @param {Number} 时长
-     * @param {cc.Size} 网格大小
-     * @param {cc.Point} 位置
-     * @param {Number} 半径
-     * @param {Number} 波的数量
-     * @param {Number} 振幅
-     */
     ctor:function (duration, gridSize, position, radius, waves, amplitude) {
         cc.GridAction.prototype.ctor.call(this);
 
@@ -876,26 +604,16 @@ cc.Ripple3D = cc.Grid3DAction.extend(/** @lends cc.Ripple3D# */{
     },
 
     /**
-     * get center position
+     * get center position          获取中心位置
      * @return {cc.Point}
-     */
-    
-        /**
-     * 获取中心位置
-     * @返回 {cc.Point}
      */
     getPosition:function () {
         return this._position;
     },
 
     /**
-     * set center position 
+     * set center position          设置中心位置
      * @param {cc.Point} position
-     */
-    
-        /**
-     * 设置中心位置
-     * @param {cc.Point} 位置
      */
     setPosition:function (position) {
         this._position.x = position.x;
@@ -903,59 +621,39 @@ cc.Ripple3D = cc.Grid3DAction.extend(/** @lends cc.Ripple3D# */{
     },
 
     /**
-     * get Amplitude
+     * get Amplitude        获取振幅
      * @return {Number}
-     */
-    
-       /**
-     * 获取振幅
-     * @返回 {Number}
      */
     getAmplitude:function () {
         return this._amplitude;
     },
 
     /**
-     * set Amplitude
+     * set Amplitude        设置振幅
      * @param {Number} amplitude
-     */
-    
-        /**
-     * 设置振幅
-     * @param {Number} 振幅
      */
     setAmplitude:function (amplitude) {
         this._amplitude = amplitude;
     },
 
     /**
-     * get Amplitude rate 
+     * get Amplitude rate       获取振幅速率
      * @return {*}
-     */
-    
-        /**
-     * 获取振幅速率
-     * @返回 {*}
      */
     getAmplitudeRate:function () {
         return this._amplitudeRate;
     },
 
     /**
-     * set amplitude rate
+     * set amplitude rate       设置振幅速率
      * @param {Number} amplitudeRate
-     */
-    
-        /**
-     * 设置振幅速率
-     * @param {Number} 振幅速率
      */
     setAmplitudeRate:function (amplitudeRate) {
         this._amplitudeRate = amplitudeRate;
     },
 
     /**
-     * initializes the action with radius, number of waves, amplitude, a grid size and duration         
+     * initializes the action with radius, number of waves, amplitude, a grid size and duration         用半径、波的数量、振幅和时长初始化action
      * @param {Number} duration
      * @param {cc.Size} gridSize
      * @param {cc.Point} position
@@ -963,17 +661,6 @@ cc.Ripple3D = cc.Grid3DAction.extend(/** @lends cc.Ripple3D# */{
      * @param {Number} waves
      * @param {Number} amplitude
      * @return {Boolean}
-     */
-    
-        /**
-     * 用半径、波的数量、振幅和时长初始化action
-     * @param {Number} 时长
-     * @param {cc.Size} 网格大小
-     * @param {cc.Point} 位置
-     * @param {Number} 半径
-     * @param {Number} 波的数量
-     * @param {Number} 振幅
-     * @返回 {Boolean}
      */
     initWithDuration:function (duration, gridSize, position, radius, waves, amplitude) {
         if (cc.Grid3DAction.prototype.initWithDuration.call(this, duration, gridSize)) {
@@ -988,13 +675,7 @@ cc.Ripple3D = cc.Grid3DAction.extend(/** @lends cc.Ripple3D# */{
     },
 
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.         
-     *
-     * @param {Number}  dt
-     */
-    
-     /**
-     * 每帧调用一次，时间参数是设置两帧之间的时长间隔的
+     * Called once per frame. Time is the number of seconds of a frame interval.         每帧调用一次，时间参数是设置两帧之间的时长间隔的
      *
      * @param {Number}  dt
      */
@@ -1025,7 +706,7 @@ cc.Ripple3D = cc.Grid3DAction.extend(/** @lends cc.Ripple3D# */{
 });
 
 /**
- * creates a ripple 3d action with radius, number of waves, amplitudeaction
+ * creates a ripple 3d action with radius, number of waves, amplitude           用半径、波的数量和振幅创建一个ripple 3d action
  * @function
  * @param {Number} duration
  * @param {cc.Size} gridSize
@@ -1035,24 +716,12 @@ cc.Ripple3D = cc.Grid3DAction.extend(/** @lends cc.Ripple3D# */{
  * @param {Number} amplitude
  * @return {cc.Ripple3D}
  */
-
-/**
- * 用半径、波的数量和振幅创建一个ripple 3d action
- * @function
- * @param {Number} 时长
- * @param {cc.Size} 网格大小
- * @param {cc.Point} 位置
- * @param {Number} 半径
- * @param {Number} 波的数量
- * @param {Number} 振幅
- * @返回 {cc.Ripple3D}
- */
 cc.ripple3D = function (duration, gridSize, position, radius, waves, amplitude) {
     return new cc.Ripple3D(duration, gridSize, position, radius, waves, amplitude);
 };
 
 /**
- * Please use cc.ripple3D instead
+ * Please use cc.ripple3D instead           3.0后的版本用cc.ripple3D代替
  * creates a ripple 3d action with radius, number of waves, amplitude
  * @param {Number} duration
  * @param {cc.Size} gridSize
@@ -1064,25 +733,11 @@ cc.ripple3D = function (duration, gridSize, position, radius, waves, amplitude) 
  * @static
  * @deprecated since v3.0 <br /> Please use cc.ripple3D instead.
  */
-
-/**
- * 请用cc.ripple3D代替
- * 用时长、网格大小、位置、半径、波的数量和振幅创建一个ripple 3d action
- * @param {Number} duration
- * @param {cc.Size} gridSize
- * @param {cc.Point} position
- * @param {Number} radius
- * @param {Number} waves
- * @param {Number} amplitude
- * @return {cc.Ripple3D}
- * @static
- * @3.0后的版本用cc.ripple3D代替
- */
 cc.Ripple3D.create = cc.ripple3D;
 
 /**
  * cc.Shaky3D action. <br />
- * Reference the test cases (Effects Test)
+ * Reference the test cases (Effects Test)              参考示例（Effects Test）
  * @class
  * @extends cc.Grid3DAction
  * @param {Number} duration
@@ -1090,59 +745,30 @@ cc.Ripple3D.create = cc.ripple3D;
  * @param {Number} range
  * @param {Boolean} shakeZ
  */
-
-/**
- * cc.Shaky3D action. <br />
- * 参考示例（Effects Test）
- * @class
- * @继承 cc.Grid3DAction
- * @param {Number} 时长
- * @param {cc.Size} 网格大小
- * @param {Number} 范围
- * @param {Boolean} 晃动相关的Z坐标
- */
 cc.Shaky3D = cc.Grid3DAction.extend(/** @lends cc.Shaky3D# */{
     _randRange: 0,
     _shakeZ: false,
 
 	/**
-     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />              
+     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />              构造函数，重写此函数去继承构造函数的方法，记得在"ctor"函数里调用"this._super()"
 	 * Create a shaky3d action with a range, shake Z vertices.
 	 * @param {Number} duration
 	 * @param {cc.Size} gridSize
 	 * @param {Number} range
 	 * @param {Boolean} shakeZ
 	 */
-    
-        /**
-     * 构造函数，重载此函数去继承构造函数的方法，记得在继承类的"ctor"函数里调用"this._super()"<br />              
-     * 用时长、网格大小、范围和晃动相关的Z坐标创建一个shaky3d action
-     * @param {Number} 时长
-     * @param {cc.Size} 网格大小
-     * @param {Number} 范围
-     * @param {Boolean} 晃动相关的Z坐标
-     */
     ctor:function (duration, gridSize, range, shakeZ) {
         cc.GridAction.prototype.ctor.call(this);
 		shakeZ !== undefined && this.initWithDuration(duration, gridSize, range, shakeZ);
     },
 
     /**
-     * initializes the action with a range, shake Z vertices, a grid and duration           
+     * initializes the action with a range, shake Z vertices, a grid and duration           用范围、晃动的Z顶点坐标、网格和时长初始化action
      * @param {Number} duration
      * @param {cc.Size} gridSize
      * @param {Number} range
      * @param {Boolean} shakeZ
      * @return {Boolean}
-     */
-    
-        /**
-     *   用范围、晃动的Z顶点坐标、网格和时长初始化action
-     * @param {Number} 时长
-     * @param {cc.Size} 网格大小
-     * @param {Number} 范围
-     * @param {Boolean} 晃动相关的Z坐标
-     * @返回 {Boolean}
      */
     initWithDuration:function (duration, gridSize, range, shakeZ) {
         if (cc.Grid3DAction.prototype.initWithDuration.call(this, duration, gridSize)) {
@@ -1154,13 +780,7 @@ cc.Shaky3D = cc.Grid3DAction.extend(/** @lends cc.Shaky3D# */{
     },
 
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.            
-     *
-     * @param {Number}  dt
-     */
-    
-        /**
-     * 每帧调用一次，时间参数是设置两帧之间的时长间隔的
+     * Called once per frame. Time is the number of seconds of a frame interval.            每帧调用一次，时间参数是设置两帧之间的时长间隔的
      *
      * @param {Number}  dt
      */
@@ -1184,7 +804,7 @@ cc.Shaky3D = cc.Grid3DAction.extend(/** @lends cc.Shaky3D# */{
 });
 
 /**
- * creates the action with a range, shake Z vertices, a grid and duration               
+ * creates the action with a range, shake Z vertices, a grid and duration               用范围、晃动的Z顶点坐标、网格和时长初始化action
  * @function
  * @param {Number} duration
  * @param {cc.Size} gridSize
@@ -1192,23 +812,14 @@ cc.Shaky3D = cc.Grid3DAction.extend(/** @lends cc.Shaky3D# */{
  * @param {Boolean} shakeZ
  * @return {cc.Shaky3D}
  */
-
-/**
- * 用范围、晃动的Z顶点坐标、网格和时长初始化action
- * @function
- * @param {Number} 时长
- * @param {cc.Size} 网格大小
- * @param {Number} 范围
- * @param {Boolean} 晃动相关的Z坐标
- * @返回 {cc.Shaky3D}
- */
 cc.shaky3D = function (duration, gridSize, range, shakeZ) {
     return new cc.Shaky3D(duration, gridSize, range, shakeZ);
 };
 
 /**
- * Please use cc.shaky3D instead
+ * Please use cc.shaky3D instead                 3.0后的版本用cc.shaky3D代替
  * creates the action with a range, shake Z vertices, a grid and duration
+ * 用范围、晃动的Z顶点坐标、网格和时长初始化action
  * @param {Number} duration
  * @param {cc.Size} gridSize
  * @param {Number} range
@@ -1217,23 +828,11 @@ cc.shaky3D = function (duration, gridSize, range, shakeZ) {
  * @static
  * @deprecated since v3.0 <br /> Please use cc.shaky3D instead.
  */
-
-/**
- * 请用cc.shaky3D代替
- * 用范围、晃动的Z顶点坐标、网格和时长初始化action
- * @param {Number} 时长
- * @param {cc.Size} 网格大小
- * @param {Number} 范围
- * @param {Boolean} 晃动相关的Z坐标
- * @返回 {cc.Shaky3D}
- * @static
- * @3.0后的版本用cc.shaky3D代替
- */
 cc.Shaky3D.create = cc.shaky3D;
 
 /**
  * cc.Liquid action. <br />
- * Reference the test cases (Effects Test) 
+ * Reference the test cases (Effects Test)              参考示例（Effects Test）
  * @class
  * @extends cc.Grid3DAction
  * @param {Number} duration
@@ -1241,112 +840,63 @@ cc.Shaky3D.create = cc.shaky3D;
  * @param {Number} waves
  * @param {Number} amplitude
  */
-
-/**
- * cc.Liquid action. <br />
- * 参考示例（Effects Test）
- * @class
- * @继承 cc.Grid3DAction
- * @param {Number} 时长
- * @param {cc.Size} 网格大小
- * @param {Number} 波的数量
- * @param {Number} 振幅
- */
 cc.Liquid = cc.Grid3DAction.extend(/** @lends cc.Liquid# */{
     _waves: 0,
     _amplitude: 0,
     _amplitudeRate: 0,
 
 	/**
-     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />                  
+     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />                  构造函数，重写此函数去继承构造函数的方法，记得在"ctor"函数里调用"this._super()"
 	 * Create a liquid action with amplitude, a grid and duration.
 	 * @param {Number} duration
 	 * @param {cc.Size} gridSize
 	 * @param {Number} waves
 	 * @param {Number} amplitude
 	 */
-    
-        /**
-     * 构造函数，重载此函数去继承构造函数的方法，记得在继承类的"ctor"函数里调用"this._super()" <br />                  
-     * 用时长、网格大小、波的数量和振幅创建一个liquid action
-     * @param {Number} 时长
-     * @param {cc.Size} 网格大小
-     * @param {Number} 波的数量
-     * @param {Number} 振幅
-     */
     ctor: function (duration, gridSize, waves, amplitude) {
         cc.GridAction.prototype.ctor.call(this);
 		amplitude !== undefined && this.initWithDuration(duration, gridSize, waves, amplitude);
     },
 
     /**
-     * get amplitude
+     * get amplitude            获取振幅
      * @return {Number}
-     */
-    
-        /**
-     * 获取振幅
-     * @返回 {Number}
      */
     getAmplitude:function () {
         return this._amplitude;
     },
 
     /**
-     * set amplitude
+     * set amplitude            设置振幅
      * @param {Number} amplitude
-     */
-    
-        /**
-     * 设置振幅
-     * @param {Number} 振幅
      */
     setAmplitude:function (amplitude) {
         this._amplitude = amplitude;
     },
 
     /**
-     * get amplitude rate
+     * get amplitude rate               获取振幅速率
      * @return {Number}
-     */
-    
-       /**
-     * 获取振幅速率
-     * @返回 {Number}
      */
     getAmplitudeRate:function () {
         return this._amplitudeRate;
     },
 
     /**
-     * set amplitude rate
+     * set amplitude rate               设置振幅速率
      * @param {Number} amplitudeRate
-     */
-    
-        /**
-     * 设置振幅速率
-     * @param {Number} 振幅速率
      */
     setAmplitudeRate:function (amplitudeRate) {
         this._amplitudeRate = amplitudeRate;
     },
 
     /**
-     * initializes the action with amplitude, a grid and duration 
+     * initializes the action with amplitude, a grid and duration               用振幅，网格和时长初始化action
      * @param {Number} duration
      * @param {cc.Size} gridSize
      * @param {Number} waves
      * @param {Number} amplitude
      * @return {Boolean}
-     */
-    
-        /**
-     * 用振幅，网格大小、波的数量和时长初始化action
-     * @param {Number} 时长
-     * @param {cc.Size} 网格大小
-     * @param {Number} 波的数量
-     * @param {Number} 振幅
-     * @返回 {Boolean}
      */
     initWithDuration:function (duration, gridSize, waves, amplitude) {
         if (cc.Grid3DAction.prototype.initWithDuration.call(this, duration, gridSize)) {
@@ -1359,13 +909,7 @@ cc.Liquid = cc.Grid3DAction.extend(/** @lends cc.Liquid# */{
     },
 
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.         
-     *
-     * @param {Number}  dt
-     */
-    
-        /**
-     * 每帧调用一次，时间参数是设置两帧之间的时长间隔的       
+     * Called once per frame. Time is the number of seconds of a frame interval.         每帧调用一次，时间参数是设置两帧之间的时长间隔的       
      *
      * @param {Number}  dt
      */
@@ -1387,7 +931,7 @@ cc.Liquid = cc.Grid3DAction.extend(/** @lends cc.Liquid# */{
 });
 
 /**
- * creates the action with amplitude, a grid and duration
+ * creates the action with amplitude, a grid and duration               用振幅、网格和时长创建一个action
  * @function
  * @param {Number} duration
  * @param {cc.Size} gridSize
@@ -1395,23 +939,13 @@ cc.Liquid = cc.Grid3DAction.extend(/** @lends cc.Liquid# */{
  * @param {Number} amplitude
  * @return {cc.Liquid}
  */
-
-/**
- * 用振幅、网格大小、波的数量和时长创建一个action
- * @function
- * @param {Number} 时长
- * @param {cc.Size} 网格大小
- * @param {Number} 波的数量
- * @param {Number} 振幅
- * @返回 {cc.Liquid}
- */
 cc.liquid = function (duration, gridSize, waves, amplitude) {
     return new cc.Liquid(duration, gridSize, waves, amplitude);
 };
 
 /**
- * Please use cc.liquid instead
- * creates the action with amplitude, a grid and duration
+ * Please use cc.liquid instead                 3.0后的版本用cc.liquid代替
+ * creates the action with amplitude, a grid and duration               用振幅、网格和时长创建一个action
  * @param {Number} duration
  * @param {cc.Size} gridSize
  * @param {Number} waves
@@ -1420,23 +954,11 @@ cc.liquid = function (duration, gridSize, waves, amplitude) {
  * @static
  * @deprecated since v3.0 <br /> Please use cc.liquid instead.
  */
-
-/**
- * 请用cc.liquid代替
- * 用振幅、网格大小、波的数量和时长创建一个action
- * @param {Number} 时长
- * @param {cc.Size} 网格大小
- * @param {Number} 波的数量
- * @param {Number} 振幅
- * @返回 {cc.Liquid}
- * @static
- * @ 3.0后的版本用cc.liquid代替
- */
 cc.Liquid.create = cc.liquid;
 
 /**
  * cc.Waves action. <br />
- * Reference the test cases (Effects Test)
+ * Reference the test cases (Effects Test)              参考示例（Effects Test）
  * @class
  * @extends cc.Grid3DAction
  * @param {Number} duration
@@ -1446,19 +968,6 @@ cc.Liquid.create = cc.liquid;
  * @param {Boolean} horizontal
  * @param {Boolean} vertical
  */
-
-/**
- * cc.Waves action. <br />
- * 参考示例（Effects Test）
- * @class
- * @继承 cc.Grid3DAction
- * @param {Number} 时长
- * @param {cc.Size} 网格大小
- * @param {Number} 波的数量
- * @param {Number} 振幅
- * @param {Boolean} 水平正弦值
- * @param {Boolean} 垂直正弦值
- */
 cc.Waves = cc.Grid3DAction.extend(/** @lends cc.Waves# */{
     _waves: 0,
     _amplitude: 0,
@@ -1467,8 +976,8 @@ cc.Waves = cc.Grid3DAction.extend(/** @lends cc.Waves# */{
     _horizontal: false,
 
 	/**
-     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />                  
-	 * Create a wave action with amplitude, horizontal sin, vertical sin, a grid and duration.             
+     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />                  构造函数，重写此函数去继承构造函数的方法，记得在"ctor"函数里调用"this._super()"
+	 * Create a wave action with amplitude, horizontal sin, vertical sin, a grid and duration.             用振幅、水平正弦值、垂直正弦值、网格和时长创建一个wave action
 	 * @param {Number} duration
 	 * @param {cc.Size} gridSize
 	 * @param {Number} waves
@@ -1476,76 +985,45 @@ cc.Waves = cc.Grid3DAction.extend(/** @lends cc.Waves# */{
 	 * @param {Boolean} horizontal
 	 * @param {Boolean} vertical
 	 */
-    
-        /**
-     * 构造函数，重载此函数去继承构造函数的方法，记得在继承类的"ctor"函数里调用"this._super()" <br />                  
-     * 用振幅、水平正弦值、垂直正弦值、网格和时长创建一个wave action
-     * @param {Number} 时长
-     * @param {cc.Size} 网格大小
-     * @param {Number} 波的数量
-     * @param {Number} 振幅
-     * @param {Boolean} 水平正弦值
-     * @param {Boolean} 垂直正弦值
-     */
     ctor: function (duration, gridSize, waves, amplitude, horizontal, vertical) {
         cc.GridAction.prototype.ctor.call(this);
 		vertical !== undefined && this.initWithDuration(duration, gridSize, waves, amplitude, horizontal, vertical);
     },
 
     /**
-     * get amplitude 
+     * get amplitude            获取振幅
      * @return {Number}
-     */
-    
-        /**
-     * 获取振幅
-     * @返回 {Number}
      */
     getAmplitude:function () {
         return this._amplitude;
     },
 
     /**
-     * set amplitude
+     * set amplitude            设置振幅
      * @param {Number} amplitude
-     */
-    
-        /**
-     * 设置振幅
-     * @param {Number} 振幅
      */
     setAmplitude:function (amplitude) {
         this._amplitude = amplitude;
     },
 
     /**
-     * get amplitude rate
+     * get amplitude rate               获取振幅速率
      * @return {Number}
-     */
-    
-       /**
-     * 获取振幅速率
-     * @返回 {Number}
      */
     getAmplitudeRate:function () {
         return this._amplitudeRate;
     },
 
     /**
-     * set amplitude rate
+     * set amplitude rate               设置振幅速率
      * @param {Number} amplitudeRate
-     */
-    
-        /**
-     * 设置振幅速率
-     * @param {Number} 振幅速率
      */
     setAmplitudeRate:function (amplitudeRate) {
         this._amplitudeRate = amplitudeRate;
     },
 
     /**
-     * initializes the action with amplitude, horizontal sin, vertical sin, a grid and duration                 
+     * initializes the action with amplitude, horizontal sin, vertical sin, a grid and duration                 用振幅、水平正弦值、垂直正弦值、网格和时长初始化action
      * @param {Number} duration
      * @param {cc.Size} gridSize
      * @param {Number} waves
@@ -1553,17 +1031,6 @@ cc.Waves = cc.Grid3DAction.extend(/** @lends cc.Waves# */{
      * @param {Boolean} horizontal
      * @param {Boolean} vertical
      * @return {Boolean}
-     */
-    
-        /**
-     *用振幅、水平正弦值、垂直正弦值、网格和时长初始化action
-     * @param {Number} 时长
-     * @param {cc.Size} 网格打大小
-     * @param {Number} 波的数量
-     * @param {Number} 振幅
-     * @param {Boolean} 水平正弦值
-     * @param {Boolean} 垂直正弦值
-     * @返回 {Boolean}
      */
     initWithDuration:function (duration, gridSize, waves, amplitude, horizontal, vertical) {
         if (cc.Grid3DAction.prototype.initWithDuration.call(this, duration, gridSize)) {
@@ -1578,13 +1045,7 @@ cc.Waves = cc.Grid3DAction.extend(/** @lends cc.Waves# */{
     },
 
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.                
-     *
-     * @param {Number}  dt
-     */
-    
-     /**
-     * 每帧调用一次，时间参数是设置两帧之间的时长间隔的  
+     * Called once per frame. Time is the number of seconds of a frame interval.                每帧调用一次，时间参数是设置两帧之间的时长间隔的  
      *
      * @param {Number}  dt
      */
@@ -1609,7 +1070,7 @@ cc.Waves = cc.Grid3DAction.extend(/** @lends cc.Waves# */{
 });
 
 /**
- * initializes the action with amplitude, horizontal sin, vertical sin, a grid and duration             
+ * initializes the action with amplitude, horizontal sin, vertical sin, a grid and duration             用振幅、水平正弦值、垂直正弦值、网格和时长初始化action
  * @function
  * @param {Number} duration
  * @param {cc.Size} gridSize
@@ -1619,25 +1080,13 @@ cc.Waves = cc.Grid3DAction.extend(/** @lends cc.Waves# */{
  * @param {Boolean} vertical
  * @return {cc.Waves}
  */
-
-/**
- * 用振幅、水平正弦值、垂直正弦值、网格大小和时长初始化action
- * @function
- * @param {Number} 时长
- * @param {cc.Size} 网格大小
- * @param {Number} 波的数量
- * @param {Number} 振幅
- * @param {Boolean} 水平正弦值
- * @param {Boolean} 垂直正弦值
- * @返回 {cc.Waves}
- */
 cc.waves = function (duration, gridSize, waves, amplitude, horizontal, vertical) {
     return new cc.Waves(duration, gridSize, waves, amplitude, horizontal, vertical);
 };
 
 /**
- * Please use cc.waves instead 
- * initializes the action with amplitude, horizontal sin, vertical sin, a grid and duration             
+ * Please use cc.waves instead                  3.0后的版本请用cc.waves代替
+ * initializes the action with amplitude, horizontal sin, vertical sin, a grid and duration             用振幅、水平正弦值、垂直正弦值、网格和时长初始化action
  * @param {Number} duration
  * @param {cc.Size} gridSize
  * @param {Number} waves
@@ -1648,26 +1097,12 @@ cc.waves = function (duration, gridSize, waves, amplitude, horizontal, vertical)
  * @static
  * @deprecated since v3.0 <br /> Please use cc.waves instead.
  */
-
-/**
- * 请用cc.waves代替
- * 用振幅、水平正弦值、垂直正弦值、网格和时长初始化action
- * @param {Number} 时长
- * @param {cc.Size} 网格大小
- * @param {Number} 波的数量
- * @param {Number} 振幅
- * @param {Boolean} 水平正弦值
- * @param {Boolean} 垂直正弦值
- * @return {cc.Waves}
- * @static
- * @3.0后的版本请用cc.waves代替
- */
 cc.Waves.create = cc.waves;
 
 /** @brief  */
 /**
  * cc.Twirl action. <br />
- * Reference the test cases (Effects Test) 
+ * Reference the test cases (Effects Test)              参考示例（Effects Tes）
  * @class
  * @extends cc.Grid3DAction
  * @param {Number} duration
@@ -1675,18 +1110,6 @@ cc.Waves.create = cc.waves;
  * @param {cc.Point} position
  * @param {Number} twirls
  * @param {Number} amplitude
- */
-
-/**
- * cc.Twirl action. <br />
- * 参考示例（Effects Tes）
- * @class
- * @extends cc.Grid3DAction
- * @param {Number} 时长
- * @param {cc.Size} 网格大小
- * @param {cc.Point} 位置
- * @param {Number} 转动圈数
- * @param {Number} 振幅
  */
 cc.Twirl = cc.Grid3DAction.extend(/** @lends cc.Twirl# */{
     /* twirl center */
@@ -1696,24 +1119,14 @@ cc.Twirl = cc.Grid3DAction.extend(/** @lends cc.Twirl# */{
     _amplitudeRate: 0,
 
 	/**
-     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />                  
-	 * Create a grid 3d action with center position, number of twirls, amplitude, a grid size and duration.                
+     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />                  构造函数，重写此函数去继承构造函数的方法，记得在"ctor"函数里调用"this._super()"
+	 * Create a grid 3d action with center position, number of twirls, amplitude, a grid size and duration.                用中心位置、旋转圈数、振幅、网格和时长创建一个action
 	 * @param {Number} duration
 	 * @param {cc.Size} gridSize
 	 * @param {cc.Point} position
 	 * @param {Number} twirls
 	 * @param {Number} amplitude
 	 */
-        
-                /**
-     * 构造函数，重载此函数去继承构造函数的方法，记得在继承类的"ctor"函数里调用"this._super()"<br />                  
-         *  用中心位置、旋转圈数、振幅、网格和时长创建一个action
-         * @param {Number} 时长
-         * @param {cc.Size} 网格大小
-         * @param {cc.Point} 位置
-         * @param {Number} 旋转圈数
-         * @param {Number} 振幅
-         */
     ctor:function (duration, gridSize, position, twirls, amplitude) {
         cc.GridAction.prototype.ctor.call(this);
 
@@ -1722,12 +1135,7 @@ cc.Twirl = cc.Grid3DAction.extend(/** @lends cc.Twirl# */{
     },
 
     /**
-     * get twirl center
-     * @return {cc.Point}
-     */
-    
-        /**
-     * 获取旋转中心点
+     * get twirl center                 获取旋转中心点
      * @return {cc.Point}
      */
     getPosition:function () {
@@ -1735,13 +1143,8 @@ cc.Twirl = cc.Grid3DAction.extend(/** @lends cc.Twirl# */{
     },
 
     /**
-     * set twirl center 
+     * set twirl center                 设置旋转中心店
      * @param {cc.Point} position
-     */
-    
-        /**
-     * 设置旋转中心点
-     * @param {cc.Point} 位置
      */
     setPosition:function (position) {
         this._position.x = position.x;
@@ -1749,60 +1152,38 @@ cc.Twirl = cc.Grid3DAction.extend(/** @lends cc.Twirl# */{
     },
 
     /**
-     * get amplitude
+     * get amplitude            获取振幅
      * @return {Number}
-     */
-       /**
-     * 获取振幅
-     * @返回 {Number}
      */
     getAmplitude:function () {
         return this._amplitude;
     },
 
     /**
-     * set amplitude
+     * set amplitude            设置振幅
      * @param {Number} amplitude
-     */
-    
-        /**
-     * 设置振幅
-     * @param {Number} 振幅
      */
     setAmplitude:function (amplitude) {
         this._amplitude = amplitude;
     },
 
     /**
-     * get amplitude rate
+     * get amplitude rate               获取振幅速率
      * @return {Number}
-     */
-    
-        /**
-     * 获取振幅速率
-     * @返回 {Number}
      */
     getAmplitudeRate:function () {
         return this._amplitudeRate;
     },
 
     /**
-     * set amplitude rate
+     * set amplitude rate               设置振幅速率
      * @param {Number} amplitudeRate
-     */
-    
-        /**
-     * 设置振幅速率
-     * @param {Number} 振幅速率
      */
     setAmplitudeRate:function (amplitudeRate) {
         this._amplitudeRate = amplitudeRate;
     },
 
-    /** initializes the action with center position, number of twirls, amplitude, a grid size and duration*/    
-
-    /**用中心位置、旋转圈数、振幅、网格和时长初始化action */         
-
+    /** initializes the action with center position, number of twirls, amplitude, a grid size and duration              用中心位置、旋转圈数、振幅、网格和时长初始化action */           
     initWithDuration:function (duration, gridSize, position, twirls, amplitude) {
         if (cc.Grid3DAction.prototype.initWithDuration.call(this, duration, gridSize)) {
             this.setPosition(position);
@@ -1815,13 +1196,7 @@ cc.Twirl = cc.Grid3DAction.extend(/** @lends cc.Twirl# */{
     },
 
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.                
-     *
-     * @param {Number}  dt
-     */
-    
-        /**
-     * 每帧调用一次，时间参数是设置两帧之间的时长间隔的
+     * Called once per frame. Time is the number of seconds of a frame interval.                每帧调用一次，时间参数是设置两帧之间的时长间隔的
      *
      * @param {Number}  dt
      */
@@ -1855,33 +1230,22 @@ cc.Twirl = cc.Grid3DAction.extend(/** @lends cc.Twirl# */{
 });
 
 /**
- * creates the action with center position, number of twirls, amplitude, a grid size and duration               
+ * creates the action with center position, number of twirls, amplitude, a grid size and duration               用中心位置、旋转圈数、振幅、网格和时长创建一个action
  * @function
  * @param {Number} duration
- * @param {cc.Size} girdsize
- * @param {cc.Point} pos
+ * @param {cc.Size} gridSize
+ * @param {cc.Point} position
  * @param {Number} twirls
  * @param {Number} amplitude
  * @return {cc.Twirl}
- */
-
-/**
- *   用中心位置、旋转圈数、振幅、网格和时长创建一个action
- * @function
- * @param {Number} 时长
- * @param {cc.Size} 网格大小
- * @param {cc.Point} 位置
- * @param {Number} 转动圈数
- * @param {Number} 振幅
- * @返回 {cc.Twirl}
  */
 cc.twirl = function (duration, gridSize, position, twirls, amplitude) {
     return new cc.Twirl(duration, gridSize, position, twirls, amplitude);
 };
 
 /**
- * Please use cc.twirl instead 
- * creates the action with center position, number of twirls, amplitude, a grid size and duration               
+ * Please use cc.twirl instead                  3.0后的版本用cc.twirl代替
+ * creates the action with center position, number of twirls, amplitude, a grid size and duration               用中心位置、旋转圈数、振幅、网格和时长创建一个action
  * @param {Number} duration
  * @param {cc.Size} gridSize
  * @param {cc.Point} position
@@ -1890,18 +1254,5 @@ cc.twirl = function (duration, gridSize, position, twirls, amplitude) {
  * @return {cc.Twirl}
  * @static
  * @deprecated since v3.0 <br /> Please use cc.twirl instead.
- */
-
-/**
- * 请用cc.twirl代替
- *  用中心位置、旋转圈数、振幅、网格和时长创建一个action
- * @param {Number} 时长
- * @param {cc.Size} 网格大小
- * @param {cc.Point} 位置
- * @param {Number} 转动圈数
- * @param {Number} 振幅
- * @返回 {cc.Twirl}
- * @static
- * @3.0后的版本用cc.twirl代替
  */
 cc.Twirl.create = cc.twirl;
