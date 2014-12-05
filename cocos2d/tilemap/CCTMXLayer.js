@@ -121,11 +121,10 @@ cc.TMXLayer = cc.SpriteBatchNode.extend(/** @lends cc.TMXLayer# */{
     },
 
     /**
-     * Sets the untransformed size of the TMXLayer.
-	 * 未变换TMLayer的尺寸
+     * Sets the untransformed size of the TMXLayer.                                                                            未变换TMLayer的尺寸
      * @override
      * @param {cc.Size|Number} size The untransformed size of the TMXLayer or The untransformed size's width of the TMXLayer.  未变换TMXLayer的尺寸或者TMXLayer尺寸的宽度
-     * @param {Number} [height] The untransformed size's height of the TMXLayer. 未变换TMXLayer的高度
+     * @param {Number} [height] The untransformed size's height of the TMXLayer.                                               未变换TMXLayer的高度
      */
     setContentSize:function (size, height) {
         var locContentSize = this._contentSize;
