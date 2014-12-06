@@ -26,8 +26,10 @@
 
 /**
  * the dollar sign, classic like jquery, this selector add extra methods to HTMLElement without touching its prototype</br>
+ * 美元符号($), 跟jquery中的一样经典, 这个选择器(selector)可以向HTMLElement中添加额外的方法而不需要接触它的原型(prototype)
  * it is also chainable like jquery
- * @param {HTMLElement|String} x pass in a css selector in string or the whole HTMLElement
+ * 与jquery中一样它是可链接的
+ * @param {HTMLElement|String} x pass in a css selector in string or the whole HTMLElement  以字符串或整个HTMLElement的形式传入一个css选择器
  * @function
  * @return {cc.$}
  */
@@ -39,15 +41,15 @@ cc.$ = function (x) {
 
     if (el) {
         /**
-         * find and return the child wth css selector (same as jquery.find)
+         * find and return the child with css selector (same as jquery.find)  用css选择器查找并返回子元素(与jquery.find相同)
          * @lends cc.$#
          * @function
-         * @param {HTMLElement|String} x pass in a css selector in string or the whole HTMLElement
+         * @param {HTMLElement|String} x pass in a css selector in string or the whole HTMLElement  以字符串或整个HTMLElement的形式传入一个css选择器
          * @return {cc.$}
          */
         el.find = el.find || cc.$;
         /**
-         * check if a DOMNode has a specific class
+         * check if a DOMNode has a specific class  检查一个DOMNode是否含有指定类
          * @lends cc.$#
          * @function
          * @param {String} cls
@@ -57,7 +59,7 @@ cc.$ = function (x) {
             return this.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
         };
         /**
-         * add a class to a DOMNode, returns self to allow chaining
+         * add a class to a DOMNode, returns self to allow chaining  为一个DOMNode添加一个类, 返回自身以允许链接
          * @lends cc.$#
          * @function
          * @param {String} cls
@@ -73,7 +75,7 @@ cc.$ = function (x) {
             return this;
         };
         /**
-         * remove a specific class from a DOMNode, returns self to allow chaining
+         * remove a specific class from a DOMNode, returns self to allow chaining  从一个DOMNode中移除指定类, 返回自身以允许链接
          * @lends cc.$#
          * @function
          * @param {String} cls
@@ -86,7 +88,7 @@ cc.$ = function (x) {
             return this;
         };
         /**
-         * detach it self from parent
+         * detach it self from parent  将元素从父节点分离
          * @lends cc.$#
          * @function
          */
@@ -97,7 +99,7 @@ cc.$ = function (x) {
         };
 
         /**
-         * add to another element as a child
+         * add to another element as a child  添加为另一个元素的子节点
          * @lends cc.$#
          * @function
          * @param {HTMLElement|cc.$} x
@@ -109,7 +111,7 @@ cc.$ = function (x) {
         };
 
         /**
-         * add to another element as a child and place on the top of the children list
+         * add to another element as a child and place on the top of the children list  添加为另一个元素的子节点并在孩子列表中置顶
          * @lends cc.$#
          * @function
          * @param {HTMLElement|cc.$} x
@@ -121,7 +123,7 @@ cc.$ = function (x) {
         };
 
         /**
-         * helper function for updating the css transform
+         * helper function for updating the css transform  更新css变换(transform)的辅助函数
          * @lends cc.$#
          * @function
          * @return {cc.$}
@@ -137,12 +139,12 @@ cc.$ = function (x) {
         el.skew = el.skew || {x: 0, y: 0};
 
         /**
-         * move the element
+         * move the element  移动元素
          * @memberOf cc.$#
          * @name translates
          * @function
-         * @param {Number} x in pixel
-         * @param {Number} y in pixel
+         * @param {Number} x in pixel  以像素为单位
+         * @param {Number} y in pixel  以像素为单位
          * @return {cc.$}
          */
         el.translates = function (x, y) {
@@ -153,11 +155,11 @@ cc.$ = function (x) {
         };
 
         /**
-         * rotate the element
+         * rotate the element  旋转元素
          * @memberOf cc.$#
          * @name rotate
          * @function
-         * @param {Number} x in degrees
+         * @param {Number} x in degrees  以角度为单位
          * @return {cc.$}
          */
         el.rotate = function (x) {
@@ -167,7 +169,7 @@ cc.$ = function (x) {
         };
 
         /**
-         * resize the element
+         * resize the element  改变元素尺寸
          * @memberOf cc.$#
          * @name resize
          * @function
@@ -183,11 +185,11 @@ cc.$ = function (x) {
         };
 
         /**
-         * skews the element
+         * skews the element  倾斜元素
          * @memberOf cc.$#
          * @name setSkew
          * @function
-         * @param {Number} x in degrees
+         * @param {Number} x in degrees  以角度为单位
          * @param {Number} y
          * @return {cc.$}
          */
@@ -200,7 +202,7 @@ cc.$ = function (x) {
     }
     return el;
 };
-//getting the prefix and css3 3d support
+//getting the prefix and css3 3d support  获取前缀和css3 3D支持
 switch (cc.sys.browserType) {
     case cc.sys.BROWSER_TYPE_FIREFOX:
         cc.$.pfx = "Moz";
@@ -223,9 +225,9 @@ switch (cc.sys.browserType) {
         cc.$.pfx = "webkit";
         cc.$.hd = true;
 }
-//cache for prefixed transform
+//cache for prefixed transform  带前缀的变换的缓存
 cc.$.trans = cc.$.pfx + "Transform";
-//helper function for constructing transform strings
+//helper function for constructing transform strings  构造变换字符串的辅助函数
 cc.$.translate = (cc.$.hd) ? function (a) {
     return "translate3d(" + a.x + "px, " + a.y + "px, 0) "
 } : function (a) {
@@ -245,8 +247,8 @@ cc.$.skew = function (a) {
 
 
 /**
- * Creates a new element, and adds cc.$ methods
- * @param {String} x name of the element tag to create
+ * Creates a new element, and adds cc.$ methods  创建一个新元素, 并添加cc.$方法
+ * @param {String} x name of the element tag to create  创建的元素的标签名
  * @return {cc.$}
  */
 cc.$new = function (x) {
