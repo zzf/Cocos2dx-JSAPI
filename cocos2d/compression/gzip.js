@@ -6,8 +6,8 @@
 
 /**
  * See cc.Codec.GZip.gunzip.
- * @param {Array | String} data The bytestream to decompress
- * Constructor
+ * @param {Array | String} data The bytestream to decompress 参数{Array|String}解压的字节流数据
+ * Constructor 构造函数
  */
 cc.Codec.GZip = function Jacob__GZip(data) {
     this.data = data;
@@ -36,9 +36,10 @@ cc.Codec.GZip = function Jacob__GZip(data) {
 };
 
 /**
- * Unzips the gzipped data of the 'data' argument.
+ * Unzips the gzipped data of the 'data' argument. 解压'data'的压缩数据
  * @param string  The bytestream to decompress. Either an array of Integers between 0 and 255, or a String.
- * @return {String}
+ * @param {String} 字节流解压，0-255的整型数组，或者字符串
+ * @return {String} 
  */
 cc.Codec.GZip.gunzip = function (string) {
     if (string.constructor === Array) {
@@ -56,8 +57,8 @@ cc.Codec.GZip.HufNode = function () {
 };
 
 /**
- * @constant
- * @type Number
+ * @constant 常量
+ * @type Number 
  */
 cc.Codec.GZip.LITERALS = 288;
 /**
@@ -108,7 +109,7 @@ cc.Codec.GZip.cplext = [
     0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2,
     3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 0, 99, 99
 ];
-/* 99==invalid */
+/* 99==invalid */ 99==无效
 cc.Codec.GZip.cpdist = [
     0x0001, 0x0002, 0x0003, 0x0004, 0x0005, 0x0007, 0x0009, 0x000d,
     0x0011, 0x0019, 0x0021, 0x0031, 0x0041, 0x0061, 0x0081, 0x00c1,
