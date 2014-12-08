@@ -25,10 +25,8 @@
  ****************************************************************************/
 
 /**
- * the dollar sign, classic like jquery, this selector add extra methods to HTMLElement without touching its prototype</br>
- * 美元符号($), 跟jquery中的一样经典, 这个选择器(selector)可以向HTMLElement中添加额外的方法而不需要接触它的原型(prototype)
- * it is also chainable like jquery
- * 与jquery中一样它是可链接的
+ * the dollar sign, classic like jquery, this selector add extra methods to HTMLElement without touching its prototype</br>  美元符号($), 跟jquery中的一样经典, 这个选择器(selector)可以向HTMLElement中添加额外的方法而不需要接触它的原型(prototype)
+ * it is also chainable like jquery  与jquery中一样它是可链接的
  * @param {HTMLElement|String} x pass in a css selector in string or the whole HTMLElement  以字符串或整个HTMLElement的形式传入一个css选择器
  * @function
  * @return {cc.$}

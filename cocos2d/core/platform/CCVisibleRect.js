@@ -25,10 +25,8 @@
  ****************************************************************************/
 
 /**
- * cc.visibleRect is a singleton object which defines the actual visible rect of the current view,
- * cc.visibleRect是定义了当前view实际可见矩形区域的一个单例对象
- * it should represent the same rect as cc.view.getViewportRect()
- * 它与cc.view.getViewportRect()代表的是同一个矩形区域
+ * cc.visibleRect is a singleton object which defines the actual visible rect of the current view,  cc.visibleRect是定义了当前view实际可见矩形区域的一个单例对象
+ * it should represent the same rect as cc.view.getViewportRect()  它与cc.view.getViewportRect()代表的是同一个矩形区域
  *
  * @property {cc.Point}     topLeft         - Top left coordinate of the screen related to the game scene 	游戏场景左上角的屏幕坐标
  * @property {cc.Point}     topRight        - Top right coordinate of the screen related to the game scene 	 游戏场景右上角的屏幕坐标
