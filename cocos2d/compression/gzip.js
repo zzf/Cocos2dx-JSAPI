@@ -37,8 +37,8 @@ cc.Codec.GZip = function Jacob__GZip(data) {
 
 /**
  * Unzips the gzipped data of the 'data' argument. 解压'data'的压缩数据
- * @param string  The bytestream to decompress. Either an array of Integers between 0 and 255, or a String.
- * @param {String} 字节流解压，0-255的整型数组，或者字符串
+ * @param string  The bytestream to decompress. Either an array of Integers between 0 and 255, or a String. 字节流解压，0-255的整型数组，或者字符串
+ * @param {String}
  * @return {String} 
  */
 cc.Codec.GZip.gunzip = function (string) {
@@ -57,12 +57,12 @@ cc.Codec.GZip.HufNode = function () {
 };
 
 /**
- * @constant 常量
+ * @constant 
  * @type Number 
  */
 cc.Codec.GZip.LITERALS = 288;
 /**
- * @constant 常量
+ * @constant 
  * @type Number
  */
 cc.Codec.GZip.NAMEMAX = 256;
@@ -707,7 +707,7 @@ cc.Codec.GZip.prototype.skipdir = function () {
 
     if ((this.gpflags & 16)) {
         while (c = this.readByte()) { // FIXME: looks like they read to the end of the stream, should be doable more efficiently 
-            //FILE COMMENT 待改善代码：看样子像是流末尾处读，应该有2倍的文件读写效率
+            //FILE COMMENT 待改善代码：看样子像是流末尾处读，应该有2倍以上的文件读写效率
         }
     }
 
