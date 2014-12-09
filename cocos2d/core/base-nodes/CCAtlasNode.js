@@ -26,15 +26,19 @@
 
 /**
  * <p>cc.AtlasNode is a subclass of cc.Node, it knows how to render a TextureAtlas object. </p>
- * <p>cc.AtlasNode是cc.Node的子类,cc.AtlasNode可以用来渲染一个TextureAtlas对象</p>
  *
  * <p>If you are going to render a TextureAtlas consider subclassing cc.AtlasNode (or a subclass of cc.AtlasNode)</p>
- * <p>如果你想要渲染一个TextureAtlas 可以考虑继承cc.AtlasNode(或者cc.AtlasNode的子类)</p>
  *
  * <p>All features from cc.Node are valid</p>
- * <p>所有继承自cc.Node的功能都是可用的</p>
  *
  * <p>You can create a cc.AtlasNode with an Atlas file, the width, the height of each item and the quantity of items to render</p>
+ *
+ * <p>cc.AtlasNode是cc.Node的子类,cc.AtlasNode可以用来渲染一个TextureAtlas对象</p>
+ *
+ * <p>如果你想要渲染一个TextureAtlas 可以考虑继承cc.AtlasNode(或者cc.AtlasNode的子类)</p>
+ *
+ * <p>所有继承自cc.Node的功能都是可用的</p>
+ *
  * <p>你可以使用一个Atlas文件,item的宽、高跟items数量来进行绘制</p>
  *
  * @class
@@ -47,12 +51,10 @@
  * @example
  * var node = new cc.AtlasNode("pathOfTile", 16, 16, 1);
  *
- * @property {cc.Texture2D}     texture         - Current used texture
- * @property {cc.Texture2D}     texture         - 当前使用的纹理
- * @property {cc.TextureAtlas}  textureAtlas    - Texture atlas for cc.AtlasNode
- * @property {cc.TextureAtlas}  textureAtlas    - cc.AtlasNodeTexture的地图纹理
- * @property {Number}           quadsToDraw     - Number of quads to draw
- * @property {Number}           quadsToDraw     - 要回执的四边形的数量
+ * @property {cc.Texture2D}     texture         - Current used texture								@property {cc.Texture2D}     texture         - 当前使用的纹理
+ * @property {cc.TextureAtlas}  textureAtlas    - Texture atlas for cc.AtlasNode			@property {cc.TextureAtlas}  textureAtlas    - cc.AtlasNodeTexture的地图纹理	
+ * @property {Number}           quadsToDraw     - Number of quads to draw							@property {Number}           quadsToDraw     - 要绘制的四边形的数量
+ * 
  */
 cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
     textureAtlas: null,
@@ -84,8 +86,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
     _className: "AtlasNode",
 
     /**
-     * <p>Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function.</p>
-     * <p>构造函数,重写它进行继承父类中的构造动作,在"ctor"函数中记得调用"this._super()"进行继承</p>
+     * <p>Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function.</p>	<p>构造函数,重写它进行继承父类中的构造动作,在"ctor"函数中记得调用"this._super()"进行继承</p>
      * @param {String} tile
      * @param {Number} tileWidth
      * @param {Number} tileHeight
@@ -106,10 +107,8 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
     },
 
     /**
-     * Updates the Atlas (indexed vertex array).
-     * 更新Atlas(顶点索引数组).
-     * Empty implementation, shall be overridden in subclasses
-     * 清空实现方法,需要被子类重写
+     * Updates the Atlas (indexed vertex array).										更新Atlas(顶点索引数组).
+     * Empty implementation, shall be overridden in subclasses			清空实现方法,需要被子类重写
      * @function
      */
     updateAtlasValues: function () {
@@ -117,8 +116,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
     },
 
     /**
-     * Get color value of the atlas node
-     * 获取atlas节点的颜色值
+     * Get color value of the atlas node														获取atlas节点的颜色值
      * @function
      * @return {cc.Color}
      */
@@ -129,10 +127,8 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
     },
 
     /**
-     * Set whether color should be changed with the opacity value,
-     * 设置颜色值是否要跟着透明度进行改变,
-     * if true, node color will change while opacity changes.
-     * 如果为true,节点的颜色需要因透明度值的改变而改变.
+     * Set whether color should be changed with the opacity value,		设置颜色值是否要跟着不透明度进行改变,
+     * if true, node color will change while opacity changes.					如果为true,节点的颜色需要因不透明度值的改变而改变.
      * @function
      * @param {Boolean} value
      */
@@ -143,8 +139,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
     },
 
     /**
-     * Get whether color should be changed with the opacity value
-     * 获取颜色值是否有因透明度值的改变而改变
+     * Get whether color should be changed with the opacity value			获取颜色值是否有因不透明度值的改变而改变
      * @function
      * @return {Boolean}
      */
@@ -153,8 +148,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
     },
 
     /**
-     * Get node's blend function
-     * 获取节点的混合函数
+     * Get node's blend function																			获取节点的混合函数
      * @function
      * @return {cc.BlendFunc}
      */
@@ -163,10 +157,8 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
     },
 
     /**
-     * Set node's blend function
-     * 设置节点的混合函数
-     * This function accept either cc.BlendFunc object or source value and destination value
-     * 该函数接受一个混合函数对象或者一个源跟目标值
+     * Set node's blend function																																	设置节点的混合函数
+     * This function accept either cc.BlendFunc object or source value and destination value			该函数接受一个混合函数对象或者一个源跟目标值
      * @function
      * @param {Number | cc.BlendFunc} src
      * @param {Number} dst
@@ -179,19 +171,16 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
     },
 
     /**
-     * Set the atlas texture
-     * 设置atlas纹理
+     * Set the atlas texture												设置atlas纹理
      * @function
-     * @param {cc.TextureAtlas} value The texture
-     * @param {cc.TextureAtlas} 纹理的值
+     * @param {cc.TextureAtlas} value The texture		@param {cc.TextureAtlas} 纹理的值
      */
     setTextureAtlas: function (value) {
         this.textureAtlas = value;
     },
 
     /**
-     * Get the atlas texture
-     * 获取atlas纹理
+     * Get the atlas texture												获取atlas纹理
      * @function
      * @return {cc.TextureAtlas}
      */
@@ -200,8 +189,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
     },
 
     /**
-     * Get the number of quads to be rendered
-     * 获取渲染过的四边形的数量
+     * Get the number of quads to be rendered				获取渲染过的四边形的数量
      * @function
      * @return {Number}
      */
@@ -210,8 +198,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
     },
 
     /**
-     * Set the number of quads to be rendered
-     * 设置要进行渲染的四边形的数量
+     * Set the number of quads to be rendered				设置要进行渲染的四边形的数量
      * @function
      * @param {Number} quadsToDraw
      */
@@ -226,17 +213,13 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
     _colorF32Array: null,
 
     /**
-     * Initializes an cc.AtlasNode object with an atlas texture file name, the width, the height of each tile and the quantity of tiles to render
-     * 用Atlas文件初始化cc.AtlasNode对象,并设置宽、高、itmes数量 
+     * Initializes an cc.AtlasNode object with an atlas texture file name, the width, the height of each tile and the quantity of tiles to render						用Atlas文件初始化cc.AtlasNode对象,并设置宽、高、itmes数量 
      * @function
-     * @param {String} tile             The atlas texture file name
-     * @param {String} tile             地图纹理的文件名
-     * @param {Number} tileWidth        The width of each tile
-     * @param {Number} tileWidth        每个瓦片的宽度
-     * @param {Number} tileHeight       The height of each tile
-     * @param {Number} tileHeight       每个瓦片的高度
-     * @param {Number} itemsToRender    The quantity of tiles to be rendered
-     * @param {Number} itemsToRender    要渲染的瓦片数量
+     * @param {String} tile             The atlas texture file name										@param {String} tile             地图纹理的文件名
+     * @param {Number} tileWidth        The width of each tile												@param {Number} tileWidth        每个瓦片的宽度
+     * @param {Number} tileHeight       The height of each tile												@param {Number} tileHeight       每个瓦片的高度
+     * @param {Number} itemsToRender    The quantity of tiles to be rendered					@param {Number} itemsToRender    要渲染的瓦片数量
+     * 
      * @return {Boolean}
      */
     initWithTileFile: function (tile, tileWidth, tileHeight, itemsToRender) {
@@ -247,17 +230,12 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
     },
 
     /**
-     * Initializes an CCAtlasNode with an atlas texture, the width, the height of each tile and the quantity of tiles to render
-     * 用atlas纹理初始化AtlasNode,并设置宽、高、itmes数量 
+     * Initializes an CCAtlasNode with an atlas texture, the width, the height of each tile and the quantity of tiles to render				用atlas纹理初始化AtlasNode,并设置宽、高、itmes数量 
      * @function
-     * @param {cc.Texture2D} texture    The atlas texture
-     * @param {cc.Texture2D} texture    地图纹理
-     * @param {Number} tileWidth        The width of each tile
-     * @param {Number} tileWidth        每个瓦片的宽度
-     * @param {Number} tileHeight       The height of each tile
-     * @param {Number} tileHeight       每个瓦片的高度
-     * @param {Number} itemsToRender    The quantity of tiles to be rendered
-     * @param {Number} itemsToRender    要渲染的瓦片数量
+     * @param {cc.Texture2D} texture    The atlas texture													@param {cc.Texture2D} texture    地图纹理
+     * @param {Number} tileWidth        The width of each tile										@param {Number} tileWidth        每个瓦片的宽度
+     * @param {Number} tileHeight       The height of each tile										@param {Number} tileHeight       每个瓦片的高度
+     * @param {Number} itemsToRender    The quantity of tiles to be rendered			@param {Number} itemsToRender    要渲染的瓦片数量
      * @return {Boolean}
      */
     initWithTexture: null,
@@ -310,11 +288,9 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
     },
 
     /**
-     * Render function using the canvas 2d context or WebGL context, internal usage only, please do not call this function
-     * 使用canvas 2d上下文或者WebGL上下文渲染函数,仅供内部使用,请别调用该函数
+     * Render function using the canvas 2d context or WebGL context, internal usage only, please do not call this function			使用canvas 2d上下文或者WebGL上下文渲染函数,仅供内部使用,请别调用该函数
      * @function
-     * @param {CanvasRenderingContext2D | WebGLRenderingContext} ctx The render context
-     * @param {CanvasRenderingContext2D | WebGLRenderingContext} ctx 渲染上下文
+     * @param {CanvasRenderingContext2D | WebGLRenderingContext} ctx The render context				@param {CanvasRenderingContext2D | WebGLRenderingContext} ctx 渲染上下文
      */
     draw: null,
 
@@ -329,11 +305,9 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
     },
 
     /**
-     * Set node's color
-     * 设置节点的颜色
+     * Set node's color				设置节点的颜色
      * @function
-     * @param {cc.Color} color Color object created with cc.color(r, g, b).
-     * @param {cc.Color} color cc.color(r, g, b)创建的颜色对象.
+     * @param {cc.Color} color Color object created with cc.color(r, g, b).			@param {cc.Color} color cc.color(r, g, b)创建的颜色对象.
      */
     setColor: null,
 
@@ -390,11 +364,9 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
     },
 
     /**
-     * Set node's opacity
-     * 设置节点的透明度
+     * Set node's opacity							设置节点的不透明度
      * @function
-     * @param {Number} opacity The opacity value
-     * @param {Number} opacity 透明度的值
+     * @param {Number} opacity The opacity value			@param {Number} opacity 不透明度的值
      */
     setOpacity: function (opacity) {
     },
@@ -402,7 +374,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
     _setOpacityForCanvas: function (opacity) {
         cc.Node.prototype.setOpacity.call(this, opacity);
         // special opacity for premultiplied textures
-        // 自左乘纹理的特殊透明度
+        // 自左乘纹理的特殊不透明度
         if (this._opacityModifyRGB) {
             this.color = this._colorUnmodified;
         }
@@ -411,7 +383,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
     _setOpacityForWebGL: function (opacity) {
         cc.Node.prototype.setOpacity.call(this, opacity);
         // special opacity for premultiplied textures
-        // 自左乘纹理的特殊透明度
+        // 自左乘纹理的特殊不透明度
         if (this._opacityModifyRGB) {
             this.color = this._colorUnmodified;
         } else {
@@ -422,8 +394,7 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
     },
 
     /**
-     * Get the current texture
-     * 获取当前纹理
+     * Get the current texture		获取当前纹理
      * @function
      * @return {cc.Texture2D}
      */
@@ -438,11 +409,9 @@ cc.AtlasNode = cc.Node.extend(/** @lends cc.AtlasNode# */{
     },
 
     /**
-     * Replace the current texture with a new one
-     * 使用新纹理替换当前纹理
+     * Replace the current texture with a new one					使用新纹理替换当前纹理
      * @function
-     * @param {cc.Texture2D} texture    The new texture
-     * @param {cc.Texture2D} texture    新的纹理
+     * @param {cc.Texture2D} texture    The new texture		@param {cc.Texture2D} texture    新的纹理
      */
     setTexture: null,
 
@@ -551,9 +520,8 @@ _p.quadsToDraw;
 
 
 /**
- * Creates a cc.AtlasNode with an Atlas file the width and height of each item and the quantity of items to render
- * 从Atlas文件创建一个AtlasNode,并设置它的宽、高以及itmes数量
- * @deprecated since v3.0, please use new construction instead
+ * Creates a cc.AtlasNode with an Atlas file the width and height of each item and the quantity of items to render				从Atlas文件创建一个cc.AtlasNode,并设置它的宽、高以及itmes数量
+ * @deprecated since v3.0, please use new construction instead																														v3.0版本后弃用,请使用新的构造器代替
  * @function
  * @static
  * @param {String} tile
