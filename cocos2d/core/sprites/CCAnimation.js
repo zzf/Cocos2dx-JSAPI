@@ -416,6 +416,8 @@ cc.Animation = cc.Class.extend(/** @lends cc.Animation# */{
 
     /**
      * Returns whether or not it shall restore the original frame when the animation finishes
+     * 当动画完成时返回是否应该恢复原来的帧
+     * 
      * @return {Boolean}
      */
     getRestoreOriginalFrame:function () {
@@ -424,6 +426,8 @@ cc.Animation = cc.Class.extend(/** @lends cc.Animation# */{
 
     /**
      * Returns duration in seconds of the whole animation. It is the result of totalDelayUnits * delayPerUnit
+     * 返回整个动画的持续秒数. 经的结果等于总的延时单元数 * 每一个延时单元的时长
+     * 
      * @return {Number}
      */
     getDuration:function () {
@@ -432,6 +436,8 @@ cc.Animation = cc.Class.extend(/** @lends cc.Animation# */{
 
     /**
      * Returns delay in seconds of the "delay unit"
+     * 返回每一个延时单元的秒数
+     * 
      * @return {Number}
      */
     getDelayPerUnit:function () {
@@ -440,6 +446,8 @@ cc.Animation = cc.Class.extend(/** @lends cc.Animation# */{
 
     /**
      * Sets delay in seconds of the "delay unit"
+     * 设置延时单元的秒数
+     * 
      * @param {Number} delayPerUnit
      */
     setDelayPerUnit:function (delayPerUnit) {
@@ -448,6 +456,8 @@ cc.Animation = cc.Class.extend(/** @lends cc.Animation# */{
 
     /**
      * Returns total delay units of the cc.Animation.
+     * 返回cc.Animation总的延时单元数
+     * 
      * @return {Number}
      */
     getTotalDelayUnits:function () {
@@ -456,6 +466,8 @@ cc.Animation = cc.Class.extend(/** @lends cc.Animation# */{
 
     /**
      * Initializes a cc.Animation with frames and a delay between frames, do not call this method yourself, please pass parameters to constructor to initialize.
+     * 通过帧与帧的一个延时来初始化cc.Animation, 但不要自己调用该方法,请使用构造函数传参的方式来初始化.
+     * 
      * @param {Array} frames
      * @param {Number} delay
      * @param {Number} [loops=1]
@@ -489,6 +501,11 @@ cc.Animation = cc.Class.extend(/** @lends cc.Animation# */{
      * The retain function can increase a reference count for the native object to avoid it being released,<br/>
      * you need to manually invoke release function when you think this object is no longer needed, otherwise, there will be memory learks.<br/>
      * retain and release function call should be paired in developer's game code.</p>
+     * 目前的javaScript绑定(JSB),在一些示例中,需要使用retain和release. 这是JSB的一个bug,
+     * 比较丑陋的一种解决方法是使用 retain/release. 所以,这2个方法是为了兼容JSB.
+     * 这是一个hack,当JSB修复掉retain/release的bug后将它们将会被移除<br/>
+     * 
+     * 
      * @function
      * @see cc.Animation#release
      */
@@ -513,8 +530,14 @@ cc.Animation = cc.Class.extend(/** @lends cc.Animation# */{
 
 /**
  * Creates an animation.
+ * 创建一个动画
+ * 
  * @deprecated since v3.0, please use new construction instead
+ * v3.0后将弃用,请使用新的构造方法进行替代
+ * 
  * @see cc.Animation
+ * 参见cc.Animation
+ * 
  * @param {Array} frames
  * @param {Number} delay
  * @param {Number} [loops=1]
@@ -526,7 +549,11 @@ cc.Animation.create = function (frames, delay, loops) {
 
 /**
  * @deprecated since v3.0, please use new construction instead
+ * v3.0后将弃用,请使用新的构造方法进行替代
+ * 
  * @see cc.Animation
+ * 参见cc.Animation
+ * 
  * @type {Function}
  */
 cc.Animation.createWithAnimationFrames = cc.Animation.create;
