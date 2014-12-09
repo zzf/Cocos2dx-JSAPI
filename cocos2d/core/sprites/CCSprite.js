@@ -340,7 +340,7 @@ cc._getCompositeOperationByBlendFunc = function(blendFunc){
  *        - 以GridBase为基类的动作不支持 (例如： CCLens, CCRipple, CCTwirl)； <br/>
  *        - Alias/Antialias属性属于CCSpriteBatchNode，所以不能分别设置aliased属性； <br/>
  *        - Blending function属性属于CCSpriteBatchNode，所以不能分别设置blending function属性；<br/>
- *        - Parallax scroller不支持，但是可以通过一个“代理”精灵来模拟      <br/>
+ *        - 视差滚动（Parallax scroller）不支持，但是可以通过一个“代理”精灵来模拟      <br/>
  *
  *  如果父节点是一个标准的cc.Node，那么cc.Sprite的行为类似于其他的cc.Node:      <br/>
  *    - 支持blending functions    <br/>
@@ -361,7 +361,7 @@ cc._getCompositeOperationByBlendFunc = function(blendFunc){
  * var sprite1 = new cc.Sprite("res/HelloHTML5World.png");
  * var sprite2 = new cc.Sprite("res/HelloHTML5World.png",cc.rect(0,0,480,320));
  *
- * 2.通过精灵帧名创建精灵，在精灵帧之前必须增加"#"。
+ * 2.通过精灵帧名创建精灵，在精灵帧名之前必须加上"#"。
  * var sprite = new cc.Sprite('#grossini_dance_01.png');
  *
  * 3.通过精灵帧创建精灵。
@@ -673,7 +673,7 @@ cc.Sprite = cc.Node.extend(/** @lends cc.Sprite# */{
      *    由setTextureRect方法会被内部调用。                      <br/>
      *    用于在视网膜屏(Retina Display)上显示2倍大小的标清图像。 <br/>
      *    不能手工调用此方法，应该调用setTextureRect实现相应的功能。 <br/>
-     *    （重载这个方法可以创建"两倍缩放的"精灵）
+     *    （重载这个方法可以创建"两倍缩放"的精灵）
      * </p>
      * @param {cc.Rect} rect
      */
@@ -690,7 +690,7 @@ cc.Sprite = cc.Node.extend(/** @lends cc.Sprite# */{
      * @override
      */
     /**
-     * 重新排序这个精灵节点的左右子节点。
+     * 重新排序这个精灵节点的所有子节点。
      * @override
      */
     sortAllChildren:function () {
@@ -734,7 +734,7 @@ cc.Sprite = cc.Node.extend(/** @lends cc.Sprite# */{
      * @override
      */
     /**
-     * 根据新的Z值重新排序一个子节点。  （重载 cc.Node）
+     * 根据新的Z值重新排序子节点。  （重载 cc.Node）
      * @param {cc.Node} child
      * @param {Number} zOrder
      * @override
@@ -864,7 +864,7 @@ cc.Sprite = cc.Node.extend(/** @lends cc.Sprite# */{
      * @override
      */
     /**
-     * 设置定位时，是否忽略锚点
+     * 设置定位时是否忽略锚点
      * @param {Boolean} relative
      * @override
      */
@@ -932,6 +932,16 @@ cc.Sprite = cc.Node.extend(/** @lends cc.Sprite# */{
         return this._flippedX;
     },
 
+    /**
+     * <p>
+     *     Return the flag which indicates whether the sprite is flipped vertically or not.                         <br/>
+     *                                                                                                              <br/>
+     *      It only flips the texture of the sprite, and not the texture of the sprite's children.                  <br/>
+     *      Also, flipping the texture doesn't alter the anchorPoint.                                               <br/>
+     *      If you want to flip the anchorPoint too, and/or to flip the children too use:                           <br/>
+     *         sprite.setScaleY(sprite.getScaleY() * -1); <p/>
+     * @return {Boolean} true if the sprite is flipped vertically, false otherwise.
+     */
     /**
      * <p>
      *     返回精灵是否纵向翻转的标志。                      <br/>
@@ -1148,7 +1158,7 @@ cc.Sprite = cc.Node.extend(/** @lends cc.Sprite# */{
      *     通过图片文件名初始化精灵。<br/>
      *
      *     这个方法会在本地文件系统中搜索指定文件名的图片，然后将他加载到CCTexture2D，<br/>
-	 *     然后使用这个CCTexture2D创建精灵。<br/>
+     *     然后使用这个CCTexture2D创建精灵。<br/>
      *     初始化完成以后，矩形是图片的尺寸，偏移是(0,0)。<br/>
      *     请将参数传递给构造函数初始化精灵，不要自己调用此方法。
      * </p>
@@ -1536,7 +1546,7 @@ cc.Sprite = cc.Node.extend(/** @lends cc.Sprite# */{
  * 通过图片文件路径，或者帧名，或者纹理，或者精灵帧来创建精灵
  * @deprecated 自v3.0弃用，使用新的构造函数代替
  * @see cc.Sprite
- * @param {String|cc.SpriteFrame|HTMLImageElement|cc.Texture2D} fileName  表示一个图面文件路径的字符串，例如 "scene1/monster.png".
+ * @param {String|cc.SpriteFrame|HTMLImageElement|cc.Texture2D} fileName  表示一个图片文件路径的字符串，例如 "scene1/monster.png".
  * @param {cc.Rect} rect  用于裁剪纹理的矩形。
  * @param {Boolean} [rotated] 裁剪纹理的矩形是否旋转。
  * @return {cc.Sprite} 一个有效的精灵对象。
