@@ -35,7 +35,7 @@
  * @class
  * @extends cc.Class	- 继承自cc.Class
  * @param spriteFrame	- 精灵帧
- * @param delayUnits	- 精灵帧的延续时长
+ * @param delayUnits	- 精灵帧的延时单位数
  * @param userInfo	- 用户自定义的信息
  * @returns {AnimationFrame}	- 返回动画帧
  */
@@ -86,7 +86,7 @@ cc.AnimationFrame = cc.Class.extend(/** @lends cc.AnimationFrame# */{
 
     /**
      * initializes the animation frame with a spriteframe, number of delay units and a notification user info
-     * 初始化动画帧，有三个参数：精灵帧、延迟的时长、用户的自定义数据
+     * 初始化动画帧，有三个参数：精灵帧、延时单位数、用户的自定义数据
      * 
      * @param {cc.SpriteFrame} spriteFrame
      * @param {Number} delayUnits
@@ -122,7 +122,7 @@ cc.AnimationFrame = cc.Class.extend(/** @lends cc.AnimationFrame# */{
 
     /**
      * Returns how many units of time the frame takes getter
-     * 获取精灵的延续时长
+     * 返回帧的总时间单位数量
      * 
      * @return {Number}
      */
@@ -132,7 +132,7 @@ cc.AnimationFrame = cc.Class.extend(/** @lends cc.AnimationFrame# */{
 
     /**
      * Sets how many units of time the frame takes setter
-     * 设置精灵的延续时长
+     * 设置帧的总时间单位数量
      * 
      * @param delayUnits
      */
@@ -426,7 +426,7 @@ cc.Animation = cc.Class.extend(/** @lends cc.Animation# */{
 
     /**
      * Returns duration in seconds of the whole animation. It is the result of totalDelayUnits * delayPerUnit
-     * 返回整个动画的持续秒数. 经的结果等于总的延时单元数 * 每一个延时单元的时长
+     * 返回整个动画的持续秒数. 它的结果等于总的延时单位数 * 每一个延时单位的时长
      * 
      * @return {Number}
      */
@@ -436,7 +436,7 @@ cc.Animation = cc.Class.extend(/** @lends cc.Animation# */{
 
     /**
      * Returns delay in seconds of the "delay unit"
-     * 返回每一个延时单元的秒数
+     * 返回每一个延时单位的秒数
      * 
      * @return {Number}
      */
@@ -446,7 +446,7 @@ cc.Animation = cc.Class.extend(/** @lends cc.Animation# */{
 
     /**
      * Sets delay in seconds of the "delay unit"
-     * 设置延时单元的秒数
+     * 设置延时单位的秒数
      * 
      * @param {Number} delayPerUnit
      */
@@ -456,7 +456,7 @@ cc.Animation = cc.Class.extend(/** @lends cc.Animation# */{
 
     /**
      * Returns total delay units of the cc.Animation.
-     * 返回cc.Animation总的延时单元数
+     * 返回cc.Animation总的延时单位数
      * 
      * @return {Number}
      */
@@ -501,13 +501,19 @@ cc.Animation = cc.Class.extend(/** @lends cc.Animation# */{
      * The retain function can increase a reference count for the native object to avoid it being released,<br/>
      * you need to manually invoke release function when you think this object is no longer needed, otherwise, there will be memory learks.<br/>
      * retain and release function call should be paired in developer's game code.</p>
-     * 目前的javaScript绑定(JSB),在一些示例中,需要使用retain和release. 这是JSB的一个bug,
+     * <p>目前的javaScript绑定(JSB),在一些示例中,需要使用retain和release. 这是JSB的一个bug,
      * 比较丑陋的一种解决方法是使用 retain/release. 所以,这2个方法是为了兼容JSB.
      * 这是一个hack,当JSB修复掉retain/release的bug后将它们将会被移除<br/>
-     * 
+     * 如果你创建一个引擎对象并没有在同一帧内将它添加到场景图中,你将需要保留这个对象的引用<br/>
+     * 不然,JSB的自动释放池会认为该对象未被使用这而直接将它释放,<br/>
+     * 之后当你想使用该对象时,你将会得到一个"无效的原生对象"的错误.<br/>
+     * retain方法通过增加一个引用计数来避免原生的对象被释放掉,<br/>
+     * 当该认为不再需要这个对象时你需要手工调用release方法,否则,将会发生内存泄露.<br/>
+     * 在游戏的开发代码中应保证retain与release方法的配对.</p>
      * 
      * @function
-     * @see cc.Animation#release
+     * @see cc.Animation#retain
+     * 参见 cc.Animation#retain
      */
     retain:function () {
     },
@@ -521,8 +527,19 @@ cc.Animation = cc.Class.extend(/** @lends cc.Animation# */{
      * The retain function can increase a reference count for the native object to avoid it being released,<br/>
      * you need to manually invoke release function when you think this object is no longer needed, otherwise, there will be memory learks.<br/>
      * retain and release function call should be paired in developer's game code.</p>
+     * <p>目前的javaScript绑定(JSB),在一些示例中,需要使用retain和release. 这是JSB的一个bug,
+     * 比较丑陋的一种解决方法是使用 retain/release. 所以,这2个方法是为了兼容JSB.
+     * 这是一个hack,当JSB修复掉retain/release的bug后将它们将会被移除<br/>
+     * 如果你创建一个引擎对象并没有在同一帧内将它添加到场景图中,你将需要保留这个对象的引用<br/>
+     * 不然,JSB的自动释放池会认为该对象未被使用这而直接将它释放,<br/>
+     * 之后当你想使用该对象时,你将会得到一个"无效的原生对象"的错误.<br/>
+     * retain方法通过增加一个引用计数来避免原生的对象被释放掉,<br/>
+     * 当该认为不再需要这个对象时你需要手工调用release方法,否则,将会发生内存泄露.<br/>
+     * 在游戏的开发代码中应保证retain与release方法的配对.</p>
+     * 
      * @function
-     * @see cc.Animation#retain
+     * @see cc.Animation#release
+     * 参见see cc.Animation#release
      */
     release:function () {
     }
