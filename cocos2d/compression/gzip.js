@@ -62,7 +62,7 @@ cc.Codec.GZip.HufNode = function () {
  */
 cc.Codec.GZip.LITERALS = 288;
 /**
- * @constant
+ * @constant 常量
  * @type Number
  */
 cc.Codec.GZip.NAMEMAX = 256;
@@ -208,10 +208,10 @@ cc.Codec.GZip.prototype.Rec = function () {
     //if (this.debug) document.write("<br>IsPat "+tmp);
     if (tmp >= 0) {
         curplace.b0 = tmp;
-        /* leaf cell for 0-bit */
+        /* leaf cell for 0-bit */ /*0-bit的叶单元*/
         //if (this.debug) document.write("<br>b0 "+curplace.b0);
     } else {
-        /* Not a Leaf cell */
+        /* Not a Leaf cell */ /*非叶单元*/
         curplace.b0 = 0x8000;
         //if (this.debug) document.write("<br>b0 "+curplace.b0);
         if (this.Rec()) return -1;
@@ -219,12 +219,12 @@ cc.Codec.GZip.prototype.Rec = function () {
     tmp = this.IsPat();
     if (tmp >= 0) {
         curplace.b1 = tmp;
-        /* leaf cell for 1-bit */
+        /* leaf cell for 1-bit */ /*1-bit的叶单元*/
         //if (this.debug) document.write("<br>b1 "+curplace.b1);
         curplace.jump = null;
-        /* Just for the display routine */
+        /* Just for the display routine */ /*仅为显示程序*/
     } else {
-        /* Not a Leaf cell */
+        /* Not a Leaf cell */ /*非叶单元*/
         curplace.b1 = 0x8000;
         //if (this.debug) document.write("<br>b1 "+curplace.b1);
         curplace.jump = this.Places[this.treepos];
@@ -237,7 +237,7 @@ cc.Codec.GZip.prototype.Rec = function () {
 
 cc.Codec.GZip.prototype.CreateTree = function (currentTree, numval, lengths, show) {
     var i;
-    /* Create the Huffman decode tree/table */
+    /* Create the Huffman decode tree/table */ /*创建Huffman解码树或表*/
     //if (this.debug) document.write("currentTree "+currentTree+" numval "+numval+" lengths "+lengths+" show "+show);
     this.Places = currentTree;
     this.treepos = 0;
@@ -266,7 +266,7 @@ cc.Codec.GZip.prototype.DecodeValue = function (currentTree) {
         X = currentTree[xtreepos],
         b;
 
-    /* decode one symbol of the data */
+    /* decode one symbol of the data */ /*解码数据中的一个符号*/
     while (1) {
         b = this.readBit();
         // if (this.debug) document.write("b="+b);
@@ -326,7 +326,7 @@ cc.Codec.GZip.prototype.DeflateLoop = function () {
         } else if (type == 1) {
             var j;
 
-            /* Fixed Huffman tables -- fixed decode routine */
+            /* Fixed Huffman tables -- fixed decode routine */ /*固定霍夫曼表--固定解码程序*/
             while (1) {
                 /*
                  256    0000000        0
@@ -371,7 +371,7 @@ cc.Codec.GZip.prototype.DeflateLoop = function () {
                     this.addBuffer(j);
                 } else if (j == 256) {
                     /* EOF */
-                    break; // FIXME: make this the loop-condition
+                    break; // FIXME: make this the loop-condition 待修复：循环条件 
                 } else {
                     var len, dist;
 
@@ -397,9 +397,9 @@ cc.Codec.GZip.prototype.DeflateLoop = function () {
 
         } else if (type == 2) {
             var j, n, literalCodes, distCodes, lenCodes;
-            var ll = new Array(288 + 32);    // "static" just to preserve stack
+            var ll = new Array(288 + 32);    // "static" just to preserve stack 静态声明为保存栈区
 
-            // Dynamic Huffman tables
+            // Dynamic Huffman tables 动态霍夫曼表
 
             literalCodes = 257 + this.readBits(5);
             distCodes = 1 + this.readBits(5);
@@ -408,7 +408,7 @@ cc.Codec.GZip.prototype.DeflateLoop = function () {
                 ll[j] = 0;
             }
 
-            // Get the decode tree code lengths
+            // Get the decode tree code lengths 得到解码树的代码长度
 
             for (j = 0; j < lenCodes; j++) {
                 ll[cc.Codec.GZip.border[j]] = this.readBits(3);
@@ -426,7 +426,7 @@ cc.Codec.GZip.prototype.DeflateLoop = function () {
             //   }
             // }
 
-            //read in literal and distance code lengths
+            //read in literal and distance code lengths 读入代码和distance代码长度
             n = literalCodes + distCodes;
             i = 0;
             var z = -1;
@@ -435,9 +435,9 @@ cc.Codec.GZip.prototype.DeflateLoop = function () {
                 z++;
                 j = this.DecodeValue(this.distanceTree);
                 // if (this.debug) document.write("<br>"+z+" i:"+i+" decode: "+j+"    bits "+this.bits+"<br>");
-                if (j < 16) {    // length of code in bits (0..15)
+                if (j < 16) {    // length of code in bits (0..15)代码字节长度 (0..15)
                     ll[i++] = j;
-                } else if (j == 16) {    // repeat last length 3 to 6 times
+                } else if (j == 16) {    // repeat last length 3 to 6 times 重复上面的代码长度3-6次
                     var l;
                     j = 3 + this.readBits(2);
                     if (i + j > n) {
@@ -449,9 +449,9 @@ cc.Codec.GZip.prototype.DeflateLoop = function () {
                         ll[i++] = l;
                     }
                 } else {
-                    if (j == 17) {        // 3 to 10 zero length codes
+                    if (j == 17) {        // 3 to 10 zero length codes 3 - 10 0长度代码
                         j = 3 + this.readBits(3);
-                    } else {        // j == 18: 11 to 138 zero length codes
+                    } else {        // j == 18: 11 to 138 zero length codes j == 18: 11 - 138 0长度代码
                         j = 11 + this.readBits(7);
                     }
                     if (i + j > n) {
@@ -464,7 +464,7 @@ cc.Codec.GZip.prototype.DeflateLoop = function () {
                 }
             } // while
 
-            // Can overwrite tree decode tree as it is not used anymore
+            // Can overwrite tree decode tree as it is not used anymore 可以重写解码树，以不再使用
             len = this.literalTree.length;
             for (i = 0; i < len; i++)
                 this.literalTree[i] = new cc.Codec.GZip.HufNode();
@@ -706,8 +706,8 @@ cc.Codec.GZip.prototype.skipdir = function () {
     }
 
     if ((this.gpflags & 16)) {
-        while (c = this.readByte()) { // FIXME: looks like they read to the end of the stream, should be doable more efficiently
-            //FILE COMMENT
+        while (c = this.readByte()) { // FIXME: looks like they read to the end of the stream, should be doable more efficiently 
+            //FILE COMMENT 待改善代码：看样子像是流末尾处读，应该有2倍的文件读写效率
         }
     }
 
