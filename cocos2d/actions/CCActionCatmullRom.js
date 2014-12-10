@@ -151,7 +151,7 @@ cc.CardinalSplineTo = cc.ActionInterval.extend(/** @lends cc.CardinalSplineTo# *
     _accumulatedDiff:null,
 
 	/**
-     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />     构造函数, 如果要覆盖并去扩展这个函数, 记得调用this._super()在ctor的函数中
+     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />     构造函数, 如果要覆盖并去扩展这个函数, 记得调用this._super()在ctor的函数中<br/>
 	 * Creates an action with a Cardinal Spline array of points and tension.  通过基数样条数组和张力去创建一个Action
 	 * @param {Number} duration
 	 * @param {Array} points array of control points                          控制点数组
@@ -210,7 +210,7 @@ cc.CardinalSplineTo = cc.ActionInterval.extend(/** @lends cc.CardinalSplineTo# *
     },
 
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.   每一帧调用一次, 时间是每一秒帧数的间隔
+     * Called once per frame. Time is the number of seconds of a frame interval.   每一帧调用一次, Time表示每帧的时间间隔
      *
      * @param {Number}  dt
      */
@@ -344,7 +344,7 @@ cc.CardinalSplineBy = cc.CardinalSplineTo.extend(/** @lends cc.CardinalSplineBy#
     _startPosition:null,
 
 	/**
-     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />     构造函数, 如果要覆盖并去扩展这个函数, 记得调用this._super()在ctor的函数中  
+     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />     构造函数, 如果要覆盖并去扩展这个函数, 记得调用this._super()在ctor的函数中 <br />
 	 * creates an action with a Cardinal Spline array of points and tension.    通过基数样条数组和张力去创建一个Action
 	 * @param {Number} duration
 	 * @param {Array} points
@@ -479,7 +479,7 @@ cc.CardinalSplineBy.create = cc.cardinalSplineBy;
 cc.CatmullRomTo = cc.CardinalSplineTo.extend(/** @lends cc.CatmullRomTo# */{
 
 	/**
-     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />     构造函数, 如果要覆盖并去扩展这个函数, 记得调用this._super()在ctor的函数中
+     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />     构造函数, 如果要覆盖并去扩展这个函数, 记得调用this._super()在ctor的函数中 <br />
 	 * creates an action with a Cardinal Spline array of points and tension.     通过基数样条数组和张力去创建一个Action
 	 * @param {Number} dt
 	 * @param {Array} points
@@ -552,7 +552,7 @@ cc.CatmullRomTo.create = cc.catmullRomTo;
 cc.CatmullRomBy = cc.CardinalSplineBy.extend({
 
 	/**
-     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />     构造函数, 如果要覆盖并去扩展这个函数, 记得调用this._super()在ctor的函数中
+     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />     构造函数, 如果要覆盖并去扩展这个函数, 记得调用this._super()在ctor的函数中 <br />
 	 * Creates an action with a Cardinal Spline array of points and tension.  通过基数样条数组和张力去创建一个Action
 	 * @param {Number} dt
 	 * @param {Array} points
