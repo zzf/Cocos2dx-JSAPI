@@ -1734,7 +1734,7 @@ cc.EaseBounceOut = cc.EaseBounce.extend(/** @lends cc.EaseBounceOut# */{
  * Creates the action. <br />                                创建Action <br/>
  * Eased bounce effect at the ending.                        以弹性缓动效果结束
  * @static
- * @deprecated since v3.0 please use action.easing(cc.easeBounceOut())
+ * @deprecated since v3.0 please use action.easing(cc.easeBounceOut()) 从v3.0之后请使用action.easing(cc.easeBounceOut())
  * @param {cc.ActionInterval} action
  * @return {cc.EaseBounceOut}
  *
@@ -1772,12 +1772,12 @@ cc.easeBounceOut = function(){
 
 /**
  * cc.EaseBounceInOut action. <br />
- * Eased bounce effect at the begining and ending.
+ * Eased bounce effect at the begining and ending.     开始和结束都是弹性缓动效果
  * @warning This action doesn't use a bijective function. Actions like Sequence might have an unexpected result when used with this action.  @warning这个函数一个双射函数.这些Actions像一个队列一样, 可能会产生一些未知的效果
  * @class
  * @extends cc.EaseBounce
  *
- * @deprecated since v3.0 <br /> Please use acton.easing(cc.easeBounceInOut())
+ * @deprecated since v3.0 <br /> Please use acton.easing(cc.easeBounceInOut()) 从v3.0之后<br/>请使用action.easing(cc.easeBounceInOut())
  *
  * @example
  * //The old usage       //旧用法
@@ -1825,9 +1825,9 @@ cc.EaseBounceInOut = cc.EaseBounce.extend(/** @lends cc.EaseBounceInOut# */{
 
 /**
  * Creates the action. <br />                                创建Action <br/>
- * Eased bounce effect at the begining and ending.
+ * Eased bounce effect at the begining and ending.     开始和结束都是弹性缓动效果
  * @static
- * @deprecated since v3.0 <br /> Please use action.easing(cc.easeBounceInOut())
+ * @deprecated since v3.0 <br /> Please use action.easing(cc.easeBounceInOut())    从v3.0之后<br/>请使用action.easing(cc.easeBounceInOut())
  * @param {cc.ActionInterval} action
  * @return {cc.EaseBounceInOut}
  *
@@ -1859,7 +1859,7 @@ cc._easeBounceInOutObj = {
 
 /**
  * Creates the action easing object. <br />     创建一个缓动Action对象<br/>
- * Eased bounce effect at the begining and ending.
+ * Eased bounce effect at the begining and ending.     开始和结束都是弹性缓动效果
  * @function
  * @return {Object}
  * @example
@@ -1872,12 +1872,12 @@ cc.easeBounceInOut = function(){
 
 /**
  * cc.EaseBackIn action. <br />
- * In the opposite direction to move slowly, and then accelerated to the right direction.
+ * In the opposite direction to move slowly, and then accelerated to the right direction.                                                    相反的方向移动缓慢, 加速度向右
  * @warning This action doesn't use a bijective function. Actions like Sequence might have an unexpected result when used with this action.  @warning这个函数一个双射函数.这些Actions像一个队列一样, 可能会产生一些未知的效果
  * @class
  * @extends cc.ActionEase
  *
- * @deprecated since v3.0 please use action.easing(cc.easeBackIn())
+ * @deprecated since v3.0 please use action.easing(cc.easeBackIn())     从v3.0之后请使用action.easing(cc.easeBackIn())
  *
  * @example
  * //The old usage       //旧用法
@@ -1923,7 +1923,7 @@ cc.EaseBackIn = cc.ActionEase.extend(/** @lends cc.EaseBackIn# */{
  * Creates the cc.EaseBackIn. <br />
  * In the opposite direction to move slowly, and then accelerated to the right direction.  相反的方向移动缓慢, 加速度向右
  * @static
- * @deprecated since v3.0 <br /> Please use action.easing(cc.easeBackIn())
+ * @deprecated since v3.0 <br /> Please use action.easing(cc.easeBackIn())                 从v3.0之后<br/>请使用action.easing(cc.easeBackIn())
  * @param {cc.ActionInterval} action
  * @return {cc.EaseBackIn}
  *
@@ -1967,7 +1967,7 @@ cc.easeBackIn = function(){
  * @class
  * @extends cc.ActionEase
  *
- * @deprecated since v3.0 please use action.easing(cc.easeBackOut());
+ * @deprecated since v3.0 please use action.easing(cc.easeBackOut());         从v3.0之后请使用action.easing(cc.easeBackOut())
  *
  * @example
  * //The old usage       //旧用法
@@ -2012,7 +2012,7 @@ cc.EaseBackOut = cc.ActionEase.extend(/** @lends cc.EaseBackOut# */{
  * Creates the action. <br />                                创建Action <br/>
  * Fast moving more than the finish, and then slowly back to the finish. 比结束的时候速度快,缓慢结束
  * @static
- * @deprecated since v3.0 <br /> Please use action.easing(cc.easeBackOut());
+ * @deprecated since v3.0 <br /> Please use action.easing(cc.easeBackOut());    从v3.0<br/>之后请使用action.easing(cc.easeBackOut())
  * @param {cc.ActionInterval} action
  * @return {cc.EaseBackOut}
  *
@@ -2057,7 +2057,7 @@ cc.easeBackOut = function(){
  * @class
  * @extends cc.ActionEase
  *
- * @deprecated since v3.0 <br /> Please use action.easing(cc.easeBackInOut())
+ * @deprecated since v3.0 <br /> Please use action.easing(cc.easeBackInOut())         从v3.0<br/>之后请使用action.easing(cc.easeBackOut())
  *
  * @example
  * //The old usage       //旧用法
@@ -3410,7 +3410,7 @@ cc.easeCircleActionInOut = function(){
  * @class
  * @extends cc.ActionEase
  *
- * @deprecated since v3.0 <br /> action.easing(cc.easeCubicActionIn());
+ * @deprecated since v3.0 <br /> action.easing(cc.easeCubicActionIn());   从v3.0<br/>之后请使用action.easing(cc.easeCubicActionIn())
  *
  * @example
  * //The old usage       //旧用法
@@ -3459,7 +3459,7 @@ cc.EaseCubicActionIn = cc.ActionEase.extend(/** @lends cc.EaseCubicActionIn# */{
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @static
  *
- * @deprecated since v3.0 <br /> action.easing(cc.easeCubicActionIn());
+ * @deprecated since v3.0 <br /> action.easing(cc.easeCubicActionIn());     从v3.0<br/>之后请使用action.easing(cc.easeCubicActionIn())
  *
  * @example
  * //The old usage       //旧用法
@@ -3502,7 +3502,7 @@ cc.easeCubicActionIn = function(){
  * @class
  * @extends cc.ActionEase
  *
- * @deprecated since v3.0 <br /> Please use action.easing(cc.easeCubicActionOut());
+ * @deprecated since v3.0 <br /> Please use action.easing(cc.easeCubicActionOut());    从v3.0<br/>之后请使用action.easing(cc.easeCubicActionOut())
  *
  * @example
  * //The old usage       //旧用法
