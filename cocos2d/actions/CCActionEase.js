@@ -161,7 +161,7 @@ cc.ActionEase.create = cc.actionEase;
  * @deprecated since v3.0 please cc.easeRateAction(action, 3.0);      从v3.0之后请使用  cc.easeRateAction(action, 3.0);
  *
  * @example
- * //The old usage       旧用法
+ * //The old usage       //旧用法
  * cc.EaseRateAction.create(action, 3.0);
  * //The new usage      新用法
  * var moveEaseRateAction = cc.easeRateAction(action, 3.0);
@@ -182,14 +182,14 @@ cc.EaseRateAction = cc.ActionEase.extend(/** @lends cc.EaseRateAction# */{
     },
 
     /**
-     * set rate value for the actions
+     * set rate value for the action   设置这个Action的比值
      * @param {Number} rate
      */
     setRate:function (rate) {
         this._rate = rate;
     },
 
-    /** get rate value for the actions
+    /** get rate value for the action   获取当前Action的比值
      * @return {Number}
      */
     getRate:function () {
@@ -197,7 +197,7 @@ cc.EaseRateAction = cc.ActionEase.extend(/** @lends cc.EaseRateAction# */{
     },
 
     /**
-     * Initializes the action with the inner action and the rate parameter
+     * Initializes the action with the inner action and the rate parameter   初始化使用比值与内部Action初始化当前Action
      * @param {cc.ActionInterval} action
      * @param {Number} rate
      * @return {Boolean}
@@ -260,7 +260,7 @@ cc.easeRateAction = function (action, rate) {
  * @static
  * @deprecated since v3.0 please use cc.easeRateAction(action, rate)
  * @example
- * //The old usage       旧用法
+ * //The old usage       //旧用法
  * cc.EaseRateAction.create(action, 3.0);
  * //The new usage      新用法
  * var moveEaseRateAction = cc.easeRateAction(action, 3.0);
@@ -273,10 +273,10 @@ cc.EaseRateAction.create = cc.easeRateAction;
  * @class
  * @extends cc.EaseRateAction
  *
- * @deprecated since v3.0 please use action.easing(cc.easeIn(3));
+ * @deprecated since v3.0 please use action.easing(cc.easeIn(3));   从v3.0这后请使用action.easing(cc.easeIn(3));
  *
  * @example
- * //The old usage       旧用法
+ * //The old usage       //旧用法
  * cc.EaseIn.create(action, 3);
  * //The new usage      新用法
  * action.easing(cc.easeIn(3.0));
@@ -293,7 +293,7 @@ cc.EaseIn = cc.EaseRateAction.extend(/** @lends cc.EaseIn# */{
     },
 
     /**
-     * Create a cc.easeIn action. Opposite with the original motion trajectory.               与反转原Action
+     * Create a cc.easeIn action. Opposite with the original motion trajectory.               与反转原Action的轨迹的轨迹
      * @return {cc.EaseIn}
      */
     reverse:function () {
@@ -315,13 +315,13 @@ cc.EaseIn = cc.EaseRateAction.extend(/** @lends cc.EaseIn# */{
 
 /**
  * Creates the action with the inner action and the rate parameter.  使用比例系数与一个内建的Action, 创建一个Action <br />
- * From slow to fast.
+ * From slow to fast.                                                从慢到快
  *
  * @static
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeIn(3))
  *
  * @example
- * //The old usage       旧用法
+ * //The old usage       //旧用法
  * cc.EaseIn.create(action, 3);
  * //The new usage      新用法
  * action.easing(cc.easeIn(3.0));
@@ -335,8 +335,8 @@ cc.EaseIn.create = function (action, rate) {
 };
 
 /**
- * Creates the action easing object with the rate parameter. <br />
- * From slow to fast.
+ * Creates the action easing object with the rate parameter. <br />    使用比值创建一个缓动对象<br/>
+ * From slow to fast.                                                  从慢到快
  *
  * @function
  * @param {Number} rate
@@ -358,15 +358,15 @@ cc.easeIn = function (rate) {
 };
 
 /**
- * cc.EaseOut action with a rate. From fast to slow.
+ * cc.EaseOut action with a rate. From fast to slow.               有一个比值的cc.EaseOut. 从快到慢
  *
  * @class
  * @extends cc.EaseRateAction
  *
- * @deprecated since v3.0 please use action.easing(cc.easeOut(3))
+ * @deprecated since v3.0 please use action.easing(cc.easeOut(3))   从v3.0之后使用action.easing(cc.easeOut(3))
  *
  * @example
- * //The old usage       旧用法
+ * //The old usage       //旧用法
  * cc.EaseOut.create(action, 3);
  * //The new usage      新用法
  * action.easing(cc.easeOut(3.0));
@@ -382,7 +382,7 @@ cc.EaseOut = cc.EaseRateAction.extend(/** @lends cc.EaseOut# */{
     },
 
     /**
-     * Create a cc.easeIn action. Opposite with the original motion trajectory.               与反转原Action
+     * Create a cc.easeIn action. Opposite with the original motion trajectory.               与反转原Action的轨迹
      * @return {cc.EaseOut}
      */
     reverse:function () {
@@ -407,12 +407,12 @@ cc.EaseOut = cc.EaseRateAction.extend(/** @lends cc.EaseOut# */{
  * From fast to slow.
  *
  * @static
- * @deprecated since v3.0 <br /> Please use cc.easeOut instead.
+ * @deprecated since v3.0 <br /> Please use cc.easeOut instead.      从v3.0之后<br/>使用cc.easeOut
  *
  * @example
- * //The old usage       旧用法
+ * //The old usage       //旧用法
  * cc.EaseOut.create(action, 3);
- * //The new usage      新用法
+ * //The new usage      //新用法
  * action.easing(cc.easeOut(3.0));
  *
  * @param {cc.ActionInterval} action
@@ -424,7 +424,7 @@ cc.EaseOut.create = function (action, rate) {
 };
 
 /**
- * Creates the action easing object with the rate parameter. <br />
+ * Creates the action easing object with the rate parameter. <br />    使用比值创建一个缓动对象<br/>
  * From fast to slow.
  *
  * @function
@@ -447,17 +447,17 @@ cc.easeOut = function (rate) {
 };
 
 /**
- * cc.EaseInOut action with a rate. <br />
- * Slow to fast then to slow.
+ * cc.EaseInOut action with a rate. <br /> 使用比值的cc.EaseInOut<br/>
+ * Slow to fast then to slow.              慢快慢
  * @class
  * @extends cc.EaseRateAction
  *
  * @deprecated since v3.0 please use action.easing(cc.easeInOut(3.0))
  *
  * @example
- * //The old usage       旧用法
+ * //The old usage       //旧用法
  * cc.EaseInOut.create(action, 3);
- * //The new usage      新用法
+ * //The new usage      //新用法
  * action.easing(cc.easeInOut(3.0));
  */
 cc.EaseInOut = cc.EaseRateAction.extend(/** @lends cc.EaseInOut# */{
@@ -487,7 +487,7 @@ cc.EaseInOut = cc.EaseRateAction.extend(/** @lends cc.EaseInOut# */{
     },
 
     /**
-     * Create a cc.EaseInOut action. Opposite with the original motion trajectory.               与反转原Action
+     * Create a cc.EaseInOut action. Opposite with the original motion trajectory.               与反转原Action的轨迹
      * @return {cc.EaseInOut}
      */
     reverse:function () {
@@ -497,14 +497,14 @@ cc.EaseInOut = cc.EaseRateAction.extend(/** @lends cc.EaseInOut# */{
 
 /**
  * Creates the action with the inner action and the rate parameter.  使用比例系数与一个内建的Action, 创建一个Action
- * Slow to fast then to slow.
+ * Slow to fast then to slow.                                        慢快慢
  * @static
- * @deprecated since v3.0 <br /> Please use action.easing(cc.easeInOut(3.0))
+ * @deprecated since v3.0 <br /> Please use action.easing(cc.easeInOut(3.0))   从v3.0</br>之后使用action.easing(cc.easeInOut(3.0))
  *
  * @example
- * //The old usage       旧用法
+ * //The old usage       //旧用法
  * cc.EaseInOut.create(action, 3);
- * //The new usage      新用法
+ * //The new usage      //新用法
  * action.easing(cc.easeInOut(3.0));
  *
  * @param {cc.ActionInterval} action
@@ -516,14 +516,14 @@ cc.EaseInOut.create = function (action, rate) {
 };
 
 /**
- * Creates the action easing object with the rate parameter. <br />
- * Slow to fast then to slow.
+ * Creates the action easing object with the rate parameter. <br />    使用比值创建一个缓动对象<br/>
+ * Slow to fast then to slow.                                          慢快慢
  * @function
  * @param {Number} rate
  * @return {Object}
  *
  * @example
- * //The new usage      新用法
+ * //The new usage      //新用法
  * action.easing(cc.easeInOut(3.0));
  */
 cc.easeInOut = function (rate) {
@@ -543,8 +543,8 @@ cc.easeInOut = function (rate) {
 };
 
 /**
- * cc.Ease Exponential In. Slow to Fast. <br />
- * Reference easeInExpo: <br />
+ * cc.EaseExponentialIn. Slow to Fast. <br />                     cc.EaseExponentialIn, 从慢到快<br />
+ * Reference easeInExpo: <br />                                   参考easeInExpo:<br/>
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @class
  * @extends cc.ActionEase
@@ -552,9 +552,9 @@ cc.easeInOut = function (rate) {
  * @deprecated since v3.0 please action.easing(cc.easeExponentialIn())
  *
  * @example
- * //The old usage       旧用法
+ * //The old usage       //旧用法
  * cc.EaseExponentialIn.create(action);
- * //The new usage      新用法
+ * //The new usage      //新用法
  * action.easing(cc.easeExponentialIn());
  */
 cc.EaseExponentialIn = cc.ActionEase.extend(/** @lends cc.EaseExponentialIn# */{
@@ -568,7 +568,7 @@ cc.EaseExponentialIn = cc.ActionEase.extend(/** @lends cc.EaseExponentialIn# */{
     },
 
     /**
-     * Create a cc.EaseExponentialOut action. Opposite with the original motion trajectory.               与反转原Action
+     * Create a cc.EaseExponentialOut action. Opposite with the original motion trajectory.               创建一个EaseExponentialOut, 反转原Action
      * @return {cc.EaseExponentialOut}
      */
     reverse:function () {
@@ -589,18 +589,18 @@ cc.EaseExponentialIn = cc.ActionEase.extend(/** @lends cc.EaseExponentialIn# */{
 });
 
 /**
- * Creates the action easing object with the rate parameter. <br />
- * Reference easeInExpo: <br />
+ * Creates the action easing object with the rate parameter. <br />    使用比值创建一个缓动对象<br/>
+ * Reference easeInExpo: <br />                                        参考easeInExpo<br/>
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @static
- * @deprecated since v3.0 <br /> Please use action.easing(cc.easeExponentialIn())
+ * @deprecated since v3.0 <br /> Please use action.easing(cc.easeExponentialIn())    从v3.0之后<br/>请使用action.easing(cc.easeExponentialIn())
  * @param {cc.ActionInterval} action
  * @return {cc.EaseExponentialIn}
  *
  * @example
- * //The old usage       旧用法
+ * //The old usage      //旧用法
  * cc.EaseExponentialIn.create(action);
- * //The new usage      新用法
+ * //The new usage      //新用法
  * action.easing(cc.easeExponentialIn());
  */
 cc.EaseExponentialIn.create = function (action) {
@@ -617,8 +617,8 @@ cc._easeExponentialInObj = {
 };
 
 /**
- * Creates the action easing object with the rate parameter. <br />
- * Reference easeInExpo: <br />
+ * Creates the action easing object with the rate parameter. <br />    使用比值创建一个缓动对象<br/>
+ * Reference easeInExpo: <br />                                        参考easeInExpo:<br />
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @function
  * @return {Object}
@@ -631,8 +631,8 @@ cc.easeExponentialIn = function(){
 };
 
 /**
- * Ease Exponential Out. <br />
- * Reference easeOutExpo: <br />
+ * cc.EaseExponentialOut. <br />
+ * Reference easeOutExpo: <br />        参考easeOutExpo:<br/>
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @class
  * @extends cc.ActionEase
@@ -640,9 +640,9 @@ cc.easeExponentialIn = function(){
  * @deprecated since v3.0 please use action.easing(cc.easeExponentialOut())
  *
  * @example
- * //The old usage       旧用法
+ * //The old usage       //旧用法
  * cc.EaseExponentialOut.create(action);
- * //The new usage      新用法
+ * //The new usage      //新用法
  * action.easing(cc.easeExponentialOut());
  */
 cc.EaseExponentialOut = cc.ActionEase.extend(/** @lends cc.EaseExponentialOut# */{
@@ -656,7 +656,7 @@ cc.EaseExponentialOut = cc.ActionEase.extend(/** @lends cc.EaseExponentialOut# *
     },
 
     /**
-     * Create a cc.EaseExponentialIn action. Opposite with the original motion trajectory.               与反转原Action
+     * Create a cc.EaseExponentialIn action. Opposite with the original motion trajectory.               与反转原Action的轨迹
      * @return {cc.EaseExponentialIn}
      */
     reverse:function () {
@@ -677,7 +677,7 @@ cc.EaseExponentialOut = cc.ActionEase.extend(/** @lends cc.EaseExponentialOut# *
 });
 
 /**
- * Creates the action easing object with the rate parameter. <br />
+ * Creates the action easing object with the rate parameter. <br />    使用比值创建一个缓动对象<br/>
  * Reference easeOutExpo: <br />
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @static
@@ -686,9 +686,9 @@ cc.EaseExponentialOut = cc.ActionEase.extend(/** @lends cc.EaseExponentialOut# *
  * @return {Object}
  *
  * @example
- * //The old usage       旧用法
+ * //The old usage       //旧用法
  * cc.EaseExponentialOut.create(action);
- * //The new usage      新用法
+ * //The new usage      //新用法
  * action.easing(cc.easeExponentialOut());
  */
 cc.EaseExponentialOut.create = function (action) {
@@ -705,7 +705,7 @@ cc._easeExponentialOutObj = {
 };
 
 /**
- * creates the action easing object. <br />
+ * Creates the action easing object. <br />     创建一个缓动Action对象<br/>
  * Reference easeOutExpo: <br />
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  *
@@ -729,9 +729,9 @@ cc.easeExponentialOut = function(){
  * @deprecated since v3.0 please use action.easing(cc.easeExponentialInOut)
  *
  * @example
- * //The old usage       旧用法
+ * //The old usage       //旧用法
  * cc.EaseExponentialInOut.create(action);
- * //The new usage      新用法
+ * //The new usage      //新用法
  * action.easing(cc.easeExponentialInOut());
  */
 cc.EaseExponentialInOut = cc.ActionEase.extend(/** @lends cc.EaseExponentialInOut# */{
@@ -752,7 +752,7 @@ cc.EaseExponentialInOut = cc.ActionEase.extend(/** @lends cc.EaseExponentialInOu
     },
 
     /**
-     * Create a cc.EaseExponentialInOut action. Opposite with the original motion trajectory.               与反转原Action
+     * Create a cc.EaseExponentialInOut action. Opposite with the original motion trajectory.               与反转原Action的轨迹
      * @return {cc.EaseExponentialInOut}
      */
     reverse:function () {
@@ -782,9 +782,9 @@ cc.EaseExponentialInOut = cc.ActionEase.extend(/** @lends cc.EaseExponentialInOu
  * @return {cc.EaseExponentialInOut}
  *
  * @example
- * //The old usage       旧用法
+ * //The old usage       //旧用法
  * cc.EaseExponentialInOut.create(action);
- * //The new usage      新用法
+ * //The new usage      //新用法
  * action.easing(cc.easeExponentialInOut());
  */
 cc.EaseExponentialInOut.create = function (action) {
@@ -831,9 +831,9 @@ cc.easeExponentialInOut = function(){
  * @deprecated since v3.0 please use action.easing(cc.easeSineIn())
  *
  * @example
- * //The old usage       旧用法
+ * //The old usage       //旧用法
  * cc.EaseSineIn.create(action);
- * //The new usage      新用法
+ * //The new usage      //新用法
  * action.easing(cc.easeSineIn());
  */
 cc.EaseSineIn = cc.ActionEase.extend(/** @lends cc.EaseSineIn# */{
@@ -848,7 +848,7 @@ cc.EaseSineIn = cc.ActionEase.extend(/** @lends cc.EaseSineIn# */{
     },
 
     /**
-     * Create a cc.EaseSineOut action. Opposite with the original motion trajectory.               与反转原Action
+     * Create a cc.EaseSineOut action. Opposite with the original motion trajectory.               与反转原Action的轨迹
      * @return {cc.EaseSineOut}
      */
     reverse:function () {
@@ -878,9 +878,9 @@ cc.EaseSineIn = cc.ActionEase.extend(/** @lends cc.EaseSineIn# */{
  * @return {cc.EaseSineIn}
  *
  * @example
- * //The old usage       旧用法
+ * //The old usage       //旧用法
  * cc.EaseSineIn.create(action);
- * //The new usage      新用法
+ * //The new usage      //新用法
  * action.easing(cc.easeSineIn());
  */
 cc.EaseSineIn.create = function (action) {
@@ -919,9 +919,9 @@ cc.easeSineIn = function(){
  * @deprecated since v3.0 please use action.easing(cc.easeSineOut())
  *
  * @example
- * //The old usage       旧用法
+ * //The old usage       //旧用法
  * cc.EaseSineOut.create(action);
- * //The new usage      新用法
+ * //The new usage      //新用法
  * action.easing(cc.easeSineOut());
  */
 cc.EaseSineOut = cc.ActionEase.extend(/** @lends cc.EaseSineOut# */{
@@ -936,7 +936,7 @@ cc.EaseSineOut = cc.ActionEase.extend(/** @lends cc.EaseSineOut# */{
     },
 
     /**
-     * Create a cc.EaseSineIn action. Opposite with the original motion trajectory.               与反转原Action
+     * Create a cc.EaseSineIn action. Opposite with the original motion trajectory.               与反转原Action的轨迹
      * @return {cc.EaseSineIn}
      */
     reverse:function () {
@@ -966,9 +966,9 @@ cc.EaseSineOut = cc.ActionEase.extend(/** @lends cc.EaseSineOut# */{
  * @return {cc.EaseSineOut}
  *
  * @example
- * //The old usage       旧用法
+ * //The old usage       //旧用法
  * cc.EaseSineOut.create(action);
- * //The new usage      新用法
+ * //The new usage      //新用法
  * action.easing(cc.easeSineOut());
  */
 cc.EaseSineOut.create = function (action) {
@@ -999,18 +999,18 @@ cc.easeSineOut = function(){
 };
 
 /**
- * Ease Sine InOut. <br />
- * Reference easeInOutSine: <br />
+ * EaseSineInOut. <br />
+ * Reference easeInOutSine: <br />                                  参考easeInOutSine<br/>
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @class
  * @extends cc.ActionEase
  *
- * @deprecated since v3.0 please use action.easing(cc.easeSineInOut())
+ * @deprecated since v3.0 please use action.easing(cc.easeSineInOut())   从v3.0之后, 使用action.easing(cc.easeSineInOut())
  *
  * @example
- * //The old usage       旧用法                         //旧用法
+ * //The old usage       //旧用法
  * cc.EaseSineInOut.create(action);
- * //The new usage      新用法                        //新用法
+ * //The new usage      //新用法
  * action.easing(cc.easeSineInOut());
  */
 cc.EaseSineInOut = cc.ActionEase.extend(/** @lends cc.EaseSineInOut# */{
@@ -1037,7 +1037,7 @@ cc.EaseSineInOut = cc.ActionEase.extend(/** @lends cc.EaseSineInOut# */{
     },
 
     /**
-     * Create a cc.EaseSineInOut action. Opposite with the original motion trajectory.               与反转原Action
+     * Create a cc.EaseSineInOut action. Opposite with the original motion trajectory.               与反转原Action的轨迹
      * @return {cc.EaseSineInOut}
      */
     reverse:function () {
@@ -1055,7 +1055,7 @@ cc.EaseSineInOut = cc.ActionEase.extend(/** @lends cc.EaseSineInOut# */{
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeSineInOut())    从v3.0之后 <br /> 请使用action.easing(cc.easeSineInOut())
  *
  * @example
- * //The old usage       旧用法                              //旧用法
+ * //The old usage       //旧用法   
  * cc.EaseSineInOut.create(action);
  * //The new usage     // 新用法
  * action.easing(cc.easeSineInOut());
@@ -1074,7 +1074,7 @@ cc._easeSineInOutObj = {
 };
 
 /**
- * creates the action easing object. <br />
+ * Creates the action easing object. <br />     创建一个缓动Action对象<br/>
  * Reference easeInOutSine: <br />
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @return {Object}
@@ -1093,14 +1093,14 @@ cc.easeSineInOut = function(){
  * @param {cc.ActionInterval} action
  * @param {Number} [period=0.3]
  *
- * @deprecated since v3.0 Does not recommend the use of the base object.
+ * @deprecated since v3.0 Does not recommend the use of the base object.   v3.0之后不建议使用这个基类
  */
 cc.EaseElastic = cc.ActionEase.extend(/** @lends cc.EaseElastic# */{
     _period: 0.3,
 
 	/**
      * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />     构造函数, 如果要覆盖并去扩展这个函数, 记得调用this._super()在ctor的函数中<br/>
-     * Creates the action with the inner action and the period in radians (default is 0.3).
+     * Creates the action with the inner action and the period in radians (default is 0.3).    使用内部Action和弧度创建Action(默认是0.3)
 	 * @param {cc.ActionInterval} action
 	 * @param {Number} [period=0.3]
 	 */
@@ -1127,7 +1127,7 @@ cc.EaseElastic = cc.ActionEase.extend(/** @lends cc.EaseElastic# */{
     },
 
     /**
-     * Initializes the action with the inner action and the period in radians (default is 0.3)
+     * Initializes the action with the inner action and the period in radians (default is 0.3)  使用弧度(默认是0.3)与内部Action初始化这个Action
      * @param {cc.ActionInterval} action
      * @param {Number} [period=0.3]
      * @return {Boolean}
@@ -1139,8 +1139,8 @@ cc.EaseElastic = cc.ActionEase.extend(/** @lends cc.EaseElastic# */{
     },
 
     /**
-     * Create a action. Opposite with the original motion trajectory.       创建一个Action, 是原Action的反转               与反转原Action <br />
-     * Will be overwrite.
+     * Create a action. Opposite with the original motion trajectory.       创建一个Action, 是原Action的轨迹的反转
+     * Will be overwrite.                                                   将会被重写
      * @return {null}
      */
     reverse:function () {
@@ -1162,7 +1162,7 @@ cc.EaseElastic = cc.ActionEase.extend(/** @lends cc.EaseElastic# */{
 });
 
 /**
- * Creates the action with the inner action and the period in radians (default is 0.3).
+ * Creates the action with the inner action and the period in radians (default is 0.3).    使用内部Action和弧度创建Action(默认是0.3)
  * @static
  * @deprecated since v3.0 Does not recommend the use of the base object.
  * @param {cc.ActionInterval} action
@@ -1178,10 +1178,11 @@ cc.EaseElastic.create = function (action, period) {
  * Reference easeInElastic: <br />
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @warning This action doesn't use a bijective function. Actions like Sequence might have an unexpected result when used with this action.
+ @warning这个函数一个双射函数.这些Actions像一个队列一样, 可能会产生一些未知的效果
  * @class
  * @extends cc.EaseElastic
  *
- * @deprecated since v3.0 please use action.easing(cc.easeElasticIn())
+ * @deprecated since v3.0 please use action.easing(cc.easeElasticIn())     从v3.0之后请使用action.easing(cc.easeElasticIn()) 
  *
  * @example
  * //The old usage       //旧用法
@@ -1229,7 +1230,7 @@ cc.EaseElasticIn = cc.EaseElastic.extend(/** @lends cc.EaseElasticIn# */{
 });
 
 /**
- * Creates the action with the inner action and the period in radians (default is 0.3). <br />
+ * Creates the action with the inner action and the period in radians (default is 0.3).    使用内部Action和弧度创建Action(默认是0.3) <br />
  * Reference easeInElastic: <br />
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeElasticIn(period))
@@ -1262,8 +1263,8 @@ cc._easeElasticInObj = {
 };
 
 /**
- * Creates the action easing obejct with the period in radians (default is 0.3). <br />
- * Reference easeInElastic: <br />
+ * Creates the action easing obejct with the period in radians (default is 0.3). <br />   使用弧度创建一个缓动对象(默认是0.3)<br />
+ * Reference easeInElastic: <br />                                                        参考easeInElastic<br/>
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @function
  * @param {Number} [period=0.3]
@@ -1295,6 +1296,7 @@ cc.easeElasticIn = function (period) {
  * Reference easeOutElastic: <br />
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @warning This action doesn't use a bijective function. Actions like Sequence might have an unexpected result when used with this action.
+ @warning这个函数一个双射函数.这些Actions像一个队列一样, 可能会产生一些未知的效果
  * @class
  * @extends cc.EaseElastic
  *
@@ -1346,10 +1348,10 @@ cc.EaseElasticOut = cc.EaseElastic.extend(/** @lends cc.EaseElasticOut# */{
 });
 
 /**
- * Creates the action with the inner action and the period in radians (default is 0.3). <br />
- * Reference easeOutElastic: <br />
+ * Creates the action with the inner action and the period in radians (default is 0.3).    使用内部Action和弧度创建Action(默认是0.3) <br />
+ * Reference easeOutElastic: <br />                                                        参考easeOutElastic:<br/>
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
- * @deprecated since v3.0 <br /> Please use action.easing(cc.easeElasticOut(period))
+ * @deprecated since v3.0 <br /> Please use action.easing(cc.easeElasticOut(period))       从v3.0之后<br/>请使用action.easing(cc.easeElasticOut(period))
  * @param {cc.ActionInterval} action
  * @param {Number} [period=0.3]
  * @return {cc.EaseElasticOut}
@@ -1364,7 +1366,7 @@ cc.EaseElasticOut.create = function (action, period) {
     return new cc.EaseElasticOut(action, period);
 };
 
-//default ease elastic out object (period = 0.3)
+//default ease elastic out object (period = 0.3)    // 默认ease elastic out对象
 cc._easeElasticOutObj = {
     easing: function (dt) {
         return (dt === 0 || dt === 1) ? dt : Math.pow(2, -10 * dt) * Math.sin((dt - (0.3 / 4)) * Math.PI * 2 / 0.3) + 1;
@@ -1374,8 +1376,8 @@ cc._easeElasticOutObj = {
     }
 };
 /**
- * Creates the action easing object with the period in radians (default is 0.3). <br />
- * Reference easeOutElastic: <br />
+ * Creates the action easing object with the period in radians (default is 0.3). <br /> 创建使用弧度一个缓动Action对象(默认是0.3)<br/>
+ * Reference easeOutElastic: <br />                                                     参考easeOutElastic<br/>
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @function
  * @param {Number} [period=0.3]
@@ -1401,13 +1403,13 @@ cc.easeElasticOut = function (period) {
 
 /**
  * Ease Elastic InOut action. <br />
- * Reference easeInOutElastic: <br />
+ * Reference easeInOutElastic: <br /> 参考easeInOutElastic<br/>
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
- * @warning This action doesn't use a bijective function. Actions like Sequence might have an unexpected result when used with this action.
+ * @warning This action doesn't use a bijective function. Actions like Sequence might have an unexpected result when used with this action.  @warning这个函数一个双射函数.这些Actions像一个队列一样, 可能会产生一些未知的效果
  * @class
  * @extends cc.EaseElastic
  *
- * @deprecated since v3.0 please use action.easing(cc.easeElasticInOut())
+ * @deprecated since v3.0 please use action.easing(cc.easeElasticInOut())   从v3.0之后请使用action.easing(cc.easeElasticInOut())
  *
  * @example
  * //The old usage       //旧用法
@@ -1463,10 +1465,10 @@ cc.EaseElasticInOut = cc.EaseElastic.extend(/** @lends cc.EaseElasticInOut# */{
 });
 
 /**
- * Creates the action with the inner action and the period in radians (default is 0.3). <br />
- * Reference easeInOutElastic: <br />
+ * Creates the action with the inner action and the period in radians (default is 0.3).<br />    使用内部Action和弧度创建Action(默认是0.3) <br />
+ * Reference easeInOutElastic: <br />                                                            参考easeInOutElastic:<br/>
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
- * @deprecated since v3.0 <br /> Please use action.easing(cc.easeElasticInOut(period))
+ * @deprecated since v3.0 <br /> Please use action.easing(cc.easeElasticInOut(period))           从v3.0之后 <br /> 请使用action.easing(cc.easeElasticInOut(period))
  * @param {cc.ActionInterval} action
  * @param {Number} [period=0.3]
  * @return {cc.EaseElasticInOut}
@@ -1482,8 +1484,8 @@ cc.EaseElasticInOut.create = function (action, period) {
 };
 
 /**
- * Creates the action easing object with the period in radians (default is 0.3). <br />
- * Reference easeInOutElastic: <br />
+ * Creates the action easing object with the period in radians (default is 0.3). <br />      创建使用弧度一个缓动Action对象(默认是0.3)<br/>
+ * Reference easeInOutElastic: <br />                                                        参考easeInOutElastic<br/>
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @function
  * @param {Number} [period=0.3]
@@ -1521,9 +1523,9 @@ cc.easeElasticInOut = function (period) {
 };
 
 /**
- * cc.EaseBounce abstract class.
+ * cc.EaseBounce abstract class.                                            cc.EaseBounce抽象类
  *
- * @deprecated since v3.0 Does not recommend the use of the base object.
+ * @deprecated since v3.0 Does not recommend the use of the base object. 从3.0之后不建议使用这个基类
  *
  * @class
  * @extends cc.ActionEase
@@ -1561,7 +1563,7 @@ cc.EaseBounce = cc.ActionEase.extend(/** @lends cc.EaseBounce# */{
     },
 
     /**
-     * Create a action. Opposite with the original motion trajectory.       创建一个Action, 是原Action的反转               与反转原Action
+     * Create a action. Opposite with the original motion trajectory.       创建一个Action, 是原Action的反转
      * @return {cc.EaseBounce}
      */
     reverse:function () {
@@ -1572,7 +1574,7 @@ cc.EaseBounce = cc.ActionEase.extend(/** @lends cc.EaseBounce# */{
 /**
  * Creates an ease bounce action.
  * @static
- * @deprecated since v3.0 Does not recommend the use of the base object.
+ * @deprecated since v3.0 Does not recommend the use of the base object. 从3.0之后不建议使用这个基类
  * @param {cc.ActionInterval} action
  * @return {cc.EaseBounce}
  */
@@ -1583,7 +1585,7 @@ cc.EaseBounce.create = function (action) {
 /**
  * cc.EaseBounceIn action. <br />
  * Eased bounce effect at the beginning.
- * @warning This action doesn't use a bijective function. Actions like Sequence might have an unexpected result when used with this action.
+ * @warning This action doesn't use a bijective function. Actions like Sequence might have an unexpected result when used with this action.  @warning这个函数一个双射函数.这些Actions像一个队列一样, 可能会产生一些未知的效果
  * @class
  * @extends cc.EaseBounce
  *
@@ -1670,7 +1672,7 @@ cc._easeBounceInObj = {
 };
 
 /**
- * Creates the action easing object. <br />     创建一个缓动Action对象<br/>
+ * Creates the action easing object. <br />
  * Eased bounce effect at the beginning.
  * @function
  * @return {Object}
@@ -1685,7 +1687,7 @@ cc.easeBounceIn = function(){
 /**
  * cc.EaseBounceOut action. <br />
  * Eased bounce effect at the ending.
- * @warning This action doesn't use a bijective function. Actions like Sequence might have an unexpected result when used with this action.
+ * @warning This action doesn't use a bijective function. Actions like Sequence might have an unexpected result when used with this action.  @warning这个函数一个双射函数.这些Actions像一个队列一样, 可能会产生一些未知的效果
  * @class
  * @extends cc.EaseBounce
  *
@@ -1772,7 +1774,7 @@ cc.easeBounceOut = function(){
 /**
  * cc.EaseBounceInOut action. <br />
  * Eased bounce effect at the begining and ending.
- * @warning This action doesn't use a bijective function. Actions like Sequence might have an unexpected result when used with this action.
+ * @warning This action doesn't use a bijective function. Actions like Sequence might have an unexpected result when used with this action.  @warning这个函数一个双射函数.这些Actions像一个队列一样, 可能会产生一些未知的效果
  * @class
  * @extends cc.EaseBounce
  *
@@ -1872,7 +1874,7 @@ cc.easeBounceInOut = function(){
 /**
  * cc.EaseBackIn action. <br />
  * In the opposite direction to move slowly, and then accelerated to the right direction.
- * @warning This action doesn't use a bijective function. Actions like Sequence might have an unexpected result when used with this action.
+ * @warning This action doesn't use a bijective function. Actions like Sequence might have an unexpected result when used with this action.  @warning这个函数一个双射函数.这些Actions像一个队列一样, 可能会产生一些未知的效果
  * @class
  * @extends cc.ActionEase
  *
@@ -1962,7 +1964,7 @@ cc.easeBackIn = function(){
 /**
  * cc.EaseBackOut action. <br />
  * Fast moving more than the finish, and then slowly back to the finish.
- * @warning This action doesn't use a bijective function. Actions like Sequence might have an unexpected result when used with this action.
+ * @warning This action doesn't use a bijective function. Actions like Sequence might have an unexpected result when used with this action.  @warning这个函数一个双射函数.这些Actions像一个队列一样, 可能会产生一些未知的效果
  * @class
  * @extends cc.ActionEase
  *
@@ -2052,7 +2054,7 @@ cc.easeBackOut = function(){
 /**
  * cc.EaseBackInOut action. <br />
  * Begining of cc.EaseBackIn. Ending of cc.EaseBackOut.
- * @warning This action doesn't use a bijective function. Actions like Sequence might have an unexpected result when used with this action.
+ * @warning This action doesn't use a bijective function. Actions like Sequence might have an unexpected result when used with this action.  @warning这个函数一个双射函数.这些Actions像一个队列一样, 可能会产生一些未知的效果
  * @class
  * @extends cc.ActionEase
  *
@@ -2110,7 +2112,7 @@ cc.EaseBackInOut = cc.ActionEase.extend(/** @lends cc.EaseBackInOut# */{
  * @param {cc.ActionInterval} action
  * @return {cc.EaseBackInOut}
  *
- * @deprecated since v3.0 <br /> Please use action.easing(cc.easeBackInOut())
+ * @deprecated since v3.0 <br /> Please use action.easing(cc.easeBackInOut()) 从v3.0之后<br/>请使用action.easing(cc.easeBackInOut())
  *
  * @example
  * //The old usage       //旧用法
@@ -2153,7 +2155,7 @@ cc.easeBackInOut = function(){
 
 /**
  * cc.EaseBezierAction action. <br />
- * Manually set a 4 order Bessel curve. <br />
+ * Manually set a 4 order Bessel curve. <br />            手
  * According to the set point, calculate the trajectory.
  * @class
  * @extends cc.ActionEase
@@ -2366,7 +2368,7 @@ cc._easeQuadraticActionIn = {
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @returns {Object}
  * @example
- * //example       例如
+ * //example       //例如
  * action.easing(cc.easeQuadraticActionIn());
  */
 cc.easeQuadraticActionIn = function(){
@@ -2452,12 +2454,12 @@ cc._easeQuadraticActionOut = {
 };
 /**
  * Creates the action easing object. <br />     创建一个缓动Action对象<br/>
- * Reference easeOutQuad: <br />
+ * Reference easeOutQuad: <br />                参考easeOutQuad<br />
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @function
  * @returns {Object}
  * @example
- * //example       例如
+ * //example       //例如
  * action.easing(cc.easeQuadraticActionOut());
  */
 cc.easeQuadraticActionOut = function(){
@@ -2557,7 +2559,7 @@ cc._easeQuadraticActionInOut = {
  * @function
  * @returns {Object}
  * @example
- * //example       例如
+ * //example       //例如
  * action.easing(cc.easeQuadraticActionInOut());
  */
 cc.easeQuadraticActionInOut = function(){
@@ -2648,7 +2650,7 @@ cc._easeQuarticActionIn = {
  * @function
  * @returns {Object}
  * @example
- * //example       例如
+ * //example       //例如
  * action.easing(cc.easeQuarticActionIn());
  */
 cc.easeQuarticActionIn = function(){
@@ -2741,7 +2743,7 @@ cc._easeQuarticActionOut = {
  * @function
  * @returns {Object}
  * @example
- * //example       例如
+ * //example       //例如
  * action.easing(cc.QuarticActionOut());
  */
 cc.easeQuarticActionOut = function(){
@@ -2925,7 +2927,7 @@ cc._easeQuinticActionIn = {
  * @function
  * @returns {Object}
  * @example
- * //example       例如
+ * //example       //例如
  * action.easing(cc.easeQuinticActionIn());
  */
 cc.easeQuinticActionIn = function(){
@@ -3018,7 +3020,7 @@ cc._easeQuinticActionOut = {
  * @function
  * @returns {Object}
  * @example
- * //example       例如
+ * //example       //例如
  * action.easing(cc.easeQuadraticActionOut());
  */
 cc.easeQuinticActionOut = function(){
@@ -3114,7 +3116,7 @@ cc._easeQuinticActionInOut = {
  * @function
  * @returns {Object}
  * @example
- * //example       例如
+ * //example       //例如
  * action.easing(cc.easeQuinticActionInOut());
  */
 cc.easeQuinticActionInOut = function(){
@@ -3395,7 +3397,7 @@ cc._easeCircleActionInOut = {
  * @function
  * @returns {Object}
  * @example
- * //example       例如
+ * //example       //例如
  * action.easing(cc.easeCircleActionInOut());
  */
 cc.easeCircleActionInOut = function(){
@@ -3487,7 +3489,7 @@ cc._easeCubicActionIn = {
  * @function
  * @returns {Object}
  * @example
- * //example       例如
+ * //example       //例如
  * action.easing(cc.easeCubicActionIn());
  */
 cc.easeCubicActionIn = function(){
@@ -3670,7 +3672,7 @@ cc._easeCubicActionInOut = {
 };
 
 /**
- * Creates the action easing object. <br />     创建一个缓动Action对象<br/><br/>
+ * Creates the action easing object. <br />     创建一个缓动Action对象<br/>
  * Reference easeInOutCubic: <br />                                   参考easeInOutCubic<br/>
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @function
