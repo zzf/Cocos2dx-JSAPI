@@ -25,12 +25,12 @@
  ****************************************************************************/
 
 /**
- * Base class for Easing actions
+ * Base class for Easing actions                                             缓动Action的基类
  * @class
  * @extends cc.ActionInterval
  * @param {cc.ActionInterval} action
  *
- * @deprecated since v3.0 Does not recommend the use of the base object.
+ * @deprecated since v3.0 Does not recommend the use of the base object.    v3.0之后不建设使用这个基类
  *
  * @example
  * var moveEase = new cc.ActionEase(action);
@@ -39,8 +39,8 @@ cc.ActionEase = cc.ActionInterval.extend(/** @lends cc.ActionEase# */{
     _inner:null,
 
 	/**
-     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />
-	 * creates the action of ActionEase.
+     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />     构造函数, 如果要覆盖并去扩展这个函数, 记得调用this._super()在ctor的函数中<br/>
+	 * creates the action of ActionEase.        创建一个ActionEase
 	 * @param {cc.ActionInterval} action
 	 */
     ctor: function (action) {
@@ -49,7 +49,7 @@ cc.ActionEase = cc.ActionInterval.extend(/** @lends cc.ActionEase# */{
     },
 
     /**
-     * initializes the action
+     * initializes the action                  初始化这个动作
      *
      * @param {cc.ActionInterval} action
      * @return {Boolean}
@@ -66,8 +66,8 @@ cc.ActionEase = cc.ActionInterval.extend(/** @lends cc.ActionEase# */{
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.ActionEase}
      */
@@ -78,7 +78,7 @@ cc.ActionEase = cc.ActionInterval.extend(/** @lends cc.ActionEase# */{
     },
 
     /**
-     * called before the action start. It will also set the target.
+     * called before the action start. It will also set the target.   在Action执行前调用, 去设置目标对象
      *
      * @param {cc.Node} target
      */
@@ -88,7 +88,7 @@ cc.ActionEase = cc.ActionInterval.extend(/** @lends cc.ActionEase# */{
     },
 
     /**
-     * Stop the action.
+     * Stop the action.     停止这个Aciton
      */
     stop:function () {
         this._inner.stop();
@@ -96,7 +96,7 @@ cc.ActionEase = cc.ActionInterval.extend(/** @lends cc.ActionEase# */{
     },
 
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -105,11 +105,11 @@ cc.ActionEase = cc.ActionInterval.extend(/** @lends cc.ActionEase# */{
     },
 
     /**
-     * Create new action to original operation effect opposite. <br />
-     * For example: <br />
-     * - The action will be x coordinates of 0 move to 100. <br />
-     * - The reversed action will be x of 100 move to 0.
-     * - Will be rewritten
+     * Create new action to original operation effect opposite. <br />      创建一个新的Action与原始的效果 <br/>
+     * For example: <br />                                                  例如: <br />
+     * - The action will be x coordinates of 0 move to 100. <br />          - 这个Action在x轴上从0到100
+     * - The reversed action will be x of 100 move to 0.                    - 反转Action会从100到0
+     * - Will be rewritten                                                  - 会被重写
      * @return {cc.ActionEase}
      */
     reverse:function () {
@@ -117,7 +117,7 @@ cc.ActionEase = cc.ActionInterval.extend(/** @lends cc.ActionEase# */{
     },
 
     /**
-     * Get inner Action.
+     * Get inner Action.           获取内部Action
      *
      * @return {cc.ActionInterval}
      */
@@ -127,12 +127,12 @@ cc.ActionEase = cc.ActionInterval.extend(/** @lends cc.ActionEase# */{
 });
 
 /**
- * creates the action of ActionEase
+ * creates the action of ActionEase                                       创建一个ActionEase
  *
  * @param {cc.ActionInterval} action
  * @return {cc.ActionEase}
  * @example
- * // example
+ * // example                     //例如
  * var moveEase = cc.actionEase(action);
  */
 cc.actionEase = function (action) {
@@ -140,38 +140,38 @@ cc.actionEase = function (action) {
 };
 
 /**
- * Please use cc.actionEase instead
- * creates the action of ActionEase
+ * Please use cc.actionEase instead                  请使用cc.actionEase代替
+ * creates the action of ActionEase                  创建一个ActionEase
  *
  * @param {cc.ActionInterval} action
  * @return {cc.ActionEase}
  * @static
- * @deprecated since v3.0 please use cc.actionEase(action) instead.
+ * @deprecated since v3.0 please use cc.actionEase(action) instead.   从v3.0之后请使用cc.actionEase(action)代替
  */
 cc.ActionEase.create = cc.actionEase;
 
 /**
- * Base class for Easing actions with rate parameters
+ * Base class for Easing actions with rate parameters                 使用比例系数缓动Action的基类
  *
  * @class
  * @extends cc.ActionEase
  * @param {cc.ActionInterval} action
  * @param {Number} rate
  *
- * @deprecated since v3.0 please cc.easeRateAction(action, 3.0);
+ * @deprecated since v3.0 please cc.easeRateAction(action, 3.0);      从v3.0之后请使用  cc.easeRateAction(action, 3.0);
  *
  * @example
- * //The old usage
+ * //The old usage       旧用法
  * cc.EaseRateAction.create(action, 3.0);
- * //The new usage
+ * //The new usage      新用法
  * var moveEaseRateAction = cc.easeRateAction(action, 3.0);
  */
 cc.EaseRateAction = cc.ActionEase.extend(/** @lends cc.EaseRateAction# */{
     _rate:0,
 
 	/**
-     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />
-	 * Creates the action with the inner action and the rate parameter.
+     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />     构造函数, 如果要覆盖并去扩展这个函数, 记得调用this._super()在ctor的函数中<br/>
+	 * Creates the action with the inner action and the rate parameter.  使用比例系数与一个内建的Action, 创建一个Action
 	 * @param {cc.ActionInterval} action
 	 * @param {Number} rate
 	 */
@@ -211,8 +211,8 @@ cc.EaseRateAction = cc.ActionEase.extend(/** @lends cc.EaseRateAction# */{
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseRateAction}
      */
@@ -223,26 +223,27 @@ cc.EaseRateAction = cc.ActionEase.extend(/** @lends cc.EaseRateAction# */{
     },
 
     /**
-     * Create new action to original operation effect opposite. <br />
-     * For example: <br />
-     * - The action will be x coordinates of 0 move to 100. <br />
-     * - The reversed action will be x of 100 move to 0.
-     * - Will be rewritten
+     * Create new action to original operation effect opposite. <br />      创建一个新的Action与原始的效果 <br/>
+     * For example: <br />                                                  例如: <br />
+     * - The action will be x coordinates of 0 move to 100. <br />          - 这个Action在x轴上从0到100
+     * - The reversed action will be x of 100 move to 0.                    - 反转Action会从100到0
+     * - Will be rewritten                                                  - 会被重写
      * @return {cc.EaseRateAction}
      */
+
     reverse:function () {
         return new cc.EaseRateAction(this._inner.reverse(), 1 / this._rate);
     }
 });
 
 /**
- * Creates the action with the inner action and the rate parameter.
+ * Creates the action with the inner action and the rate parameter.  使用比例系数与一个内建的Action, 创建一个Action
  *
  * @param {cc.ActionInterval} action
  * @param {Number} rate
  * @return {cc.EaseRateAction}
  * @example
- * // example
+ * // example                     //例如
  * var moveEaseRateAction = cc.easeRateAction(action, 3.0);
  */
 cc.easeRateAction = function (action, rate) {
@@ -251,7 +252,7 @@ cc.easeRateAction = function (action, rate) {
 
 /**
  * Please use cc.easeRateAction instead. <br />
- * Creates the action with the inner action and the rate parameter.
+ * Creates the action with the inner action and the rate parameter.  使用比例系数与一个内建的Action, 创建一个Action
  *
  * @param {cc.ActionInterval} action
  * @param {Number} rate
@@ -259,9 +260,9 @@ cc.easeRateAction = function (action, rate) {
  * @static
  * @deprecated since v3.0 please use cc.easeRateAction(action, rate)
  * @example
- * //The old usage
+ * //The old usage       旧用法
  * cc.EaseRateAction.create(action, 3.0);
- * //The new usage
+ * //The new usage      新用法
  * var moveEaseRateAction = cc.easeRateAction(action, 3.0);
  */
 cc.EaseRateAction.create = cc.easeRateAction;
@@ -275,15 +276,15 @@ cc.EaseRateAction.create = cc.easeRateAction;
  * @deprecated since v3.0 please use action.easing(cc.easeIn(3));
  *
  * @example
- * //The old usage
+ * //The old usage       旧用法
  * cc.EaseIn.create(action, 3);
- * //The new usage
+ * //The new usage      新用法
  * action.easing(cc.easeIn(3.0));
  */
 cc.EaseIn = cc.EaseRateAction.extend(/** @lends cc.EaseIn# */{
 
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -292,7 +293,7 @@ cc.EaseIn = cc.EaseRateAction.extend(/** @lends cc.EaseIn# */{
     },
 
     /**
-     * Create a cc.easeIn action. Opposite with the original motion trajectory.
+     * Create a cc.easeIn action. Opposite with the original motion trajectory.               与反转原Action
      * @return {cc.EaseIn}
      */
     reverse:function () {
@@ -300,8 +301,8 @@ cc.EaseIn = cc.EaseRateAction.extend(/** @lends cc.EaseIn# */{
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseIn}
      */
@@ -313,16 +314,16 @@ cc.EaseIn = cc.EaseRateAction.extend(/** @lends cc.EaseIn# */{
 });
 
 /**
- * Creates the action with the inner action and the rate parameter. <br />
+ * Creates the action with the inner action and the rate parameter.  使用比例系数与一个内建的Action, 创建一个Action <br />
  * From slow to fast.
  *
  * @static
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeIn(3))
  *
  * @example
- * //The old usage
+ * //The old usage       旧用法
  * cc.EaseIn.create(action, 3);
- * //The new usage
+ * //The new usage      新用法
  * action.easing(cc.easeIn(3.0));
  *
  * @param {cc.ActionInterval} action
@@ -341,7 +342,7 @@ cc.EaseIn.create = function (action, rate) {
  * @param {Number} rate
  * @return {Object}
  * @example
- * // example
+ * // example                     //例如
  * action.easing(cc.easeIn(3.0));
  */
 cc.easeIn = function (rate) {
@@ -365,14 +366,14 @@ cc.easeIn = function (rate) {
  * @deprecated since v3.0 please use action.easing(cc.easeOut(3))
  *
  * @example
- * //The old usage
+ * //The old usage       旧用法
  * cc.EaseOut.create(action, 3);
- * //The new usage
+ * //The new usage      新用法
  * action.easing(cc.easeOut(3.0));
  */
 cc.EaseOut = cc.EaseRateAction.extend(/** @lends cc.EaseOut# */{
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -381,7 +382,7 @@ cc.EaseOut = cc.EaseRateAction.extend(/** @lends cc.EaseOut# */{
     },
 
     /**
-     * Create a cc.easeIn action. Opposite with the original motion trajectory.
+     * Create a cc.easeIn action. Opposite with the original motion trajectory.               与反转原Action
      * @return {cc.EaseOut}
      */
     reverse:function () {
@@ -389,8 +390,8 @@ cc.EaseOut = cc.EaseRateAction.extend(/** @lends cc.EaseOut# */{
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseOut}
      */
@@ -402,16 +403,16 @@ cc.EaseOut = cc.EaseRateAction.extend(/** @lends cc.EaseOut# */{
 });
 
 /**
- * Creates the action with the inner action and the rate parameter. <br />
+ * Creates the action with the inner action and the rate parameter.  使用比例系数与一个内建的Action, 创建一个Action <br />
  * From fast to slow.
  *
  * @static
  * @deprecated since v3.0 <br /> Please use cc.easeOut instead.
  *
  * @example
- * //The old usage
+ * //The old usage       旧用法
  * cc.EaseOut.create(action, 3);
- * //The new usage
+ * //The new usage      新用法
  * action.easing(cc.easeOut(3.0));
  *
  * @param {cc.ActionInterval} action
@@ -430,7 +431,7 @@ cc.EaseOut.create = function (action, rate) {
  * @param {Number} rate
  * @return {Object}
  * @example
- * // example
+ * // example                     //例如
  * action.easing(cc.easeOut(3.0));
  */
 cc.easeOut = function (rate) {
@@ -454,14 +455,14 @@ cc.easeOut = function (rate) {
  * @deprecated since v3.0 please use action.easing(cc.easeInOut(3.0))
  *
  * @example
- * //The old usage
+ * //The old usage       旧用法
  * cc.EaseInOut.create(action, 3);
- * //The new usage
+ * //The new usage      新用法
  * action.easing(cc.easeInOut(3.0));
  */
 cc.EaseInOut = cc.EaseRateAction.extend(/** @lends cc.EaseInOut# */{
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -474,8 +475,8 @@ cc.EaseInOut = cc.EaseRateAction.extend(/** @lends cc.EaseInOut# */{
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseInOut}
      */
@@ -486,7 +487,7 @@ cc.EaseInOut = cc.EaseRateAction.extend(/** @lends cc.EaseInOut# */{
     },
 
     /**
-     * Create a cc.EaseInOut action. Opposite with the original motion trajectory.
+     * Create a cc.EaseInOut action. Opposite with the original motion trajectory.               与反转原Action
      * @return {cc.EaseInOut}
      */
     reverse:function () {
@@ -495,15 +496,15 @@ cc.EaseInOut = cc.EaseRateAction.extend(/** @lends cc.EaseInOut# */{
 });
 
 /**
- * Creates the action with the inner action and the rate parameter.
+ * Creates the action with the inner action and the rate parameter.  使用比例系数与一个内建的Action, 创建一个Action
  * Slow to fast then to slow.
  * @static
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeInOut(3.0))
  *
  * @example
- * //The old usage
+ * //The old usage       旧用法
  * cc.EaseInOut.create(action, 3);
- * //The new usage
+ * //The new usage      新用法
  * action.easing(cc.easeInOut(3.0));
  *
  * @param {cc.ActionInterval} action
@@ -522,7 +523,7 @@ cc.EaseInOut.create = function (action, rate) {
  * @return {Object}
  *
  * @example
- * //The new usage
+ * //The new usage      新用法
  * action.easing(cc.easeInOut(3.0));
  */
 cc.easeInOut = function (rate) {
@@ -551,14 +552,14 @@ cc.easeInOut = function (rate) {
  * @deprecated since v3.0 please action.easing(cc.easeExponentialIn())
  *
  * @example
- * //The old usage
+ * //The old usage       旧用法
  * cc.EaseExponentialIn.create(action);
- * //The new usage
+ * //The new usage      新用法
  * action.easing(cc.easeExponentialIn());
  */
 cc.EaseExponentialIn = cc.ActionEase.extend(/** @lends cc.EaseExponentialIn# */{
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -567,7 +568,7 @@ cc.EaseExponentialIn = cc.ActionEase.extend(/** @lends cc.EaseExponentialIn# */{
     },
 
     /**
-     * Create a cc.EaseExponentialOut action. Opposite with the original motion trajectory.
+     * Create a cc.EaseExponentialOut action. Opposite with the original motion trajectory.               与反转原Action
      * @return {cc.EaseExponentialOut}
      */
     reverse:function () {
@@ -575,8 +576,8 @@ cc.EaseExponentialIn = cc.ActionEase.extend(/** @lends cc.EaseExponentialIn# */{
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseExponentialIn}
      */
@@ -597,9 +598,9 @@ cc.EaseExponentialIn = cc.ActionEase.extend(/** @lends cc.EaseExponentialIn# */{
  * @return {cc.EaseExponentialIn}
  *
  * @example
- * //The old usage
+ * //The old usage       旧用法
  * cc.EaseExponentialIn.create(action);
- * //The new usage
+ * //The new usage      新用法
  * action.easing(cc.easeExponentialIn());
  */
 cc.EaseExponentialIn.create = function (action) {
@@ -622,7 +623,7 @@ cc._easeExponentialInObj = {
  * @function
  * @return {Object}
  * @example
- * // example
+ * // example                     //例如
  * action.easing(cc.easeExponentialIn());
  */
 cc.easeExponentialIn = function(){
@@ -639,14 +640,14 @@ cc.easeExponentialIn = function(){
  * @deprecated since v3.0 please use action.easing(cc.easeExponentialOut())
  *
  * @example
- * //The old usage
+ * //The old usage       旧用法
  * cc.EaseExponentialOut.create(action);
- * //The new usage
+ * //The new usage      新用法
  * action.easing(cc.easeExponentialOut());
  */
 cc.EaseExponentialOut = cc.ActionEase.extend(/** @lends cc.EaseExponentialOut# */{
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -655,7 +656,7 @@ cc.EaseExponentialOut = cc.ActionEase.extend(/** @lends cc.EaseExponentialOut# *
     },
 
     /**
-     * Create a cc.EaseExponentialIn action. Opposite with the original motion trajectory.
+     * Create a cc.EaseExponentialIn action. Opposite with the original motion trajectory.               与反转原Action
      * @return {cc.EaseExponentialIn}
      */
     reverse:function () {
@@ -663,8 +664,8 @@ cc.EaseExponentialOut = cc.ActionEase.extend(/** @lends cc.EaseExponentialOut# *
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseExponentialOut}
      */
@@ -685,9 +686,9 @@ cc.EaseExponentialOut = cc.ActionEase.extend(/** @lends cc.EaseExponentialOut# *
  * @return {Object}
  *
  * @example
- * //The old usage
+ * //The old usage       旧用法
  * cc.EaseExponentialOut.create(action);
- * //The new usage
+ * //The new usage      新用法
  * action.easing(cc.easeExponentialOut());
  */
 cc.EaseExponentialOut.create = function (action) {
@@ -710,7 +711,7 @@ cc._easeExponentialOutObj = {
  *
  * @return {Object}
  * @example
- * // example
+ * // example                     //例如
  * action.easing(cc.easeExponentialOut());
  */
 cc.easeExponentialOut = function(){
@@ -728,14 +729,14 @@ cc.easeExponentialOut = function(){
  * @deprecated since v3.0 please use action.easing(cc.easeExponentialInOut)
  *
  * @example
- * //The old usage
+ * //The old usage       旧用法
  * cc.EaseExponentialInOut.create(action);
- * //The new usage
+ * //The new usage      新用法
  * action.easing(cc.easeExponentialInOut());
  */
 cc.EaseExponentialInOut = cc.ActionEase.extend(/** @lends cc.EaseExponentialInOut# */{
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -751,7 +752,7 @@ cc.EaseExponentialInOut = cc.ActionEase.extend(/** @lends cc.EaseExponentialInOu
     },
 
     /**
-     * Create a cc.EaseExponentialInOut action. Opposite with the original motion trajectory.
+     * Create a cc.EaseExponentialInOut action. Opposite with the original motion trajectory.               与反转原Action
      * @return {cc.EaseExponentialInOut}
      */
     reverse:function () {
@@ -759,8 +760,8 @@ cc.EaseExponentialInOut = cc.ActionEase.extend(/** @lends cc.EaseExponentialInOu
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseExponentialInOut}
      */
@@ -781,9 +782,9 @@ cc.EaseExponentialInOut = cc.ActionEase.extend(/** @lends cc.EaseExponentialInOu
  * @return {cc.EaseExponentialInOut}
  *
  * @example
- * //The old usage
+ * //The old usage       旧用法
  * cc.EaseExponentialInOut.create(action);
- * //The new usage
+ * //The new usage      新用法
  * action.easing(cc.easeExponentialInOut());
  */
 cc.EaseExponentialInOut.create = function (action) {
@@ -813,7 +814,7 @@ cc._easeExponentialInOutObj = {
  * @function
  * @return {Object}
  * @example
- * // example
+ * // example                     //例如
  * action.easing(cc.easeExponentialInOut());
  */
 cc.easeExponentialInOut = function(){
@@ -830,14 +831,14 @@ cc.easeExponentialInOut = function(){
  * @deprecated since v3.0 please use action.easing(cc.easeSineIn())
  *
  * @example
- * //The old usage
+ * //The old usage       旧用法
  * cc.EaseSineIn.create(action);
- * //The new usage
+ * //The new usage      新用法
  * action.easing(cc.easeSineIn());
  */
 cc.EaseSineIn = cc.ActionEase.extend(/** @lends cc.EaseSineIn# */{
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -847,7 +848,7 @@ cc.EaseSineIn = cc.ActionEase.extend(/** @lends cc.EaseSineIn# */{
     },
 
     /**
-     * Create a cc.EaseSineOut action. Opposite with the original motion trajectory.
+     * Create a cc.EaseSineOut action. Opposite with the original motion trajectory.               与反转原Action
      * @return {cc.EaseSineOut}
      */
     reverse:function () {
@@ -855,8 +856,8 @@ cc.EaseSineIn = cc.ActionEase.extend(/** @lends cc.EaseSineIn# */{
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseSineIn}
      */
@@ -877,9 +878,9 @@ cc.EaseSineIn = cc.ActionEase.extend(/** @lends cc.EaseSineIn# */{
  * @return {cc.EaseSineIn}
  *
  * @example
- * //The old usage
+ * //The old usage       旧用法
  * cc.EaseSineIn.create(action);
- * //The new usage
+ * //The new usage      新用法
  * action.easing(cc.easeSineIn());
  */
 cc.EaseSineIn.create = function (action) {
@@ -901,7 +902,7 @@ cc._easeSineInObj = {
  * @function
  * @return {Object}
  * @example
- * // example
+ * // example                     //例如
  * action.easing(cc.easeSineIn());
  */
 cc.easeSineIn = function(){
@@ -918,14 +919,14 @@ cc.easeSineIn = function(){
  * @deprecated since v3.0 please use action.easing(cc.easeSineOut())
  *
  * @example
- * //The old usage
+ * //The old usage       旧用法
  * cc.EaseSineOut.create(action);
- * //The new usage
+ * //The new usage      新用法
  * action.easing(cc.easeSineOut());
  */
 cc.EaseSineOut = cc.ActionEase.extend(/** @lends cc.EaseSineOut# */{
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -935,7 +936,7 @@ cc.EaseSineOut = cc.ActionEase.extend(/** @lends cc.EaseSineOut# */{
     },
 
     /**
-     * Create a cc.EaseSineIn action. Opposite with the original motion trajectory.
+     * Create a cc.EaseSineIn action. Opposite with the original motion trajectory.               与反转原Action
      * @return {cc.EaseSineIn}
      */
     reverse:function () {
@@ -943,8 +944,8 @@ cc.EaseSineOut = cc.ActionEase.extend(/** @lends cc.EaseSineOut# */{
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseSineOut}
      */
@@ -965,9 +966,9 @@ cc.EaseSineOut = cc.ActionEase.extend(/** @lends cc.EaseSineOut# */{
  * @return {cc.EaseSineOut}
  *
  * @example
- * //The old usage
+ * //The old usage       旧用法
  * cc.EaseSineOut.create(action);
- * //The new usage
+ * //The new usage      新用法
  * action.easing(cc.easeSineOut());
  */
 cc.EaseSineOut.create = function (action) {
@@ -990,7 +991,7 @@ cc._easeSineOutObj = {
  * @function
  * @return {Object}
  * @example
- * // example
+ * // example                     //例如
  * action.easing(cc.easeSineOut());
  */
 cc.easeSineOut = function(){
@@ -1007,14 +1008,14 @@ cc.easeSineOut = function(){
  * @deprecated since v3.0 please use action.easing(cc.easeSineInOut())
  *
  * @example
- * //The old usage
+ * //The old usage       旧用法                         //旧用法
  * cc.EaseSineInOut.create(action);
- * //The new usage
+ * //The new usage      新用法                        //新用法
  * action.easing(cc.easeSineInOut());
  */
 cc.EaseSineInOut = cc.ActionEase.extend(/** @lends cc.EaseSineInOut# */{
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -1024,8 +1025,8 @@ cc.EaseSineInOut = cc.ActionEase.extend(/** @lends cc.EaseSineInOut# */{
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseSineInOut}
      */
@@ -1036,7 +1037,7 @@ cc.EaseSineInOut = cc.ActionEase.extend(/** @lends cc.EaseSineInOut# */{
     },
 
     /**
-     * Create a cc.EaseSineInOut action. Opposite with the original motion trajectory.
+     * Create a cc.EaseSineInOut action. Opposite with the original motion trajectory.               与反转原Action
      * @return {cc.EaseSineInOut}
      */
     reverse:function () {
@@ -1045,18 +1046,18 @@ cc.EaseSineInOut = cc.ActionEase.extend(/** @lends cc.EaseSineInOut# */{
 });
 
 /**
- * Creates the action. <br />
- * Reference easeInOutSine: <br />
+ * Creates the action. <br />                                       创建Action <br/>
+ * Reference easeInOutSine: <br />                                  参考easeInOutSine:
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @static
  * @param {cc.ActionInterval} action
  * @return {cc.EaseSineInOut}
- * @deprecated since v3.0 <br /> Please use action.easing(cc.easeSineInOut())
+ * @deprecated since v3.0 <br /> Please use action.easing(cc.easeSineInOut())    从v3.0之后 <br /> 请使用action.easing(cc.easeSineInOut())
  *
  * @example
- * //The old usage
+ * //The old usage       旧用法                              //旧用法
  * cc.EaseSineInOut.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeSineInOut());
  */
 cc.EaseSineInOut.create = function (action) {
@@ -1078,7 +1079,7 @@ cc._easeSineInOutObj = {
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @return {Object}
  * @example
- * // example
+ * // example                     //例如
  * action.easing(cc.easeSineInOut());
  */
 cc.easeSineInOut = function(){
@@ -1098,7 +1099,7 @@ cc.EaseElastic = cc.ActionEase.extend(/** @lends cc.EaseElastic# */{
     _period: 0.3,
 
 	/**
-     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />
+     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />     构造函数, 如果要覆盖并去扩展这个函数, 记得调用this._super()在ctor的函数中<br/>
      * Creates the action with the inner action and the period in radians (default is 0.3).
 	 * @param {cc.ActionInterval} action
 	 * @param {Number} [period=0.3]
@@ -1138,7 +1139,7 @@ cc.EaseElastic = cc.ActionEase.extend(/** @lends cc.EaseElastic# */{
     },
 
     /**
-     * Create a action. Opposite with the original motion trajectory. <br />
+     * Create a action. Opposite with the original motion trajectory.       创建一个Action, 是原Action的反转               与反转原Action <br />
      * Will be overwrite.
      * @return {null}
      */
@@ -1148,8 +1149,8 @@ cc.EaseElastic = cc.ActionEase.extend(/** @lends cc.EaseElastic# */{
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseElastic}
      */
@@ -1183,14 +1184,14 @@ cc.EaseElastic.create = function (action, period) {
  * @deprecated since v3.0 please use action.easing(cc.easeElasticIn())
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseElasticIn.create(action, period);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeElasticIn(period));
  */
 cc.EaseElasticIn = cc.EaseElastic.extend(/** @lends cc.EaseElasticIn# */{
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -1207,7 +1208,7 @@ cc.EaseElasticIn = cc.EaseElastic.extend(/** @lends cc.EaseElasticIn# */{
     },
 
     /**
-     * Create a action. Opposite with the original motion trajectory.
+     * Create a action. Opposite with the original motion trajectory.       创建一个Action, 是原Action的反转               与反转原Action
      * @return {cc.EaseElasticOut}
      */
     reverse:function () {
@@ -1215,8 +1216,8 @@ cc.EaseElasticIn = cc.EaseElastic.extend(/** @lends cc.EaseElasticIn# */{
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseElasticIn}
      */
@@ -1234,9 +1235,9 @@ cc.EaseElasticIn = cc.EaseElastic.extend(/** @lends cc.EaseElasticIn# */{
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeElasticIn(period))
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseElasticIn.create(action, period);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeElasticIn(period));
  *
  * @param {cc.ActionInterval} action
@@ -1268,7 +1269,7 @@ cc._easeElasticInObj = {
  * @param {Number} [period=0.3]
  * @return {Object}
  * @example
- * // example
+ * // example                     //例如
  * action.easing(cc.easeElasticIn(3.0));
  */
 cc.easeElasticIn = function (period) {
@@ -1300,14 +1301,14 @@ cc.easeElasticIn = function (period) {
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeElasticOut(period))
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseElasticOut.create(action, period);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeElasticOut(period));
  */
 cc.EaseElasticOut = cc.EaseElastic.extend(/** @lends cc.EaseElasticOut# */{
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -1324,7 +1325,7 @@ cc.EaseElasticOut = cc.EaseElastic.extend(/** @lends cc.EaseElasticOut# */{
     },
 
     /**
-     * Create a action. Opposite with the original motion trajectory.
+     * Create a action. Opposite with the original motion trajectory.       创建一个Action, 是原Action的反转               与反转原Action
      * @return {cc.EaseElasticIn}
      */
     reverse:function () {
@@ -1332,8 +1333,8 @@ cc.EaseElasticOut = cc.EaseElastic.extend(/** @lends cc.EaseElasticOut# */{
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseElasticOut}
      */
@@ -1354,9 +1355,9 @@ cc.EaseElasticOut = cc.EaseElastic.extend(/** @lends cc.EaseElasticOut# */{
  * @return {cc.EaseElasticOut}
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseElasticOut.create(action, period);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeElasticOut(period));
  */
 cc.EaseElasticOut.create = function (action, period) {
@@ -1380,7 +1381,7 @@ cc._easeElasticOutObj = {
  * @param {Number} [period=0.3]
  * @return {Object}
  * @example
- * // example
+ * // example                     //例如
  * action.easing(cc.easeElasticOut(3.0));
  */
 cc.easeElasticOut = function (period) {
@@ -1409,14 +1410,14 @@ cc.easeElasticOut = function (period) {
  * @deprecated since v3.0 please use action.easing(cc.easeElasticInOut())
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseElasticInOut.create(action, period);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeElasticInOut(period));
  */
 cc.EaseElasticInOut = cc.EaseElastic.extend(/** @lends cc.EaseElasticInOut# */{
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -1441,7 +1442,7 @@ cc.EaseElasticInOut = cc.EaseElastic.extend(/** @lends cc.EaseElasticInOut# */{
     },
 
     /**
-     * Create a action. Opposite with the original motion trajectory.
+     * Create a action. Opposite with the original motion trajectory.       创建一个Action, 是原Action的反转               与反转原Action
      * @return {cc.EaseElasticInOut}
      */
     reverse:function () {
@@ -1449,8 +1450,8 @@ cc.EaseElasticInOut = cc.EaseElastic.extend(/** @lends cc.EaseElasticInOut# */{
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseElasticInOut}
      */
@@ -1471,9 +1472,9 @@ cc.EaseElasticInOut = cc.EaseElastic.extend(/** @lends cc.EaseElasticInOut# */{
  * @return {cc.EaseElasticInOut}
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseElasticInOut.create(action, period);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeElasticInOut(period));
  */
 cc.EaseElasticInOut.create = function (action, period) {
@@ -1488,7 +1489,7 @@ cc.EaseElasticInOut.create = function (action, period) {
  * @param {Number} [period=0.3]
  * @return {Object}
  * @example
- * // example
+ * // example                     //例如
  * action.easing(cc.easeElasticInOut(3.0));
  */
 cc.easeElasticInOut = function (period) {
@@ -1548,8 +1549,8 @@ cc.EaseBounce = cc.ActionEase.extend(/** @lends cc.EaseBounce# */{
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseBounce}
      */
@@ -1560,7 +1561,7 @@ cc.EaseBounce = cc.ActionEase.extend(/** @lends cc.EaseBounce# */{
     },
 
     /**
-     * Create a action. Opposite with the original motion trajectory.
+     * Create a action. Opposite with the original motion trajectory.       创建一个Action, 是原Action的反转               与反转原Action
      * @return {cc.EaseBounce}
      */
     reverse:function () {
@@ -1589,14 +1590,14 @@ cc.EaseBounce.create = function (action) {
  * @deprecated since v3.0 please use action.easing(cc.easeBounceIn())
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseBounceIn.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeBounceIn());
  */
 cc.EaseBounceIn = cc.EaseBounce.extend(/** @lends cc.EaseBounceIn# */{
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -1606,7 +1607,7 @@ cc.EaseBounceIn = cc.EaseBounce.extend(/** @lends cc.EaseBounceIn# */{
     },
 
     /**
-     * Create a action. Opposite with the original motion trajectory.
+     * Create a action. Opposite with the original motion trajectory.       创建一个Action, 是原Action的反转               与反转原Action
      * @return {cc.EaseBounceOut}
      */
     reverse:function () {
@@ -1614,8 +1615,8 @@ cc.EaseBounceIn = cc.EaseBounce.extend(/** @lends cc.EaseBounceIn# */{
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseBounceIn}
      */
@@ -1627,7 +1628,7 @@ cc.EaseBounceIn = cc.EaseBounce.extend(/** @lends cc.EaseBounceIn# */{
 });
 
 /**
- * Creates the action. <br />
+ * Creates the action. <br />                                创建Action <br/>
  * Eased bounce effect at the beginning.
  * @static
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeBounceIn())
@@ -1635,9 +1636,9 @@ cc.EaseBounceIn = cc.EaseBounce.extend(/** @lends cc.EaseBounceIn# */{
  * @return {cc.EaseBounceIn}
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseBounceIn.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeBounceIn());
  */
 cc.EaseBounceIn.create = function (action) {
@@ -1669,12 +1670,12 @@ cc._easeBounceInObj = {
 };
 
 /**
- * Creates the action easing object. <br />
+ * Creates the action easing object. <br />     创建一个缓动Action对象<br/>
  * Eased bounce effect at the beginning.
  * @function
  * @return {Object}
  * @example
- * // example
+ * // example                     //例如
  * action.easing(cc.easeBounceIn());
  */
 cc.easeBounceIn = function(){
@@ -1691,14 +1692,14 @@ cc.easeBounceIn = function(){
  * @deprecated since v3.0 please use action.easing(cc.easeBounceOut())
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseBounceOut.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeBounceOut());
  */
 cc.EaseBounceOut = cc.EaseBounce.extend(/** @lends cc.EaseBounceOut# */{
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -1708,7 +1709,7 @@ cc.EaseBounceOut = cc.EaseBounce.extend(/** @lends cc.EaseBounceOut# */{
     },
 
     /**
-     * Create a action. Opposite with the original motion trajectory.
+     * Create a action. Opposite with the original motion trajectory.       创建一个Action, 是原Action的反转               与反转原Action
      * @return {cc.EaseBounceIn}
      */
     reverse:function () {
@@ -1716,8 +1717,8 @@ cc.EaseBounceOut = cc.EaseBounce.extend(/** @lends cc.EaseBounceOut# */{
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseBounceOut}
      */
@@ -1729,7 +1730,7 @@ cc.EaseBounceOut = cc.EaseBounce.extend(/** @lends cc.EaseBounceOut# */{
 });
 
 /**
- * Creates the action. <br />
+ * Creates the action. <br />                                创建Action <br/>
  * Eased bounce effect at the ending.
  * @static
  * @deprecated since v3.0 please use action.easing(cc.easeBounceOut())
@@ -1737,9 +1738,9 @@ cc.EaseBounceOut = cc.EaseBounce.extend(/** @lends cc.EaseBounceOut# */{
  * @return {cc.EaseBounceOut}
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseBounceOut.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeBounceOut());
  */
 cc.EaseBounceOut.create = function (action) {
@@ -1756,12 +1757,12 @@ cc._easeBounceOutObj = {
 };
 
 /**
- * Creates the action easing object. <br />
+ * Creates the action easing object. <br />     创建一个缓动Action对象<br/>
  * Eased bounce effect at the ending.
  * @function
  * @return {Object}
  * @example
- * // example
+ * // example                     //例如
  * action.easing(cc.easeBounceOut());
  */
 cc.easeBounceOut = function(){
@@ -1778,14 +1779,14 @@ cc.easeBounceOut = function(){
  * @deprecated since v3.0 <br /> Please use acton.easing(cc.easeBounceInOut())
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseBounceInOut.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeBounceInOut());
  */
 cc.EaseBounceInOut = cc.EaseBounce.extend(/** @lends cc.EaseBounceInOut# */{
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -1801,8 +1802,8 @@ cc.EaseBounceInOut = cc.EaseBounce.extend(/** @lends cc.EaseBounceInOut# */{
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseBounceInOut}
      */
@@ -1813,7 +1814,7 @@ cc.EaseBounceInOut = cc.EaseBounce.extend(/** @lends cc.EaseBounceInOut# */{
     },
 
     /**
-     * Create a action. Opposite with the original motion trajectory.
+     * Create a action. Opposite with the original motion trajectory.       创建一个Action, 是原Action的反转               与反转原Action
      * @return {cc.EaseBounceInOut}
      */
     reverse:function () {
@@ -1822,7 +1823,7 @@ cc.EaseBounceInOut = cc.EaseBounce.extend(/** @lends cc.EaseBounceInOut# */{
 });
 
 /**
- * Creates the action. <br />
+ * Creates the action. <br />                                创建Action <br/>
  * Eased bounce effect at the begining and ending.
  * @static
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeBounceInOut())
@@ -1830,9 +1831,9 @@ cc.EaseBounceInOut = cc.EaseBounce.extend(/** @lends cc.EaseBounceInOut# */{
  * @return {cc.EaseBounceInOut}
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseBounceInOut.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeBounceInOut());
  */
 cc.EaseBounceInOut.create = function (action) {
@@ -1856,12 +1857,12 @@ cc._easeBounceInOutObj = {
 };
 
 /**
- * Creates the action easing object. <br />
+ * Creates the action easing object. <br />     创建一个缓动Action对象<br/>
  * Eased bounce effect at the begining and ending.
  * @function
  * @return {Object}
  * @example
- * // example
+ * // example                     //例如
  * action.easing(cc.easeBounceInOut());
  */
 cc.easeBounceInOut = function(){
@@ -1878,14 +1879,14 @@ cc.easeBounceInOut = function(){
  * @deprecated since v3.0 please use action.easing(cc.easeBackIn())
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseBackIn.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeBackIn());
  */
 cc.EaseBackIn = cc.ActionEase.extend(/** @lends cc.EaseBackIn# */{
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -1896,7 +1897,7 @@ cc.EaseBackIn = cc.ActionEase.extend(/** @lends cc.EaseBackIn# */{
     },
 
     /**
-     * Create a action. Opposite with the original motion trajectory.
+     * Create a action. Opposite with the original motion trajectory.       创建一个Action, 是原Action的反转               与反转原Action
      * @return {cc.EaseBackOut}
      */
     reverse:function () {
@@ -1904,8 +1905,8 @@ cc.EaseBackIn = cc.ActionEase.extend(/** @lends cc.EaseBackIn# */{
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseBackIn}
      */
@@ -1926,9 +1927,9 @@ cc.EaseBackIn = cc.ActionEase.extend(/** @lends cc.EaseBackIn# */{
  * @return {cc.EaseBackIn}
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseBackIn.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeBackIn());
  */
 cc.EaseBackIn.create = function (action) {
@@ -1946,12 +1947,12 @@ cc._easeBackInObj = {
 };
 
 /**
- * Creates the action easing object. <br />
+ * Creates the action easing object. <br />     创建一个缓动Action对象<br/>
  * In the opposite direction to move slowly, and then accelerated to the right direction.
  * @function
  * @return {Object}
  * @example
- * // example
+ * // example                     //例如
  * action.easing(cc.easeBackIn());
  */
 cc.easeBackIn = function(){
@@ -1968,14 +1969,14 @@ cc.easeBackIn = function(){
  * @deprecated since v3.0 please use action.easing(cc.easeBackOut());
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseBackOut.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeBackOut());
  */
 cc.EaseBackOut = cc.ActionEase.extend(/** @lends cc.EaseBackOut# */{
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -1986,7 +1987,7 @@ cc.EaseBackOut = cc.ActionEase.extend(/** @lends cc.EaseBackOut# */{
     },
 
     /**
-     * Create a action. Opposite with the original motion trajectory.
+     * Create a action. Opposite with the original motion trajectory.       创建一个Action, 是原Action的反转               与反转原Action
      * @return {cc.EaseBackIn}
      */
     reverse:function () {
@@ -1994,8 +1995,8 @@ cc.EaseBackOut = cc.ActionEase.extend(/** @lends cc.EaseBackOut# */{
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseBackOut}
      */
@@ -2007,7 +2008,7 @@ cc.EaseBackOut = cc.ActionEase.extend(/** @lends cc.EaseBackOut# */{
 });
 
 /**
- * Creates the action. <br />
+ * Creates the action. <br />                                创建Action <br/>
  * Fast moving more than the finish, and then slowly back to the finish.
  * @static
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeBackOut());
@@ -2015,9 +2016,9 @@ cc.EaseBackOut = cc.ActionEase.extend(/** @lends cc.EaseBackOut# */{
  * @return {cc.EaseBackOut}
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseBackOut.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeBackOut());
  */
 cc.EaseBackOut.create = function (action) {
@@ -2036,12 +2037,12 @@ cc._easeBackOutObj = {
 };
 
 /**
- * Creates the action easing object. <br />
+ * Creates the action easing object. <br />     创建一个缓动Action对象<br/>
  * Fast moving more than the finish, and then slowly back to the finish.
  * @function
  * @return {Object}
  * @example
- * // example
+ * // example                     //例如
  * action.easing(cc.easeBackOut());
  */
 cc.easeBackOut = function(){
@@ -2058,14 +2059,14 @@ cc.easeBackOut = function(){
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeBackInOut())
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseBackInOut.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeBackInOut());
  */
 cc.EaseBackInOut = cc.ActionEase.extend(/** @lends cc.EaseBackInOut# */{
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -2081,8 +2082,8 @@ cc.EaseBackInOut = cc.ActionEase.extend(/** @lends cc.EaseBackInOut# */{
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseBackInOut}
      */
@@ -2093,7 +2094,7 @@ cc.EaseBackInOut = cc.ActionEase.extend(/** @lends cc.EaseBackInOut# */{
     },
 
     /**
-     * Create a action. Opposite with the original motion trajectory.
+     * Create a action. Opposite with the original motion trajectory.       创建一个Action, 是原Action的反转               与反转原Action
      * @return {cc.EaseBackInOut}
      */
     reverse:function () {
@@ -2103,7 +2104,7 @@ cc.EaseBackInOut = cc.ActionEase.extend(/** @lends cc.EaseBackInOut# */{
 
 
 /**
- * Creates the action. <br />
+ * Creates the action. <br />                                创建Action <br/>
  * Begining of cc.EaseBackIn. Ending of cc.EaseBackOut.
  * @static
  * @param {cc.ActionInterval} action
@@ -2112,9 +2113,9 @@ cc.EaseBackInOut = cc.ActionEase.extend(/** @lends cc.EaseBackInOut# */{
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeBackInOut())
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseBackInOut.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeBackInOut());
  */
 cc.EaseBackInOut.create = function (action) {
@@ -2138,12 +2139,12 @@ cc._easeBackInOutObj = {
 };
 
 /**
- * Creates the action easing object. <br />
+ * Creates the action easing object. <br />     创建一个缓动Action对象<br/>
  * Begining of cc.EaseBackIn. Ending of cc.EaseBackOut.
  * @function
  * @return {Object}
  * @example
- * // example
+ * // example                     //例如
  * action.easing(cc.easeBackInOut());
  */
 cc.easeBackInOut = function(){
@@ -2161,10 +2162,10 @@ cc.easeBackInOut = function(){
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeBezierAction())
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * var action = cc.EaseBezierAction.create(action);
  * action.setBezierParamer(0.5, 0.5, 1.0, 1.0);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeBezierAction(0.5, 0.5, 1.0, 1.0));
  */
 cc.EaseBezierAction = cc.ActionEase.extend(/** @lends cc.EaseBezierAction# */{
@@ -2175,7 +2176,7 @@ cc.EaseBezierAction = cc.ActionEase.extend(/** @lends cc.EaseBezierAction# */{
     _p3: null,
 
     /**
-     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />
+     * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />     构造函数, 如果要覆盖并去扩展这个函数, 记得调用this._super()在ctor的函数中<br/>
      * Initialization requires the application of Bessel curve of action.
      * @param {cc.Action} action
      */
@@ -2188,7 +2189,7 @@ cc.EaseBezierAction = cc.ActionEase.extend(/** @lends cc.EaseBezierAction# */{
     },
 
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -2198,8 +2199,8 @@ cc.EaseBezierAction = cc.ActionEase.extend(/** @lends cc.EaseBezierAction# */{
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseBezierAction}
      */
@@ -2211,7 +2212,7 @@ cc.EaseBezierAction = cc.ActionEase.extend(/** @lends cc.EaseBezierAction# */{
     },
 
     /**
-     * Create a action. Opposite with the original motion trajectory.
+     * Create a action. Opposite with the original motion trajectory.       创建一个Action, 是原Action的反转               与反转原Action
      * @return {cc.EaseBezierAction}
      */
     reverse: function(){
@@ -2236,7 +2237,7 @@ cc.EaseBezierAction = cc.ActionEase.extend(/** @lends cc.EaseBezierAction# */{
 });
 
 /**
- * Creates the action. <br />
+ * Creates the action. <br />                                创建Action <br/>
  * After creating the cc.EaseBezierAction, also need to manually call setBezierParamer. <br />
  * According to the set point, calculate the trajectory.
  * @static
@@ -2246,10 +2247,10 @@ cc.EaseBezierAction = cc.ActionEase.extend(/** @lends cc.EaseBezierAction# */{
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeBezierAction())
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * var action = cc.EaseBezierAction.create(action);
  * action.setBezierParamer(0.5, 0.5, 1.0, 1.0);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeBezierAction(0.5, 0.5, 1.0, 1.0));
  */
 cc.EaseBezierAction.create = function(action){
@@ -2257,7 +2258,7 @@ cc.EaseBezierAction.create = function(action){
 };
 
 /**
- * Creates the action easing object. <br />
+ * Creates the action easing object. <br />     创建一个缓动Action对象<br/>
  * Into the 4 reference point. <br />
  * To calculate the motion curve.
  * @param {Number} p0 The first bezier parameter
@@ -2266,7 +2267,7 @@ cc.EaseBezierAction.create = function(action){
  * @param {Number} p3 The fourth bezier parameter
  * @returns {Object}
  * @example
- * // example
+ * // example                     //例如
  * action.easing(cc.easeBezierAction(0.5, 0.5, 1.0, 1.0));
  */
 cc.easeBezierAction = function(p0, p1, p2, p3){
@@ -2290,9 +2291,9 @@ cc.easeBezierAction = function(p0, p1, p2, p3){
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeQuadraticAction())
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseQuadraticActionIn.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeQuadraticActionIn());
  */
 cc.EaseQuadraticActionIn = cc.ActionEase.extend(/** @lends cc.EaseQuadraticActionIn# */{
@@ -2302,7 +2303,7 @@ cc.EaseQuadraticActionIn = cc.ActionEase.extend(/** @lends cc.EaseQuadraticActio
     },
 
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -2311,8 +2312,8 @@ cc.EaseQuadraticActionIn = cc.ActionEase.extend(/** @lends cc.EaseQuadraticActio
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseQuadraticActionIn}
      */
@@ -2323,7 +2324,7 @@ cc.EaseQuadraticActionIn = cc.ActionEase.extend(/** @lends cc.EaseQuadraticActio
     },
 
     /**
-     * Create a action. Opposite with the original motion trajectory.
+     * Create a action. Opposite with the original motion trajectory.       创建一个Action, 是原Action的反转               与反转原Action
      * @return {cc.EaseQuadraticActionIn}
      */
     reverse: function(){
@@ -2343,9 +2344,9 @@ cc.EaseQuadraticActionIn = cc.ActionEase.extend(/** @lends cc.EaseQuadraticActio
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeQuadraticAction())
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseQuadraticActionIn.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeQuadraticActionIn());
  */
 cc.EaseQuadraticActionIn.create = function(action){
@@ -2360,12 +2361,12 @@ cc._easeQuadraticActionIn = {
 };
 
 /**
- * Creates the action easing object. <br />
+ * Creates the action easing object. <br />     创建一个缓动Action对象<br/>
  * Reference easeInQuad: <br />
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @returns {Object}
  * @example
- * //example
+ * //example       例如
  * action.easing(cc.easeQuadraticActionIn());
  */
 cc.easeQuadraticActionIn = function(){
@@ -2382,9 +2383,9 @@ cc.easeQuadraticActionIn = function(){
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeQuadraticActionOut())
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseQuadraticActionOut.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeQuadraticActionOut());
  */
 cc.EaseQuadraticActionOut = cc.ActionEase.extend(/** @lends cc.EaseQuadraticActionOut# */{
@@ -2394,7 +2395,7 @@ cc.EaseQuadraticActionOut = cc.ActionEase.extend(/** @lends cc.EaseQuadraticActi
     },
 
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -2403,8 +2404,8 @@ cc.EaseQuadraticActionOut = cc.ActionEase.extend(/** @lends cc.EaseQuadraticActi
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseQuadraticActionOut}
      */
@@ -2415,7 +2416,7 @@ cc.EaseQuadraticActionOut = cc.ActionEase.extend(/** @lends cc.EaseQuadraticActi
     },
 
     /**
-     * Create a action. Opposite with the original motion trajectory.
+     * Create a action. Opposite with the original motion trajectory.       创建一个Action, 是原Action的反转               与反转原Action
      * @return {cc.EaseQuadraticActionOut}
      */
     reverse: function(){
@@ -2424,7 +2425,7 @@ cc.EaseQuadraticActionOut = cc.ActionEase.extend(/** @lends cc.EaseQuadraticActi
 });
 
 /**
- * Creates the action. <br />
+ * Creates the action. <br />                                创建Action <br/>
  * Reference easeOutQuad: <br />
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @static
@@ -2434,9 +2435,9 @@ cc.EaseQuadraticActionOut = cc.ActionEase.extend(/** @lends cc.EaseQuadraticActi
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeQuadraticActionOut())
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseQuadraticActionOut.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeQuadraticActionOut());
  */
 cc.EaseQuadraticActionOut.create = function(action){
@@ -2450,13 +2451,13 @@ cc._easeQuadraticActionOut = {
     }
 };
 /**
- * Creates the action easing object. <br />
+ * Creates the action easing object. <br />     创建一个缓动Action对象<br/>
  * Reference easeOutQuad: <br />
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @function
  * @returns {Object}
  * @example
- * //example
+ * //example       例如
  * action.easing(cc.easeQuadraticActionOut());
  */
 cc.easeQuadraticActionOut = function(){
@@ -2473,9 +2474,9 @@ cc.easeQuadraticActionOut = function(){
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeQuadraticActionInOut())
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseQuadraticActionInOut.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeQuadraticActionInOut());
  */
 cc.EaseQuadraticActionInOut = cc.ActionEase.extend(/** @lends cc.EaseQuadraticActionInOut# */{
@@ -2492,7 +2493,7 @@ cc.EaseQuadraticActionInOut = cc.ActionEase.extend(/** @lends cc.EaseQuadraticAc
     },
 
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -2501,8 +2502,8 @@ cc.EaseQuadraticActionInOut = cc.ActionEase.extend(/** @lends cc.EaseQuadraticAc
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseQuadraticActionInOut}
      */
@@ -2513,7 +2514,7 @@ cc.EaseQuadraticActionInOut = cc.ActionEase.extend(/** @lends cc.EaseQuadraticAc
     },
 
     /**
-     * Create a action. Opposite with the original motion trajectory.
+     * Create a action. Opposite with the original motion trajectory.       创建一个Action, 是原Action的反转               与反转原Action
      * @return {cc.EaseQuadraticActionInOut}
      */
     reverse: function(){
@@ -2522,7 +2523,7 @@ cc.EaseQuadraticActionInOut = cc.ActionEase.extend(/** @lends cc.EaseQuadraticAc
 });
 
 /**
- * Creates the action. <br />
+ * Creates the action. <br />                                创建Action <br/>
  * Reference easeInOutQuad: <br />
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @static
@@ -2530,9 +2531,9 @@ cc.EaseQuadraticActionInOut = cc.ActionEase.extend(/** @lends cc.EaseQuadraticAc
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeQuadraticActionInOut())
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseQuadraticActionInOut.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeQuadraticActionInOut());
  *
  * @param action
@@ -2550,13 +2551,13 @@ cc._easeQuadraticActionInOut = {
 };
 
 /**
- * Creates the action easing object. <br />
+ * Creates the action easing object. <br />     创建一个缓动Action对象<br/>
  * Reference easeInOutQuad: <br />
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @function
  * @returns {Object}
  * @example
- * //example
+ * //example       例如
  * action.easing(cc.easeQuadraticActionInOut());
  */
 cc.easeQuadraticActionInOut = function(){
@@ -2573,9 +2574,9 @@ cc.easeQuadraticActionInOut = function(){
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeQuarticActionIn());
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseQuarticActionIn.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeQuarticActionIn());
  */
 cc.EaseQuarticActionIn = cc.ActionEase.extend(/** @lends cc.EaseQuarticActionIn# */{
@@ -2584,7 +2585,7 @@ cc.EaseQuarticActionIn = cc.ActionEase.extend(/** @lends cc.EaseQuarticActionIn#
     },
 
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -2593,8 +2594,8 @@ cc.EaseQuarticActionIn = cc.ActionEase.extend(/** @lends cc.EaseQuarticActionIn#
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseQuarticActionIn}
      */
@@ -2605,7 +2606,7 @@ cc.EaseQuarticActionIn = cc.ActionEase.extend(/** @lends cc.EaseQuarticActionIn#
     },
 
     /**
-     * Create a action. Opposite with the original motion trajectory.
+     * Create a action. Opposite with the original motion trajectory.       创建一个Action, 是原Action的反转               与反转原Action
      * @return {cc.EaseQuarticActionIn}
      */
     reverse: function(){
@@ -2614,7 +2615,7 @@ cc.EaseQuarticActionIn = cc.ActionEase.extend(/** @lends cc.EaseQuarticActionIn#
 });
 
 /**
- * Creates the action. <br />
+ * Creates the action. <br />                                创建Action <br/>
  * Reference easeInQuart: <br />
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @static
@@ -2622,9 +2623,9 @@ cc.EaseQuarticActionIn = cc.ActionEase.extend(/** @lends cc.EaseQuarticActionIn#
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeQuarticActionIn());
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseQuarticActionIn.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeQuarticActionIn());
  *
  * @param action
@@ -2641,13 +2642,13 @@ cc._easeQuarticActionIn = {
     }
 };
 /**
- * Creates the action easing object. <br />
+ * Creates the action easing object. <br />     创建一个缓动Action对象<br/>
  * Reference easeIntQuart: <br />
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @function
  * @returns {Object}
  * @example
- * //example
+ * //example       例如
  * action.easing(cc.easeQuarticActionIn());
  */
 cc.easeQuarticActionIn = function(){
@@ -2664,9 +2665,9 @@ cc.easeQuarticActionIn = function(){
  * @deprecated since v3.0 <br /> Please use action.easing(cc.QuarticActionOut());
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseQuarticActionOut.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.EaseQuarticActionOut());
  */
 cc.EaseQuarticActionOut = cc.ActionEase.extend(/** @lends cc.EaseQuarticActionOut# */{
@@ -2676,7 +2677,7 @@ cc.EaseQuarticActionOut = cc.ActionEase.extend(/** @lends cc.EaseQuarticActionOu
     },
 
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -2685,8 +2686,8 @@ cc.EaseQuarticActionOut = cc.ActionEase.extend(/** @lends cc.EaseQuarticActionOu
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseQuarticActionOut}
      */
@@ -2697,7 +2698,7 @@ cc.EaseQuarticActionOut = cc.ActionEase.extend(/** @lends cc.EaseQuarticActionOu
     },
 
     /**
-     * Create a action. Opposite with the original motion trajectory.
+     * Create a action. Opposite with the original motion trajectory.       创建一个Action, 是原Action的反转               与反转原Action
      * @return {cc.EaseQuarticActionOut}
      */
     reverse: function(){
@@ -2706,7 +2707,7 @@ cc.EaseQuarticActionOut = cc.ActionEase.extend(/** @lends cc.EaseQuarticActionOu
 });
 
 /**
- * Creates the action. <br />
+ * Creates the action. <br />                                创建Action <br/>
  * Reference easeOutQuart: <br />
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @static
@@ -2714,9 +2715,9 @@ cc.EaseQuarticActionOut = cc.ActionEase.extend(/** @lends cc.EaseQuarticActionOu
  * @deprecated since v3.0 <br /> Please use action.easing(cc.QuarticActionOut());
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseQuarticActionOut.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.EaseQuarticActionOut());
  *
  * @param action
@@ -2734,13 +2735,13 @@ cc._easeQuarticActionOut = {
 };
 
 /**
- * Creates the action easing object. <br />
+ * Creates the action easing object. <br />     创建一个缓动Action对象<br/>
  * Reference easeOutQuart: <br />
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @function
  * @returns {Object}
  * @example
- * //example
+ * //example       例如
  * action.easing(cc.QuarticActionOut());
  */
 cc.easeQuarticActionOut = function(){
@@ -2757,9 +2758,9 @@ cc.easeQuarticActionOut = function(){
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeQuarticActionInOut());
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseQuarticActionInOut.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeQuarticActionInOut());
  */
 cc.EaseQuarticActionInOut = cc.ActionEase.extend(/** @lends cc.EaseQuarticActionInOut# */{
@@ -2772,7 +2773,7 @@ cc.EaseQuarticActionInOut = cc.ActionEase.extend(/** @lends cc.EaseQuarticAction
     },
 
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -2781,8 +2782,8 @@ cc.EaseQuarticActionInOut = cc.ActionEase.extend(/** @lends cc.EaseQuarticAction
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseQuarticActionInOut}
      */
@@ -2793,7 +2794,7 @@ cc.EaseQuarticActionInOut = cc.ActionEase.extend(/** @lends cc.EaseQuarticAction
     },
 
     /**
-     * Create a action. Opposite with the original motion trajectory.
+     * Create a action. Opposite with the original motion trajectory.       创建一个Action, 是原Action的反转               与反转原Action
      * @return {cc.EaseQuarticActionInOut}
      */
     reverse: function(){
@@ -2810,9 +2811,9 @@ cc.EaseQuarticActionInOut = cc.ActionEase.extend(/** @lends cc.EaseQuarticAction
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeQuarticActionInOut());
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseQuarticActionInOut.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeQuarticActionInOut());
  *
  * @param action
@@ -2849,9 +2850,9 @@ cc.easeQuarticActionInOut = function(){
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeQuinticActionIn());
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseQuinticActionIn.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeQuinticActionIn());
  */
 cc.EaseQuinticActionIn = cc.ActionEase.extend(/** @lends cc.EaseQuinticActionIn# */{
@@ -2860,7 +2861,7 @@ cc.EaseQuinticActionIn = cc.ActionEase.extend(/** @lends cc.EaseQuinticActionIn#
     },
 
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -2869,8 +2870,8 @@ cc.EaseQuinticActionIn = cc.ActionEase.extend(/** @lends cc.EaseQuinticActionIn#
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseQuinticActionIn}
      */
@@ -2881,7 +2882,7 @@ cc.EaseQuinticActionIn = cc.ActionEase.extend(/** @lends cc.EaseQuinticActionIn#
     },
 
     /**
-     * Create a action. Opposite with the original motion trajectory.
+     * Create a action. Opposite with the original motion trajectory.       创建一个Action, 是原Action的反转               与反转原Action
      * @return {cc.EaseQuinticActionIn}
      */
     reverse: function(){
@@ -2890,7 +2891,7 @@ cc.EaseQuinticActionIn = cc.ActionEase.extend(/** @lends cc.EaseQuinticActionIn#
 });
 
 /**
- * Creates the action. <br />
+ * Creates the action. <br />                                创建Action <br/>
  * Reference easeInQuint: <br />
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @static
@@ -2898,9 +2899,9 @@ cc.EaseQuinticActionIn = cc.ActionEase.extend(/** @lends cc.EaseQuinticActionIn#
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeQuinticActionIn());
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseQuinticActionIn.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeQuinticActionIn());
  *
  * @param action
@@ -2918,13 +2919,13 @@ cc._easeQuinticActionIn = {
 };
 
 /**
- * Creates the action easing object. <br />
+ * Creates the action easing object. <br />     创建一个缓动Action对象<br/>
  * Reference easeInQuint: <br />
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @function
  * @returns {Object}
  * @example
- * //example
+ * //example       例如
  * action.easing(cc.easeQuinticActionIn());
  */
 cc.easeQuinticActionIn = function(){
@@ -2941,9 +2942,9 @@ cc.easeQuinticActionIn = function(){
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeQuadraticActionOut());
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseQuinticActionOut.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeQuadraticActionOut());
  */
 cc.EaseQuinticActionOut = cc.ActionEase.extend(/** @lends cc.EaseQuinticActionOut# */{
@@ -2953,7 +2954,7 @@ cc.EaseQuinticActionOut = cc.ActionEase.extend(/** @lends cc.EaseQuinticActionOu
     },
 
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -2962,8 +2963,8 @@ cc.EaseQuinticActionOut = cc.ActionEase.extend(/** @lends cc.EaseQuinticActionOu
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseQuinticActionOut}
      */
@@ -2974,7 +2975,7 @@ cc.EaseQuinticActionOut = cc.ActionEase.extend(/** @lends cc.EaseQuinticActionOu
     },
 
     /**
-     * Create a action. Opposite with the original motion trajectory.
+     * Create a action. Opposite with the original motion trajectory.       创建一个Action, 是原Action的反转               与反转原Action
      * @return {cc.EaseQuinticActionOut}
      */
     reverse: function(){
@@ -2983,7 +2984,7 @@ cc.EaseQuinticActionOut = cc.ActionEase.extend(/** @lends cc.EaseQuinticActionOu
 });
 
 /**
- * Creates the action. <br />
+ * Creates the action. <br />                                创建Action <br/>
  * Reference easeOutQuint: <br />
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @static
@@ -2991,9 +2992,9 @@ cc.EaseQuinticActionOut = cc.ActionEase.extend(/** @lends cc.EaseQuinticActionOu
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeQuadraticActionOut());
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseQuinticActionOut.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeQuadraticActionOut());
  *
  * @param action
@@ -3011,13 +3012,13 @@ cc._easeQuinticActionOut = {
 };
 
 /**
- * Creates the action easing object. <br />
+ * Creates the action easing object. <br />     创建一个缓动Action对象<br/>
  * Reference easeOutQuint: <br />
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @function
  * @returns {Object}
  * @example
- * //example
+ * //example       例如
  * action.easing(cc.easeQuadraticActionOut());
  */
 cc.easeQuinticActionOut = function(){
@@ -3034,9 +3035,9 @@ cc.easeQuinticActionOut = function(){
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeQuinticActionInOut());
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseQuinticActionInOut.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeQuinticActionInOut());
  */
 cc.EaseQuinticActionInOut = cc.ActionEase.extend(/** @lends cc.EaseQuinticActionInOut# */{
@@ -3049,7 +3050,7 @@ cc.EaseQuinticActionInOut = cc.ActionEase.extend(/** @lends cc.EaseQuinticAction
     },
 
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -3058,8 +3059,8 @@ cc.EaseQuinticActionInOut = cc.ActionEase.extend(/** @lends cc.EaseQuinticAction
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseQuinticActionInOut}
      */
@@ -3070,7 +3071,7 @@ cc.EaseQuinticActionInOut = cc.ActionEase.extend(/** @lends cc.EaseQuinticAction
     },
 
     /**
-     * Create a action. Opposite with the original motion trajectory.
+     * Create a action. Opposite with the original motion trajectory.       创建一个Action, 是原Action的反转               与反转原Action
      * @return {cc.EaseQuinticActionInOut}
      */
     reverse: function(){
@@ -3079,7 +3080,7 @@ cc.EaseQuinticActionInOut = cc.ActionEase.extend(/** @lends cc.EaseQuinticAction
 });
 
 /**
- * Creates the action. <br />
+ * Creates the action. <br />                                创建Action <br/>
  * Reference easeInOutQuint: <br />
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @static
@@ -3087,9 +3088,9 @@ cc.EaseQuinticActionInOut = cc.ActionEase.extend(/** @lends cc.EaseQuinticAction
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeQuinticActionInOut());
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseQuinticActionInOut.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeQuinticActionInOut());
  *
  * @param action
@@ -3107,13 +3108,13 @@ cc._easeQuinticActionInOut = {
 };
 
 /**
- * Creates the action easing object. <br />
- * Reference easeInOutQuint: <br />
+ * Creates the action easing object. <br />     创建一个缓动Action对象<br/>
+ * Reference easeInOutQuint: <br />             参考easeInOutQuint<br/>
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @function
  * @returns {Object}
  * @example
- * //example
+ * //example       例如
  * action.easing(cc.easeQuinticActionInOut());
  */
 cc.easeQuinticActionInOut = function(){
@@ -3122,17 +3123,17 @@ cc.easeQuinticActionInOut = function(){
 
 /**
  * cc.EaseCircleActionIn action. <br />
- * Reference easeInCirc: <br />
+ * Reference easeInCirc: <br />                                     请使用easeInCirc<br/>
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @class
  * @extends cc.ActionEase
  *
- * @deprecated since v3.0 <br /> Please use action.easing(cc.easeCircleActionIn());
+ * @deprecated since v3.0 <br /> Please use action.easing(cc.easeCircleActionIn());   v3.0之后<br/> 请使用action.easing(cc.easeCircleActionIn());
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseCircleActionIn.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeCircleActionIn());
  */
 cc.EaseCircleActionIn = cc.ActionEase.extend(/** @lends cc.EaseCircleActionIn# */{
@@ -3141,7 +3142,7 @@ cc.EaseCircleActionIn = cc.ActionEase.extend(/** @lends cc.EaseCircleActionIn# *
     },
 
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -3150,8 +3151,8 @@ cc.EaseCircleActionIn = cc.ActionEase.extend(/** @lends cc.EaseCircleActionIn# *
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseCircleActionIn}
      */
@@ -3162,7 +3163,7 @@ cc.EaseCircleActionIn = cc.ActionEase.extend(/** @lends cc.EaseCircleActionIn# *
     },
 
     /**
-     * Create a action. Opposite with the original motion trajectory.
+     * Create a action. Opposite with the original motion trajectory.       创建一个Action, 是原Action的反转
      * @return {cc.EaseCircleActionIn}
      */
     reverse: function(){
@@ -3171,17 +3172,17 @@ cc.EaseCircleActionIn = cc.ActionEase.extend(/** @lends cc.EaseCircleActionIn# *
 });
 
 /**
- * Creates the action. <br />
- * Reference easeInCirc: <br />
+ * Creates the action. <br />                                创建Action <br/>
+ * Reference easeInCirc: <br />                              参考easeInCirc<br />
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @static
  *
- * @deprecated since v3.0 <br /> Please use action.easing(cc.easeCircleActionIn());
+ * @deprecated since v3.0 <br /> Please use action.easing(cc.easeCircleActionIn());  v3.0之后<br/> 请使用action.easing(cc.easeCircleActionIn());
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseCircleActionIn.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeCircleActionIn());
  *
  * @param action
@@ -3199,13 +3200,13 @@ cc._easeCircleActionIn = {
 };
 
 /**
- * Creates the action easing object. <br />
- * Reference easeInCirc: <br />
+ * Creates the action easing object. <br />     创建一个缓动Action对象<br/>
+ * Reference easeInCirc: <br />                 参考easeInCirc<br />
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @function
  * @returns {Object}
  * @example
- * //example
+ * //example       //例如
  * action.easing(cc.easeCircleActionIn());
  */
 cc.easeCircleActionIn = function(){
@@ -3214,17 +3215,17 @@ cc.easeCircleActionIn = function(){
 
 /**
  * cc.EaseCircleActionOut action. <br />
- * Reference easeOutCirc: <br />
+ * Reference easeOutCirc: <br />                                     参考easeOutCirc<br/>
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @class
  * @extends cc.ActionEase
  *
- * @deprecated since v3.0 <br /> Please use action.easing(cc.easeCircleActionOut());
+ * @deprecated since v3.0 <br /> Please use action.easing(cc.easeCircleActionOut());  从v3.0之后<br/> 请使用 action.easing(cc.easeCircleActionOut());
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseCircleActionOut.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeCircleActionOut());
  */
 cc.EaseCircleActionOut = cc.ActionEase.extend(/** @lends cc.EaseCircleActionOut# */{
@@ -3234,7 +3235,7 @@ cc.EaseCircleActionOut = cc.ActionEase.extend(/** @lends cc.EaseCircleActionOut#
     },
 
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -3243,8 +3244,8 @@ cc.EaseCircleActionOut = cc.ActionEase.extend(/** @lends cc.EaseCircleActionOut#
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseCircleActionOut}
      */
@@ -3255,7 +3256,7 @@ cc.EaseCircleActionOut = cc.ActionEase.extend(/** @lends cc.EaseCircleActionOut#
     },
 
     /**
-     * Create a action. Opposite with the original motion trajectory.
+     * Create a action. Opposite with the original motion trajectory.       创建一个Action, 是原Action的反转               与反转原Action
      * @return {cc.EaseCircleActionOut}
      */
     reverse: function(){
@@ -3264,17 +3265,17 @@ cc.EaseCircleActionOut = cc.ActionEase.extend(/** @lends cc.EaseCircleActionOut#
 });
 
 /**
- * Creates the action. <br />
- * Reference easeOutCirc: <br />
+ * Creates the action. <br />                                创建Action <br/>
+ * Reference easeOutCirc: <br />                             参考easeOutCirc<br/>
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @static
  *
- * @deprecated since v3.0 <br /> Please use action.easing(cc.easeCircleActionOut());
+ * @deprecated since v3.0 <br /> Please use action.easing(cc.easeCircleActionOut());  从v3.0之后<br/> 请使用action.easing(cc.easeCircleActionOut())代替
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseCircleActionOut.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeCircleActionOut());
  *
  * @param action
@@ -3292,13 +3293,13 @@ cc._easeCircleActionOut = {
 };
 
 /**
- * Creates the action easing object. <br />
- * Reference easeOutCirc: <br />
+ * Creates the action easing object. <br />     创建一个缓动Action对象<br/>
+ * Reference easeOutCirc: <br />                参考easeOutCirc<br/>
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @function
  * @returns {Object}
- * @exampple
- * //example
+ * @example
+ * //example       //例如
  * actioneasing(cc.easeCircleActionOut());
  */
 cc.easeCircleActionOut = function(){
@@ -3315,9 +3316,9 @@ cc.easeCircleActionOut = function(){
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeCircleActionInOut());
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseCircleActionInOut.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeCircleActionInOut());
  */
 cc.EaseCircleActionInOut = cc.ActionEase.extend(/** @lends cc.EaseCircleActionInOut# */{
@@ -3330,7 +3331,7 @@ cc.EaseCircleActionInOut = cc.ActionEase.extend(/** @lends cc.EaseCircleActionIn
     },
 
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -3339,8 +3340,8 @@ cc.EaseCircleActionInOut = cc.ActionEase.extend(/** @lends cc.EaseCircleActionIn
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseCircleActionInOut}
      */
@@ -3351,7 +3352,7 @@ cc.EaseCircleActionInOut = cc.ActionEase.extend(/** @lends cc.EaseCircleActionIn
     },
 
     /**
-     * Create a action. Opposite with the original motion trajectory.
+     * Create a action. Opposite with the original motion trajectory.       创建一个Action, 是原Action的反转               与反转原Action
      * @return {cc.EaseCircleActionInOut}
      */
     reverse: function(){
@@ -3360,17 +3361,17 @@ cc.EaseCircleActionInOut = cc.ActionEase.extend(/** @lends cc.EaseCircleActionIn
 });
 
 /**
- * Creates the action. <br />
- * Reference easeInOutCirc: <br />
+ * Creates the action. <br />                                创建Action <br/>
+ * Reference easeInOutCirc: <br />                           参考easeInOutCirc<br/>
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @static
  *
- * @deprecated since v3.0 <br /> Please use action.easing(cc.easeCircleActionInOut());
+ * @deprecated since v3.0 <br /> Please use action.easing(cc.easeCircleActionInOut());  从v3.0之后<br/> 请使用 action.easing(cc.easeCircleActionInOut())代替
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseCircleActionInOut.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeCircleActionInOut());
  *
  * @param action
@@ -3388,13 +3389,13 @@ cc._easeCircleActionInOut = {
 };
 
 /**
- * Creates the action easing object. <br />
+ * Creates the action easing object. <br />     创建一个缓动Action对象<br/>
  * Reference easeInOutCirc: <br />
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @function
  * @returns {Object}
  * @example
- * //example
+ * //example       例如
  * action.easing(cc.easeCircleActionInOut());
  */
 cc.easeCircleActionInOut = function(){
@@ -3403,7 +3404,7 @@ cc.easeCircleActionInOut = function(){
 
 /**
  * cc.EaseCubicActionIn action. <br />
- * Reference easeInCubic: <br />
+ * Reference easeInCubic: <br />                                  参考easeInCubic:<br/>
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @class
  * @extends cc.ActionEase
@@ -3411,9 +3412,9 @@ cc.easeCircleActionInOut = function(){
  * @deprecated since v3.0 <br /> action.easing(cc.easeCubicActionIn());
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseCubicActionIn.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeCubicActionIn());
  */
 cc.EaseCubicActionIn = cc.ActionEase.extend(/** @lends cc.EaseCubicActionIn# */{
@@ -3422,7 +3423,7 @@ cc.EaseCubicActionIn = cc.ActionEase.extend(/** @lends cc.EaseCubicActionIn# */{
     },
 
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -3431,8 +3432,8 @@ cc.EaseCubicActionIn = cc.ActionEase.extend(/** @lends cc.EaseCubicActionIn# */{
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseCubicActionIn}
      */
@@ -3443,7 +3444,7 @@ cc.EaseCubicActionIn = cc.ActionEase.extend(/** @lends cc.EaseCubicActionIn# */{
     },
 
     /**
-     * Create a action. Opposite with the original motion trajectory.
+     * Create a action. Opposite with the original motion trajectory.       创建一个Action, 是原Action的反转
      * @return {cc.EaseCubicActionIn}
      */
     reverse: function(){
@@ -3452,17 +3453,17 @@ cc.EaseCubicActionIn = cc.ActionEase.extend(/** @lends cc.EaseCubicActionIn# */{
 });
 
 /**
- * Creates the action. <br />
- * Reference easeInCubic: <br />
+ * Creates the action. <br />                                创建Action <br/>
+ * Reference easeInCubic: <br />                             参考easeInCubic:<br/>
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @static
  *
  * @deprecated since v3.0 <br /> action.easing(cc.easeCubicActionIn());
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseCubicActionIn.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeCubicActionIn());
  *
  * @param action
@@ -3480,13 +3481,13 @@ cc._easeCubicActionIn = {
 };
 
 /**
- * Creates the action easing object. <br />
+ * Creates the action easing object. <br />     创建一个缓动Action对象<br/>
  * Reference easeInCubic: <br />
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @function
  * @returns {Object}
  * @example
- * //example
+ * //example       例如
  * action.easing(cc.easeCubicActionIn());
  */
 cc.easeCubicActionIn = function(){
@@ -3495,7 +3496,7 @@ cc.easeCubicActionIn = function(){
 
 /**
  * cc.EaseCubicActionOut action. <br />
- * Reference easeOutCubic: <br />
+ * Reference easeOutCubic: <br />                                   参考easeOutCubic<br/>
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @class
  * @extends cc.ActionEase
@@ -3503,9 +3504,9 @@ cc.easeCubicActionIn = function(){
  * @deprecated since v3.0 <br /> Please use action.easing(cc.easeCubicActionOut());
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseCubicActionOut.create(action);
- * //The new usage
+ * //The new usage     // 新用法
  * action.easing(cc.easeCubicActionOut());
  */
 cc.EaseCubicActionOut = cc.ActionEase.extend(/** @lends cc.EaseCubicActionOut# */{
@@ -3515,7 +3516,7 @@ cc.EaseCubicActionOut = cc.ActionEase.extend(/** @lends cc.EaseCubicActionOut# *
     },
 
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -3524,8 +3525,8 @@ cc.EaseCubicActionOut = cc.ActionEase.extend(/** @lends cc.EaseCubicActionOut# *
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseCubicActionOut}
      */
@@ -3536,7 +3537,7 @@ cc.EaseCubicActionOut = cc.ActionEase.extend(/** @lends cc.EaseCubicActionOut# *
     },
 
     /**
-     * Create a action. Opposite with the original motion trajectory.
+     * Create a action. Opposite with the original motion trajectory.       创建一个Action, 是原Action的反转
      * @return {cc.EaseCubicActionOut}
      */
     reverse: function(){
@@ -3545,17 +3546,17 @@ cc.EaseCubicActionOut = cc.ActionEase.extend(/** @lends cc.EaseCubicActionOut# *
 });
 
 /**
- * Creates the action. <br />
- * Reference easeOutCubic: <br />
+ * Creates the action. <br />                                创建Action <br/>
+ * Reference easeOutCubic: <br />                            参考easeOutCubic:<br/>
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @static
  *
- * @deprecated since v3.0 <br /> Please use action.easing(cc.easeCubicActionOut());
+ * @deprecated since v3.0 <br /> Please use action.easing(cc.easeCubicActionOut());    v3.0之后<br/>请使用action.easing(cc.easeCubicActionOut());代替
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseCubicActionOut.create(action);
- * //The new usage
+ * //The new usage       // 新用法
  * action.easing(cc.easeCubicActionOut());
  *
  * @param action
@@ -3573,13 +3574,13 @@ cc._easeCubicActionOut = {
 };
 
 /**
- * Creates the action easing object. <br />
- * Reference easeOutCubic: <br />
+ * Creates the action easing object. <br />     创建一个缓动Action对象<br/>
+ * Reference easeOutCubic: <br />               参考easeOutCubic:<br/>
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @function
  * @returns {Object}
  * @example
- * //example
+ * //example       //例如
  * action.easing(cc.easeCubicActionOut());
  */
 cc.easeCubicActionOut = function(){
@@ -3588,17 +3589,17 @@ cc.easeCubicActionOut = function(){
 
 /**
  * cc.EaseCubicActionInOut action. <br />
- * Reference easeInOutCubic: <br />
+ * Reference easeInOutCubic: <br />                                                    参考easeInOutCubic: <br />
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @class
  * @extends cc.ActionEase
  *
- * @deprecated since v3.0 <br /> Please use action.easing(cc.easeCubicActionInOut());
+ * @deprecated since v3.0 <br /> Please use action.easing(cc.easeCubicActionInOut());  从v3.0之后<br />请使用action.easing(cc.easeCubicActionInOut());代替
  *
  * @example
- * //The old usage
+ * //The old usage       //旧用法
  * cc.EaseCubicActionInOut.create(action);
- * //The new usage
+ * //The new usage      // 新用法
  * action.easing(cc.easeCubicActionInOut());
  */
 cc.EaseCubicActionInOut = cc.ActionEase.extend(/** @lends cc.EaseCubicActionInOut# */{
@@ -3611,7 +3612,7 @@ cc.EaseCubicActionInOut = cc.ActionEase.extend(/** @lends cc.EaseCubicActionInOu
     },
 
     /**
-     * Called once per frame. Time is the number of seconds of a frame interval.
+     * Called once per frame. Time is the number of seconds of a frame interval.   每帧调用一次,Time表示每帧的时间间隔
      *
      * @param {Number} dt
      */
@@ -3620,8 +3621,8 @@ cc.EaseCubicActionInOut = cc.ActionEase.extend(/** @lends cc.EaseCubicActionInOu
     },
 
     /**
-     * to copy object with deep copy.
-     * returns a clone of action.
+     * to copy object with deep copy.   对象深拷贝
+     * returns a clone of action. 返回这个对像的克隆
      *
      * @returns {cc.EaseCubicActionInOut}
      */
@@ -3632,7 +3633,7 @@ cc.EaseCubicActionInOut = cc.ActionEase.extend(/** @lends cc.EaseCubicActionInOu
     },
 
     /**
-     * Create a action. Opposite with the original motion trajectory.
+     * Create a action. Opposite with the original motion target.   创建一个反转Action
      * @return {cc.EaseCubicActionInOut}
      */
     reverse: function(){
@@ -3641,17 +3642,17 @@ cc.EaseCubicActionInOut = cc.ActionEase.extend(/** @lends cc.EaseCubicActionInOu
 });
 
 /**
- * Creates the action. <br />
- * Reference easeInOutCubic: <br />
+ * Creates the action. <br />                                创建Action <br/>
+ * Reference easeInOutCubic: <br />                          参考easeInOutCubic:<br/>
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @static
  *
- * @deprecated since v3.0 <br /> Please use action.easing(cc.easeCubicActionInOut());
+ * @deprecated since v3.0 <br /> Please use action.easing(cc.easeCubicActionInOut());   从v3.0之后 <br /> 请使用 action.easing(cc.easeCubicActionInOut());
  *
  * @example
- * //The old usage
+ * //The old usage                   //旧用法
  * cc.EaseCubicActionInOut.create(action);
- * //The new usage
+ * //The new usage      // 新用法 
  * action.easing(cc.easeCubicActionInOut());
  *
  * @param action
@@ -3669,8 +3670,8 @@ cc._easeCubicActionInOut = {
 };
 
 /**
- * Creates the action easing object. <br />
- * Reference easeInOutCubic: <br />
+ * Creates the action easing object. <br />     创建一个缓动Action对象<br/><br/>
+ * Reference easeInOutCubic: <br />                                   参考easeInOutCubic<br/>
  * {@link http://www.zhihu.com/question/21981571/answer/19925418}
  * @function
  * @returns {Object}
