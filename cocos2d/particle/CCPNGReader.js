@@ -27,7 +27,7 @@
  ****************************************************************************/
 
 /**
- * A png file reader
+ * A png file reader png文件读取器
  * @name cc.tiffReader
  */
 cc.PNGReader = cc.Class.extend({
