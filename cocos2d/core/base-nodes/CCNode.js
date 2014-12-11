@@ -362,20 +362,14 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * <p>Returns the skew degrees in Y               <br/>
-     * <p>获取Y轴的倾斜角度</br>
-     * The Y skew angle of the node in degrees.                            <br/>
-     * 节点Y轴方向的倾斜角度 单位:度<br/>
-     * This angle describes the shear distortion in the Y direction.       <br/>
-     * 该角度表示的是Y轴方向上的倾斜程度<br/>
-     * Thus, it is the angle between the X axis and the bottom edge of the shape       <br/>
-     * 该角度是X轴与其底边缘之间的夹角</br>
-     * The default skewY angle is 0. Positive values distort the node in a CCW direction.    <br/>
-     * 默认的Y轴倾斜角为0.确切的值表示的是节点在CCW方向上的倾斜度.</br>
+     * <p>Returns the skew degrees in Y               <br/>																							<p>获取Y轴的倾斜角度</br>
+     * The Y skew angle of the node in degrees.                            <br/>												节点Y轴方向的倾斜角度 单位:度<br/>
+     * This angle describes the shear distortion in the Y direction.       <br/>												该角度表示的是Y轴方向上的倾斜程度<br/>
+     * Thus, it is the angle between the X axis and the bottom edge of the shape       <br/>						该角度是X轴与其底边缘之间的夹角</br>
+     * The default skewY angle is 0. Positive values distort the node in a CCW direction.    <br/>			默认的Y轴倾斜角为0.确切的值表示的是节点在CCW方向上的倾斜度.</br>
      * </p>
      * @function
-     * @return {Number} The Y skew angle of the node in degrees.
-     * @return {Number} 节点Y轴的倾斜角度.
+     * @return {Number} The Y skew angle of the node in degrees.																				@return {Number} 节点Y轴的倾斜角度.
      */
     getSkewY: function () {
         return this._skewY;
@@ -383,19 +377,15 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>
-     * Changes the Y skew angle of the node in degrees.                                                        <br/>
-     * 改变节点Y轴方向上的倾斜角度                                                    <br/>
-     *                                                                                                         <br/>
-     * This angle describes the shear distortion in the Y direction.                                           <br/>
-     * 该角度表示的是Y轴方向上的倾斜程度<br/>
-     * Thus, it is the angle between the X axis and the bottom edge of the shape                               <br/>
-     * 该角度是X轴与其底边缘之间的夹角</br>
-     * The default skewY angle is 0. Positive values distort the node in a CCW direction.                      <br/>
-     * 默认的Y轴倾斜角为0.确切的值表示的是节点在CCW方向上的倾斜度.</br>
+     * Changes the Y skew angle of the node in degrees.                                                        <br/>	改变节点Y轴方向上的倾斜角度                                                    <br/>
+     * 
+     * This angle describes the shear distortion in the Y direction.                                           <br/>	该角度表示的是Y轴方向上的倾斜程度<br/>
+     * Thus, it is the angle between the X axis and the bottom edge of the shape                               <br/>	该角度是X轴与其底边缘之间的夹角</br>
+     * The default skewY angle is 0. Positive values distort the node in a CCW direction.                      <br/>	默认的Y轴倾斜角为0.确切的值表示的是节点在CCW方向上的倾斜度.</br>
      * </p>
      * @function
-     * @param {Number} newSkewY  The Y skew angle of the node in degrees.
-     * @param {Number} newSkewY  节点Y轴的倾斜角度.
+     * @param {Number} newSkewY  The Y skew angle of the node in degrees.		@param {Number} newSkewY  节点Y轴的倾斜角度.
+     * 
      */
     setSkewY: function (newSkewY) {
         this._skewY = newSkewY;
@@ -403,23 +393,18 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * <p> LocalZOrder is the 'key' used to sort the node relative to its siblings.                                    <br/>
-     * <p> LocalZOrder是用来与其同级节点进行排序的关键<br/>
+     * <p> LocalZOrder is the 'key' used to sort the node relative to its siblings.                                    <br/>	<p> LocalZOrder是用来与其同级节点进行排序的关键<br/>
      *                                                                                                                 <br/>
-     * The Node's parent will sort all its children based ont the LocalZOrder value.                                   <br/>
-     * 节点的父类会基于LocalZOrder值对所有的子类进行排序<br/>
+     * The Node's parent will sort all its children based ont the LocalZOrder value.                                   <br/>	节点的父类会基于LocalZOrder值对所有的子类进行排序<br/>
      * If two nodes have the same LocalZOrder, then the node that was added first to the children's array              <br/>
-     * will be in front of the other node in the array.                                                                <br/>
-     * 如果两个节点拥有相同的LocalZOrder,那么先被添加到子节点数组中的节点将会排在另一个节点的前面<br/>
+     * will be in front of the other node in the array.                                                                <br/>	如果两个节点拥有相同的LocalZOrder,那么先被添加到子节点数组中的节点将会排在另一个节点的前面<br/>
+     * 
      * 
      * <br/>
-     * Also, the Scene Graph is traversed using the "In-Order" tree traversal algorithm ( http://en.wikipedia.org/wiki/Tree_traversal#In-order )
-     * 同时,Scene Graph使用的是"In-Order"树遍历算法(http://en.wikipedia.org/wiki/Tree_traversal#In-order)
+     * Also, the Scene Graph is traversed using the "In-Order" tree traversal algorithm ( http://en.wikipedia.org/wiki/Tree_traversal#In-order )		同时,Scene Graph使用的是"In-Order"树遍历算法(http://en.wikipedia.org/wiki/Tree_traversal#In-order)
      * <br/>
-     * And Nodes that have LocalZOder values < 0 are the "left" subtree                                                 <br/>
-     * 拥有LocalZOder的值小于0的节点为左边的子节点树<br/>
-     * While Nodes with LocalZOder >=0 are the "right" subtree.    </p>
-     * LocalZOder值大于等于0的为右边的子节点树</p>
+     * And Nodes that have LocalZOder values < 0 are the "left" subtree                                                 <br/>		拥有LocalZOder的值小于0的节点为左边的子节点树<br/>
+     * While Nodes with LocalZOder >=0 are the "right" subtree.    </p>																													LocalZOder值大于等于0的为右边的子节点树</p>
      * @function
      * @param {Number} localZOrder
      */
@@ -437,23 +422,19 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Returns the local Z order of this node.
-     * 返回节点的本地Z轴顺序值
+     * Returns the local Z order of this node.		返回节点的本地Z轴顺序值.
      * @function
-     * @returns {Number} The local (relative to its siblings) Z order.
-     * @returns {Number} 本地的Z顺序值(关联其同级节点).
+     * @returns {Number} The local (relative to its siblings) Z order.		@returns {Number} 本地的Z顺序值(关联其同级节点).
      */
     getLocalZOrder: function () {
         return this._localZOrder;
     },
 
     /**
-     * Returns z order of this node
-     * 返回节点的Z轴顺序值
+     * Returns z order of this node			返回节点的Z轴顺序值
      * @function
      * @return {Number}
-     * @deprecated since 3.0, please use getLocalZOrder instead
-     * @3.0版本后弃用,请使用getLocalZOrder代替.
+     * @deprecated since 3.0, please use getLocalZOrder instead		@3.0版本后弃用,请使用getLocalZOrder代替.
      */
     getZOrder: function () {
         cc.log(cc._LogInfos.Node_getZOrder);
@@ -462,24 +443,17 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>
-     *     Sets the Z order which stands for the drawing order, and reorder this node in its parent's children array.     <br/>
-     *     设置基于绘制顺序的Z轴顺序值,并且重新排序该节点在父类子节点数组中的位置<br/>
+     *     Sets the Z order which stands for the drawing order, and reorder this node in its parent's children array.     <br/>		设置基于绘制顺序的Z轴顺序值,并且重新排序该节点在父类子节点数组中的位置<br/>
      *                                                                                                                    <br/>
-     *      The Z order of node is relative to its "brothers": children of the same parent.                               <br/>
-     *			节点的Z轴顺序值关系到其兄弟:同级子类<br/>
-     *      It's nothing to do with OpenGL's z vertex. This one only affects the draw order of nodes in cocos2d.          <br/>
-     *			不必要处理OpenGL的Z轴顶点值.该值在cocos2d中只影响绘制节点的顺序<br/>
-     *      The larger number it is, the later this node will be drawn in each message loop.                              <br/>
-     * 			该值越大,该节点将会在每个消息循环中越置后.<br/>
-     *      Please refer to setVertexZ(float) for the difference.
-     *			请参阅setVertexZ(float)跟该函数的区别.
+     *      The Z order of node is relative to its "brothers": children of the same parent.                               <br/>		节点的Z轴顺序值关系到其兄弟:同级子类<br/>
+     *      It's nothing to do with OpenGL's z vertex. This one only affects the draw order of nodes in cocos2d.          <br/>		不必要处理OpenGL的Z轴顶点值.该值在cocos2d中只影响绘制节点的顺序<br/>
+     *      The larger number it is, the later this node will be drawn in each message loop.                              <br/>		该值越大,该节点将会在每个消息循环中越置后.<br/>
+     *      Please refer to setVertexZ(float) for the difference.																																	请参阅setVertexZ(float)跟该函数的区别.
      *			
      * </p>
      * @function
-     * @param {Number} z Z order of this node.
-     * @param {Number} z 节点的Z顺序值.
-     * @deprecated since 3.0, please use setLocalZOrder instead
-     * @3.0版本后弃用,请使用setLocalZOrder代替.
+     * @param {Number} z Z order of this node.																		@param {Number} z 节点的Z顺序值.
+     * @deprecated since 3.0, please use setLocalZOrder instead										@3.0版本后弃用,请使用setLocalZOrder代替.
      */
     setZOrder: function (z) {
         cc.log(cc._LogInfos.Node_setZOrder);
@@ -487,26 +461,19 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * <p>Defines the oder in which the nodes are renderer.                                                                               <br/>
-     * <p>定义渲染节点的顺序
-     * Nodes that have a Global Z Order lower, are renderer first.                                                                        <br/>
-     * 定义渲染节点的顺序 拥有全局Z顺序越小的节点,最先渲染 <br/>
+     * <p>Defines the oder in which the nodes are renderer.                                                                               <br/>	<p>定义渲染节点的顺序<br/>
+     * Nodes that have a Global Z Order lower, are renderer first.                                                                        <br/>	定义渲染节点的顺序 拥有全局Z顺序越小的节点,最先渲染 <br/>
      *                                                                                                                                    <br/>
-     * In case two or more nodes have the same Global Z Order, the oder is not guaranteed.                                                <br/>
-     * 假设两个或者更多的节点拥有相同的全局Z顺序,那么渲染顺序无法保证.<br/>
-     * The only exception if the Nodes have a Global Z Order == 0. In that case, the Scene Graph order is used.                           <br/>
-     * 唯一的例外是如果节点的全局Z顺序为零,那么场景图顺序是可以使用的.<br/>
+     * In case two or more nodes have the same Global Z Order, the oder is not guaranteed.                                                <br/>	假设两个或者更多的节点拥有相同的全局Z顺序,那么渲染顺序无法保证.<br/>
+     * The only exception if the Nodes have a Global Z Order == 0. In that case, the Scene Graph order is used.                           <br/>	唯一的例外是如果节点的全局Z顺序为零,那么场景图顺序是可以使用的.<br/>
      *                                                                                                                                    <br/>
-     * By default, all nodes have a Global Z Order = 0. That means that by default, the Scene Graph order is used to render the nodes.    <br/>
-     * 默认的,所有的节点全局Z顺序都是零.这就是说,默认使用场景图顺序来渲染节点.<br/>
+     * By default, all nodes have a Global Z Order = 0. That means that by default, the Scene Graph order is used to render the nodes.    <br/>	默认的,所有的节点全局Z顺序都是零.这就是说,默认使用场景图顺序来渲染节点.<br/>
      *                                                                                                                                    <br/>
-     * Global Z Order is useful when you need to render nodes in an order different than the Scene Graph order.                           <br/>
-     * 全局Z顺序是非常有用的当你需要渲染节点按照不同的顺序而不是场景图顺序<br/>
+     * Global Z Order is useful when you need to render nodes in an order different than the Scene Graph order.                           <br/>	全局Z顺序是非常有用的当你需要渲染节点按照不同的顺序而不是场景图顺序<br/>
      *                                                                                                                                    <br/>
-     * Limitations: Global Z Order can't be used used by Nodes that have SpriteBatchNode as one of their ancestors.                       <br/>
-     * 局限性:全局Z顺序不能够被拥有继承"SpriteBatchNode"的节点使用<br/>
-     * And if ClippingNode is one of the ancestors, then "global Z order" will be relative to the ClippingNode.   </p>
-     * 并且如果"ClippingNode"是其中之一的上代，那么"global Z order" 将会和"ClippingNode"有关</p>
+     * Limitations: Global Z Order can't be used used by Nodes that have SpriteBatchNode as one of their ancestors.                       <br/>	局限性:全局Z顺序不能够被拥有继承"SpriteBatchNode"的节点使用<br/>
+     * And if ClippingNode is one of the ancestors, then "global Z order" will be relative to the ClippingNode.   </p>														并且如果"ClippingNode"是其中之一的上代，那么"global Z order" 将会和"ClippingNode"有关</p>
+     * 
      * @function
      * @param {Number} globalZOrder
      */
@@ -518,22 +485,18 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Return the Node's Global Z Order.
-     * 返回节点的全局Z顺序.
+     * Return the Node's Global Z Order.		返回节点的全局Z顺序.
      * @function
-     * @returns {number} The node's global Z order
-     * @returns {number} 节点的全局Z顺序值
+     * @returns {number} The node's global Z order		@returns {number} 节点的全局Z顺序值
      */
     getGlobalZOrder: function () {
         return this._globalZOrder;
     },
 
     /**
-     * Returns WebGL Z vertex of this node.
-     * 返回节点的WebGL的Z顶点.
+     * Returns WebGL Z vertex of this node.							返回节点的WebGL的Z顶点.
      * @function
-     * @return {Number} WebGL Z vertex of this node
-     * @return {Number} 节点的WebGL的Z顶点
+     * @return {Number} WebGL Z vertex of this node			@return {Number} 节点的WebGL的Z顶点
      */
     getVertexZ: function () {
         return this._vertexZ;
@@ -541,20 +504,15 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>
-     *     Sets the real WebGL Z vertex.                                                                          <br/>
-     *		 设置实际的WebGL的Z顶点
+     *     Sets the real WebGL Z vertex.                                                                          <br/>			设置实际的WebGL的Z顶点<br/>
      *                                                                                                            <br/>
-     *      Differences between openGL Z vertex and cocos2d Z order:                                              <br/>
-     *			openGL的Z顶点跟cocos2d的Z顺序的不同:<br/>
-     *      - WebGL Z modifies the Z vertex, and not the Z order in the relation between parent-children         <br/>
-     *			- WebGL的Z顶点修改Z顶点,而不是跟父子类有关联的Z顺序<br/>
-     *      - WebGL Z might require to set 2D projection                                                         <br/>
-     *			- WebGL的Z顶点要求设置2D模式
-     *      - cocos2d Z order works OK if all the nodes uses the same WebGL Z vertex. eg: vertexZ = 0            <br/>
-     *			- 如果所有的节点使用相同的WebGL的Z顶点,cocos2d的Z顺序的排序不会有影响<br/>
+     *      Differences between openGL Z vertex and cocos2d Z order:                                              <br/>			openGL的Z顶点跟cocos2d的Z顺序的不同:<br/>
+     *      - WebGL Z modifies the Z vertex, and not the Z order in the relation between parent-children         <br/>			- WebGL的Z顶点修改Z顶点,而不是跟父子类有关联的Z顺序<br/>
+     *      - WebGL Z might require to set 2D projection                                                         <br/>			- WebGL的Z顶点要求设置2D模式<br/>
+     *      - cocos2d Z order works OK if all the nodes uses the same WebGL Z vertex. eg: vertexZ = 0            <br/>			- 如果所有的节点使用相同的WebGL的Z顶点,cocos2d的Z顺序的排序不会有影响<br/>
      *                                                                                                            <br/>
-     *      @warning Use it at your own risk since it might break the cocos2d parent-children z order
-     *			@警告:使用其是有风险的,它可能会破坏cocos2d的父子类的Z顺序<br/>
+     *      @warning Use it at your own risk since it might break the cocos2d parent-children z order												@警告:使用其是有风险的,它可能会破坏cocos2d的父子类的Z顺序<br/>
+     *			
      * </p>
      * @function
      * @param {Number} Var
@@ -564,11 +522,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Returns the rotation (angle) of the node in degrees. 0 is the default rotation angle. Positive values rotate node clockwise.
-     * 返回节点的旋转角度.默认的旋转角度为0.正数使得节点顺时针旋转.
+     * Returns the rotation (angle) of the node in degrees. 0 is the default rotation angle. Positive values rotate node clockwise.		返回节点的旋转角度.默认的旋转角度为0.正数使得节点顺时针旋转.
      * @function
-     * @return {Number} The rotation of the node in degrees.
-     * @return {Number} 节点的旋转角度.
+     * @return {Number} The rotation of the node in degrees.		@return {Number} 节点的旋转角度.
      */
     getRotation: function () {
         if (this._rotationX !== this._rotationY)
@@ -578,17 +534,13 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>
-     *     Sets the rotation (angle) of the node in degrees.                                             <br/>
-     *		 设置节点的旋转角度<br/>
+     *     Sets the rotation (angle) of the node in degrees.                                             <br/>	设置节点的旋转角度<br/>
      *                                                                                                   <br/>
-     *      0 is the default rotation angle.                                                             <br/>
-     *			默认的旋转角度为0<br/>
-     *      Positive values rotate node clockwise, and negative values for anti-clockwise.
-     *			正数使得节点顺时针旋转,负数使得节点逆时针旋转.
+     *      0 is the default rotation angle.                                                             <br/>	默认的旋转角度为0<br/>
+     *      Positive values rotate node clockwise, and negative values for anti-clockwise.											正数使得节点顺时针旋转,负数使得节点逆时针旋转.
      * </p>
      * @function
-     * @param {Number} newRotation The rotation of the node in degrees.
-     * @param {Number} newRotation 节点的旋转角度.
+     * @param {Number} newRotation The rotation of the node in degrees.			@param {Number} newRotation 节点的旋转角度.
      */
     setRotation: function (newRotation) {
         this._rotationX = this._rotationY = newRotation;
@@ -598,16 +550,12 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Returns the X axis rotation (angle) which represent a horizontal rotational skew of the node in degrees. <br/>
-     * 返回X轴的旋转角度表示的是节点的水平旋转倾斜角度.<br/>
+     * Returns the X axis rotation (angle) which represent a horizontal rotational skew of the node in degrees. <br/>		返回X轴的旋转角度表示的是节点的水平旋转倾斜角度.<br/>
      * 
-     * 0 is the default rotation angle. Positive values rotate node clockwise<br/>
-     * 默认的旋转角度值为0.正数使得节点顺时针旋转<br/>
-     * (support only in WebGL rendering mode)
-     * (只在WebGL的渲染模式下支持)
+     * 0 is the default rotation angle. Positive values rotate node clockwise<br/>																			默认的旋转角度值为0.正数使得节点顺时针旋转<br/>
+     * (support only in WebGL rendering mode)																																						(只在WebGL的渲染模式下支持)
      * @function
-     * @return {Number} The X rotation in degrees.
-     * @return {Number} X轴旋转角度
+     * @return {Number} The X rotation in degrees.																																			@return {Number} X轴旋转角度
      */
     getRotationX: function () {
         return this._rotationX;
@@ -615,17 +563,12 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>
-     *     Sets the X rotation (angle) of the node in degrees which performs a horizontal rotational skew.        <br/>
-     *		 设置节点的X轴旋转角度来进行水平旋转倾斜<br/>
-     *     (support only in WebGL rendering mode)                                                                 <br/>
-     * 		 (只在WebGL的渲染模式下支持)<br/>
-     *     0 is the default rotation angle.                                                                       <br/>
-     *		 默认的旋转角度值为0.
-     *     Positive values rotate node clockwise, and negative values for anti-clockwise.
-     *		 正数使得节点顺时针旋转,负数使得节点逆时针旋转.
+     *     Sets the X rotation (angle) of the node in degrees which performs a horizontal rotational skew.        <br/>		设置节点的X轴旋转角度来进行水平旋转倾斜<br/>
+     *     (support only in WebGL rendering mode)                                                                 <br/>		(只在WebGL的渲染模式下支持)<br/>
+     *     0 is the default rotation angle.                                                                       <br/>		默认的旋转角度值为0.
+     *     Positive values rotate node clockwise, and negative values for anti-clockwise.																	正数使得节点顺时针旋转,负数使得节点逆时针旋转.
      * </p>
-     * @param {Number} rotationX The X rotation in degrees which performs a horizontal rotational skew.
-     * @param {Number} rotationX X轴来进行水平旋转倾斜的旋转角度.
+     * @param {Number} rotationX The X rotation in degrees which performs a horizontal rotational skew.										@param {Number} rotationX X轴来进行水平旋转倾斜的旋转角度.
      */
     setRotationX: function (rotationX) {
         this._rotationX = rotationX;
@@ -634,15 +577,11 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Returns the Y axis rotation (angle) which represent a vertical rotational skew of the node in degrees. <br/>
-     * 返回Y轴的旋转角度表示的是节点的竖直旋转倾斜角度.<br/>
-     * 0 is the default rotation angle. Positive values rotate node clockwise<br/>
-     * 默认的旋转角度值为0.正数使得节点顺时针旋转<br/>
-     * (support only in WebGL rendering mode)
-     * (只在WebGL的渲染模式下支持)<br/>
+     * Returns the Y axis rotation (angle) which represent a vertical rotational skew of the node in degrees. <br/>	返回Y轴的旋转角度表示的是节点的竖直旋转倾斜角度.<br/>
+     * 0 is the default rotation angle. Positive values rotate node clockwise<br/>																	默认的旋转角度值为0.正数使得节点顺时针旋转<br/>
+     * (support only in WebGL rendering mode)																																				(只在WebGL的渲染模式下支持)<br/>
      * @function
-     * @return {Number} The Y rotation in degrees.
-      * @return {Number} Y轴旋转角度.
+     * @return {Number} The Y rotation in degrees.			@return {Number} Y轴旋转角度.
      */
     getRotationY: function () {
         return this._rotationY;
@@ -650,17 +589,12 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>
-     *    Sets the Y rotation (angle) of the node in degrees which performs a vertical rotational skew.         <br/>
-     *		设置节点的Y轴旋转角度来进行竖直旋转倾斜<br/>
-     *    (support only in WebGL rendering mode)                                                                <br/>
-     * 		(只在WebGL的渲染模式下支持)<br/>
-     *    0 is the default rotation angle.                                                                      <br/>
-     * 		默认的旋转角度值为0.<br/>
-     *    Positive values rotate node clockwise, and negative values for anti-clockwise.
-     *		正数使得节点顺时针旋转,负数使得节点逆时针旋转.
+     *    Sets the Y rotation (angle) of the node in degrees which performs a vertical rotational skew.         <br/>		设置节点的Y轴旋转角度来进行竖直旋转倾斜<br/>
+     *    (support only in WebGL rendering mode)                                                                <br/>		(只在WebGL的渲染模式下支持)<br/>
+     *    0 is the default rotation angle.                                                                      <br/>		默认的旋转角度值为0.<br/>
+     *    Positive values rotate node clockwise, and negative values for anti-clockwise.																正数使得节点顺时针旋转,负数使得节点逆时针旋转.
      * </p>
-     * @param rotationY The Y rotation in degrees.
-     * @param rotationY Y轴旋转角度.
+     * @param rotationY The Y rotation in degrees.		@param rotationY Y轴旋转角度.
      */
     setRotationY: function (rotationY) {
         this._rotationY = rotationY;
@@ -669,13 +603,10 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Returns the scale factor of the node.
-     * 返回节点的缩放比例
-     * @warning: Assertion will fail when _scaleX != _scaleY.
-     * @警告:当_scaleX != _scaleY断言会失败.
+     * Returns the scale factor of the node.										返回节点的缩放比例
+     * @warning: Assertion will fail when _scaleX != _scaleY.		@警告:当_scaleX != _scaleY断言会失败.
      * @function
-     * @return {Number} The scale factor
-     * @return {Number} 缩放系数
+     * @return {Number} The scale factor			@return {Number} 缩放系数
      */
     getScale: function () {
         if (this._scaleX !== this._scaleY)
@@ -684,11 +615,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Sets the scale factor of the node. 1.0 is the default scale factor. This function can modify the X and Y scale at the same time.
-     * 设置节点的缩放比例.默认的缩放比例是1.0.该函数可以同时修改X轴跟Y轴的缩放比例.
+     * Sets the scale factor of the node. 1.0 is the default scale factor. This function can modify the X and Y scale at the same time. 设置节点的缩放比例.默认的缩放比例是1.0.该函数可以同时修改X轴跟Y轴的缩放比例.
      * @function
-     * @param {Number} scale or scaleX value
-     * @param {Number} 缩放或者X轴缩放值
+     * @param {Number} scale or scaleX value			@param {Number} 缩放或者X轴缩放值
      * @param {Number} [scaleY=]
      */
     setScale: function (scale, scaleY) {
@@ -698,11 +627,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Returns the scale factor on X axis of this node
-     * 返回节点X轴的缩放比例
+     * Returns the scale factor on X axis of this node		返回节点X轴的缩放比例
      * @function
-     * @return {Number} The scale factor on X axis.
-     * @return {Number} X轴缩放比例.
+     * @return {Number} The scale factor on X axis.			@return {Number} X轴缩放比例.
      */
     getScaleX: function () {
         return this._scaleX;
@@ -710,14 +637,11 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>
-     *     Changes the scale factor on X axis of this node                                   <br/>
-     *		 改变节点X轴的缩放比例<br/>
-     *     The deafult value is 1.0 if you haven't changed it before
-     *		 如果你没有修改过该值的话,默认值为1.0
+     *     Changes the scale factor on X axis of this node                                   <br/>		改变节点X轴的缩放比例<br/>
+     *     The deafult value is 1.0 if you haven't changed it before																	如果你没有修改过该值的话,默认值为1.0.
      * </p>
      * @function
-     * @param {Number} newScaleX The scale factor on X axis.
-     * @param {Number} newScaleX X轴缩放系数.
+     * @param {Number} newScaleX The scale factor on X axis.			@param {Number} newScaleX X轴缩放系数.
      */
     setScaleX: function (newScaleX) {
         this._scaleX = newScaleX;
@@ -725,11 +649,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Returns the scale factor on Y axis of this node
-     * 返回节点Y轴的缩放比例
+     * Returns the scale factor on Y axis of this node	返回节点Y轴的缩放比例
      * @function
-     * @return {Number} The scale factor on Y axis.
-     * @return {Number} Y轴缩放系数.
+     * @return {Number} The scale factor on Y axis.			@return {Number} Y轴缩放系数.
      */
     getScaleY: function () {
         return this._scaleY;
@@ -737,14 +659,11 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>
-     *     Changes the scale factor on Y axis of this node                                            <br/>
-     *		 改变节点的Y轴的缩放比例
-     *     The Default value is 1.0 if you haven't changed it before.
-     *		 如果你没有修改过该值的话,默认值为1.0
+     *     Changes the scale factor on Y axis of this node                                            <br/>			改变节点的Y轴的缩放比例<br/>
+     *     The Default value is 1.0 if you haven't changed it before.																						如果你没有修改过该值的话,默认值为1.0.
      * </p>
      * @function
-     * @param {Number} newScaleY The scale factor on Y axis.
-     * @param {Number} newScaleY Y轴缩放系数.
+     * @param {Number} newScaleY The scale factor on Y axis.		@param {Number} newScaleY Y轴缩放系数.
      */
     setScaleY: function (newScaleY) {
         this._scaleY = newScaleY;
@@ -753,20 +672,14 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>
-     *     Changes the position (x,y) of the node in cocos2d coordinates.<br/>
-     *		 改变节点的在cocos2d坐标系中的位置
-     *     The original point (0,0) is at the left-bottom corner of screen.<br/>
-     *		 原点(0,0)在屏幕的左下角.<br/>
-     *     Usually we use cc.p(x,y) to compose CCPoint object.<br/>
-     *	   经常使用cc.p(x,y)来构建CCPoint对象.<br/>
-     *     and Passing two numbers (x,y) is more efficient than passing CCPoint object.
-     *		 并且使用两个数字(x,y)比使用CCPoint更有效率.
+     *     Changes the position (x,y) of the node in cocos2d coordinates.<br/>						改变节点的在cocos2d坐标系中的位置<br/>
+     *     The original point (0,0) is at the left-bottom corner of screen.<br/>					原点(0,0)在屏幕的左下角.<br/>
+     *     Usually we use cc.p(x,y) to compose CCPoint object.<br/>												我们经常使用cc.p(x,y)来构建CCPoint对象.<br/>
+     *     and Passing two numbers (x,y) is more efficient than passing CCPoint object.		并且使用两个数字(x,y)比使用CCPoint更有效率.
      * </p>
      * @function
-     * @param {cc.Point|Number} newPosOrxValue The position (x,y) of the node in coordinates or the X coordinate for position
-     * @param {cc.Point|Number} newPosOrxValue 节点坐标系的位置或者X坐标系的位置
-     * @param {Number} [yValue] Y coordinate for position
-     * @param {Number} [yValue] Y坐标系位置
+     * @param {cc.Point|Number} newPosOrxValue The position (x,y) of the node in coordinates or the X coordinate for position		@param {cc.Point|Number} newPosOrxValue 节点坐标系的位置或者X坐标系的位置
+     * @param {Number} [yValue] Y coordinate for position																																				@param {Number} [yValue] Y坐标系位置
      * @example
      *    var size = cc.winSize;
      *    node.setPosition(size.width/2, size.height/2);
@@ -786,10 +699,8 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>
-     * Sets the position (x,y) using values between 0 and 1.                                                <br/>
-     * 设置位置的值在区间[0,1]内.<br/>
-     * The positions in pixels is calculated like the following:                                            <br/>
-     * 像素位置的计算如下:<br/>
+     * Sets the position (x,y) using values between 0 and 1.                                                <br/>		设置位置的值在区间[0,1]内.<br/>
+     * The positions in pixels is calculated like the following:                                            <br/>		像素位置的计算如下:<br/>
      *   _position = _normalizedPosition * parent.getContentSize()
      * </p>
      * @param {cc.Point|Number} posOrX
@@ -809,19 +720,16 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * <p>Returns a copy of the position (x,y) of the node in cocos2d coordinates. (0,0) is the left-bottom corner.</p>
-     * <p>返回节点在cocos2d坐标系中的位置的备份.(0,0)为左下角的点</p>
+     * <p>Returns a copy of the position (x,y) of the node in cocos2d coordinates. (0,0) is the left-bottom corner.</p>		<p>返回节点在cocos2d坐标系中的位置的备份.(0,0)为左下角的点</p>
      * @function
-     * @return {cc.Point} The position (x,y) of the node in OpenGL coordinates
-     * @return {cc.Point} 节点在OpenGL坐标系中的位置
+     * @return {cc.Point} The position (x,y) of the node in OpenGL coordinates		@return {cc.Point} 节点在OpenGL坐标系中的位置
      */
     getPosition: function () {
         return cc.p(this._position);
     },
 
     /**
-     * returns the normalized position
-     * 返回正常位置
+     * returns the normalized position		返回正常位置
      * @returns {cc.Point}
      */
     getNormalizedPosition: function(){
@@ -829,8 +737,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * <p>Returns the x axis position of the node in cocos2d coordinates.</p>
-     * <p>返回节点在coco2d坐标系中的X轴位置.</p>
+     * <p>Returns the x axis position of the node in cocos2d coordinates.</p>		<p>返回节点在coco2d坐标系中的X轴位置.</p>
      * @function
      * @return {Number}
      */
@@ -839,11 +746,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * <p>Sets the x axis position of the node in cocos2d coordinates.</p>
-     * <p>设置节点在coco2d坐标系中的X轴位置.</p>
+     * <p>Sets the x axis position of the node in cocos2d coordinates.</p>		<p>设置节点在coco2d坐标系中的X轴位置.</p>
      * @function
-     * @param {Number} x The new position in x axis
-     * @param {Number} x X轴新的位置值
+     * @param {Number} x The new position in x axis			@param {Number} x X轴新的位置值
      */
     setPositionX: function (x) {
         this._position.x = x;
@@ -851,8 +756,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * <p>Returns the y axis position of the node in cocos2d coordinates.</p>
-     * <p>返回节点在coco2d坐标系中的Y轴位置.</p>
+     * <p>Returns the y axis position of the node in cocos2d coordinates.</p>		<p>返回节点在coco2d坐标系中的Y轴位置.</p>
      * @function
      * @return {Number}
      */
@@ -861,11 +765,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * <p>Sets the y axis position of the node in cocos2d coordinates.</p>
-     * <p>设置节点在coco2d坐标系中的Y轴位置.</p>
+     * <p>Sets the y axis position of the node in cocos2d coordinates.</p>		<p>设置节点在coco2d坐标系中的Y轴位置.</p>
      * @function
-     * @param {Number} y The new position in y axis
-     * @param {Number} y Y轴新的位置值
+     * @param {Number} y The new position in y axis			@param {Number} y Y轴新的位置值
      */
     setPositionY: function (y) {
         this._position.y = y;
@@ -873,24 +775,19 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Returns the amount of children.
-     * 返回子类的数量.
+     * Returns the amount of children.		返回子节点的数量.
      * @function
-     * @return {Number} The amount of children.
-     * @return {Number} 子节点数量.
+     * @return {Number} The amount of children. @return {Number} 子节点数量.
      */
     getChildrenCount: function () {
         return this._children.length;
     },
 
     /**
-     * Returns an array of all children  <br/>
-     * 返回包含所有子类的数组<br/>
-     * Composing a "tree" structure is a very important feature of CCNode
-     * 构建一个数结构体是CCNode非常重要的功能
+     * Returns an array of all children  <br/>																返回包含所有子类的数组<br/>
+     * Composing a "tree" structure is a very important feature of CCNode			构建一个数结构体是CCNode非常重要的功能
      * @function
-     * @return {Array} An array of children
-     * @return {Array} 子节点数组
+     * @return {Array} An array of children		@return {Array} 子节点数组
      * @example
      *  //This sample code traverses all children nodes, and set their position to (0,0)
      *  //此示例代码遍历所有的子节点,并设置他们的位置为(0,0)
@@ -908,21 +805,18 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * 返回节点是否可见
      * @function
      * @see cc.Node#setVisible
-     * @return {Boolean} true if the node is visible, false if the node is hidden.
-     * @return {Boolean} 如果为true则节点可见,如果为false则节点不可见.
+     * @return {Boolean} true if the node is visible, false if the node is hidden.	@return {Boolean} 如果为true则节点可见,如果为false则节点不可见.
+     * 
      */
     isVisible: function () {
         return this._visible;
     },
 
     /**
-     * Sets whether the node is visible <br/>
-     * 设置节点是否可见<br/>
-     * The default value is true
-     * 默认值是可见的
+     * Sets whether the node is visible <br/>	 设置节点是否可见<br/>	
+     * The default value is true							 默认值是可见的
      * @function
-     * @param {Boolean} visible Pass true to make the node visible, false to hide the node.
-     * @param {Boolean} visible 传入true使得节点可见,传入false的话则隐藏节点.
+     * @param {Boolean} visible Pass true to make the node visible, false to hide the node.		@param {Boolean} visible 传入true使得节点可见,传入false的话则隐藏节点.
      */
     setVisible: function (visible) {
         if(this._visible != visible){
@@ -933,21 +827,15 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     *  <p>Returns a copy of the anchor point.<br/>
-     *  <p>返回节点的锚点备份.<br/>
-     *  Anchor point is the point around which all transformations and positioning manipulations take place.<br/>
-     *  一个锚点是所有的转换和定位操作发生的点.<br/>
-     *  It's like a pin in the node where it is "attached" to its parent. <br/>
-     *  它就像在节点上连接其父类的大头针.<br/>
-     *  The anchorPoint is normalized, like a percentage. (0,0) means the bottom-left corner and (1,1) means the top-right corner. <br/>
-     *  锚点是标准化的,就像百分比一样.。(0,0)表示左下角,(1,1)表示右上角.<br/>
-     *  But you can use values higher than (1,1) and lower than (0,0) too.  <br/>
-     *  但是你可以使用比(1,1)更高的值或者比(0,0)更低的值.<br/>
-     *  The default anchor point is (0.5,0.5), so it starts at the center of the node. <br/></p>
-     *	 默认的锚点是(0.5,0.5),因此它开始于节点的中心位置<br/></p>
+     *  <p>Returns a copy of the anchor point.<br/>																																													<p>返回节点的锚点备份.<br/>
+     *  Anchor point is the point around which all transformations and positioning manipulations take place.<br/>														一个锚点是所有的转换和定位操作发生的点.<br/>
+     *  It's like a pin in the node where it is "attached" to its parent. <br/>																															它就像在节点上连接其父类的大头针.<br/>
+     *  The anchorPoint is normalized, like a percentage. (0,0) means the bottom-left corner and (1,1) means the top-right corner. <br/>		锚点是标准化的,就像百分比一样.。(0,0)表示左下角,(1,1)表示右上角.<br/>
+     *  But you can use values higher than (1,1) and lower than (0,0) too.  <br/>																														但是你可以使用比(1,1)更高的值或者比(0,0)更低的值.<br/>
+     *  The default anchor point is (0.5,0.5), so it starts at the center of the node. <br/></p>																						默认的锚点是(0.5,0.5),因此它开始于节点的中心位置<br/></p>
      * @function
-     * @return {cc.Point}  The anchor point of node.
-     * @return {cc.Point}  节点的锚点.
+     * @return {cc.Point}  The anchor point of node.				@return {cc.Point}  节点的锚点.
+     * 
      */
     getAnchorPoint: function () {
         return cc.p(this._anchorPoint);
@@ -955,25 +843,17 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>
-     *     Sets the anchor point in percent.                                                                                              <br/>
-     *		 设置锚点,用百分比表示.<br/>
+     *     Sets the anchor point in percent.                                                                                              <br/>			设置锚点,用百分比表示.<br/>
      *                                                                                                                                    <br/>
-     *     anchor point is the point around which all transformations and positioning manipulations take place.                            <br/>
-     *  	 一个锚点是所有的转换和定位操作发生的点.<br/>
-     *     It's like a pin in the node where it is "attached" to its parent.                                                              <br/>
-     *  	 它就像在节点上连接其父类的大头针.<br/>
-     *     The anchorPoint is normalized, like a percentage. (0,0) means the bottom-left corner and (1,1) means the top-right corner.     <br/>
-     *  	 锚点是标准化的,就像百分比一样.。(0,0)表示左下角,(1,1)表示右上角.<br/>
-     *     But you can use values higher than (1,1) and lower than (0,0) too.                                                             <br/>
-     *  	 但是你可以使用比(1,1)更高的值或者比(0,0)更低的值.<br/>
-     *     The default anchor point is (0.5,0.5), so it starts at the center of the node.
-     *	 	 默认的锚点是(0.5,0.5),因此它开始于节点的中心位置
+     *     anchor point is the point around which all transformations and positioning manipulations take place.                            <br/>		一个锚点是所有的转换和定位操作发生的点.<br/>
+     *     It's like a pin in the node where it is "attached" to its parent.                                                              <br/>			它就像在节点上连接其父类的大头针.<br/>
+     *     The anchorPoint is normalized, like a percentage. (0,0) means the bottom-left corner and (1,1) means the top-right corner.     <br/>			锚点是标准化的,就像百分比一样.。(0,0)表示左下角,(1,1)表示右上角.<br/>
+     *     But you can use values higher than (1,1) and lower than (0,0) too. 																																			但是你可以使用比(1,1)更高的值或者比(0,0)更低的值.<br/>                                                            <br/>
+     *     The default anchor point is (0.5,0.5), so it starts at the center of the node.																														默认的锚点是(0.5,0.5),因此它开始于节点的中心位置
      * </p>
      * @function
-     * @param {cc.Point|Number} point The anchor point of node or The x axis anchor of node.
-     * @param {cc.Point|Number} point 节点的锚点或者节点X轴的锚点值.
-     * @param {Number} [y] The y axis anchor of node.
-     * @param {Number} [y] 节点Y轴的锚点值
+     * @param {cc.Point|Number} point The anchor point of node or The x axis anchor of node.		@param {cc.Point|Number} point 节点的锚点或者节点X轴的锚点值.
+     * @param {Number} [y] The y axis anchor of node.																						@param {Number} [y] 节点Y轴的锚点值
      */
     setAnchorPoint: function (point, y) {
         var locAnchorPoint = this._anchorPoint;
@@ -1029,14 +909,11 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Returns a copy of the anchor point in absolute pixels.  <br/>
-     * 返回绝对像素的锚点的备份<br/>
-     * you can only read it. If you wish to modify it, use setAnchorPoint
-     * 你只能读取它.如果你想要修改它,使用setAnchorPoint
+     * Returns a copy of the anchor point in absolute pixels.  <br/>				返回绝对像素的锚点的备份<br/>
+     * you can only read it. If you wish to modify it, use setAnchorPoint		你只能读取它.如果你想要修改它,使用setAnchorPoint
      * @see cc.Node#getAnchorPoint
      * @function
-     * @return {cc.Point} The anchor point in absolute pixels.
-     * @return {cc.Point} 绝对像素中的锚点.
+     * @return {cc.Point} The anchor point in absolute pixels.							@return {cc.Point} 绝对像素中的锚点.
      */
     getAnchorPointInPoints: function () {
         return cc.p(this._anchorPointInPoints);
@@ -1060,15 +937,11 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * <p>Returns a copy the untransformed size of the node. <br/>
-     * <p>返回未转换节点的大小.<br/>
-     * The contentSize remains the same no matter the node is scaled or rotated.<br/>
-     * 该contentSize保持一致不管节点是缩放或者旋转.<br/>
-     * All nodes has a size. Layer and Scene has the same size of the screen by default. <br/></p>
-     * 左右的节点都有大小.Layer和Scene默认拥有跟屏幕一样的大小.<br/></p>
+     * <p>Returns a copy the untransformed size of the node. <br/>																		<p>返回未转换节点的大小.<br/>
+     * The contentSize remains the same no matter the node is scaled or rotated.<br/>									该contentSize保持一致不管节点是缩放或者旋转.<br/>
+     * All nodes has a size. Layer and Scene has the same size of the screen by default. <br/></p>		左右的节点都有大小.Layer和Scene默认拥有跟屏幕一样的大小.<br/></p>
      * @function
-     * @return {cc.Size} The untransformed size of the node.
-     * @return {cc.Size} 节点未变换的尺寸.
+     * @return {cc.Size} The untransformed size of the node.			@return {cc.Size} 节点未变换的尺寸.
      */
     getContentSize: function () {
         return cc.size(this._contentSize);
@@ -1076,19 +949,14 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>
-     *     Sets the untransformed size of the node.                                             <br/>
-     *		 设置转换节点的大小<br/>
+     *     Sets the untransformed size of the node.                                             <br/>		设置转换节点的大小<br/>
      *                                                                                          <br/>
-     *     The contentSize remains the same no matter the node is scaled or rotated.            <br/>
-     * 		 该contentSize保持一致不管节点是缩放或者旋转.<br/>
-     *     All nodes has a size. Layer and Scene has the same size of the screen.
-     * 		 左右的节点都有大小.Layer和Scene默认拥有跟屏幕一样的大小.
+     *     The contentSize remains the same no matter the node is scaled or rotated.            <br/>		该contentSize保持一致不管节点是缩放或者旋转.<br/>
+     *     All nodes has a size. Layer and Scene has the same size of the screen.												左右的节点都有大小.Layer和Scene默认拥有跟屏幕一样的大小.	
      * </p>
      * @function
-     * @param {cc.Size|Number} size The untransformed size of the node or The untransformed size's width of the node.
-     * @param {cc.Size|Number} size 节点未变换的尺寸或者节点未变换尺寸前的高度.
-     * @param {Number} [height] The untransformed size's height of the node.
-     * @param {Number} [height] 节点未变换尺寸前的高度.
+     * @param {cc.Size|Number} size The untransformed size of the node or The untransformed size's width of the node.		@param {cc.Size|Number} size 节点未变换的尺寸或者节点未变换尺寸前的高度.
+     * @param {Number} [height] The untransformed size's height of the node.																						@param {Number} [height] 节点未变换尺寸前的高度.
      */
     setContentSize: function (size, height) {
         var locContentSize = this._contentSize;
@@ -1111,49 +979,39 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>
-     *     Returns whether or not the node accepts event callbacks.                                     <br/>
-     *		 不管节点是否接受回调事件都返回<br/>
-     *     Running means the node accept event callbacks like onEnter(), onExit(), update()
-     *		 运行意味着接受回调事件例如:onEnter(), onExit(), update()
+     *     Returns whether or not the node accepts event callbacks.                                     <br/>		不管节点是否接受回调事件都返回<br/>
+     *     Running means the node accept event callbacks like onEnter(), onExit(), update()											运行意味着接受回调事件例如:onEnter(), onExit(), update()
      * </p>
      * @function
-     * @return {Boolean} Whether or not the node is running.
-     * @return {Boolean} 节点是否在运行.
+     * @return {Boolean} Whether or not the node is running.		@return {Boolean} 节点是否在运行.
      */
     isRunning: function () {
         return this._running;
     },
 
     /**
-     * Returns a reference to the parent node
-     * 返回父类节点的引用
+     * Returns a reference to the parent node		返回父类节点的引用
      * @function
-     * @return {cc.Node} A reference to the parent node
-     * @return {cc.Node} 父节点的引用
+     * @return {cc.Node} A reference to the parent node		@return {cc.Node} 父节点的引用
      */
     getParent: function () {
         return this._parent;
     },
 
     /**
-     * Sets the parent node
-     * 设置父类节点
-     * @param {cc.Node} parent A reference to the parent node
-     * @param {cc.Node} parent 父节点的引用
+     * Sets the parent node		设置父类节点
+     * @param {cc.Node} parent A reference to the parent node		@param {cc.Node} parent 父节点的引用
      */
     setParent: function (parent) {
         this._parent = parent;
     },
 
     /**
-     * Returns whether the anchor point will be ignored when you position this node.<br/>
-     * 返回当你移动节点的位置时,是否忽略节点的锚点.<br/>
-     * When anchor point ignored, position will be calculated based on the origin point (0, 0) in parent's coordinates.
-     * 当锚点被忽略的时候,位置将会在父类坐标系中基于原点(0,0)进行计算.
+     * Returns whether the anchor point will be ignored when you position this node.<br/>																返回当你移动节点的位置时,是否忽略节点的锚点.<br/>
+     * When anchor point ignored, position will be calculated based on the origin point (0, 0) in parent's coordinates.	当锚点被忽略的时候,位置将会在父类坐标系中基于原点(0,0)进行计算.
      * @function
      * @see cc.Node#ignoreAnchorPointForPosition
-     * @return {Boolean} true if the anchor point will be ignored when you position this node.
-     * @return {Boolean} 当你设置节点位置,锚点将会被忽略的话,则为true.
+     * @return {Boolean} true if the anchor point will be ignored when you position this node.		@return {Boolean} 当你设置节点位置,锚点将会被忽略的话,则为true.
      */
     isIgnoreAnchorPointForPosition: function () {
         return this._ignoreAnchorPointForPosition;
@@ -1161,18 +1019,13 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>
-     *     Sets whether the anchor point will be ignored when you position this node.                              <br/>
-     * 		 设置当你移动节点的位置时,是否忽略节点的锚点.<br/>
-     *     When anchor point ignored, position will be calculated based on the origin point (0, 0) in parent's coordinates.  <br/>
-     * 		 当锚点被忽略的时候,位置将会在父类坐标系中基于原点(0,0)进行计算.
-     *     This is an internal method, only used by CCLayer and CCScene. Don't call it outside framework.        <br/>
-     *		 这是一个内部调用方法,仅仅在CCLayer和CCScene中使用.别在外围框架中调用.<br/>
-     *     The default value is false, while in CCLayer and CCScene are true
-     *     默认值为false,当在CCLayer和CCScene是true
+     *     Sets whether the anchor point will be ignored when you position this node.                              <br/>						设置当你移动节点的位置时,是否忽略节点的锚点.<br/>
+     *     When anchor point ignored, position will be calculated based on the origin point (0, 0) in parent's coordinates.  <br/>	当锚点被忽略的时候,位置将会在父类坐标系中基于原点(0,0)进行计算.<br/>	
+     *     This is an internal method, only used by CCLayer and CCScene. Don't call it outside framework.        <br/>							这是一个内部调用方法,仅仅在CCLayer和CCScene中使用.别在外围框架中调用.<br/>		
+     *     The default value is false, while in CCLayer and CCScene are true																												默认值为false,当在CCLayer和CCScene是true
      * </p>
      * @function
-     * @param {Boolean} newValue true if anchor point will be ignored when you position this node
-     * @param {Boolean} newValue 当你设置节点的位置时,如果锚点被忽略则为true.
+     * @param {Boolean} newValue true if anchor point will be ignored when you position this node		@param {Boolean} newValue 当你设置节点的位置时,如果锚点被忽略则为true.
      */
     ignoreAnchorPointForPosition: function (newValue) {
         if (newValue != this._ignoreAnchorPointForPosition) {
@@ -1182,11 +1035,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Returns a tag that is used to identify the node easily.
-     * 返回容易标记一个节点的标签.
+     * Returns a tag that is used to identify the node easily.		返回用于标记一个节点的标签.
      * @function
-     * @return {Number} An integer that identifies the node.
-     * @return {Number} 定义节点的一个整数.
+     * @return {Number} An integer that identifies the node.			@return {Number} 定义节点的一个整数.
      * @example
      *  //You can set tags to node then identify them easily.
      *  //你可以给节点设置标签,那就很容易定义节点了.
@@ -1215,22 +1066,19 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Changes the tag that is used to identify the node easily. <br/>
-     * 改变容易标记节点的标签.<br/>
-     * Please refer to getTag for the sample code.
-     * 请参阅getTag进行使用.
+     * Changes the tag that is used to identify the node easily. <br/>		改变用于标记节点的标签.<br/>
+     * Please refer to getTag for the sample code.			请参阅getTag进行使用.
      * @function
      * @see cc.Node#getTag
-     * @param {Number} tag A integer that identifies the node.
-     * @param {Number} tag 定义节点的一个整数.
+     * @param {Number} tag A integer that identifies the node.		@param {Number} tag 定义节点的一个整数.
+     * 
      */
     setTag: function (tag) {
         this.tag = tag;
     },
 
     /**
-     * Changes the name that is used to identify the node easily.
-     * 改变标记节点的名字.
+     * Changes the name that is used to identify the node easily.		改变用于标记节点的名字.
      * @function
      * @param {String} name
      */
@@ -1239,11 +1087,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Returns a string that is used to identify the node.
-     * 返回标记节点名字的字符串.
+     * Returns a string that is used to identify the node.		返回标记节点名字的字符串.
      * @function
-     * @returns {string} A string that identifies the node.
-     * @returns {string} 定义节点的字符串.
+     * @returns {string} A string that identifies the node.		@returns {string} 定义节点的字符串.
      */
     getName: function(){
         return this._name;
@@ -1251,14 +1097,12 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>
-     *     Returns a custom user data pointer                                                               <br/>
-     *		 返回一个自定义的用户数据点<br/>
-     *     You can set everything in UserData pointer, a data block, a structure or an object.
-     *		 你可以随意设置UserData为指针, 一个数据块, 结构体或者一个对象.
+     *     Returns a custom user data pointer                                                               <br/>		返回一个自定义的用户数据点<br/>
+     *     You can set everything in UserData pointer, a data block, a structure or an object.											你可以随意设置UserData为指针,一个数据块,结构体或者一个对象.
      * </p>
      * @function
-     * @return {object}  A custom user data pointer
-     * @return {object}  一个用户自定义的数据指针
+     * @return {object}  A custom user data pointer			@return {object}  一个用户自定义的数据指针
+     * 
      */
     getUserData: function () {
         return this.userData;
@@ -1266,29 +1110,22 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>
-     *    Sets a custom user data reference                                                                   <br/>
-     *		设置自定义用户数据引用<br/>
-     *    You can set everything in UserData reference, a data block, a structure or an object, etc.
-     *		你可以随意设置UserData为指针, 一个数据块, 结构体或者一个对象.
+     *    Sets a custom user data reference                                                                   <br/>				设置自定义用户数据引用<br/>
+     *    You can set everything in UserData reference, a data block, a structure or an object, etc.											你可以随意设置UserData为指针, 一个数据块, 结构体或者一个对象.
      * </p>
      * @function
-     * @warning Don't forget to release the memory manually in JSB, especially before you change this data pointer, and before this node is autoreleased.
-     * @警告:别忘记在JSB中手工释放内存,特别在你改变数据的指针,和节点自动释放的时候.
-     * @param {object} Var A custom user data
-     * @param {object} Var 一个自定义的用户数据
+     * @warning Don't forget to release the memory manually in JSB, especially before you change this data pointer, and before this node is autoreleased.		@警告:别忘记在JSB中手工释放内存,特别在你改变数据的指针,和节点自动释放的时候.
+     * @param {object} Var A custom user data																																																								@param {object} Var 一个自定义的用户数据
      */
     setUserData: function (Var) {
         this.userData = Var;
     },
 
     /**
-     * Returns a user assigned cocos2d object.                             <br/>
-     * 返回一个用户指定的cocos2d对象.<br/>
-     * Similar to userData, but instead of holding all kinds of data it can only hold a cocos2d object
-     * 类似的,但不是可以获取所有类型的数据,它只能获取cocos2d对象
+     * Returns a user assigned cocos2d object.                             <br/>													返回一个用户指定的cocos2d对象.<br/>
+     * Similar to userData, but instead of holding all kinds of data it can only hold a cocos2d object		类似的,但不是可以获取所有类型的数据,它只能获取cocos2d对象
      * @function
-     * @return {object} A user assigned CCObject
-     * @return {object} 用户分配的CCObject对象
+     * @return {object} A user assigned CCObject			@return {object} 用户分配的CCObject对象
      */
     getUserObject: function () {
         return this.userObject;
@@ -1296,17 +1133,13 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>
-     *      Sets a user assigned cocos2d object                                                                                       <br/>
-     *			设置一个用户指定的cocos2d对象<br/>
-     *      Similar to UserData, but instead of holding all kinds of data it can only hold a cocos2d object                        <br/>
-     * 类似的,但不是可以获取所有类型的数据,它只能获取cocos2d对象<br/>
-     *      In JSB, the UserObject will be retained once in this method, and the previous UserObject (if existed) will be release. <br/>
-     *		  在JSB中,UserObject在该函数中只保存一次,上一个UserObject会被释放掉.<br/>
-     *      The UserObject will be released in CCNode's destruction.
-     *		  UserObject将会在CCNode中释放破坏掉.
+     *      Sets a user assigned cocos2d object                                                                                    <br/>			设置一个用户指定的cocos2d对象<br/>
+     *      Similar to UserData, but instead of holding all kinds of data it can only hold a cocos2d object                        <br/>			类似的,但不是可以获取所有类型的数据,它只能获取cocos2d对象<br/>
+     *      In JSB, the UserObject will be retained once in this method, and the previous UserObject (if existed) will be release. <br/>			在JSB中,UserObject在该函数中只保存一次,上一个UserObject会被释放掉.<br/>
+     *      The UserObject will be released in CCNode's destruction.																																					UserObject将会在CCNode中释放破坏掉.
      * </p>
-     * @param {object} newValue A user cocos2d object
-     * @param {object} newValue 一个用户cocos2d对象
+     * @param {object} newValue A user cocos2d object																																													@param {object} newValue 一个用户cocos2d对象
+     * 
      */
     setUserObject: function (newValue) {
         if (this.userObject != newValue) {
@@ -1316,11 +1149,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
 
     /**
-     * Returns the arrival order, indicates which children should be added previously.
-     * 返回到达顺序,指出哪一个子类先被添加
+     * Returns the arrival order, indicates which children should be added previously.		返回到达顺序,指出哪一个子类先被添加.
      * @function
-     * @return {Number} The arrival order.
-     * @return {Number} 到达顺序值.
+     * @return {Number} The arrival order.	@return {Number} 到达顺序值.
      */
     getOrderOfArrival: function () {
         return this.arrivalOrder;
@@ -1328,33 +1159,25 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>
-     *     Sets the arrival order when this node has a same ZOrder with other children.                             <br/>
-     *		 设置到达顺序,当这个节点和其他子节点有相同的ZOrder时<br/>
+     *     Sets the arrival order when this node has a same ZOrder with other children.                             <br/>			设置到达顺序,当这个节点和其他子节点有相同的ZOrder时<br/>
      *                                                                                                              <br/>
-     *     A node which called addChild subsequently will take a larger arrival order,                              <br/>
-     *		 一个调用了之后调用了addChild函数的节点将会有更大的到达顺序值<br/>
-     *     If two children have the same Z order, the child with larger arrival order will be drawn later.
-     *		 如果两个子对象有相同的Z轴顺序,这个有更大到达顺序的子类将会后绘制
+     *     A node which called addChild subsequently will take a larger arrival order,                              <br/>			一个调用了之后调用了addChild函数的节点将会有更大的到达顺序值<br/>
+     *     If two children have the same Z order, the child with larger arrival order will be drawn later.										如果两个子对象有相同的Z轴顺序,这个有更大到达顺序的子类将会后绘制.
      * </p>
      * @function
-     * @warning This method is used internally for zOrder sorting, don't change this manually
-     * @警告:该方法是为了内部Z顺序值排序用的,请别手工改变.
-     * @param {Number} Var  The arrival order.
-     * @param {Number} Var  到达顺序.
+     * @warning This method is used internally for zOrder sorting, don't change this manually																	@警告:该方法是为了内部Z顺序值排序用的,请别手工改变.
+     * @param {Number} Var  The arrival order.																																								@param {Number} Var  到达顺序.
      */
     setOrderOfArrival: function (Var) {
         this.arrivalOrder = Var;
     },
 
     /**
-     * <p>Returns the CCActionManager object that is used by all actions.<br/>
-     * <p>得到被所有动作使用的CCActionManager对象<br/>
-     * (IMPORTANT: If you set a new cc.ActionManager, then previously created actions are going to be removed.)</p>
-     * (重要:如果你设置了一个新的cc.ActionManager,则先前创建的动作将会被清除掉.)</p>	
+     * <p>Returns the CCActionManager object that is used by all actions.<br/>																				<p>得到被所有动作使用的CCActionManager对象<br/>
+     * (IMPORTANT: If you set a new cc.ActionManager, then previously created actions are going to be removed.)</p>		(重要:如果你设置了一个新的cc.ActionManager,则先前创建的动作将会被清除掉.)</p>	
      * @function
      * @see cc.Node#setActionManager
-     * @return {cc.ActionManager} A CCActionManager object.
-     * @return {cc.ActionManager} 一个CCActionManager对象.
+     * @return {cc.ActionManager} A CCActionManager object.		@return {cc.ActionManager} 一个CCActionManager对象.
      */
     getActionManager: function () {
         if (!this._actionManager) {
@@ -1364,13 +1187,10 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * <p>Sets the cc.ActionManager object that is used by all actions. </p>
-     * <p>设置被所有动作使用的cc.ActionManager对象</p>
+     * <p>Sets the cc.ActionManager object that is used by all actions. </p>													<p>设置被所有动作使用的cc.ActionManager对象</p>
      * @function
-     * @warning If you set a new CCActionManager, then previously created actions will be removed.
-     * @警告:如果你想要设置一个新的CCActionManager,则先前创建的动作都将被清除.
-     * @param {cc.ActionManager} actionManager A CCActionManager object that is used by all actions.
-     * @param {cc.ActionManager} actionManager 用来管理所有动作的CCActionManager对象
+     * @warning If you set a new CCActionManager, then previously created actions will be removed.		@警告:如果你想要设置一个新的CCActionManager,则先前创建的动作都将被清除.
+     * @param {cc.ActionManager} actionManager A CCActionManager object that is used by all actions.	@param {cc.ActionManager} actionManager 用来管理所有动作的CCActionManager对象.
      */
     setActionManager: function (actionManager) {
         if (this._actionManager != actionManager) {
@@ -1381,12 +1201,10 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>
-     *   Returns the cc.Scheduler object used to schedule all "updates" and timers.
-     *	 得到用来调度所有的"updates"跟定时器的调度器对象
+     *   Returns the cc.Scheduler object used to schedule all "updates" and timers.		返回用来调度所有的"updates"跟定时器的调度器对象
      * </p>
      * @function
-     * @return {cc.Scheduler} A CCScheduler object.
-     * @return {cc.Scheduler} 一个CCScheduler对象.
+     * @return {cc.Scheduler} A CCScheduler object.			@return {cc.Scheduler} 一个CCScheduler对象.
      */
     getScheduler: function () {
         if (!this._scheduler) {
@@ -1397,16 +1215,12 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>
-     *   Sets a CCScheduler object that is used to schedule all "updates" and timers.           <br/>
-     *	 设置一个调度器对象来用于调度所有的"updates"和定时器<br/>
-     *   IMPORTANT: If you set a new cc.Scheduler, then previously created timers/update are going to be removed.
-     *	 重要:如果你设置了一个新的cc.Scheduler,那么先前创建的定时器/更新函数都将会被清除掉.
+     *   Sets a CCScheduler object that is used to schedule all "updates" and timers.           <br/>								设置一个调度器对象来用于调度所有的"updates"和定时器<br/>
+     *   IMPORTANT: If you set a new cc.Scheduler, then previously created timers/update are going to be removed.		重要:如果你设置了一个新的cc.Scheduler,那么先前创建的定时器/更新函数都将会被清除掉.
      * </p>
      * @function
-     * @warning If you set a new CCScheduler, then previously created timers/update are going to be removed.
-     * @警告:如果你想要设置一个新的CCScheduler,则先前创建的timers/update将会被清除.
-     * @param scheduler A cc.Scheduler object that is used to schedule all "update" and timers.
-     * @param scheduler 一个被用来调度所有的更新跟定时器的cc.Scheduler对象.
+     * @warning If you set a new CCScheduler, then previously created timers/update are going to be removed.				@警告:如果你想要设置一个新的CCScheduler,则先前创建的timers/update将会被清除.
+     * @param scheduler A cc.Scheduler object that is used to schedule all "update" and timers.											@param scheduler 一个被用来调度所有的更新跟定时器的cc.Scheduler对象.
      */
     setScheduler: function (scheduler) {
         if (this._scheduler != scheduler) {
@@ -1416,11 +1230,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Returns a "local" axis aligned bounding box of the node. <br/>
-     * 返回节点的本地坐标系的外边框.<br/>
+     * Returns a "local" axis aligned bounding box of the node. <br/>		返回节点的本地坐标系的外边框.<br/>
      * 
-     * @deprecated since v3.0, please use getBoundingBox instead
-     * @v3.0版本后弃用,请使用getBoundingBox代替
+     * @deprecated since v3.0, please use getBoundingBox instead				@v3.0版本后弃用,请使用getBoundingBox代替
      * @return {cc.Rect}
      */
     boundingBox: function(){
@@ -1429,13 +1241,10 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Returns a "local" axis aligned bounding box of the node. <br/>
-     * 返回节点的本地坐标系的外边框.<br/>
-     * The returned box is relative only to its parent.
-     * 该返回的边框只跟它的父类有关联.
+     * Returns a "local" axis aligned bounding box of the node. <br/>		返回节点的本地坐标系的外边框.<br/>
+     * The returned box is relative only to its parent.									该返回的边框只跟它的父类有关联.	
      * @function
-     * @return {cc.Rect} The calculated bounding box of the node
-     * @return {cc.Rect} 节点计算出来的外边框
+     * @return {cc.Rect} The calculated bounding box of the node				@return {cc.Rect} 节点计算出来的外边框
      */
     getBoundingBox: function () {
         var rect = cc.rect(0, 0, this._contentSize.width, this._contentSize.height);
@@ -1443,8 +1252,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Stops all running actions and schedulers
-     * 停止所有的动作跟调度器.
+     * Stops all running actions and schedulers		停止所有的动作跟调度器.
      * @function
      */
     cleanup: function () {
@@ -1465,13 +1273,10 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     // composition: GET
     // 组成:GET
     /**
-     * Returns a child from the container given its tag
-     * 从容器中通过子节点的标签获取一个子节点
+     * Returns a child from the container given its tag														从容器中通过子节点的标签获取一个子节点
      * @function
-     * @param {Number} aTag An identifier to find the child node.
-     * @param {Number} aTag 寻找子节点的标记.
-     * @return {cc.Node} a CCNode object whose tag equals to the input parameter
-     * @return {cc.Node} 一个标签等于入参的CCNode对象
+     * @param {Number} aTag An identifier to find the child node.									@param {Number} aTag 寻找子节点的标记.
+     * @return {cc.Node} a CCNode object whose tag equals to the input parameter	@return {cc.Node} 一个标签等于入参的CCNode对象	
      */
     getChildByTag: function (aTag) {
         var __children = this._children;
@@ -1486,13 +1291,10 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Returns a child from the container given its name
-     * 从容器中通过子节点的名称获取一个子节点
+     * Returns a child from the container given its name														从容器中通过子节点的名称获取一个子节点
      * @function
-     * @param {Number} name An identifier to find the child node.
-     * @param {Number} name 寻找子节点的标记.
-     * @return {cc.Node} a CCNode object whose name equals to the input parameter
-     * @return {cc.Node} 一个名称等于入参的CCNode对象
+     * @param {Number} name An identifier to find the child node.										@param {Number} name 寻找子节点的标记.
+     * @return {cc.Node} a CCNode object whose name equals to the input parameter		@return {cc.Node} 一个名称等于入参的CCNode对象
      */
     getChildByName: function(name){
         if(!name){
@@ -1510,18 +1312,13 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     // composition: ADD
 		// 组成:ADD
-    /** <p>"add" logic MUST only be in this method <br/> </p>
-    /** <p>"add" 方式必须使用该方法<br/> </p>
+    /** <p>"add" logic MUST only be in this method <br/> </p>																																						<p>"add" 方式必须使用该方法<br/> </p>
      *
-     * <p>If the child is added to a 'running' node, then 'onEnter' and 'onEnterTransitionDidFinish' will be called immediately.</p>
-     * <p>如果子节点被添加到了一个"running(活动着的)"节点,那么'onEnter'和'onEnterTransitionDidFinish' 将会立即调用</p>
+     * <p>If the child is added to a 'running' node, then 'onEnter' and 'onEnterTransitionDidFinish' will be called immediately.</p>		<p>如果子节点被添加到了一个"running(活动着的)"节点,那么'onEnter'和'onEnterTransitionDidFinish' 将会立即调用</p>
      * @function
-     * @param {cc.Node} child  A child node
-     * @param {cc.Node} child  子节点
-     * @param {Number} [localZOrder=]  Z order for drawing priority. Please refer to setZOrder(int)
-     * @param {Number} [localZOrder=]  绘制优先级中的Z顺序值.请参阅setZOrder(int).
-     * @param {Number} [tag=]  A integer to identify the node easily. Please refer to setTag(int)
-     * @param {Number} [tag=]  便于标记节点的整数. 请参阅setTag(int).
+     * @param {cc.Node} child  A child node																														@param {cc.Node} child  子节点
+     * @param {Number} [localZOrder=]  Z order for drawing priority. Please refer to setZOrder(int)		@param {Number} [localZOrder=]  绘制优先级中的Z顺序值.请参阅setZOrder(int).
+     * @param {Number} [tag=]  A integer to identify the node easily. Please refer to setTag(int)			@param {Number} [tag=]  便于标记节点的整数. 请参阅setTag(int).
      */
     addChild: function (child, localZOrder, tag) {
         localZOrder = localZOrder === undefined ? child._localZOrder : localZOrder;
@@ -1573,15 +1370,11 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     // composition: REMOVE
     // 组成:REMOVE
     /**
-     * Remove itself from its parent node. If cleanup is true, then also remove all actions and callbacks. <br/>
-     * 从它的父类中删除其本身.如果cleanup为true,那么将会删除其所有的动作跟回调.<br/>
-     * If the cleanup parameter is not passed, it will force a cleanup. <br/>
-     * 如果cleanup没有传递进来,那么它将会强制设置一个cleanup.<br/>
-     * If the node orphan, then nothing happens.
-     * 如果该节点没有任何的父类,那么就不会有任何的效果.
+     * Remove itself from its parent node. If cleanup is true, then also remove all actions and callbacks. <br/>		从它的父类中删除其本身.如果cleanup为true,那么将会删除其所有的动作跟回调.<br/>
+     * If the cleanup parameter is not passed, it will force a cleanup. <br/>																				如果cleanup没有传递进来,那么它将会强制设置一个cleanup.<br/>
+     * If the node orphan, then nothing happens.																																		如果该节点没有任何的父类,那么就不会有任何的效果.
      * @function
-     * @param {Boolean} [cleanup=true] true if all actions and callbacks on this node should be removed, false otherwise.
-     * @param {Boolean} [cleanup=true] 如果子节点中所有的动作和回调函数都被清除的话则为true,否则为false.
+     * @param {Boolean} [cleanup=true] true if all actions and callbacks on this node should be removed, false otherwise.		@param {Boolean} [cleanup=true] 如果子节点中所有的动作和回调函数都被清除的话则为true,否则为false.
      * @see cc.Node#removeFromParentAndCleanup
      */
     removeFromParent: function (cleanup) {
@@ -1593,34 +1386,25 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Removes this node itself from its parent node.  <br/>
-     * 从该节点的父类中删除该节点本身.<br/>
-     * If the node orphan, then nothing happens.
-     * 如果该节点没有任何的父类,那么就不会有任何的效果.
-     * @deprecated since v3.0, please use removeFromParent() instead
-     * @v3.0版本后弃用,请用removeFromParent()代替
-     * @param {Boolean} [cleanup=true] true if all actions and callbacks on this node should be removed, false otherwise.
-     * @param {Boolean} [cleanup=true] 如果子节点中所有的动作和回调函数都被清除的话则为true,否则为false.
+     * Removes this node itself from its parent node.  <br/>							从该节点的父类中删除该节点本身.<br/>
+     * If the node orphan, then nothing happens.													如果该节点没有任何的父类,那么就不会有任何的效果.
+     * @deprecated since v3.0, please use removeFromParent() instead			@v3.0版本后弃用,请用removeFromParent()代替
+     * @param {Boolean} [cleanup=true] true if all actions and callbacks on this node should be removed, false otherwise.		@param {Boolean} [cleanup=true] 如果子节点中所有的动作和回调函数都被清除的话则为true,否则为false.
+     * 
      */
     removeFromParentAndCleanup: function (cleanup) {
         cc.log(cc._LogInfos.Node_removeFromParentAndCleanup);
         this.removeFromParent(cleanup);
     },
 
-    /** <p>Removes a child from the container. It will also cleanup all running actions depending on the cleanup parameter. </p>
-    /** <p>从一个容器中删除一个子节点.该函数会依据cleanup来对所有的运行动作进行处理.</p>
-     * If the cleanup parameter is not passed, it will force a cleanup. <br/>
-     * 如果cleanup参数没有传递进来,它将会强制设置一个cleanup.<br/>
-     * <p> "remove" logic MUST only be on this method  <br/>
-     * <p> "remove" 方式必须使用该方法<br/>
+    /** <p>Removes a child from the container. It will also cleanup all running actions depending on the cleanup parameter. </p>				<p>从一个容器中删除一个子节点.该函数会依据cleanup来对所有的运行动作进行处理.</p>
+     * If the cleanup parameter is not passed, it will force a cleanup. <br/>																														如果cleanup参数没有传递进来,它将会强制设置一个cleanup.<br/>
+     * <p> "remove" logic MUST only be on this method  <br/>																																						<p> "remove" 方式必须使用该方法<br/>
      * If a class wants to extend the 'removeChild' behavior it only needs <br/>
-     * to override this method </p>
-     * 如果一个类想要继承'removeChild'行为,则只需要重写该方法就行.</p>
+     * to override this method </p>																																																			如果一个类想要继承'removeChild'行为,则只需要重写该方法就行.</p>
      * @function
-     * @param {cc.Node} child  The child node which will be removed.
-     * @param {cc.Node} child  将被删除的子节点.
-     * @param {Boolean} [cleanup=true]  true if all running actions and callbacks on the child node will be cleanup, false otherwise.
-     * @param {Boolean} [cleanup=true]  如果子节点中所有的执行中的动作和回调函数都被清除的话则为true,否则为false.
+     * @param {cc.Node} child  The child node which will be removed.																																		@param {cc.Node} child  将被删除的子节点.
+     * @param {Boolean} [cleanup=true]  true if all running actions and callbacks on the child node will be cleanup, false otherwise.		@param {Boolean} [cleanup=true]  如果子节点中所有的执行中的动作和回调函数都被清除的话则为true,否则为false.
      */
     removeChild: function (child, cleanup) {
         // explicit nil handling
@@ -1637,15 +1421,11 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Removes a child from the container by tag value. It will also cleanup all running actions depending on the cleanup parameter.
-     * 根据标签值从一个容器中删除一个子节点.该函数会依据cleanup来对所有的运行动作进行处理.
-     * If the cleanup parameter is not passed, it will force a cleanup. <br/>
-     * 如果cleanup参数没有传递进来,它将会强制设置一个cleanup.<br/>
+     * Removes a child from the container by tag value. It will also cleanup all running actions depending on the cleanup parameter.		根据标签值从一个容器中删除一个子节点.该函数会依据cleanup来对所有的运行动作进行处理.
+     * If the cleanup parameter is not passed, it will force a cleanup. <br/>																														如果cleanup参数没有传递进来,它将会强制设置一个cleanup.<br/>
      * @function
-     * @param {Number} tag An integer number that identifies a child node
-     * @param {Number} tag 标记某个子节点的整数
-     * @param {Boolean} [cleanup=true] true if all running actions and callbacks on the child node will be cleanup, false otherwise.
-     * @param {Boolean} [cleanup=true] 如果子节点中所有的执行中的动作和回调函数都被清除的话则为true,否则为false.
+     * @param {Number} tag An integer number that identifies a child node																																@param {Number} tag 标记某个子节点的整数
+     * @param {Boolean} [cleanup=true] true if all running actions and callbacks on the child node will be cleanup, false otherwise.		@param {Boolean} [cleanup=true] 如果子节点中所有的执行中的动作和回调函数都被清除的话则为true,否则为false.
      * @see cc.Node#removeChildByTag
      */
     removeChildByTag: function (tag, cleanup) {
@@ -1660,8 +1440,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Removes all children from the container and do a cleanup all running actions depending on the cleanup parameter.
-     * 从容器中删除所有的子节点并且依据cleanup来对所有的运行动作进行处理.
+     * Removes all children from the container and do a cleanup all running actions depending on the cleanup parameter.		从容器中删除所有的子节点并且依据cleanup来对所有的运行动作进行处理.
      * @param {Boolean} [cleanup=true]
      */
     removeAllChildrenWithCleanup: function (cleanup) {
@@ -1670,13 +1449,10 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Removes all children from the container and do a cleanup all running actions depending on the cleanup parameter. <br/>
-     * 从容器中删除所有的子节点并且依据cleanup来对所有的运行动作进行处理.
-     * If the cleanup parameter is not passed, it will force a cleanup. <br/>
-     * 如果cleanup参数没有传递进来,它将会强制设置一个cleanup.<br/>
+     * Removes all children from the container and do a cleanup all running actions depending on the cleanup parameter. <br/>		从容器中删除所有的子节点并且依据cleanup来对所有的运行动作进行处理.<br/>
+     * If the cleanup parameter is not passed, it will force a cleanup. <br/>																										如果cleanup参数没有传递进来,它将会强制设置一个cleanup.<br/>
      * @function
-     * @param {Boolean} [cleanup=true] true if all running actions on all children nodes should be cleanup, false otherwise.
-     * @param {Boolean} [cleanup=true] 如果所有子节点中所有的执行中的动作都被清除的话则为true,否则为false.
+     * @param {Boolean} [cleanup=true] true if all running actions on all children nodes should be cleanup, false otherwise.		@param {Boolean} [cleanup=true] 如果所有子节点中所有的执行中的动作都被清除的话则为true,否则为false.
      */
     removeAllChildren: function (cleanup) {
         // not using detachChild improves speed here
@@ -1740,15 +1516,11 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
         child._setLocalZOrder(z);
     },
 
-    /** Reorders a child according to a new z value. <br/>
-    /** 对一个孩子重新排序,设定一个新的z轴的值<br/>
-     * The child MUST be already added.
-     * 子节点必须已经添加.
+    /** Reorders a child according to a new z value. <br/>		对一个孩子重新排序,设定一个新的z轴的值<br/>
+     * The child MUST be already added.												子节点必须已经添加.
      * @function
-     * @param {cc.Node} child An already added child node. It MUST be already added.
-     * @param {cc.Node} child 一个被添加过的子节点.它必须已经被添加过.
-     * @param {Number} zOrder Z order for drawing priority. Please refer to setZOrder(int)
-     * @param {Number} zOrder 绘制优先级中的Z顺序值,请参阅setZOrder(int)
+     * @param {cc.Node} child An already added child node. It MUST be already added.				@param {cc.Node} child 一个被添加过的子节点.它必须已经被添加过.
+     * @param {Number} zOrder Z order for drawing priority. Please refer to setZOrder(int)	@param {Number} zOrder 绘制优先级中的Z顺序值,请参阅setZOrder(int)
      */
     reorderChild: function (child, zOrder) {
         cc.assert(child, cc._LogInfos.Node_reorderChild);
@@ -1761,14 +1533,12 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>
-     *     Sorts the children array once before drawing, instead of every time when a child is added or reordered.    <br/>
-     *		 在绘制之前对子节点数组进行排序一次,而不是每次添加或者删除子节点时都排序.<br>
-     *     This approach can improves the performance massively.
-     *		  这个方法可以大量地提高性能.
+     *     Sorts the children array once before drawing, instead of every time when a child is added or reordered.    <br/>		在绘制之前对子节点数组进行排序一次,而不是每次添加或者删除子节点时都排序.<br>
+     *     This approach can improves the performance massively.																															这个方法可以大量地提高性能.
      * </p>
      * @function
-     * @note Don't call this manually unless a child added needs to be removed in the same frame
-     * @注意:别手工调用该函数除非一个被添加过的子节点需要在同一帧中被删除.
+     * @note Don't call this manually unless a child added needs to be removed in the same frame		@注意:别手工调用该函数除非一个被添加过的子节点需要在同一帧中被删除.
+     * 
      */
     sortAllChildren: function () {
         if (this._reorderChildDirty) {
@@ -1803,11 +1573,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Render function using the canvas 2d context or WebGL context, internal usage only, please do not call this function
-     * 使用canvas 2d上下文跟WebGL上下文进行渲染的函数,仅供内部使用,请不要调用该函数
+     * Render function using the canvas 2d context or WebGL context, internal usage only, please do not call this function		使用canvas 2d上下文跟WebGL上下文进行渲染的函数,仅供内部使用,请不要调用该函数
      * @function
-     * @param {CanvasRenderingContext2D | WebGLRenderingContext} ctx The render context
-     * @param {CanvasRenderingContext2D | WebGLRenderingContext} ctx 渲染上下文
+     * @param {CanvasRenderingContext2D | WebGLRenderingContext} ctx The render context			@param {CanvasRenderingContext2D | WebGLRenderingContext} ctx 渲染上下文
      */
     draw: function (ctx) {
         // override me
@@ -1831,14 +1599,10 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     //场景管理
     /**
      * <p>
-     *     Event callback that is invoked every time when CCNode enters the 'stage'.                                   <br/>
-     * 		 每次当CCNode进入"stage"时才调用事件回调<br/>
-     *     If the CCNode enters the 'stage' with a transition, this event is called when the transition starts.        <br/>
-     *		  如果CCNode进入"stage"状态时伴随着一个转换(transition),那么事件将会在这个转换开始的时候被调用.<br/>
-     *     During onEnter you can't access a "sister/brother" node.                                                    <br/>
-     *		 在onEnter过程中,你不能够接入"sister/brother"同级节点<br/>
-     *     If you override onEnter, you must call its parent's onEnter function with this._super().
-     *      如果你重写了onEnter方法,你应该使用this._super()调用它的父类的onEnter函数.
+     *     Event callback that is invoked every time when CCNode enters the 'stage'.                                   <br/>		每次当CCNode进入"stage"时才调用事件回调<br/>
+     *     If the CCNode enters the 'stage' with a transition, this event is called when the transition starts.        <br/>		如果CCNode进入"stage"状态时伴随着一个转换(transition),那么事件将会在这个转换开始的时候被调用.<br/>
+     *     During onEnter you can't access a "sister/brother" node.                                                    <br/>		在onEnter过程中,你不能够接入"sister/brother"同级节点.<br/>
+     *     If you override onEnter, you must call its parent's onEnter function with this._super().															如果你重写了onEnter方法,你应该使用this._super()调用它的父类的onEnter函数.
      * </p>
      * @function
      */
@@ -1851,12 +1615,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>
-     *     Event callback that is invoked when the CCNode enters in the 'stage'.                                                        <br/>
-     *		 每次当CCNode进入"stage"时才调用事件回调.<br/>
-     *     If the CCNode enters the 'stage' with a transition, this event is called when the transition finishes.                       <br/>
-     *		 如果CCNode进入"stage"状态时伴随着一个转换(transition),那么事件将会在这个转换结束的时候被调用.<br/>
-     *     If you override onEnterTransitionDidFinish, you shall call its parent's onEnterTransitionDidFinish with this._super()
-     *		 如果你重写了onEnterTransitionDidFinish方法,你应该使用this._super()调用它的父类中的onEnterTransitionDidFinish函数
+     *     Event callback that is invoked when the CCNode enters in the 'stage'.                                                        <br/>		每次当CCNode进入"stage"时才调用事件回调.<br/>
+     *     If the CCNode enters the 'stage' with a transition, this event is called when the transition finishes.                       <br/>		如果CCNode进入"stage"状态时伴随着一个转换(transition),那么事件将会在这个转换结束的时候被调用.<br/>
+     *     If you override onEnterTransitionDidFinish, you shall call its parent's onEnterTransitionDidFinish with this._super()								如果你重写了onEnterTransitionDidFinish方法,你应该使用this._super()调用它的父类中的onEnterTransitionDidFinish函数
      * </p>
      * @function
      */
@@ -1866,12 +1627,9 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * <p>callback that is called every time the cc.Node leaves the 'stage'.  <br/>
-     * <p>每次当cc.Node离开"stage"时才调用事件回调.<br/>
-     * If the cc.Node leaves the 'stage' with a transition, this callback is called when the transition starts. <br/>
-     *  如果cc.Node离开"stage"状态时伴随着一个转换(transition),那么事件将会在这个转换开始的时候被调用.<br/>
-     * If you override onExitTransitionDidStart, you shall call its parent's onExitTransitionDidStart with this._super()</p>
-     * 如果你重写了onExitTransitionDidStart方法,你应该使用this._super()调用它的父类中的onExitTransitionDidStart函数
+     * <p>callback that is called every time the cc.Node leaves the 'stage'.  <br/>																							<p>每次当cc.Node离开"stage"时才调用事件回调.<br/>
+     * If the cc.Node leaves the 'stage' with a transition, this callback is called when the transition starts. <br/>						如果cc.Node离开"stage"状态时伴随着一个转换(transition),那么事件将会在这个转换开始的时候被调用.<br/>
+     * If you override onExitTransitionDidStart, you shall call its parent's onExitTransitionDidStart with this._super()</p>		如果你重写了onExitTransitionDidStart方法,你应该使用this._super()调用它的父类中的onExitTransitionDidStart函数</p>
      * @function
      */
     onExitTransitionDidStart: function () {
@@ -1880,14 +1638,10 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     /**
      * <p>
-     * callback that is called every time the cc.Node leaves the 'stage'.                                         <br/>
-     * 每次当cc.Node离开"stage"时才调用事件回调
-     * If the cc.Node leaves the 'stage' with a transition, this callback is called when the transition finishes. <br/>
-     * 如果cc.Node离开"stage"状态时伴随着一个转换(transition), 那么事件将会在这个转换结束的时候被调用<br/>
-     * During onExit you can't access a sibling node.                                                             <br/>
-     * 在onEnter过程中中你不能够接入一个同级节点.<br/>
-     * If you override onExit, you shall call its parent's onExit with this._super().
-     * 如果你重写了onExit方法,你应该使用this._super()调用它的父类中的onExit函数
+     * callback that is called every time the cc.Node leaves the 'stage'.                                         <br/>	每次当cc.Node离开"stage"时才调用事件回调<br/>
+     * If the cc.Node leaves the 'stage' with a transition, this callback is called when the transition finishes. <br/>	如果cc.Node离开"stage"状态时伴随着一个转换(transition), 那么事件将会在这个转换结束的时候被调用<br/>
+     * During onExit you can't access a sibling node.                                                             <br/>	在onEnter过程中中你不能够接入一个同级节点.<br/>
+     * If you override onExit, you shall call its parent's onExit with this._super().																		如果你重写了onExit方法,你应该使用this._super()调用它的父类中的onExit函数
      * </p>
      * @function
      */
@@ -1900,16 +1654,13 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
 
     // actions
     /**
-     * Executes an action, and returns the action that is executed.<br/>
-     * 执行一个动作,并且返回执行的该动作.<br/>
-     * The node becomes the action's target. Refer to cc.Action's getTarget()
-     * 这个节点将会变成动作的目标,参考cc.Action的getTarget()
+     * Executes an action, and returns the action that is executed.<br/>				执行一个动作,并且返回执行的该动作.<br/>
+     * The node becomes the action's target. Refer to cc.Action's getTarget()		这个节点将会变成动作的目标,参考cc.Action的getTarget()
      * @function
-     * @warning Starting from v0.8 actions don't retain their target anymore.
-     * @警告:自从v0.8版本后,动作将不在保留他们的目标对象.
+     * @warning Starting from v0.8 actions don't retain their target anymore.		@警告:自从v0.8版本后,动作将不在保留他们的目标对象.
      * @param {cc.Action} action
-     * @return {cc.Action} An Action pointer
-     * @return {cc.Action} 锚点
+     * @return {cc.Action} An Action pointer		@return {cc.Action} 锚点
+     * 
      */
     runAction: function (action) {
         cc.assert(action, cc._LogInfos.Node_runAction);
@@ -1919,8 +1670,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Stops and removes all actions from the running action list .
-     * 从运行中的动作列表中停止和删除所有的动作.
+     * Stops and removes all actions from the running action list .		从运行中的动作列表中停止和删除所有的动作.
      * @function
      */
     stopAllActions: function () {
@@ -1928,22 +1678,18 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Stops and removes an action from the running action list.
-     * 从运行中的动作列表中停止和删除一个动作.
+     * Stops and removes an action from the running action list.		从运行中的动作列表中停止和删除一个动作.
      * @function
-     * @param {cc.Action} action An action object to be removed.
-     * @param {cc.Action} action 要被删除的动作对象.
+     * @param {cc.Action} action An action object to be removed.		@param {cc.Action} action 要被删除的动作对象.
      */
     stopAction: function (action) {
         this.actionManager.removeAction(action);
     },
 
     /**
-     * Removes an action from the running action list by its tag.
-     * 根据它的标签从运行着的动作列表中删除该动作.
+     * Removes an action from the running action list by its tag.				根据它的标签从运行着的动作列表中删除该动作.
      * @function
-     * @param {Number} tag A tag that indicates the action to be removed.
-     * @param {Number} tag 要被删除的动作的标签.
+     * @param {Number} tag A tag that indicates the action to be removed.		@param {Number} tag 要被删除的动作的标签.
      */
     stopActionByTag: function (tag) {
         if (tag === cc.ACTION_TAG_INVALID) {
@@ -1954,13 +1700,11 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     },
 
     /**
-     * Returns an action from the running action list by its tag.
-     * 根据它的标签从运行着的动作列表中返回一个动作.
+     * Returns an action from the running action list by its tag.		根据它的标签从运行着的动作列表中返回一个动作.
      * @function
      * @see cc.Node#getTag and cc.Node#setTag
      * @param {Number} tag
-     * @return {cc.Action} The action object with the given tag.
-     * @return {cc.Action} 拥有标签的动作对象.
+     * @return {cc.Action} The action object with the given tag.		@return {cc.Action} 拥有标签的动作对象.
      */
     getActionByTag: function (tag) {
         if (tag === cc.ACTION_TAG_INVALID) {
@@ -1970,17 +1714,12 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
         return this.actionManager.getActionByTag(tag, this);
     },
 
-    /** <p>Returns the numbers of actions that are running plus the ones that are schedule to run (actions in actionsToAdd and actions arrays).<br/>
-    /** <p>返回活动着的动作加上正在调度运行的动作的总数(在actionsToAdd状态的动作和动作数组中的).<br/>
-     *    Composable actions are counted as 1 action. Example:<br/>
-     *    组成的动作被记为一个动作.例如:<br/>
-     *    If you are running 1 Sequence of 7 actions, it will return 1. <br/>
-     *    如果你正在运行一个包含7个动作的Sequence, 它将返回 1.<br/>
-     *    If you are running 7 Sequences of 2 actions, it will return 7.</p>
-     *    如果你正在运行包含2个动作中的7个Sequences,它将返回 7.</p>
+    /** <p>Returns the numbers of actions that are running plus the ones that are schedule to run (actions in actionsToAdd and actions arrays).<br/>		<p>返回活动着的动作加上正在调度运行的动作的总数(在actionsToAdd状态的动作和动作数组中的).<br/>
+     *    Composable actions are counted as 1 action. Example:<br/>																																											组成的动作被记为一个动作.例如:<br/>
+     *    If you are running 1 Sequence of 7 actions, it will return 1. <br/>																																						如果你正在运行一个包含7个动作的Sequence, 它将返回 1.<br/>
+     *    If you are running 7 Sequences of 2 actions, it will return 7.</p>																																						如果你正在运行包含2个动作中的7个Sequences,它将返回 7.</p>
      * @function
-     * @return {Number} The number of actions that are running plus the ones that are schedule to run
-     * @return {Number} 被调度去执行的且正在运行中的动作数量.
+     * @return {Number} The number of actions that are running plus the ones that are schedule to run		@return {Number} 被调度去执行的且正在运行中的动作数量.
      */
     getNumberOfRunningActions: function () {
         return this.actionManager.numberOfRunningActionsInTarget(this);
