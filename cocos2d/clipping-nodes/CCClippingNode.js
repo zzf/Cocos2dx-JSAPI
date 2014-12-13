@@ -46,7 +46,7 @@ cc.stencilBits = -1;
  * @property {Boolean}  inverted        - 表明是否为反转模式
  */
 //@property {cc.Node}  stencil         - 裁剪使用的cc.Node模板
-cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode#  cc.ClippingNode入口*/{
+cc.ClippingNode = cc.Node.extend(/** @lends cc.ClippingNode# */{
     alphaThreshold: 0,
     inverted: false,
 
