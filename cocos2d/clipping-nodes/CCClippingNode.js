@@ -613,7 +613,7 @@ cc.ClippingNode._getSharedCache = function () {
 /**
  * 创建并初始化一个以指定节点为模板的裁剪节点。<br/>
  * 模板节点会被保留。
- * @deprecated v3.0后已过时，建议使用"new cc.ClippingNode(stencil)"替代
+ * @deprecated since v3.0 ，建议使用"new cc.ClippingNode(stencil)"替代
  * @param {cc.Node} [stencil=null]
  * @return {cc.ClippingNode}
  * @example
