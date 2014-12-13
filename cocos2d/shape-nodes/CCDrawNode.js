@@ -90,7 +90,7 @@ cc.__t = function (v) {
  */
 /**
  * <p>CCDrawNode                                                <br/>
- * Node在一个单独的批处理过程中绘制所有节点，<br/>
+ * Node在一个单独的批处理过程中绘制所有的点、线段和多边形，<br/>
  * 因此比"drawing primitives"快。</p>
  * @class
  * @name cc.DrawNode
