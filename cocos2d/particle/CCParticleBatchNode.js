@@ -28,7 +28,7 @@
  */
 
 /**
- * paticle default capacity 默认粒子容量
+ * 默认粒子容量
  * @constant
  * @type Number
  */
