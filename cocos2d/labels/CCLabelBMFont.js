@@ -36,53 +36,59 @@
 cc.LABEL_AUTOMATIC_WIDTH = -1;
 
 /**
- * <p>cc.LabelBMFont is a subclass of cc.SpriteBatchNode.</p>
+ * <p>cc.LabelBMFont is a subclass of cc.SpriteBatchNode.</p>							    <p>cc.LabelBMFont是cc.SprintBAtchNode的一个子类.</p>
  *
- * <p>Features:<br/>
- * <ul><li>- Treats each character like a cc.Sprite. This means that each individual character can be:</li>
- * <li>- rotated</li>
- * <li>- scaled</li>
- * <li>- translated</li>
- * <li>- tinted</li>
- * <li>- change the opacity</li>
- * <li>- It can be used as part of a menu item.</li>
- * <li>- anchorPoint can be used to align the "label"</li>
- * <li>- Supports AngelCode text format</li></ul></p>
+ * <p>Features:<br/>											            <p>特征：<br/>		
+ * <ul><li>- Treats each character like a cc.Sprite. This means that each individual character can be:</li>	    <ul><li>-就像对待cc.Sprite来处理每一个字符。这意味着每个单独的字符能：
+ * <li>- rotated</li>                                                                                               <li>- 旋转</li>
+ * <li>- scaled</li> returns the LabelAtlas object on success							    <li>- 大小可调</li>	
+ * <li>- translated</li>											    <li>- 可翻译</li>
+ * <li>- tinted</li>												    <li>- 可着色</li>
+ * <li>- change the opacity</li>									            <li>- 改变透明度</li>
+ * <li>- It can be used as part of a menu item.</li>                                                                <li>- 他可以被用作菜单的标题。</li>
+ * <li>- anchorPoint can be used to align the "label"</li>                                                          <li>- 轴心点可以被用来匹配"标签"</li>
+ * <li>- Supports AngelCode text format</li></ul></p>								    <li>- 支持AngelCode文本格式
  *
- * <p>Limitations:<br/>
- * - All inner characters are using an anchorPoint of (0.5, 0.5) and it is not recommend to change it
- * because it might affect the rendering</p>
+ * <p>Limitations:<br/>												    <p>限制：<br/ returns the LabelAtlas object on success>
+ * - All inner characters are using an anchorPoint of (0.5, 0.5) and it is not recommend to change it		    -所有的内部字符都使用顶点（0.5,0.5）并且建议不要改变他，应为这样可能会影响着色
+ * because it might affect the rendering</p>										</p>
  *
- * <p>cc.LabelBMFont implements the protocol cc.LabelProtocol, like cc.Label and cc.LabelAtlas.<br/>
- * cc.LabelBMFont has the flexibility of cc.Label, the speed of cc.LabelAtlas and all the features of cc.Sprite.<br/>
- * If in doubt, use cc.LabelBMFont instead of cc.LabelAtlas / cc.Label.</p>
+ * <p>cc.LabelBMFont implements the protocol cc.LabelProtocol, like cc.Label and cc.LabelAtlas.<br/>		     <p>cc.LabelBmFont继承了cc.LabelProtocol的属性，像cc.Label和cc.LabelAtlas.<br/>
+ * cc.LabelBMFont has the flexibility of cc.Label, the speed of cc.LabelAtlas and all the features of cc.Sprite.<br/>cc.LabelBMFont拥有cc.Lanel的灵活性，cc.LabelAtlas的速度和cc.Sprite的所有特征.<br/>
+ * If in doubt, use cc.LabelBMFont instead of cc.LabelAtlas / cc.Label.</p>					     如果有所怀疑，请使用cc.LabelBmFont来代替cc.LabelAtlas / cc.Label.</p>
  *
- * <p>Supported editors:<br/>
- * http://glyphdesigner.71squared.com/ (Commercial, Mac OS X)<br/>
- * http://www.n4te.com/hiero/hiero.jnlp (Free, Java)<br/>
- * http://slick.cokeandcode.com/demos/hiero.jnlp (Free, Java)<br/>
- * http://www.angelcode.com/products/bmfont/ (Free, Windows only)</p>
- * @class
- * @extends cc.SpriteBatchNode
+ * <p>Supported editors:<br/>											     <p>支持的编辑器：<br/>
+ * http://glyphdesigner.71squared.com/ (Commercial, Mac OS X)<br/>						     http://glyphdesigner.71squared.com/ (Commercial, Mac OS X)<br/>
+ * http://www.n4te.com/hiero/hiero.jnlp (Free, Java)<br/>                                                            http://www.n4te.com/hiero/hiero.jnlp (Free, Java)<br/>
+ * http://slick.cokeandcode.com/demos/hiero.jnlp (Free, Java)<br/>                                                   http://slick.cokeandcode.com/demos/hiero.jnlp (Free, Java)<br/>
+ * http://www.angelcode.com/products/bmfont/ (Free, Windows only)</p>                                                http://www.angelcode.com/products/bmfont/ (Free, Windows only)</p>
+ * @class                                                                                                            @class
+ * @extends cc.SpriteBatchNode                                                                                       @extends cc.SpriteBatchNode     
  *
- * @property {String}   string          - Content string of label
- * @property {Number}   textAlign       - Horizontal Alignment of label, cc.TEXT_ALIGNMENT_LEFT|cc.TEXT_ALIGNMENT_CENTER|cc.TEXT_ALIGNMENT_RIGHT
- * @property {Number}   boundingWidth   - Width of the bounding box of label, the real content width is limited by boundingWidth
+ * @property {String}   string          - Content string of label                                                    @property {String}   字符串       -标签的字符串内容
+ * @property {Number}   textAlign       - Horizontal Alignment of label, cc.TEXT_ALIGNMENT_LEFT|cc.TEXT_ALIGNMENT_CENTER|cc.TEXT_ALIGNMENT_RIGHT 
+ * @property {Number}   文本匹配        -文本的水平方向校准， cc.TEXT_ALIGNMENT_LEFT|cc.TEXT_ALIGNMENT_CENTER|cc.TEXT_ALIGNMENT_RIGHT    
+ * @property {Number}   boundingWidth   - Width of the bounding box of label, the real content width is limited by boundingWidth  
+ * @property {Number}   宽度限制        -标签框的宽度限制，内容的内容被他限制
  *
- * @param {String} str
- * @param {String} fntFile
- * @param {Number} [width=-1]
- * @param {Number} [alignment=cc.TEXT_ALIGNMENT_LEFT]
- * @param {cc.Point} [imageOffset=cc.p(0,0)]
  *
- * @example
+ * @param {String} str													@param {String} str
+ * @param {String} fntFile												@param {String} fntFile							
+ * @param {Number} [width=-1]                            								@param {Number} [width=-1]
+ * @param {Number} [alignment=cc.TEXT_ALIGNMENT_LEFT]                                         				@param {Number} [alignment=cc.TEXT_ALIGNMENT_LEFT]
+ * @param {cc.Point} [imageOffset=cc.p(0,0)]										@param {cc.Point} [imageOffset=cc.p(0,0)]
+ *
+ * @example                                                                                                             @example
  * // Example 01
+ * // 示例 01
  * var label1 = new cc.LabelBMFont("Test case", "test.fnt");
  *
  * // Example 02
+ * //示例 02
  * var label2 = new cc.LabelBMFont("test case", "test.fnt", 200, cc.TEXT_ALIGNMENT_LEFT);
  *
  * // Example 03
+ * //示例 03
  * var label3 = new cc.LabelBMFont("This is a \n test case", "test.fnt", 200, cc.TEXT_ALIGNMENT_LEFT, cc.p(0,0));
  */
 cc.LabelBMFont = cc.SpriteBatchNode.extend(/** @lends cc.LabelBMFont# */{
@@ -97,15 +103,19 @@ cc.LabelBMFont = cc.SpriteBatchNode.extend(/** @lends cc.LabelBMFont# */{
     _config: null,
 
     // name of fntFile
+    // fntFile的名字
     _fntFile: "",
 
     // initial string without line breaks
+    // 初始化字符串不带换行符
     _initialString: "",
 
     // alignment of all lines
+    // 所有横线的校准线
     _alignment: cc.TEXT_ALIGNMENT_CENTER,
 
     // max width until a line break is added
+    // 最大宽度直到有一个换行符被输入进来
     _width: -1,
     _lineBreakWithoutSpaces: false,
     _imageOffset: null,
@@ -113,6 +123,7 @@ cc.LabelBMFont = cc.SpriteBatchNode.extend(/** @lends cc.LabelBMFont# */{
     _reusedChar: null,
 
     //texture RGBA
+    //纹理的透明度
     _displayedOpacity: 255,
     _realOpacity: 255,
     _displayedColor: null,
@@ -147,7 +158,9 @@ cc.LabelBMFont = cc.SpriteBatchNode.extend(/** @lends cc.LabelBMFont# */{
 
     /**
      * Constructor function, override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function. <br />
+     * 构造器的功能，可以重写该构造器来扩展它的功能，在扩展的“ctor”功能中记得调用“this._super()”
      * creates a bitmap font atlas with an initial string and the FNT file.
+     * 初始化一个位图字
      * @param {String} str
      * @param {String} fntFile
      * @param {Number} [width=-1]
@@ -166,27 +179,27 @@ cc.LabelBMFont = cc.SpriteBatchNode.extend(/** @lends cc.LabelBMFont# */{
     },
 
     /**
-     * return  texture is loaded
-     * @returns {boolean}
+     * return  texture is loaded 	返回被加载的纹理
+     * @returns {boolean}		@return {boolean}
      */
     textureLoaded: function () {
         return this._textureLoaded;
     },
 
     /**
-     * add texture loaded event listener. <br />
-     * Will execute the callback in the loaded.
-     * @param {Function} callback
-     * @param {Object} target
-     * @deprecated since 3.1, please use addEventListener instead
+     * add texture loaded event listener. <br />					增加被加载的纹理事件的监听器.<br />
+     * Will execute the callback in the loaded.						在被加载后将会被调回
+     * @param {Function} callback							@param {Function} 调回
+     * @param {Object} target								@param {Object} 对像
+     * @deprecated since 3.1, please use addEventListener instead			@deprecated 从3.1版本后，请使用addEventListener
      */
     addLoadedEventListener: function (callback, target) {
         this.addEventListener("load", callback, target);
     },
 
     /**
-     * Draw this font.
-     * @param {CanvasRenderingContext2D} ctx
+     * Draw this font.									绘制这个字体
+     * @param {CanvasRenderingContext2D} ctx						@param {CanvasRenderingContext2D} ctx											
      */
     draw: function (ctx) {
         cc.SpriteBatchNode.prototype.draw.call(this, ctx);
@@ -202,8 +215,8 @@ cc.LabelBMFont = cc.SpriteBatchNode.extend(/** @lends cc.LabelBMFont# */{
     },
 
     /**
-     * tint this label
-     * @param {cc.Color} color
+     * tint this label									给这个标签着色
+     * @param {cc.Color} color								@param {cc.Color} 颜色
      */
     setColor: function (color) {
         var locDisplayed = this._displayedColor, locRealColor = this._realColor;
@@ -225,16 +238,16 @@ cc.LabelBMFont = cc.SpriteBatchNode.extend(/** @lends cc.LabelBMFont# */{
     },
 
     /**
-     * Conforms to cc.RGBAProtocol protocol.
-     * @return {Boolean}
+     * Conforms to cc.RGBAProtocol protocol.					符合cc.RGBAProtocol协议
+     * @return {Boolean}							@return {Boolean}							
      */
     isOpacityModifyRGB: function () {
         return this._opacityModifyRGB;
     },
 
     /**
-     * Set whether to support cc.RGBAProtocol protocol
-     * @param {Boolean} opacityModifyRGB
+     * Set whether to support cc.RGBAProtocol protocol				设置是否支持cc.RGBAProtocol协议
+     * @param {Boolean} opacityModifyRGB					@param {Boolean} opacityModifyRGB
      */
     setOpacityModifyRGB: function (opacityModifyRGB) {
         this._opacityModifyRGB = opacityModifyRGB;
@@ -249,16 +262,16 @@ cc.LabelBMFont = cc.SpriteBatchNode.extend(/** @lends cc.LabelBMFont# */{
     },
 
     /**
-     * Gets the real opacity.
-     * @returns {number}
+     * Gets the real opacity.							获得真实的透明度
+     * @returns {number}							@returns {number}
      */
     getOpacity: function () {
         return this._realOpacity;
     },
 
     /**
-     * Gets the display opacity.
-     * @returns {number}
+     * Gets the display opacity.						获得显示的透明度
+     * @returns {number}							@returns {number}
      */
     getDisplayedOpacity: function () {
         return this._displayedOpacity;
@@ -402,7 +415,7 @@ cc.LabelBMFont = cc.SpriteBatchNode.extend(/** @lends cc.LabelBMFont# */{
     },
 
     /**
-     * Initialization of the node, please do not call this function by yourself, you should pass the parameters to constructor to initialize it .
+     * Initialization of the node, please do not call this function by yourself, you should pass the parameters to constructor to initialize it鈥�.
      */
     init: function () {
         return this.initWithString(null, null, null, null, null);
@@ -888,10 +901,10 @@ cc.LabelBMFont = cc.SpriteBatchNode.extend(/** @lends cc.LabelBMFont# */{
     },
 
     /**
-     * Set scale. <br />
-     * Input a number, will be decrease or increase the font size. <br />
-     * @param {Number} scale
-     * @param {Number} [scaleY=null] default is scale
+     * Set scale. <br />								设置范围。<br />
+     * Input a number, will be decrease or increase the font size. <br />		输入一个数字，将增大或者减小字体的大小。 <br />
+     * @param {Number} scale								@param {Number} 范围
+     * @param {Number} [scaleY=null] default is scale					 @param {Number} [scaleY=null] default is scale @param {Number} [scaleY=null] default is scale
      */
     setScale: function (scale, scaleY) {
         cc.Node.prototype.setScale.call(this, scale, scaleY);
@@ -899,10 +912,10 @@ cc.LabelBMFont = cc.SpriteBatchNode.extend(/** @lends cc.LabelBMFont# */{
     },
 
     /**
-     * Set scale of x. <br />
-     * Input a number, will be decrease or increase the font size. <br />
-     * Horizontal scale.
-     * @param {Number} scaleX
+     * Set scale of x. <br />								设置y的范围。<br />
+     * Input a number, will be decrease or increase the font size. <br />		输入一个数字，将增大或者减小字体的大小。 <br />
+     * Horizontal scale.								水平范围
+     * @param {Number} scaleX								@param {Number} Y的范围@param {Number} Y的范围
      */
     setScaleX: function (scaleX) {
         cc.Node.prototype.setScaleX.call(this, scaleX);
@@ -910,10 +923,10 @@ cc.LabelBMFont = cc.SpriteBatchNode.extend(/** @lends cc.LabelBMFont# */{
     },
 
     /**
-     * Set scale of x. <br />
-     * Input a number, will be decrease or increase the font size. <br />
-     * Longitudinal scale.
-     * @param {Number} scaleY
+     * Set scale of x. <br /> 								设置x的范围。<br />
+     * Input a number, will be decrease or increase the font size. <br /> 		输入一个数字，将增大或者减小字体的大小。 <br />
+     * Longitudinal scale.								高度范围
+     * @param {Number} scaleY								@param {Number} Y的范围
      */
     setScaleY: function (scaleY) {
         cc.Node.prototype.setScaleY.call(this, scaleY);
@@ -970,8 +983,8 @@ cc.LabelBMFont = cc.SpriteBatchNode.extend(/** @lends cc.LabelBMFont# */{
     },
 
     /**
-     * Set the AnchorPoint of the labelBMFont. <br />
-     * In order to change the location of label.
+     * Set the AnchorPoint of the labelBMFont. <br />				设置labelBMFont的轴心位置。<br />
+     * In order to change the location of label.				为了改变标签的位置
      * @override
      * @param {cc.Point|Number} point The anchor point of labelBMFont or The anchor point.x of labelBMFont.
      * @param {Number} [y] The anchor point.y of labelBMFont.
@@ -1017,7 +1030,7 @@ cc.LabelBMFont = cc.SpriteBatchNode.extend(/** @lends cc.LabelBMFont# */{
         return sp.getPositionX() * this._scaleX + (sp._getWidth() * this._scaleX * sp._getAnchorX());
     },
 
-    //Checking whether the character is a whitespace
+    //Checking whether the character is a whitespace			检查该字符是否是回车
     _isspace_unicode: function(ch){
         ch = ch.charCodeAt(0);
         return  ((ch >= 9 && ch <= 13) || ch == 32 || ch == 133 || ch == 160 || ch == 5760
@@ -1032,8 +1045,8 @@ cc.LabelBMFont = cc.SpriteBatchNode.extend(/** @lends cc.LabelBMFont# */{
             return;
 
         var last_index = len - 1;
-
-        // Only start trimming if the last character is whitespace..
+@returns {number}
+        // Only start trimming if the last character is whitespace..   只有当最后一个字符是回车
         if (this._isspace_unicode(str[last_index])) {
             for (var i = last_index - 1; i >= 0; --i) {
                 if (this._isspace_unicode(str[i])) {
@@ -1051,7 +1064,7 @@ cc.LabelBMFont = cc.SpriteBatchNode.extend(/** @lends cc.LabelBMFont# */{
     //Return value: the trimmed string.
     _utf8_trim_from: function(str, index){
         var len = str.length;
-        if (index >= len || index < 0)
+        if (index >= len || index < 0)@returns {number}
             return;
         str.splice(index, len);
     }

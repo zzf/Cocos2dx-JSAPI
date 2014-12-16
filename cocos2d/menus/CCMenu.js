@@ -55,6 +55,18 @@ cc.DEFAULT_PADDING = 5;
  * @example
  * var layer = new cc.Menu(menuitem1, menuitem2, menuitem3);
  */
+
+/**
+ * <p> 特点和局限：<br/>
+ *  -你可以在运行的时候使用addChild来增加MenuItem objects
+ *  -但是唯一可以接受的就是MenuItem objects
+ *  @class
+ *  @extends cc.Layer
+ *  @param {...cc.MenuItem|null} menuItems}
+ *  @example
+ *   var layer = new cc.Menu(menuitem1, menuitem2, menuitem3);
+ */
+
 cc.Menu = cc.Layer.extend(/** @lends cc.Menu# */{
     enabled: false,
 
@@ -66,6 +78,11 @@ cc.Menu = cc.Layer.extend(/** @lends cc.Menu# */{
     /**
      * Constructor of cc.Menu override it to extend the construction behavior, remember to call "this._super()" in the extended "ctor" function.
      * @param {...cc.MenuItem|null} menuItems
+     */
+
+    /**
+     * 重写cc.Menus的构造器来扩充他的功能，但是在使用"ctor"功能时，记得要调用"this._super()"
+     *  @param {...cc.MenuItem|null} 菜单项
      */
     ctor: function (menuItems) {
         cc.Layer.prototype.ctor.call(this);
@@ -113,6 +130,12 @@ cc.Menu = cc.Layer.extend(/** @lends cc.Menu# */{
      *     If you override onEnter, you must call its parent's onEnter function with this._super().
      * </p>
      */
+    /**
+     * <p>
+     *
+     *
+     * </p>
+     */
     onEnter: function () {
         var locListener = this._touchListener;
         if (!locListener._isRegistered())
@@ -121,25 +144,25 @@ cc.Menu = cc.Layer.extend(/** @lends cc.Menu# */{
     },
 
     /**
-     * return whether or not the menu will receive events
-     * @return {Boolean}
+     * return whether or not the menu will receive events		返回这个菜单是否会接收事件
+     * @return {Boolean}						@return {Boolean}
      */
     isEnabled: function () {
         return this.enabled;
     },
 
     /**
-     * set whether or not the menu will receive events
-     * @param {Boolean} enabled
+     * set whether or not the menu will receive events			设置这个菜单是否会接收事件
+     * @param {Boolean} enabled						@param {Boolean} 可以
      */
     setEnabled: function (enabled) {
         this.enabled = enabled;
     },
 
     /**
-     * initializes a cc.Menu with it's items
-     * @param {Array} args
-     * @return {Boolean}
+     * initializes a cc.Menu with it's items 				初始化cc.Menu
+     * @param {Array} args						@param {Array} args
+     * @return {Boolean}						@return {Boolean}
      */
     initWithItems: function (args) {
         var pArray = [];
@@ -154,15 +177,15 @@ cc.Menu = cc.Layer.extend(/** @lends cc.Menu# */{
     },
 
     /**
-     * initializes a cc.Menu with a Array of cc.MenuItem objects
-     * @param {Array} array Of cc.MenuItem Items
-     * @return {Boolean}
+     * initializes a cc.Menu with a Array of cc.MenuItem objects		初始化cc.Menu并赋一个cc.MenuItem对象的数组
+     * @param {Array} array Of cc.MenuItem Items				@param {Array} cc.MenuItem数组
+     * @return {Boolean}							@return {Boolean}
      */
     initWithArray: function (arrayOfItems) {
         if (cc.Layer.prototype.init.call(this)) {
             this.enabled = true;
 
-            // menu in the center of the screen
+            // menu in the center of the screen					菜单在屏幕中间
             var winSize = cc.winSize;
             this.setPosition(winSize.width / 2, winSize.height / 2);
             this.setContentSize(winSize);
@@ -187,7 +210,7 @@ cc.Menu = cc.Layer.extend(/** @lends cc.Menu# */{
     },
 
     /**
-     * add a child for  cc.Menu
+     * add a child for  cc.Menu		  								
      * @param {cc.Node} child
      * @param {Number|Null} [zOrder=] zOrder for the child
      * @param {Number|Null} [tag=] tag for the child
@@ -515,7 +538,7 @@ cc.Menu = cc.Layer.extend(/** @lends cc.Menu# */{
      * <p>
      * callback that is called every time the cc.Menu leaves the 'stage'.                                         <br/>
      * If the cc.Menu leaves the 'stage' with a transition, this callback is called when the transition finishes. <br/>
-     * During onExit you can't access a sibling node.                                                             <br/>
+     * During onExit you can't access a sibling node.                   @return {Boolean}                                          <br/>
      * If you override onExit, you shall call its parent's onExit with this._super().
      * </p>
      */
@@ -530,14 +553,14 @@ cc.Menu = cc.Layer.extend(/** @lends cc.Menu# */{
         cc.Node.prototype.onExit.call(this);
     },
     /**
-     * only use for jsbinding
-     * @param value
+     * only use for jsbinding			只能用于js
+     * @param value				@param value
      */
     setOpacityModifyRGB: function (value) {
     },
     /**
-     * only use for jsbinding
-      * @returns {boolean}
+     * only use for jsbinding			只能用于js
+      * @returns {boolean}			@returns {boolean}
      */
     isOpacityModifyRGB: function () {
         return false;
@@ -565,16 +588,15 @@ cc.Menu = cc.Layer.extend(/** @lends cc.Menu# */{
 
 var _p = cc.Menu.prototype;
 
-// Extended properties
+// Extended properties			@return {cc.Menu}增加的属性
 /** @expose */
 _p.enabled;
 
 /**
- * create a new menu
- * @deprecated  since v3.0, please use new cc.Menu(menuitem1, menuitem2, menuitem3) to create a new menu
- * @param {...cc.MenuItem|null} menuItems
- * todo: need to use new
- * @return {cc.Menu}
+ * create a new menu													产生一个新的菜单
+ * @deprecated  since v3.0, please use new cc.Menu(menuitem1, menuitem2, menuitem3) to create a new menu		@deprecated 从3.0版本后，请使用新的cc.Menu来产生一个新的菜单
+ * @param {...cc.MenuItem|null} menuItems										@param {...cc.MenuItem|null}						      * todo: need to use new													todo: need to use new
+ * @return {cc.Menu}													@return {cc.Menu}
  */
 cc.Menu.create = function (menuItems) {
     var argc = arguments.length;

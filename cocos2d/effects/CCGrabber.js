@@ -25,9 +25,9 @@
  ****************************************************************************/
 
 /**
- * FBO class that grabs the the contents of the screen
- * @class
- * @extends cc.Class
+ * FBO class that grabs the the contents of the screen	   FBO类：用来抓取屏幕上的内容
+ * @class						   @class			
+ * @extends cc.Class					   @extends cc.Class
  */
 cc.Grabber = cc.Class.extend({
     _FBO:null,
@@ -37,7 +37,7 @@ cc.Grabber = cc.Class.extend({
     _gl:null,
 
     /**
-     * constructor of cc.Grabber
+     * constructor of cc.Grabber	 cc.Grabber的构造器     
      */
     ctor:function () {
         cc._checkWebGLRenderMode();
@@ -49,18 +49,18 @@ cc.Grabber = cc.Class.extend({
     },
 
     /**
-     * grab
-     * @param {cc.Texture2D} texture
+     * grab				抓取函数（grab）
+     * @param {cc.Texture2D} texture	@param {cc.Texture2D}纹理
      */
     grab:function (texture) {
         var locGL = this._gl;
         this._oldFBO = locGL.getParameter(locGL.FRAMEBUFFER_BINDING);
-        // bind
+        // bind	绑定
         locGL.bindFramebuffer(locGL.FRAMEBUFFER, this._FBO);
-        // associate texture with FBO
+        // associate texture with FBO	将纹理连接到FBO
         locGL.framebufferTexture2D(locGL.FRAMEBUFFER, locGL.COLOR_ATTACHMENT0, locGL.TEXTURE_2D, texture._webTextureObj, 0);
 
-        // check if it worked (probably worth doing :) )
+        // check if it worked (probably worth doing :) )	 检查该函数是否工作（非常推荐这么做 :)）
         var status = locGL.checkFramebufferStatus(locGL.FRAMEBUFFER);
         if (status != locGL.FRAMEBUFFER_COMPLETE)
             cc.log("Frame Grabber: could not attach texture to frmaebuffer");
@@ -68,32 +68,30 @@ cc.Grabber = cc.Class.extend({
     },
 
     /**
-     * should be invoked before drawing
-     * @param {cc.Texture2D} texture
+     * should be invoked before drawing		在绘图之前应该被调用的函数
+     * @param {cc.Texture2D} texture		@param{cc.Texture2D}纹理
      */
     beforeRender:function (texture) {
         var locGL = this._gl;
         this._oldFBO = locGL.getParameter(locGL.FRAMEBUFFER_BINDING);
         locGL.bindFramebuffer(locGL.FRAMEBUFFER, this._FBO);
 
-        // save clear color
+        // save clear color		 将保存清晰的颜色
         this._oldClearColor = locGL.getParameter(locGL.COLOR_CLEAR_VALUE);
 
-        // BUG XXX: doesn't work with RGB565.
+        // BUG XXX: doesn't work with RGB565.		BUG XXX:无法使用RGB565.
         locGL.clearColor(0, 0, 0, 0);
 
-        // BUG #631: To fix #631, uncomment the lines with #631
-        // Warning: But it CCGrabber won't work with 2 effects at the same time
+        // BUG #631: To fix #631, uncomment the lines with #631				 BUG #631:取消#631的注释行即可使用
+        // Warning: But it CCGrabber won't work with 2 effects at the same time		 警告：但是CCGrabber无法同时使用两种特效
         //  glClearColor(0.0f,0.0f,0.0f,1.0f);    // #631
-
         locGL.clear(locGL.COLOR_BUFFER_BIT | locGL.DEPTH_BUFFER_BIT);
-
         //  glColorMask(true, true, true, false);    // #631
     },
 
     /**
-     * should be invoked after drawing
-     * @param {cc.Texture2D} texture
+     * should be invoked after drawing		在绘图完成后被调用的函数
+     * @param {cc.Texture2D} texture		@param{cc.Texture2D}纹理
      */
     afterRender:function (texture) {
         var locGL = this._gl;
@@ -102,7 +100,7 @@ cc.Grabber = cc.Class.extend({
     },
 
     /**
-     * delete FBO
+     * delete FBO		 删除FBO
      */
     destroy:function(){
         this._gl.deleteFramebuffer(this._FBO);
