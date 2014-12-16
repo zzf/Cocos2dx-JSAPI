@@ -25,10 +25,8 @@
  ****************************************************************************/
 
 /**
- * The fullscreen API provides an easy way for web content to be presented using the user's entire screen.
- * 全屏API提供了一个简单的方式用来全屏呈现网页内容
- * It's invalid on safari, QQbrowser and android browser
- * 该API在safari、QQ浏览器和android浏览器中无效
+ * The fullscreen API provides an easy way for web content to be presented using the user's entire screen.  全屏API提供了一个简单的方式用来全屏呈现网页内容
+ * It's invalid on safari, QQbrowser and android browser  该API在safari、QQ浏览器和android浏览器中无效
  * @class
  * @name cc.screen
  */
@@ -145,8 +143,7 @@ cc.screen = /** @lends cc.screen# */{
 	    element = element || document.body;
 	    var touchTarget = cc._canvas || element;
         var theScreen = this;
-        // Function bind will be too complicated here because we need the callback function's reference to remove the listener
-        // 这里的函数绑定会非常复杂因为我们需要回调函数的引用来移除监听器(listener)
+        // Function bind will be too complicated here because we need the callback function's reference to remove the listener  这里的函数绑定会非常复杂因为我们需要回调函数的引用来移除监听器(listener)
         function callback() {
             theScreen.requestFullScreen(element, onFullScreenChange);
             touchTarget.removeEventListener(theScreen._touchEvent, callback);
