@@ -25,17 +25,17 @@
 if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
     cc.rendererCanvas = {
         childrenOrderDirty: true,
-        _transformNodePool: [],                              //save nodes transform dirty
-        _renderCmds: [],                                     //save renderer commands
+        _transformNodePool: [],                              //save nodes transform dirty 保存节点变换污点
+        _renderCmds: [],                                     //save renderer commands 保存渲染命令
 
-        _isCacheToCanvasOn: false,                          //a switch that whether cache the rendererCmd to cacheToCanvasCmds
-        _cacheToCanvasCmds: {},                              // an array saves the renderer commands need for cache to other canvas
+        _isCacheToCanvasOn: false,                          //a switch that whether cache the rendererCmd to cacheToCanvasCmds 一个记录是否将渲染指令缓存到画布指令缓存中的标识
+        _cacheToCanvasCmds: {},                              // an array saves the renderer commands need for cache to other canvas 一个缓存其他画布(canvas)所需要的渲染指令的数组
         //contextSession: { globalAlpha:1 },
         _cacheInstanceIds:[],
         _currentID: 0,
 
         /**
-         * drawing all renderer command to context (default is cc._renderContext)
+         * drawing all renderer command to context (default is cc._renderContext) 将所有的渲染指令绘制到context中(默认的context是cc._renderContext)
          * @param {CanvasRenderingContext2D} [ctx=cc._renderContext]
          */
         rendering: function (ctx) {
@@ -51,18 +51,22 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
         },
 
         /**
-         * drawing all renderer command to cache canvas' context
+         * drawing all renderer command to cache canvas' context 绘制所有渲染器命令用于缓存油布情景
          * @param {CanvasRenderingContext2D} ctx
          * @param {Number} [instanceID]
+         * @param {Number} [scaleX]
+         * @param {Number} [scaleY]
          */
-        _renderingToCacheCanvas: function (ctx, instanceID) {
+        _renderingToCacheCanvas: function (ctx, instanceID, scaleX, scaleY) {
             if (!ctx)
                 cc.log("The context of RenderTexture is invalid.");
 
+            scaleX = cc.isUndefined(scaleX) ? 1 : scaleX;
+            scaleY = cc.isUndefined(scaleY) ? 1 : scaleY;
             instanceID = instanceID || this._currentID;
             var locCmds = this._cacheToCanvasCmds[instanceID], i, len;
             for (i = 0, len = locCmds.length; i < len; i++) {
-                locCmds[i].rendering(ctx, 1, 1);
+                locCmds[i].rendering(ctx, scaleX, scaleY);
             }
             locCmds.length = 0;
             var locIDs = this._cacheInstanceIds;
@@ -94,12 +98,12 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
 
         transform: function () {
             var locPool = this._transformNodePool;
-            //sort the pool
+            //sort the pool 对池进行分类
             locPool.sort(this._sortNodeByLevelAsc);
 
-            //transform node
+            //transform node 转换节点
             for (var i = 0, len = locPool.length; i < len; i++) {
-                if (locPool[i]._renderCmdDiry)        //TODO need modify name for LabelTTF
+                if (locPool[i]._renderCmdDiry)        //TODO need modify name for LabelTTF TODO需要为LabelTTF修改名字
                     locPool[i]._transformForRenderer();
             }
             locPool.length = 0;
@@ -139,10 +143,10 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
     cc.TextureRenderCmdCanvas = function (node) {
         this._node = node;
         this._textureCoord = {
-            renderX: 0,                             //the x of texture coordinate for render, when texture tinted, its value doesn't equal x.
-            renderY: 0,                             //the y of texture coordinate for render, when texture tinted, its value doesn't equal y.
-            x: 0,                                   //the x of texture coordinate for node.
-            y: 0,                                   //the y of texture coordinate for node.
+            renderX: 0,                             //the x of texture coordinate for render, when texture tinted, its value doesn't equal x. 用于渲染的纹理坐标的x值，当纹理是着色的，它的值不等于x
+            renderY: 0,                             //the y of texture coordinate for render, when texture tinted, its value doesn't equal y. 用于渲染的纹理坐标的y值，当纹理是着色的，它的值不等于y
+            x: 0,                                   //the x of texture coordinate for node. 节点纹理坐标的x值。
+            y: 0,                                   //the y of texture coordinate for node. 节点纹理坐标的y值。
             width: 0,
             height: 0,
             validRect: false
@@ -159,9 +163,9 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
         if(node._texture && (locTextureCoord.width === 0 || locTextureCoord.height === 0))
             return;
         if (!locTextureCoord.validRect && node._displayedOpacity === 0)
-            return;  //draw nothing
+            return;  //draw nothing 什么也不画
 
-        if(node._texture && !node._texture._isLoaded)  //set texture but the texture isn't loaded.
+        if(node._texture && !node._texture._isLoaded)  //set texture but the texture isn't loaded. 设置纹理，但是纹理还没被加载。
             return;
 
         var t = node._transformWorld,
@@ -171,16 +175,13 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
             locHeight = node._rect.height,
             image, curColor, contentSize;
 
-        var blendChange = (node._blendFuncStr !== "source"), alpha = (node._displayedOpacity / 255);
-        /*if(cc.renderer.contextSession.globalAlpha !== alpha){
-            cc.renderer.contextSession.globalAlpha = context.globalAlpha = alpha;                         //TODO
-        }*/
+        var blendChange = (node._blendFuncStr !== "source-over"), alpha = (node._displayedOpacity / 255);
 
         if (t.a !== 1 || t.b !== 0 || t.c !== 0 || t.d !== 1 || node._flippedX || node._flippedY) {
             context.save();
 
             context.globalAlpha = alpha;
-            //transform
+            //transform 变换
             context.transform(t.a, t.c, t.b, t.d, t.tx * scaleX, -t.ty * scaleY);
             if (blendChange)
                 context.globalCompositeOperation = node._blendFuncStr;
@@ -197,35 +198,42 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
             if (node._texture) {
                 image = node._texture._htmlElementObj;
 
-                //TODO should move '* scaleX/scaleY' to transforming
-                if (node._colorized) {
-                    context.drawImage(image,
-                        0,
-                        0,
-                        locTextureCoord.width,
-                        locTextureCoord.height,
-                            locX * scaleX,
-                            locY * scaleY,
-                            locWidth * scaleX,
-                            locHeight * scaleY
-                    );
+                if(node._texture._pattern != ""){
+                    context.save();
+                    context.fillStyle = context.createPattern(image, node._texture._pattern);
+                    context.fillRect(locX * scaleX, locY * scaleY, locWidth * scaleX, locHeight * scaleY);
+                    context.restore();
                 } else {
-                    context.drawImage(image,
-                        locTextureCoord.renderX,
-                        locTextureCoord.renderY,
-                        locTextureCoord.width,
-                        locTextureCoord.height,
-                            locX * scaleX,
-                            locY * scaleY,
-                            locWidth * scaleX,
-                            locHeight * scaleY
-                    );
+                    //TODO should move '* scaleX/scaleY' to transforming TODO应该移动'* scaleX/scaleY'去转换
+                    if (node._colorized) {
+                        context.drawImage(image,
+                            0,
+                            0,
+                            locTextureCoord.width,
+                            locTextureCoord.height,
+                                locX * scaleX,
+                                locY * scaleY,
+                                locWidth * scaleX,
+                                locHeight * scaleY
+                        );
+                    } else {
+                        context.drawImage(image,
+                            locTextureCoord.renderX,
+                            locTextureCoord.renderY,
+                            locTextureCoord.width,
+                            locTextureCoord.height,
+                                locX * scaleX,
+                                locY * scaleY,
+                                locWidth * scaleX,
+                                locHeight * scaleY
+                        );
+                    }
                 }
             } else {
                 contentSize = node._contentSize;
-                if(contentSize.width !== 0 && contentSize.height !== 0) {
+                if(locTextureCoord.validRect) {
                     curColor = node._displayedColor;
-                    context.fillStyle = "rgba(" + curColor.r + "," + curColor.g + "," + curColor.b + "," + (node._displayedOpacity/255).toFixed(4) + ")";
+                    context.fillStyle = "rgba(" + curColor.r + "," + curColor.g + "," + curColor.b + ",1)";
                     context.fillRect(locX * scaleX, locY * scaleY, contentSize.width * scaleX, contentSize.height * scaleY);
                 }
             }
@@ -239,33 +247,41 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
             context.globalAlpha = alpha;
             if (node._texture) {
                 image = node._texture.getHtmlElementObj();
-                if (node._colorized) {
-                    context.drawImage(image,
-                        0,
-                        0,
-                        locTextureCoord.width,
-                        locTextureCoord.height,
-                            (t.tx + locX) * scaleX,
-                            (-t.ty + locY) * scaleY,
-                            locWidth * scaleX,
-                            locHeight * scaleY);
+                if(node._texture._pattern != ""){
+                    context.save();
+                    context.transform(t.a, t.c, t.b, t.d, t.tx * scaleX, -t.ty * scaleY);
+                    context.fillStyle = context.createPattern(image, node._texture._pattern);
+                    context.fillRect(locX * scaleX, locY * scaleY, locWidth * scaleX, locHeight * scaleY);
+                    context.restore();
                 } else {
-                    context.drawImage(
-                        image,
-                        locTextureCoord.renderX,
-                        locTextureCoord.renderY,
-                        locTextureCoord.width,
-                        locTextureCoord.height,
-                            (t.tx + locX) * scaleX,
-                            (-t.ty + locY) * scaleY,
-                            locWidth * scaleX,
-                            locHeight * scaleY);
+                    if (node._colorized) {
+                        context.drawImage(image,
+                            0,
+                            0,
+                            locTextureCoord.width,
+                            locTextureCoord.height,
+                                (t.tx + locX) * scaleX,
+                                (-t.ty + locY) * scaleY,
+                                locWidth * scaleX,
+                                locHeight * scaleY);
+                    } else {
+                        context.drawImage(
+                            image,
+                            locTextureCoord.renderX,
+                            locTextureCoord.renderY,
+                            locTextureCoord.width,
+                            locTextureCoord.height,
+                                (t.tx + locX) * scaleX,
+                                (-t.ty + locY) * scaleY,
+                                locWidth * scaleX,
+                                locHeight * scaleY);
+                    }
                 }
             } else {
                 contentSize = node._contentSize;
-                if(contentSize.width !== 0 && contentSize.height !== 0) {
+                if(locTextureCoord.validRect) {
                     curColor = node._displayedColor;
-                    context.fillStyle = "rgba(" + curColor.r + "," + curColor.g + "," + curColor.b + "," + (node._displayedOpacity/255).toFixed(4) + ")";
+                    context.fillStyle = "rgba(" + curColor.r + "," + curColor.g + "," + curColor.b + ",1)";
                     context.fillRect((t.tx + locX) * scaleX, (-t.ty + locY) * scaleY, contentSize.width * scaleX, contentSize.height * scaleY);
                 }
             }
@@ -292,7 +308,7 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
             return;
 
         var needTransform = (t.a !== 1 || t.b !== 0 || t.c !== 0 || t.d !== 1);         //TODO
-        var needRestore = (node._blendFuncStr !== "source") || needTransform;
+        var needRestore = (node._blendFuncStr !== "source-over") || needTransform;
 
         if (needRestore) {
             context.save();
@@ -331,7 +347,7 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
             return;
 
         var needTransform = (t.a !== 1 || t.b !== 0 || t.c !== 0 || t.d !== 1);
-        var needRestore = (node._blendFuncStr !== "source") || needTransform;
+        var needRestore = (node._blendFuncStr !== "source-over") || needTransform;
         if(needRestore){
             context.save();
             context.globalCompositeOperation = node._blendFuncStr;
@@ -366,7 +382,7 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
             pointRect = node._pointRect;
 
         context.save();
-        //transform
+        //transform 转换变形
         context.transform(t.a, t.c, t.b, t.d, t.tx * scaleX, -t.ty * scaleY);
         if (node.isBlendAdditive())
             context.globalCompositeOperation = 'lighter';
@@ -375,8 +391,8 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
 
         var i, particle, lpx, alpha;
         var particleCount = this._node.particleCount, particles = this._node._particles;
-        if (cc.ParticleSystem.SHAPE_MODE == cc.ParticleSystem.TEXTURE_MODE) {
-            // Delay drawing until the texture is fully loaded by the browser
+        if (node.drawMode == cc.ParticleSystem.TEXTURE_MODE) {
+            // Delay drawing until the texture is fully loaded by the browser 延迟绘制直到纹理被浏览器完全加载
             if (!node._texture || !node._texture._isLoaded) {
                 context.restore();
                 return;
@@ -411,8 +427,8 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
                 if (particle.isChangeColor) {
                     var cacheTextureForColor = textureCache.getTextureColors(element);
                     if (cacheTextureForColor) {
-                        // Create another cache for the tinted version
-                        // This speeds up things by a fair bit
+                        // Create another cache for the tinted version 为着色的版本新建另外一个缓存
+                        // This speeds up things by a fair bit 起到了一定的加速作用
                         if (!cacheTextureForColor.tintCache) {
                             cacheTextureForColor.tintCache = cc.newElement('canvas');
                             cacheTextureForColor.tintCache.width = element.width;
@@ -436,7 +452,7 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
 
                 context.save();
                 context.translate(0 | particle.drawPos.x, -(0 | particle.drawPos.y));
-                if (cc.ParticleSystem.BALL_SHAPE == cc.ParticleSystem.STAR_SHAPE) {
+                if (node.shapeType == cc.ParticleSystem.STAR_SHAPE) {
                     if (particle.rotation)
                         context.rotate(cc.degreesToRadians(particle.rotation));
                     drawTool.drawStar(context, lpx, particle.color);
@@ -449,7 +465,7 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
         cc.g_NumberOfDraws++;
     };
 
-    // the canvas implement of renderCommand for cc.ProgressTimer
+    // the canvas implement of renderCommand for cc.ProgressTimer 用于cc.ProgressTimer的画布renderCommand的实现
     cc.ProgressRenderCmdCanvas = function (node) {
         this._PI180 = Math.PI / 180;
 
@@ -478,7 +494,7 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
         context.save();
         context.transform(t.a, t.c, t.b, t.d, t.tx * scaleX, -t.ty * scaleY);
 
-        if (locSprite._blendFuncStr != "source")
+        if (locSprite._blendFuncStr != "source-over")
             context.globalCompositeOperation = locSprite._blendFuncStr;
         context.globalAlpha = alpha;
 
@@ -499,7 +515,7 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
         flipXOffset *= scaleX;
         flipYOffset *= scaleY;
 
-        //clip
+        //clip 修剪
         if (this._type == cc.ProgressTimer.TYPE_BAR) {
             var locBarRect = this._barRect;
             context.beginPath();
@@ -516,17 +532,29 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
             context.closePath();
         }
 
-        //draw sprite
+        //draw sprite 绘制精灵
         var image = locSprite._texture.getHtmlElementObj();
-        context.drawImage(image,
-            locTextureCoord.renderX,
-            locTextureCoord.renderY,
-            locTextureCoord.width,
-            locTextureCoord.height,
-            flipXOffset, flipYOffset,
-            locDrawSizeCanvas.width,
-            locDrawSizeCanvas.height
-        );
+        if (locSprite._colorized) {
+            context.drawImage(image,
+                0,
+                0,
+                locTextureCoord.width,
+                locTextureCoord.height,
+                flipXOffset, flipYOffset,
+                locDrawSizeCanvas.width,
+                locDrawSizeCanvas.height
+            );
+        } else {
+            context.drawImage(image,
+                locTextureCoord.renderX,
+                locTextureCoord.renderY,
+                locTextureCoord.width,
+                locTextureCoord.height,
+                flipXOffset, flipYOffset,
+                locDrawSizeCanvas.width,
+                locDrawSizeCanvas.height
+            );
+        }
 
         context.restore();
         cc.g_NumberOfDraws++;
@@ -693,7 +721,7 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
         if (node._clipElemType) {
             context.restore();
 
-            // Redraw the cached canvas, so that the cliped area shows the background etc.
+            // Redraw the cached canvas, so that the cliped area shows the background etc. 重新绘制被缓存的画布，使被剪过的区域显示背景。
             context.save();
             context.setTransform(1, 0, 0, 1, 0, 0);
             context.globalCompositeOperation = "destination-over";
@@ -726,7 +754,7 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
     cc.PhysicsDebugNodeRenderCmdCanvas.prototype._drawSegment = cc.DrawNodeRenderCmdCanvas.prototype._drawSegment;
     cc.PhysicsDebugNodeRenderCmdCanvas.prototype._drawPoly = cc.DrawNodeRenderCmdCanvas.prototype._drawPoly;
 
-    //--- TMXLayer's render command ---
+    //--- TMXLayer's render command --- TMXLayer的渲染命令
     cc.TMXLayerRenderCmdCanvas = function (tmxLayer) {
         this._node = tmxLayer;
         this._childrenRenderCmds = [];
@@ -750,7 +778,7 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
 
             locCacheContext.save();
             locCacheContext.clearRect(0, 0, locCanvas.width, -locCanvas.height);
-            //reset the cache context
+            //reset the cache context 重置缓存情景
             var t = cc.affineTransformInvert(locNode._transformWorld);
             locCacheContext.transform(t.a, t.c, t.b, t.d, t.tx * scaleX, -t.ty * scaleY);
 
@@ -775,10 +803,10 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
         context.globalAlpha = alpha;
         var posX = 0 | ( -node._anchorPointInPoints.x), posY = 0 | ( -node._anchorPointInPoints.y);
         var locCacheCanvas = node._cacheCanvas, t = node._transformWorld;
-        //direct draw image by canvas drawImage
+        //direct draw image by canvas drawImage 直接用画布drawImage绘制图片
         if (locCacheCanvas && locCacheCanvas.width !== 0 && locCacheCanvas.height !== 0) {
             context.save();
-            //transform
+            //transform 变换
             context.transform(t.a, t.c, t.b, t.d, t.tx * scaleX, -t.ty * scaleY);
 
             var locCanvasHeight = locCacheCanvas.height * scaleY;
@@ -824,7 +852,7 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
         var locSkeleton = node._skeleton;
         var attachment,slot, i, n, drawingUtil = cc._drawingUtil;
         if (node._debugSlots) {
-            // Slots.
+            // Slots. 缝隙。
             drawingUtil.setDrawColor(0, 0, 255, 255);
             drawingUtil.setLineWidth(1);
 
@@ -840,7 +868,7 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
         }
 
         if (node._debugBones) {
-            // Bone lengths.
+            // Bone lengths. 骨骼长度
             var bone;
             drawingUtil.setLineWidth(2);
             drawingUtil.setDrawColor(255, 0, 0, 255);
@@ -854,9 +882,9 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
                     {x:x, y:y});
             }
 
-            // Bone origins.
+            // Bone origins. 骨骼原点。
             drawingUtil.setPointSize(4);
-            drawingUtil.setDrawColor(0, 0, 255, 255); // Root bone is blue.
+            drawingUtil.setDrawColor(0, 0, 255, 255); // Root bone is blue. 根骨骼为蓝色。
 
             for (i = 0, n = locSkeleton.bones.length; i < n; i++) {
                 bone = locSkeleton.bones[i];
